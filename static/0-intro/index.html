@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Einführung in die Vorlesung</title>
+
+        <link rel="shortcut icon" href="../../favicon.svg" />
+        <link rel="stylesheet" href="../../style.css" />
+        <script src="../../learning-slides.bundle.js"></script>
+    </head>
+    <body class="slides invisible" data-title="Einführung in die Vorlesung" tabindex="0">
+        <header>
+            <h2>Inhaltsverzeichnis</h2>
+            <p>
+                Hier erfährst du alle wichtigen Sachen rund um die Vorlesung.
+                Beispielsweise, welche Inhalte dran kommen werden, wie die
+                Prüfung aussieht oder welche Software du dafür benötigst.
+            </p>
+        </header>
+
+        <section>
+            <h1>Was lange währt wird endlich gut</h1>
+
+            <article>
+                <!-- 3. Semester: Webprogrammierung -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="dhbw-lightblue">3. Semester: Webprogrammierung</h3>
+                        <small>
+                            Von der Erstellung der ersten Webseite bis zur eigenen Browser App
+                        </small>
+                    </div>
+                    <div class="p-3">
+                        Grundlagen des Webs<br />
+                        Einführung in HTML und CSS<br />
+                        Responsive Webdesign<br />
+                        Clientseitiges JavaScript<br />
+                        Entwicklung von Single Page Apps<br />
+                    </div>
+                </div>
+
+                <div class="card p-3 mt-3">
+                    <img src="vorlesungsinhalte.png" alt="" class="img-fluid d-block" style="" />
+                </div>
+
+                <!-- 4. Semester: Verteilte Systeme -->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h3 class="dhbw-lightblue">4. Semester: Verteilte Systeme</h3>
+                        <small>
+                            Von REST APIs über cloudbasierte Microservices bis zum Internet of Things.
+                        </small>
+                    </div>
+                    <div
+                        id    = "kapitel-vertsys"
+                        class = "accordion p-3"
+                    >
+                        <a
+                            id            = "kapitel-vertsys-grundlagen-title"
+                            class         = "d-block"
+                            data-toggle   = "collapse"
+                            aria-expanded = "false"
+                            aria-controls = "kapitel-vertsys-grundlagen-content"
+                            href          = "#kapitel-vertsys-grundlagen-content"
+                        >
+                            Grundlagen verteilter Systeme
+                        </a>
+                        <div
+                            id              = "kapitel-vertsys-grundlagen-content"
+                            class           = "collapse container-fluid text-left"
+                            aria-labelledby = "kapitel-vertsys-grundlagen-title"
+                            data-parent     = "#kapitel-vertsys"
+                        >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="p-3">
+                                        <li>Definition grundlegender Begriffe</li>
+                                        <li>Besondere Anforderungen an verteilte Systeme</li>
+                                        <li>Typische Probleme verteilter Anwendungen</li>
+                                        <li>Gängige Architekturmuster</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="xkcd_star_lore.png" class="img-fluid mx-auto d-block" />
+                                    <p>
+                                        <small>
+                                            <small>
+                                                Bildnachweis: <a href="https://xkcd.com/1973/" target="_blank">XKCD 1973</a>
+                                            </small>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a
+                            id            = "kapitel-vertsys-restapi-title"
+                            class         = "d-block"
+                            data-toggle   = "collapse"
+                            aria-expanded = "false"
+                            aria-controls = "kapitel-vertsys-restapi-content"
+                            href          = "#kapitel-vertsys-restapi-content"
+                        >
+                            REST API-Entwicklung
+                        </a>
+                        <div
+                            id              = "kapitel-vertsys-restapi-content"
+                            class           = "collapse container-fluid text-left"
+                            aria-labelledby = "kapitel-vertsys-restapi-title"
+                            data-parent     = "#kapitel-vertsys"
+                        >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="p-3">
+                                        <li>Wirtschaftliche Bedeutung von APIs</li>
+                                        <li>Technische Grundlagen zu REST-Webservices</li>
+                                        <li>Gesamtarchitektur typischer Anwendungen</li>
+                                        <li>Aufruf von REST-Webservices mit JavaScript</li>
+                                        <li>Entwicklung eigener REST-Webservices mit Java</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="mathclass2018.png" class="img-fluid mx-auto d-block" />
+                                    <p>
+                                        <small>
+                                            <small>
+                                                Bildnachweis: <a href="http://turnoff.us/geek/math-class-2018/" target="_blank">{turnoff.us} math class 2018</a>
+                                            </small>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a
+                            id            = "kapitel-vertsys-microservices-title"
+                            class         = "d-block"
+                            data-toggle   = "collapse"
+                            aria-expanded = "false"
+                            aria-controls = "kapitel-vertsys-microservices-content"
+                            href          = "#kapitel-vertsys-microservices-content"
+                        >
+                            Microservice-Architekturmuster
+                        </a>
+                        <div
+                            id              = "kapitel-vertsys-microservices-content"
+                            class           = "collapse container-fluid text-left"
+                            aria-labelledby = "kapitel-vertsys-microservices-title"
+                            data-parent     = "#kapitel-vertsys"
+                        >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="p-3">
+                                        <li>Besonderheiten cloudfähiger Microservices</li>
+                                        <li>Grundregeln zur Definition eigener Microservices</li>
+                                        <li>Gängige Design Patterns für die Implementierung</li>
+                                        <li>Umsetzung der vorgestellten Patterns in Java</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="dilbert-cloud.gif" class="img-fluid mx-auto d-block" />
+                                    <p>
+                                        <small>
+                                            <small>
+                                                Bildnachweis: <a href="https://dilbert.com/strip/2011-01-07" target="_blank">Dilbert, January 07, 2011</a>
+                                            </small>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a
+                            id            = "kapitel-vertsys-pubsub-title"
+                            class         = "d-block"
+                            data-toggle   = "collapse"
+                            aria-expanded = "false"
+                            aria-controls = "kapitel-vertsys-pubsub-content"
+                            href          = "#kapitel-vertsys-pubsub-content"
+                        >
+                            Publish/Subscribe mit MQTT
+                        </a>
+                        <div
+                            id              = "kapitel-vertsys-pubsub-content"
+                            class           = "collapse container-fluid text-left"
+                            aria-labelledby = "kapitel-vertsys-pubsub-title"
+                            data-parent     = "#kapitel-vertsys"
+                        >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="p-3">
+                                        <li>Asynchrone vs. snychrone Kommunikation</li>
+                                        <li>Architektur typischer IoT-Anwendungen</li>
+                                        <li>Besonderheiten des MQTT-Protokolls</li>
+                                        <li>Nutzung von MQTT mit Java und JavaScript</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="iot.jpg" class="img-fluid mx-auto d-block" />
+                                    <p>
+                                        <small>
+                                            <small>
+                                                Bildnachweis: <a href="http://geek-and-poke.com/geekandpoke/2012/3/14/the-internet-of-things.html" target="_blank">Geek &amp; Poke, March 15, 2012</a>
+                                            </small>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <aside>
+                <p>
+                    <i>
+                        Der Vorlesungsraum, unendliche Weiten. Wir schreiben das Jahr <span id="intro-year">2020</span>.
+                        Dies sind die Abenteuer des Raumschiffs Business Computer Science¹, das mit seiner 200 Mann
+                        starken Besatzung drei Jahre unterwegs ist, u3m neue Welten zu erforschen, neues Leben und neue
+                        Zivilisationen. Viele Lichtjahre von Zuhause entfernt dringen die Studierenden in Galaxien
+                        vor, die nie ein Mensch zuvor gesehen hat. 🚀
+                    </i>
+                </p>
+                <script>
+                    // Race-Condition 😐 Aber lecture-slides.js hat noch keinen Hook, um die Folien zu verändern,
+                    // bevor die HTML-Elemente aus dem DOM entfernt werden. Als Fallback steht im HTML daher
+                    // der Festwert 2020.
+                    yearElement = document.getElementById("intro-year");
+
+                    if (yearElement) {
+                        yearElement.textContent = (new Date()).getFullYear();
+                    }
+                </script>
+                <img src="enterprise.jpg" class="d-block img-thumbnail" style="width: 100%" />
+                <p>
+                    <small>
+                        <small>
+                            Bildnachweise:
+                            <a href="https://pixabay.com/en/spaceship-model-isolated-enterprise-2749359/" target="_blank">Pixabay: Janson_G</a>,
+                            <a href="https://pixabay.com/en/above-adventure-aerial-air-amazing-736879/" target="_blank">Pixabay: Bess-Hamiti</a>
+                        </small>
+                        <br />
+                        ¹ Wirtschaftsinformatik
+                    </small>
+                </p>
+                <p>
+                    Oder ging das doch irgendwie anders? 🤔📺 Auf jeden Fall wirst du aber zustimmen, dass wir bereits
+                    in „Webprogrammierung” viele interessante Dinge kennengelernt haben. In „Verteilte Systeme” wollen wir
+                    da natürlich in nichts nachstehen, weshalb wir auch hier wieder viele praxisrelevante Themen behandeln
+                    werden. Doch zuvor eine kurze Wiederholung von letztem Semester, um den Zusammenhang zwischen beiden
+                    Vorlesungen zu verdeutlichen.
+                </p>
+
+                <!-- TODO: Ab hier neuschreiben -->
+                <!-- TODO: Ab hier neuschreiben -->
+                <!-- TODO: Ab hier neuschreiben -->
+                <!-- TODO: Ab hier neuschreiben -->
+
+                <p>
+                    Webprogrammierung stand, wie der Name bereits vermuten lässt, ganz im Zeichen des World Wide Web.
+                    Kein Wunder also, dass wir uns intensiv mit den grundlegenden Technologien HTML, CSS und JavaScript
+                    auseinander gesetzt haben. Dabei haben wir gelernt, responsive Webseiten zu programmieren, Layout und
+                    Darstellung zu trennen sowie clientseitige Webanwendungen mit JavaScript zu entwickeln. Weiter ging
+                    es dann mit dem Server, als wir uns dem HTTP-Protokoll zugewandt haben. Dies war dann auch die
+                    Grundlage für alle weiteren Überlegungen, serverseitige Webanwendungen zu realisieren, bei denen
+                    sowohl die Anwendungslogik als auch die HTML-Erzeugung komplett vom Server gesteuert werden.
+                </p>
+                <p>
+                    Allerdings haben wir uns damals nur die absoluten Grundlagen der serverseitigen Webentwicklung
+                    angeschaut und uns sonst weitgehend nur mit dem Browser beschäftigt. Doch immerhin haben wir da
+                    schon ein wenig „Verteilte Systeme” gespielt, da auch das World Wide Web ein verteiltes System
+                    zur Ausführung von Webanwendungen ist. Zwar ist seine Architektur nicht gerade furchtbar komplex,
+                    das ist aber auch gerade das Gute daran. Doch immerhin sind solche Begriffe wie „Client” (gemeint
+                    war hier der Browser), „Server” oder „Übertragungsprotokoll” eigentlich Begriffe aus „Verteilte Systeme”.
+                    Was liegt also näher, als das weiter zu machen, wo wir das letzte mal aufgehört haben: Bei der
+                    Entwicklung serverseitiger Webanwendungen.
+                </p>
+                <p>
+                    Nach einem kurzen thematischen Einstieg in die Entwicklung verteilter Systeme vertiefen wir die
+                    letztes Semester gelegten Grundlagen zur Jakarta Enterprise Edition und lernen insbesondere, was
+                    Enterprise Java Beans und Entity-Klassen sind, wie wir damit die Geschäftslogik auf dem Server
+                    anhand der MVC-Architektur sauber kapseln können und wie wir relationale Datenbanken an den
+                    Server anbinden können.
+                </p>
+                <p>
+                    Mit diesem Wissen können wir dann schon viele Spielarten verteilter Systeme realisieren. So richtig
+                    interessant wird es aber erst, wenn wir uns noch mit SOAP und REST beschäftigen, den beiden Standards
+                    schlechthin zur Kommunikation verteilter Anwendungen. Damit können wir dann auch clientseitige
+                    Web Apps schreiben, die einen Teil ihrer Funktion auf den Server auslagern (Stichwort „AJAX”), die
+                    Geschäftslogik auf dem Server auch aus Android- oder iOS-Anwendungen heraus aufrufen oder ganz allgemein
+                    in unterschiedlichen Programmiersprachen realisierte Komponenten unterschiedlicher Anbieter miteinander
+                    kombinieren. Wir brechen an dieser Stelle also durchaus aus zu völlig neuen Ufern auf und verlassen die
+                    liebgewonnene Browserumgebung gegen Ende der Vorlesung. 🏖️
+                </p>
+                <!-- <p>
+                    Und wenn wir dann sowieso schon dabei sind, fremde Welten zu entdecken, fliegen wir gleich ein wenig
+                    weiter und beschäftigen uns mit entfernten Methodenaufrufen (oft auf Remote Method Invocation, Remote
+                    Procedure Call, Remote Function Call oder Object Request Broker genannt). Die freundlichen Leute von
+                    Google werden uns dabei dann ein wenig unter die Arme greifen, da wir hierfür das von Google entwickelte
+                    gRPC-Framework verwenden, dass neben C# und Python und ein paar anderen auch für Java verfügbar ist.
+                </p> -->
+                <!-- <p>
+                    Abschließen werden wir die Vorlesung dann mit dem Publish/Subscribe-Modell und hier vor allem mit
+                    dem IoT-Standardprotokoll MQTT. Hier sehen wir dann, dass die Welt nicht immer nur in Clients und
+                    Server oder Request und Reply eingeteilt werden kann. Indem wir uns von dieser einfachen Darstellung
+                    lösen, schaffen wir es tatsächlich, auch große, räumlich und zeitlich verteilte Anwendungen zu
+                    entwickeln, ohne wirklich viel dafür tun zu müssen. Die Programmierung ist sogar ziemlich simpel und
+                    doch bekommen wir eine bessere Performance, automatische Lastverteilung und eine einfache
+                    Ausfallsicherheit geschenkt. Alles Dinge, die für echte IoT-Anwendungen nicht ganz unerheblich sind.
+                </p> -->
+                <p>
+                    In diesem Sinne: Lasst und mutig dorthin vordringen, wo noch nie ein Mensch zuvor gewesen ist. 🛸
+                </p>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Kompetenzziele der Vorlesung</h1>
+            <article>
+                <h2>Sachkompetenz</h2>
+                <p>
+                    <small>Welches neue Wissen eigne ich mir an?</small>
+                </p>
+                <p>
+                    Siehe <a href="#1">erste Folie</a> 😏
+                </p>
+
+                <h2>Selbstkompetenz</h2>
+                <p>
+                    <small>Was kann ich damit wirklich machen?</small>
+                </p>
+                <ul>
+                    <li>Mit der Jakarta Enterprise Edition vollwertige MVC-Webanwendungen entwickeln</li>
+                    <li>Datenbankgestützte Geschäftsanwendungen entwerfen und mit Java implementieren</li>
+                    <li>Eigene SOAP- und REST-Webservices entwerfen und implementieren</li>
+                    <li>Clientanwendungen zum Aufruf von SOAP- und REST-Webservices in Java entwickeln</li>
+                    <li>AJAX-basierte Browser Apps zum Aufruf eines REST-Backend realisieren</li>
+                    <!-- <li>Entfernte Schnittstellen auf Basis entfernter Methodenaufrufe modellieren und erstellen</li> -->
+                    <!-- <li>Entfernte Methoden eines gRPC-Servers im Intra- oder Internet aufrufen</li> -->
+                    <!-- <li>Räumlich und zeitlich entkoppelte IoT-Anwendungen auf Basis von MQTT schreiben</li> -->
+                    <li>Vorhandene Anwendungen der obigen Bereiche analysieren und weiterentwickeln</li>
+                </ul>
+
+                <h2>Übergreifende Handlungskompetenz</h2>
+                <p>
+                    <small>Wie kann ich mich damit in die Gesellschaft integrieren?</small>
+                </p>
+                <ul>
+                    <li>Aktuelle Architekturansätze verteilter Systeme kennen und diskutieren</li>
+                    <li>Die konzeptionellen Unterschiede der verschiedenen Architekturen erklären</li>
+                    <li>Zu einer gegebenen Anforderung, die beste Architektur auswählen und umsetzen</li>
+                    <li>Verbesserungsvorschläge zur Weiterentwicklung vorhandener Anwendungen unterbreiten</li>
+                </ul>
+            </article>
+            <aside>
+                <p>
+                    Da die Vorlesungen Webprogrammierung und Verteilte Systeme für die DHBW ein zusammenhängendes
+                    Modul bilden, gelten für dieses Semester dieselben, offiziellen Kompetenzziele, wie letztes mal:
+                </p>
+                <div style="font-size:85%">
+                    <h5>Sachkompetenz</h5>
+                    <p>
+                        Die Studierenden kennen die grundlegenden Kernkonzepte der Nebenläufigkeit
+                        und Internet-Kommunikation und die darauf aufbauenden aktuellen Technologien
+                        und Werkzeuge für den Entwurf und für die Implementierung von Web-Anwendungen.
+                        Die Studierenden kennen die technischen Grundlagen, Konzepte, Architekturen
+                        und Technologien verteilter Systeme und Anwendungen sowie die gängigen Methoden,
+                        Werkzeuge, Frameworks und Entwurfsmuster für die Entwicklung verteilter Anwendungen.
+                    </p>
+                    <h5>Selbstkompetenz</h5>
+                    <p>
+                        Die Studierenden sind in der Lage, unter Einsatz aktueller Technologien und Werkzeuge
+                        komponentenbasierte verteilte Anwendungen und Web-Anwendungen zu entwerfen und unter
+                        Einsatz einer objektorientierten Programmiersprache und einem gegebenen Framework
+                        zu implementieren.
+                    </p>
+                    <h5>Übergreifende Handlungskompetenz</h5>
+                    <p>
+                        Die Studierenden können eigenständig aktuelle Methoden der Analyse, des Entwurfs und
+                        der Implementierung verteilter Systeme und Anwendungen für betriebliche Problemstellungen
+                        diskutieren, bewerten und anwenden.
+                    </p>
+                </div>
+                <p>
+                    Und genau wie letztes mal, haben wir es auf der Folie etwas konkreter gefasst. 😌
+                </p>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Benötigte Software</h1>
+            <article>
+                <!-- TODO 2020: Drei Kategorien "Entwicklung", "Server", "Testwerkzeuge" wenn MQTT wieder Teil der Vorlesung ist-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md">
+                            <a href="../../../software/#10" target="_blank">Installationsanleitung</a>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md">
+                            <h2 style="margin: 0;">Werkzeuge</h2>
+                        </div>
+                    </div> -->
+                    <div class="row" style="margin-bottom: 0;">
+                        <div class="col-md-4">
+                            <img src="netbeans-splash.gif" class="img-thumbnail d-block" style="width: 100%" />
+                        </div>
+                        <div class="col-md-4">
+                            <img src="maven-logo.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                        </div>
+                        <div class="col-md-4">
+                            <img src="git-logo.svg" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Apache Netbeans IDE
+                        </div>
+                        <div class="col-md-4">
+                            Apache Maven als Buildwerkzeug
+                        </div>
+                        <div class="col-md-4">
+                            Git für die Versionsverwaltung
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="col-md">
+                            <h2 style="margin: 0;">Entwicklungsserver</h2>
+                        </div>
+                    </div> -->
+                    <div class="row" style="margin-bottom: 0;">
+                        <div class="col-md-4">
+                            <img src="tomcat-logo.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                        </div>
+                        <div class="col-md-4">
+                            <img src="derby-logo.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                        </div>
+                        <div class="col-md-4">
+                            <img src="soapui-splash.jpg" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Apache TomEE Applikationsserver
+                        </div>
+                        <div class="col-md-4">
+                            Apache Derby Datenbank
+                        </div>
+                        <div class="col-md-4">
+                            SoapUI für Webservice-Tests
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside>
+                <p>
+                    Auch dieses Semester benötigen wir wieder einiges an Software, um sinnvoll arbeiten zu können.
+                    Längst vorbei sind doch die Zeiten, als es nur wenige Werkzeuge zur Auswahl gab und diese jedem
+                    Computer gleich noch beigelegt waren. Dafür gibt es heute umso bessere Werkzeuge und gerade die
+                    <a href="http://www.apache.org/" target="_blank">Apache Software Foundation</a> bietet für uns
+                    Java-Entwickler eine wahre Fundgrube professioneller Tools. Wie immer haben wir deshalb eine
+                    <a href="../../../software/#10" target="_blank">Anleitung, wie du zur Installation vorgehen musst,</a>
+                    online gestellt.
+                </p>
+                <dl>
+                    <dt>Netbeans IDE</dt>
+                    <dd>
+                        <p>
+                            Netbeans ist dieser Vorlesung die IDE unserer Wahl. Zwar stehen Eclipse oder IntelliJ
+                            hier in nichts nach, Netbeans ist insgesamt etwas einfacher zu bedienen und kann anders
+                            als alle anderen Projekte erzeugen, die auch ohne die Netbeans IDE weiterbearbeitet
+                            werden können. Außerdem gehört es seit 2018 zu Apache, wo auch die meisten anderen von
+                            uns genutzten Werkzeuge herkommen.
+                        </p>
+                        <p>
+                            <a href="http://netbeans.apache.org/" target="_blank">http://netbeans.apache.org/</a>
+                        </p>
+                    </dd>
+
+                    <dt>Apache Maven</dt>
+                    <dd>
+                        <p>
+                            Maven ist ein weit verbreitetes Buildwerkzeug für Java, das es uns erlaubt alle anfallenden
+                            Aufgaben zum Bauen unserer Softwareparkete zu automatisieren. Seine Konfiguration ist leider
+                            nicht immer ganz trivial, für Java ist es aber ein weit verbreiteter Standard. Des weiteren
+                            kann Maven fremde Bibliotheken zur Verwendung in unseren Projekten verwalten und herunterladen.
+
+                        </p>
+                        <p>
+                            <a href="https://maven.apache.org/" target="_blank">https://maven.apache.org/</a>
+                        </p>
+                    </dd>
+
+                    <dt>Git</dt>
+                    <dd>
+                        <p>
+                            Kaum ein professionelles Softwareprojekt kommt heutzutage
+                            ohne eine gute Versionsverwaltung aus. Historisch gesehen
+                            gibt es viele gute Werkzeuge hierfür, das mit Abstand
+                            beliebteste ist jedoch Git. Git ermöglicht es dir, nicht
+                            nur sämtliche Änderungen an deinem Quellcode sauber zu
+                            dokumentieren und jederzeit nachzuvollziehen, es bietet
+                            auch hervorragende Möglichkeiten zum Teamwork. Genau das
+                            richtige für unsere Portfolioprüfung.&nbsp;😃
+                        </p>
+                        <p>
+                            <a href="https://git-scm.com/" target="_blank">https://git-scm.com/</a>
+                        </p>
+                    </dd>
+
+                    <dt>Apache TomEE</dt>
+                    <dd>
+                        <p>
+                            Für die Entwicklung serverseitiger Java-Anwendungen kommt fast immer ein so genannter
+                            Applikationsserver zum Einsatz. Verschiedene Hersteller bieten uns hier ihre Produkte
+                            an, die aufgrund gemeinsamer APIs in weiten Teilen kompatibel zueinander sind. Lange
+                            Zeit haben wir deshalb Oracle GlassFish in der Vorlesung verwendet. Inzwischen ist aber
+                            der TomEE von Apache die weitaus bessere Alternative für uns.
+                        </p>
+                        <p>
+                            <a href="http://tomee.apache.org/" target="_blank">http://tomee.apache.org/</a>
+                        </p>
+                    </dd>
+
+                    <dt>Apache Derby</dt>
+                    <dd>
+                        <p>
+                            Last but not least: Eine relationale SQL-Datenbank. Hier könnten wir im Grunde genommen
+                            jede beliebige SQL-Datenbank verwenden. Derby ist aber komplett in Java geschrieben, sehr
+                            klein und kommt völlig ohne Installation aus. Wenn nur alle Werkzeuge so wären …
+                        </p>
+                        <p>
+                            <a href="https://db.apache.org/derby/" target="_blank">https://db.apache.org/derby/</a>
+                        </p>
+                    </dd>
+
+                    <dt>SoapUI</dt>
+                    <dd>
+                        <p>
+                            Webservices testen kann man mit vielen Werkzeugen. Ein unschätzbares
+                            Universalwerkzeug hierfür ist jedoch SoapUI von SmartBear. Hiermit
+                            lassen sich ganz einfach beliebige SOAP- und REST-Webservices in
+                            allen Formen und Farben ausprobieren.
+                        </p>
+                        <p>
+                            <a href="https://www.soapui.org/" target="_blank">https://www.soapui.org/</a>
+                        </p>
+                    </dd>
+                </dl>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Prüfungsform der Vorlesung</h1>
+            <article>
+                <p style="margin-bottom: 1em">
+                    <b>Zuerst die gute Nachricht:</b> Es gibt immer noch keine Klausur. 😅 <br />
+                    <b>Dann die Ernüchterung:</b> Trotzdem gibt es wieder eine Note. 😰
+                </p>
+                <ul>
+                    <li>
+                        Die Prüfung erfolgt im Rahmen einer Portfolioprüfung.
+                    </li>
+                    <li>
+                        Einen Teil des Portfolios werdet ihr in Dreiergruppen bearbeiten.
+                    </li>
+                    <li>
+                        Den Rest muss jeder selbst beisteuern, da es keine Gruppennoten gibt.
+                    </li>
+                </ul>
+
+                <h2>Zusammensetzung des Portfolios</h2>
+                <table class="dhbw-table-border" style="width: 100%; margin-bottom: 1em; font-size: 90%;">
+                    <thead>
+                        <tr>
+                            <th>I/G</th>
+                            <th>P/S</th>
+                            <th>Artefakt</th>
+                            <th>Schwierigkeit</th>
+                            <th>Abgabefrist</th>
+                            <th>Gewichtung</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>I</td>
+                        <td>S</td>
+                        <td><b>Einleitungsbericht</b></td>
+                        <td>Beurteilen</td>
+                        <td>Sonntag, 7. April 2019</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>I</td>
+                        <td>S</td>
+                        <td><b>Lernkontrollen und Feedbacks</b></td>
+                        <td>Erinnern</td>
+                        <td>Gemäß Vorlesungsplan</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>G</td>
+                        <td>P</td>
+                        <td><b>Quellcode der Anwendung</b></td>
+                        <td>Anwenden</td>
+                        <td>Sonntag, 7. April 2019</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>G</td>
+                        <td>P</td>
+                        <td><b>Kurzbeschreibung der Anwendung</b></td>
+                        <td>Analysieren, Beurteilen</td>
+                        <td>Sonntag, 7. April 2019</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>I</td>
+                        <td>S</td>
+                        <td><b>Onlinetest während der Vorlesung</b></td>
+                        <td>Erinnern, Verstehen</td>
+                        <td>Gemäß Vorlesungsplan</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>I</td>
+                        <td>S</td>
+                        <td><b>Reflexionsbericht</b></td>
+                        <td>Beurteilen</td>
+                        <td>Sonntag, 7. April 2019</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+                <p>
+                    <b>I/G:</b> I = Individualleitung, G = Gruppenleistung <br />
+                    <b>P/S:</b> P = Programmierprojekt, S = Studieninhalte <br />
+                    <b>Schwierigkeit:</b> Erinnern &lt; Verstehen &lt; Anwenden &lt; Analysieren &lt; Beurteilen
+                </p>
+
+                <h2>Berechnung der Endnote</h2>
+                <p>
+                    <table>
+                        <tr style="padding: 0; border: 0px solid black; border-bottom-width: 1px;">
+                            <td>
+                                Σ (Einzelnote × Gewichtung)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Σ (Gewichtung)
+                            </td>
+                        </tr>
+                    </table>
+                </p>
+            </article>
+            <aside>
+                <h2>Nachteile einer Klausur</h2>
+                <p>
+                    Über die Nachteile einer Klausur haben wir schon letztes Semester
+                    gesprochen. Klausuren auf Papier haben zwar auch ihre Vorteile
+                    (z.B. bei der Bewertung), sind beim Programmieren aber auch immer
+                    etwas umständlich. Aber das weißt du ja alles schon …
+                </p>
+
+                <h2>Inhalt des Prüfungsportfolios</h2>
+                <p>
+                    Statt einer Klausur machen wir also eine Portfolioprüfung, wie du
+                    sie auch aus anderen Vorlesungen her kennst. Ihr Anliegen ist es,
+                    deinen individuellen Lernweg zu dokumentieren und hierfür verschiedene
+                    Artefakte zu sammeln, die dann bewertet werden. Jeder Student muss
+                    dabei sein eigenes Portfolio abgeben, auch wenn die meisten Aufgaben
+                    wie in der Praxis natürlich im Team bearbeitet werden. Auf der Folie
+                    siehst du, wie sich unser Portfolio zusammensetzt. Diese Unterlagen
+                    musst du am Ende des Semesters ausdrucken, abheften und im Sekretariat
+                    abgeben. 🖨️ Einzige Ausnahme sind die Quellcodes, die auf CD beigelegt
+                    werden müssen. 💿
+                </p>
+                <p>
+                    Zusätzlich lädst du alles zu den genannten Terminen in Moodle hoch,
+                    damit wir die Bewertung vornehmen können.
+                </p>
+
+                <h2>Berechnung der Note</h2>
+                <p>
+                    Die Benotung ist eigentlich relativ einfach. Jedes Artefakt
+                    in deinem Portfolio bekommt eine Einzelnote. Anschließend
+                    wird einfach anhand der verschiedenen Gewichtungen eine
+                    Durchschnittsnote gebildet. Die Formel dazu (solltest du
+                    dich wirklich nicht mehr daran erinnern 🐕), findest du
+                    auf der Folie.
+                </p>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Literaturhinweise</h1>
+            <article>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="buch-java.png" class="img-fluid img-thumbnail mx-auto d-block" />
+                        </div>
+                        <div class="col-md-4">
+                            <img src="buch-network.png" class="img-fluid img-thumbnail mx-auto d-block" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="buch-ejb.png" class="img-fluid img-thumbnail mx-auto d-block" />
+                        </div>
+                        <div class="col-md-4">
+                            <img src="buch-api.png" class="img-fluid img-thumbnail mx-auto d-block" />
+                        </div>
+                        <div class="col-md-4">
+                            <img src="buch-mqtt.png" class="img-fluid img-thumbnail mx-auto d-block" />
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside>
+                <p>
+                    Die folgenden Bücher kannst du verwenden, um Sachen
+                    nachzuschlagen, die dir in der Vorlesung nicht klar
+                    geworden sind. Darüber hinaus eignen sie sich auch
+                    hervorragend zur Vertiefung der hier gelernten Inhalte.
+                    Aber sein wir ganz ehrlich: Zum Bestehen der Vorlesung
+                    brauchst du sie nicht.
+                </p>
+                <ul>
+                    <li>
+                        <p>
+                            <b>Grundkurs Programmieren in Java</b>
+                            <br />
+                            (Ratz, Schulmeister-Zimolong, Seese, Wiesenberger), Hanser-Verlag
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Java Network Programming</b>
+                            <br />
+                            (Harold), O'Reilly
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>EJB 3.1 professionell</b>
+                            <br />
+                            (Ihns, Heldt, Koschek, Ehm, Sahling, Schlömmer), dpunkt.verlag
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>API-Design: Praxishandbuch für Java- und Webservice-Entwickler</b>
+                            <br />
+                            (Spichale), dpunkt.verlag
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>MQTT Essentials - A Lightweight IoT Protocol</b>
+                            <br />
+                            (Hillar), Packt&gt;
+                        </p>
+                    </li>
+                </ul>
+                <p>
+                    An dieser Stelle meinen wir es auch ernst mit <b>Grundkurs Programmieren in Java</b>.
+                    Und das nicht nur, weil die Kollegen Ratz und Schulmeister-Zimolong hier an der DHBW
+                    unterrichten, 👨🏻‍🏫 sondern weil wir in „Verteilte Systeme” durchgängig Java programmieren
+                    werden. Wenn du jetzt noch Wissenslücken in Java hast, versuche diese schleunigst zu
+                    schließen, damit die Vorlesung nicht zum Albtraum wird. 👹
+                </p>
+            </aside>
+        </section>
+
+        <section data-background-color="rgb(158, 203, 231)">
+            <h1>Rechtshinweise</h1>
+            <article>
+                <h4>Creative Commons Namensnennung 4.0 International</h4>
+                <ul>
+                    <li>Beliebiges Teilen ist erlaubt</li>
+                    <li>Die Unterlagen dürfen bearbeitet und verändert werden</li>
+                    <li>Wenn die Namens- und Urheberangaben erhalten bleiben</li>
+                    <li>Und keine weiteren Einschränkungen auferlegt werden</li>
+                </ul>
+                <span style="font-size: 400px; color: white;" class="dhbw-text-shadow" >§</span>
+            </article>
+            <aside style="font-size: 80%">
+                <h4>Kontaktdaten</h4>
+                <p>
+                    Dennis Schulmeister-Zimolong<br/>
+                    E-Mail: <a data-email-address>dhbw windows3.de</a><br/>
+                </p>
+
+                <h4>Urheberrecht und Lizenzvereinbarung</h4>
+                <p>
+                    © 2020 Dennis Schulmeister-Zimolong<br/>
+                    <a href="https://github.com/DennisSchulmeister/dhbwka-wwi-vertsys-2020-folien" target="_blank">https://github.com/DennisSchulmeister/dhbwka-wwi-vertsys-2020-folien</a>
+                </p>
+                <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="Creative Commons Lizenzvertrag" />
+                <p>
+                    Das Werk <i>Vorlesung "Verteilte Systeme" im Studiengang Wirtschaftsinformatik an der DHBW Karlsruhe (ab 2020)</i>
+                    von <a href="http://www.wpvs.de" target="_blank">Dennis Schulmeister-Zimolong</a> ist lizenziert unter
+                    <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><i>Creative Commons Namensnennung 4.0 International</i></a>.
+                </p>
+                <p>
+                    Du darfst:
+                </p>
+                <ul>
+                    <li>
+                        <b>Teilen</b> — das Material in jedwedem Format oder Medium vervielfältigen
+                        und weiterverbreiten
+                    </li>
+                    <li>
+                        <b>Bearbeiten</b> — das Material remixen, verändern und darauf aufbauen
+                        und zwar für beliebige Zwecke, sogar kommerziell.
+                    </li>
+                </ul>
+                <p>
+                    Unter folgenden Bedingungen:
+                </p>
+                <ul>
+                    <li>
+                        <b>Namensnennung</b> — Du musst angemessene Urheber- und Rechteangaben
+                        machen, einen Link zur Lizenz beifügen und angeben, ob Änderungen
+                        vorgenommen wurden. Diese Angaben dürfen in jeder angemessenen Art
+                        und Weise gemacht werden, allerdings nicht so, dass der Eindruck
+                        entsteht, der Lizenzgeber unterstütze gerade dich oder deine Nutzung
+                        besonders.
+                    </li>
+                    <li>
+                        <b>Keine weiteren Einschränkungen</b> — Du darfst keine zusätzlichen Klauseln
+                        oder technische Verfahren einsetzen, die anderen rechtlich irgendetwas
+                        untersagen, was die Lizenz erlaubt.
+                    </li>
+                </ul>
+                <p>
+                    Es werden keine Garantien gegeben und auch keine Gewähr geleistet.
+                    Die Lizenz verschafft dir möglicherweise nicht alle Erlaubnisse,
+                    die du für die jeweilige Nutzung brauchst. Es können beispielsweise
+                    andere Rechte wie Persönlichkeits- und Datenschutzrechte zu beachten
+                    sein, die deine Nutzung des Materials entsprechend beschränken.
+                </p>
+            </aside>
+        </section>
+    </body>
+</html>
