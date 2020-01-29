@@ -35,6 +35,8 @@
  */
 "use strict";
 
+import $ from "jquery";
+
 import emailLinkJs from "email-link.js";
 
 import SlideshowPlayer from "lecture-slides.js";
@@ -44,6 +46,10 @@ import LsPluginHighlightJs from "ls-plugin-highlight.js";
 import "highlight.js/styles/atom-one-light.css";
 
 window.addEventListener("load", () => {
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+
     emailLinkJs.enableEmailLinks();
 
     let player = new SlideshowPlayer({

@@ -15,10 +15,9 @@
         <header>
             <h2>Inhaltsverzeichnis</h2>
             <p>
-                Bevor wir zu programmieren beginnen, wollen wir an dieser Stelle
-                erst einmal das Themengebiet unserer Vorlesung abstecken. Denn
-                erst musst du verstehen, was verteilte Systeme sind, wie sie
-                funktionieren und welche Architekturmsuter es hierfür gibt.
+                In diesem Kapitel legen wir die theoretischen Grundlagen für die Vorlesung.
+                Wir schauen uns daher an, was verteilte Systeme und Anwendungen überhaupt
+                sind und wie sie ganz allgemein funktionieren.
             </p>
         </header>
 
@@ -40,17 +39,93 @@
         </section>
 
         <section data-background-color="rgb(210,190,210)">
-            <h1>Motivationsfolie (Überschrift ändern 🙂)</h1>
+            <h1>Verteilte Anwendungen im Alltag</h1>
             <article>
-                …
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="motivation-internet.png" class="img-thumbnail d-block" style="width: 100%" />
+                            Sämtliche Internetdienste
+                            <p class="dhbw-fontsize-tiny">
+                                <small>
+                                    Bildnachweis: <a href="https://pixabay.com/illustrations/email-newsletter-marketing-online-3249062/" target="_blank">Pixabay: ribkhan</a>
+                                </small>
+                            </p>
+                        </div>
+                        <div class="col-md">
+                            <img src="motivation-mobile.jpg" class="img-thumbnail d-block" style="width: 100%" />
+                            Mobile Kommunikation
+                            <p class="dhbw-fontsize-tiny">
+                                <small>
+                                    Bildnachweis: <a href="https://pixabay.com/photos/communication-communicate-3095538/" target="_blank">Pixabay: Bru-nO</a>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="motivation-forschung.jpg" class="img-thumbnail d-block" style="width: 100%" />
+                            Forschung und Wissenschaft
+                            <p class="dhbw-fontsize-tiny">
+                                <small>
+                                    Bildnachweis: <a href="https://pixabay.com/photos/moon-landing-apollo-11-nasa-60582/" target="_blank">Pixabay: WikiImages</a>
+                                </small>
+                            </p>
+                        </div>
+                        <div class="col-md">
+                            <img src="motivation-vod.jpg" class="img-thumbnail d-block" style="width: 100%" />
+                            Video-on-Demand
+                            <p class="dhbw-fontsize-tiny">
+                                <small>
+                                    Bildnachweis: <a href="https://unsplash.com/photos/ngMtsE5r9eI" target="_blank">Unsplash: jenskreuter</a>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="motivation-autonomes-fahren.jpg" class="img-thumbnail d-block" style="width: 100%" />
+                            Autonomes Fahren
+                        </div>
+                        <div class="col-md">
+                            <img src="motivation-iot.jpg" class="img-thumbnail d-block" style="width: 100%" />
+                            Internet of Things
+                            <p class="dhbw-fontsize-tiny">
+                                <small>
+                                    Bildnachweis: <a href="https://pixabay.com/photos/smarthome-smart-house-smart-4447520/" target="_blank">Pixabay: haus_automation</a>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
-                <!-- TODO: Motivation schreiben -->
-                <!-- TODO: Motivation schreiben -->
-                <!-- TODO: Motivation schreiben -->
-                <!-- TODO: Motivation schreiben -->
-
-                Hier ein einführendes Beispiel erklären.
+                <p>
+                    Auch wenn wir es inzwischen kaum noch merken, begleiten verteilte Systeme und Anwendungen
+                    schon seit langem unseren Alltag. Wie selbstverständlich surfen wir im Internet, teilen
+                    Bilder online oder verschicken Kurznachrichten mit dem Smartphone. Abends streamen wir dann
+                    die neuste Folge unserer Lieblingsserie ohne dabei auf feste Sendezeiten angewiesen zu sein. 🍿
+                    Und geht es nach dem Willen der Hersteller, steuern wir schon bald sämtliche Haushaltsgeräte
+                    ganz bequem per Sprachbefehl vom Sofa aus, 🛋️ optimieren den Straßenverkehr mit vernetzten
+                    selbstfahrenden Fahrzeugen und überwachen unsere Umwelt mit immer mehr IoT-Devices.
+                </p>
+                <p>
+                    Ohne Zweifel leben wir in einer vernetzten Welt, in der immer mehr Computer, Smartphones,
+                    Smart TVs und viele andere Gegenstände miteinander verbunden sind. Neu ist diese Entwicklung
+                    allerdings nicht, da die zugrunde liegenden Technologien oftmals schon seit Jahrzehnten
+                    eingesetzt und weiterentwickelt werden. 📆 So waren bereits an der ersten Mondlandung 1969
+                    mindestens vier miteinander verbundene Computersysteme beteiligt, wodurch der Mondflug
+                    überhaupt nur durchgeführt werden konnte. 🚀 Seither wurden natürlich immer mehr Anwendungsfälle
+                    gefunden, so dass verteilte Anwendungen heute nicht mehr die Ausnahme sondern in vielen
+                    Bereichen sogar die Regel sind.
+                </p>
+                <p>
+                    Technisch gesehen erfordern all diese Anwendungen in der Regel eine weit beachtlichere
+                    Infrastruktur, als wir aus Anwendersicht zunächst vermuten würden. Ziel dieses Kapitels
+                    soll daher sein, die ersten Geheimnisse über das Wesen und die Beschaffenheit verteilter
+                    Systeme zu lüften, damit wir am Ende des Semesters wissen, wie all diese tollen Dinge
+                    funktionieren. 🧙‍♂️
+                </p>
             </aside>
         </section>
 
@@ -69,26 +144,20 @@
                     </li>
                     <li>
                         die wichtigsten Gründe nennen, warum wir in der Wirtschaftsinformatik verteilte
-                        Systeme entwickeln 💰.
+                        Systeme entwickeln. 💰
                     </li>
                     <li>
                         die Bedeutung des <span class="dhbw-lightblue font-weight-bold">CAP-Theorem</span>
                         verstehen und seine Bedeutung wiedergeben.
                     </li>
                     <li>
+                        die Schwierigkeiten <span class="dhbw-lightblue font-weight-bold">zeitlicher Wechselwirkungen</span>
+                        verteilter Anwendungen bewerten.
+                    </li>
+                    <li>
                         die Begriffe <span class="dhbw-lightblue font-weight-bold">Client</span>,
                         <span class="dhbw-lightblue font-weight-bold">Server</span> und
                         <span class="dhbw-lightblue font-weight-bold">Peer</span> exakt definieren und voneinander abgrenzen.
-                    </li>
-                    <li>
-                        beschreiben, was eine <span class="dhbw-lightblue font-weight-bold">Middleware</span>
-                        ist und welche Aufgaben sie besitzt.
-                    </li>
-                    <li>
-                        beschreiben, wie es zur Entwicklung heutiger Middlewarearten gekommen ist.
-                    </li>
-                    <li>
-                        unterschiedliche Arten der Kommunikation verteilter Systeme gegeneinander abwägen.
                     </li>
                     <li>
                         die gängigsten <span class="dhbw-lightblue font-weight-bold">Architekturmuster
@@ -99,30 +168,23 @@
             </article>
             <aside>
                 <p>
-                    Heute wollen wir uns noch nicht ganz so tief in die Programmierung stürzen. Denn bevor wir
-                    damit so richtig loslegen können, musst du erst noch ein paar Grundbegriffe kennen und verstehen.
-                    Beginnen werden wir die Einheit daher mit ein paar einfachen Definitionen der beiden Begriffe
-                    <b>verteiltes System️</b> und <b>verteilte Anwendung</b>, wobei wir hier insbesondere auf die
-                    Unterschiede beider Begriffe und ihre heutige Bedeutung für die Wirtschaftsinformatik 💰 eingehen
-                    werden. Des Weiteren werden wir bei dieser Gelegenheit die beiden Begriffe <b>Client</b> und
-                    <b>Server</b> nochmal etwas genauer anschauen. Zwar handelt es sich dabei um alltägliche Begriffe,
-                    die du sicher auch schon so gekannt hast, doch gerade weil sie so alltäglich sind, versteht
-                    eigentlich jeder etwas anderes darunter und keiner weiß so ganz genau, was sie bedeuten und
-                    was nicht. 🤔
+                    Das heutige Kapitel kommt noch ganz ohne technische Einzelheiten aus. Denn bevor wir uns so
+                    richtig auf die Technik stürzen und diese verstehen können, müssen wir erst ein paar wichtige
+                    Begriffe klären und wesentliche theoretische Grundlagen legen. Beginnen werden wir die Einheit
+                    daher mit einer Definitionen der Begriffe <b>verteiltes System️</b> und <b>verteilte Anwendung</b>,
+                    wobei wir hier insbesondere auf die Unterschiede beider Begriffe und ihre heutige Bedeutung für
+                    die Wirtschaftsinformatik 💰 eingehen werden. Darauf aufbauend legen wir dann die <b>Anforderungen</b>
+                    fest, die wir beim Entwurf eigener Anwendungen oft berücksichtigen müssen und zwar sowohl aus
+                    Anwender- als auch aus technicher Sicht.
                 </p>
                 <p>
-                    Anschließend gehen wir dann doch schon ein ganz klein wenig auf die Programmierung ein, indem
-                    wir zeigen, was eine <b>Middleware</b> ist und welche Aufgaben sie hat. Denn, soviel sei hier
-                    schon verraten: Im Prinzip könnten wir zwar mit einfachen Streams und Sockets verteilte
-                    Anwendungen schreiben, das wäre aber sehr aufwändig. Aus diesem Grund lernen wir diverse
-                    Middlewarearten kennen, und zeigen, welche Programmierstile sie begünstigen.
-                </p>
-                <p>
-                    Vollenden werden wir die heilige Dreieinigkeit mit einer kurzen Besprechung der wichtigsten
-                    <b>Architekturmuster verteilter Anwendungen</b>. Ausgehend von ein paar einfachen Fallbeispielen
-                    zeigen wir dabei, aus welchen Bestandteilen verteilte Anwendungen bestehen können und wie
-                    diese zusammenspielen. Damit kennst du dann alle Grundlagen 📚, um für den Rest der Vorlesung
-                    in unterschiedlichen Middlewares, Frameworks und natürlich ganz viel Quellcode zu versinken. 🕳️
+                    Nach diesem allgemeinen Überlegungen beschäftigen wir uns mit prinzipbedingten Einschränkungen
+                    wie dem <b>CAP-Theorem</b> oder dem Umgang mit <b>zeitlichen Wechselwirkungen</b>, die wir
+                    ebenfalls nicht außer Acht lassen dürfen. Abschließen werden wir die Einheit dann mit einem
+                    Überblick über gängie <b>Architekturmuster verteilter Anwendungen</b>. Ausgehend von ein paar
+                    einfachen Fallbeispielen zeigen wir dabei, aus welchen Bestandteilen verteilte Anwendungen bestehen
+                    und wie diese zusammenspielen. Damit kennst du dann alle Grundlagen 📚, um für den Rest der Vorlesung
+                    in unterschiedlichen Frameworks und natürlich ganz viel Quellcode zu versinken. 🕳️
                 </p>
             </aside>
         </section>
@@ -295,7 +357,7 @@
                                     Welche Hardwarekomponenten beinhaltet das System?
                                 </li>
                                 <li>
-                                    Welches Betriebssystem und welche Middleware kommen zum Einsatz?
+                                    Welches Betriebssystem und welche Serverdienste kommen zum Einsatz?
                                 </li>
                                 <li>
                                     Welcher Hardwareknoten übernimmt welche Aufgabe?
@@ -1318,12 +1380,17 @@
         <section>
             <h1>Die acht Arten der Transparenz</h1>
             <article>
+                <!-- TODO: Umbauen zu Accordion und jeweils ein kurzes Beispiel mit Erklärung geben -->
+                <!-- TODO: Umbauen zu Accordion und jeweils ein kurzes Beispiel mit Erklärung geben -->
+                <!-- TODO: Umbauen zu Accordion und jeweils ein kurzes Beispiel mit Erklärung geben -->
+
                 <div class="container-fluid">
+                    <!-- Vergleich Wirtschaft vs. Informatik -->
                     <div class="row" style="margin-bottom: 0;">
                         <div class="col-md">
                             <h2>Transparenz in der Wirtschaft</h2>
                             <img src="transparenz1.jpg" alt="" class="img-thumbnail" style="width: 100%" />
-                            Jedes Detail kann nachgelesen und muss beachtet werden.
+                            Jedes Detail muss beachtet werden.
                         </div>
                         <div class="col-md">
                             <h2>Transparenz in der Informatik</h2>
@@ -1343,7 +1410,572 @@
                             </small>
                         </div>
                     </div>
+
+                    <!-- Die acht Arten der Transparenz -->
                     <div class="row">
+                        <div id="transparenz-arten" class="col accordion">
+                            <!-- Zugriffstransparenz -->
+                            <div class="card">
+                                <div
+                                    id            = "transparenz-arten-zugriff-title"
+                                    class         = "card-header"
+                                    data-toggle   = "collapse"
+                                    aria-expanded = "false"
+                                    aria-controls = "transparenz-arten-zugriff-content"
+                                    href          = "#transparenz-arten-zugriff-content"
+                                >
+                                    <h4>Zugriffstransparenz</h4>
+                                </div>
+                                <div
+                                    id              = "transparenz-arten-zugriff-content"
+                                    class           = "collapse container-fluid text-left p-3"
+                                    aria-labelledby = "transparenz-arten-zugriff-title"
+                                    data-parent     = "#transparenz-arten"
+                                >
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col">
+                                                Falls eine Anwendung zwischen lokalen (auf dem eigenen Rechner befindlichen) und
+                                                entfernten Ressourcen unterscheidet, müssen beide auf dieselbe Art und Weise
+                                                nutzbar sein.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-foto.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Eine Fotoverwaltung ermöglicht den Zugriff auf lokal gespeicherte Fotoalben.
+                                                Einzelne Bilder oder ganze Alben können aber auch in einer Dropbox oder einem
+                                                Owncloud-Server abgelegt werden.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-video.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Eine Video-Streaming-App ermöglicht es, einzelne Videos vor dem Anschauen herunterzuladen,
+                                                damit diese auch bei langsamer Internetverbindung ruckelfrei abgespielt werden können.
+                                                Suche und Wiedergabe der Videos verändern sich aus Benutzersicht dadurch aber nicht, da
+                                                die Videos wie gewohnt aufgerufen und abgespielt werden können.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-pwa.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Auf einem Gerät lokal installierbare Webanwendungen werden auch Progressive Web Apps genannt,
+                                                da sie jederzeit auch ohne bestehende Internetverbindung gestartet werden können. Werden
+                                                im Quellcode der Anwendung daher Dateien wie Bilder oder JavaScript-Quellcodes angesprochen,
+                                                macht es für Entwickler als auch Anwender keinen Unterschied, ob diese vom Server oder aus
+                                                dem lokalen Anwendungscache geladen werden.
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small>
+                                                    <small>
+                                                        Bildnachweise:
+                                                        <a href="https://pixabay.com/photos/retro-photo-album-memory-family-1483781/" target="_blank">Pixabay: klimkin</a>,
+                                                        <a href="https://pixabay.com/photos/camera-video-tv-video-realization-1598620/" target="_blank">Pixabay: JosepMonter</a>,
+                                                        <a href="https://pixabay.com/photos/laptop-workstation-browsing-tablet-1483974/" target="_blank">Pixabay: Monoar</a>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Positions-/Ortstransparenz -->
+                            <div class="card">
+                                <div
+                                    id            = "transparenz-arten-position-title"
+                                    class         = "card-header"
+                                    data-toggle   = "collapse"
+                                    aria-expanded = "false"
+                                    aria-controls = "transparenz-arten-position-content"
+                                    href          = "#transparenz-arten-position-content"
+                                >
+                                    <h4>Positions-/Ortstransparenz</h4>
+                                </div>
+                                <div
+                                    id              = "transparenz-arten-position-content"
+                                    class           = "collapse container-fluid text-left p-3"
+                                    aria-labelledby = "transparenz-arten-position-title"
+                                    data-parent     = "#transparenz-arten"
+                                >
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col">
+                                                Entfernte Ressourcen können aufgerufen werden, ohne zuvor wissen zu müssen,
+                                                auf welchem Rechner sie sich befinden.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-cdn.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Um die Ladezeit einer Webseite zu optimieren, werden häufig benötigte Bibliotheken
+                                                durch Content Delivery Networks ausgeliefert. Hierfür betreiben die Content Delivery
+                                                Networks weltweit gespiegelte Rechenzentren, von denen automatisch das am nähesten
+                                                zum Anwender befindliche ausgewählt wird. Auf dieselbe Weise spielen übrigens auch
+                                                Video-Streaming-Portale und andere Onlinedienste ihre Inhalte aus.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-dns.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Die Webseite der DHBW Karlsruhe ist immer unter der Domain
+                                                <a href="https://karlsruhe.dhbw.de" target="_blank">karlsruhe.dhbw.de</a>.
+                                                Zwar muss zum Aufruf der Seite ihre Domain bekannt sein, diese ist jedoch nur ein
+                                                Alias auf die tatsächiche IP-Adresse des Servers.
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small>
+                                                    <small>
+                                                        Bildnachweise:
+                                                        <a href="https://pixabay.com/photos/earth-planet-front-side-back-11593/" target="_blank">Pixabay: WikiImages</a>,
+                                                        <a href="https://pixabay.com/illustrations/webdesign-design-web-website-3411373/" target="_blank">Pixabay: kreatikar</a>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobilitätstransparenz -->
+                            <div class="card">
+                                <div
+                                    id            = "transparenz-arten-mobilität-title"
+                                    class         = "card-header"
+                                    data-toggle   = "collapse"
+                                    aria-expanded = "false"
+                                    aria-controls = "transparenz-arten-mobilität-content"
+                                    href          = "#transparenz-arten-mobilität-content"
+                                >
+                                    <h4>Mobilitätstransparenz</h4>
+                                </div>
+                                <div
+                                    id              = "transparenz-arten-mobilität-content"
+                                    class           = "collapse container-fluid text-left p-3"
+                                    aria-labelledby = "transparenz-arten-mobilität-title"
+                                    data-parent     = "#transparenz-arten"
+                                >
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col">
+                                                Die Ressourcen einer verteilten Anwendung können jederzeit auf andere Maschinen
+                                                umziehen, ohne dass hierfür tiefgreifende Änderungen am Quellcode notwendig werden.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-namensdienst.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Namensdienste wie das Domain Name System ermöglichen es, die damit verwalteten
+                                                Ressourcen jederzeit umzuziehen, da die exakte Adresse einer Ressource vor jedem
+                                                Zugriff darin nachschlagen muss. Aus diesem Grund kann sich zum Beispiel die
+                                                IP-Adresse einer Webseite jederzeit ändern, ohne dass sich dies negativ auswirkt.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-backend.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Die Datenbank einer Webanwendung wurde bisher auf derselben Maschine wie der Webserver betrieben,
+                                                soll nun aber auf eigene Hardware umziehen. Die Anwendung läuft nach dem Umzug wie gewohnt weiter,
+                                                da lediglich ein Eintrag in einer Konfigurationsdatei geändert werden musste. Die Entscheidung
+                                                der Programmierer, die Adresse des Datenbankservers nicht hart-codiert im Quellcode zu hinterlegen,
+                                                hat sich an diesem Tag als sehr weitsichtig herausgestellt.
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small>
+                                                    <small>
+                                                        Bildnachweise:
+                                                        <a href="https://pixabay.com/photos/diary-appointment-address-pen-2080422/" target="_blank">Pixabay: jackmac34</a>,
+                                                        <a href="https://pixabay.com/photos/server-cloud-development-business-1235959/" target="_blank">Pixabay: ColossusCloud</a>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Replikationstransparenz -->
+                            <div class="card">
+                                <div
+                                    id            = "transparenz-arten-replikation-title"
+                                    class         = "card-header"
+                                    data-toggle   = "collapse"
+                                    aria-expanded = "false"
+                                    aria-controls = "transparenz-arten-replikation-content"
+                                    href          = "#transparenz-arten-replikation-content"
+                                >
+                                    <h4>Replikationstransparenz</h4>
+                                </div>
+                                <div
+                                    id              = "transparenz-arten-replikation-content"
+                                    class           = "collapse container-fluid text-left p-3"
+                                    aria-labelledby = "transparenz-arten-replikation-title"
+                                    data-parent     = "#transparenz-arten"
+                                >
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col">
+                                                Wichtige Daten werden automatisch an unterschiedliche Standorte repliziert,
+                                                ohne dass Entwickler oder Anwender hierfür eingreifen müssen. Die Replikate
+                                                werden bei jeder Änderung des Originals automatisch aktualisiert.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-analytics.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Um langfristige Auswertungen fahren zu können, werden jede Nacht die aktuellen
+                                                Bewegungsdaten eines ERP-Systems in ein Reportingsystem repliziert. Hierfür wird
+                                                jeder Datensatz mit einem Zeitstempel der letzten Änderung versehen, damit nur
+                                                die seit der letzten Kopie veränderten Daten repliziert werden müssen.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-backup.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Um sich gegen Katastrophen zu schützen, werden in einer Firma regelmäßige Backups
+                                                aller Server gemacht und an vier weltweit verteilte Standorte repliziert. Auf diese
+                                                Weise ist sichergestellt, dass die Daten auch nach einem Feuer oder einer anderen
+                                                Naturkatastrophe wiederhergestellt werden können.
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small>
+                                                    <small>
+                                                        Bildnachweise:
+                                                        <a href="https://pixabay.com/photos/guinea-pig-black-and-white-animals-2121743/" target="_blank">Pixabay: stanze</a>,
+                                                        <a href="https://commons.wikimedia.org/wiki/File:ZUSE_Tape_Drives_2_(ubt).JPG" target="_blank">Wikimedia: Tomasz Sienicki</a>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fehlertransparenz -->
+                            <div class="card">
+                                <div
+                                    id            = "transparenz-arten-fehler-title"
+                                    class         = "card-header"
+                                    data-toggle   = "collapse"
+                                    aria-expanded = "false"
+                                    aria-controls = "transparenz-arten-fehler-content"
+                                    href          = "#transparenz-arten-fehler-content"
+                                >
+                                    <h4>Fehlertransparenz</h4>
+                                </div>
+                                <div
+                                    id              = "transparenz-arten-fehler-content"
+                                    class           = "collapse container-fluid text-left p-3"
+                                    aria-labelledby = "transparenz-arten-fehler-title"
+                                    data-parent     = "#transparenz-arten"
+                                >
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col">
+                                                Fehlersituationen werden nicht als Ausnahme sondern als Normalfall betrachtet.
+                                                Eine Anwendung sollte daher immer so entworfen werden, dass sie möglichst viele
+                                                Fehlersituationen abfangen und automatisch korrigieren kann. Keinesfalls darf
+                                                eine Anwendung einfach abstürzen, wenn ein Weiterbetrieb prinzipiell möglich ist.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-email.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Eine E-Mail kann nicht sofort zugestellt werden, da das Postfach des Empfängers
+                                                voll ist. Der Mailserver des Senders sendet diesem daher eine Infonachricht, dass
+                                                er innerhalb der nächsten fünf Tage regelmäßig versuchen wird, die E-Mail erneut
+                                                zuzustellen. Nur, wenn die Zustellung nach fünf Tagen immer noch nicht gelingt,
+                                                wird der Absender über das endgültige Scheitern informiert.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-wetterstation.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Eine Wetterstation sammelt kontinuierlich Daten und sendet diese an einen zentralen
+                                                Server. Bei schlechtem Wetter besteht allerdings nur eine sehr schlechte Internetverbindung,
+                                                so dass die Daten nicht immer sofort verschickt werden können. Sämtliche Datne werden daher
+                                                in einem internen Ringbuffer gesammelt und erst überschrieben, wenn dieser voll ist.
+                                                Der Sendevorgang wird dabei beliebig oft wiederholt.
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-apollo11.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                Bereits bei den Apollo-Missionen zum Mond waren alle Computersysteme mehrfach redundant ausgelegt,
+                                                so dass bei Versagen eines Teilsystems ohne menschlichen Eingriff auf ein funktionierendes
+                                                Ersatzsystem umgeschaltet werden konnte. Der
+                                                <a href="https://en.wikipedia.org/wiki/Saturn_Launch_Vehicle_Digital_Computer" target="_blank">Saturn
+                                                Launch Vehicle Digial Computer</a> führte sogar jede Berechnung dreifach redundant aus und
+                                                arbeitete stets mit dem Mehrheitsergebnis weiter, um katastrophale Folgen aufgrund von
+                                                Hardwarefehlern zu vermeiden.
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small>
+                                                    <small>
+                                                        Bildnachweise:
+                                                        <a href="https://unsplash.com/photos/oeDH20DVb2A" target="_blank">Unsplash: Liam Truong</a>,
+                                                        <a href="https://pixabay.com/photos/anemometer-weather-station-3977718/" target="_blank">Pixabay: RitaE</a>,
+                                                        <a href="https://de.wikipedia.org/wiki/Datei:Apollo_11_rollout.jpg" target="_blank">Wikipedia: NASA</a>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nebenläufigkeitstransparenz -->
+                            <div class="card">
+                                <div
+                                    id            = "transparenz-arten-nebenläufigkeit-title"
+                                    class         = "card-header"
+                                    data-toggle   = "collapse"
+                                    aria-expanded = "false"
+                                    aria-controls = "transparenz-arten-nebenläufigkeit-content"
+                                    href          = "#transparenz-arten-nebenläufigkeit-content"
+                                >
+                                    <h4>Nebenläufigkeitstransparenz</h4>
+                                </div>
+                                <div
+                                    id              = "transparenz-arten-nebenläufigkeit-content"
+                                    class           = "collapse container-fluid text-left p-3"
+                                    aria-labelledby = "transparenz-arten-nebenläufigkeit-title"
+                                    data-parent     = "#transparenz-arten"
+                                >
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col">
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small>
+                                                    <small>
+                                                        Bildnachweise:
+                                                        <a href="" target="_blank">Pixabay: x</a>,
+                                                        <a href="" target="_blank">Pixabay: x</a>,
+                                                        <a href="" target="_blank">Pixabay: x</a>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Skalierbarkeitstransparenz -->
+                            <div class="card">
+                                <div
+                                    id            = "transparenz-arten-skalierbarkeit-title"
+                                    class         = "card-header"
+                                    data-toggle   = "collapse"
+                                    aria-expanded = "false"
+                                    aria-controls = "transparenz-arten-skalierbarkeit-content"
+                                    href          = "#transparenz-arten-skalierbarkeit-content"
+                                >
+                                    <h4>Skalierbarkeitstransparenz</h4>
+                                </div>
+                                <div
+                                    id              = "transparenz-arten-skalierbarkeit-content"
+                                    class           = "collapse container-fluid text-left p-3"
+                                    aria-labelledby = "transparenz-arten-skalierbarkeit-title"
+                                    data-parent     = "#transparenz-arten"
+                                >
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col">
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small>
+                                                    <small>
+                                                        Bildnachweise:
+                                                        <a href="" target="_blank">Pixabay: x</a>,
+                                                        <a href="" target="_blank">Pixabay: x</a>,
+                                                        <a href="" target="_blank">Pixabay: x</a>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Leistungstransparenz -->
+                            <div class="card">
+                                <div
+                                    id            = "transparenz-arten-leistung-title"
+                                    class         = "card-header"
+                                    data-toggle   = "collapse"
+                                    aria-expanded = "false"
+                                    aria-controls = "transparenz-arten-leistung-content"
+                                    href          = "#transparenz-arten-leistung-content"
+                                >
+                                    <h4>Leistungstransparenz</h4>
+                                </div>
+                                <div
+                                    id              = "transparenz-arten-leistung-content"
+                                    class           = "collapse container-fluid text-left p-3"
+                                    aria-labelledby = "transparenz-arten-leistung-title"
+                                    data-parent     = "#transparenz-arten"
+                                >
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col">
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row dhbw-fontsize-small">
+                                            <div class="col-md-2">
+                                                <img src="transparenz-xxx.jpg" class="img-thumbnail" style="width: 100%;" />
+                                            </div>
+                                            <div class="col">
+                                                <b>Beispiel:</b>
+                                                xxx
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <small>
+                                                    <small>
+                                                        Bildnachweise:
+                                                        <a href="" target="_blank">Pixabay: x</a>,
+                                                        <a href="" target="_blank">Pixabay: x</a>,
+                                                        <a href="" target="_blank">Pixabay: x</a>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="row">
                         <div class="col-md">
                             <h3>Zugriffstransparenz</h3>
                             Ermöglicht den Zugriff auf lokale und entfernte Ressourcen auf gleiche Art und Weise
@@ -1389,7 +2021,7 @@
                             <h3>Skalierbarkeitstransparenz</h3>
                             Ermöglicht es, das System zu skalieren, ohne tiefgreifende Anpassungen daran vornehmen zu müssen.
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </article>
             <aside>
@@ -1429,15 +2061,6 @@
                     Konfigurationsdatei oder einem Namensdienst nachgeschlagen werden sollten.
                 </p>
 
-                <h5 class="dhbw-lightblue">Nebenläufigkeitstransparenz</h5>
-                <p>
-                    Das wäre natürlich schon ganz praktisch, wenn ein verteiltes System wirklich nebenläufig wäre. 😅
-                    Nur sollten die Programme und Algorithmen damit auch umgehen können. Beispielsweise darf es keine
-                    <a href="https://de.wikipedia.org/wiki/Race_Condition" target="_blank">Race Conditions</a> oder
-                    <a href="https://de.wikipedia.org/wiki/Deadlock_(Informatik)">Deadlocks</a> geben, die zu sporadischen,
-                    schwer aufsprübaren Fehlern führen.
-                </p>
-
                 <h5 class="dhbw-lightblue">Replikationstransparenz</h5>
                 <p>
                     Verteilte Anwendungen arbeiten oft auch mit verteilten Datenbeständen. Aus Gründen der Ausfallsicherheit
@@ -1452,11 +2075,13 @@
                     Umgang mit Fehlern gemeint, so dass ein Fehler nicht die gesamte Anwendung zum Absturz bringt.
                 </p>
 
-                <h5 class="dhbw-lightblue">Leistungstransparenz</h5>
+                <h5 class="dhbw-lightblue">Nebenläufigkeitstransparenz</h5>
                 <p>
-                    Damit ist gemeint, dass System und Anwendungen prinzipiell skalierbar sind, um erhöhten Leistungsanforderungen
-                    genügen zu können. Ob die Skalierung dabei wie in einer Cloud automatisch erfolgt oder von Hand durchgeführt
-                    werden muss, ist dafür unbedeutend. Wichtig ist nur, dass es geht.
+                    Das wäre natürlich schon ganz praktisch, wenn ein verteiltes System wirklich nebenläufig wäre. 😅
+                    Nur sollten die Programme und Algorithmen damit auch umgehen können. Beispielsweise darf es keine
+                    <a href="https://de.wikipedia.org/wiki/Race_Condition" target="_blank">Race Conditions</a> oder
+                    <a href="https://de.wikipedia.org/wiki/Deadlock_(Informatik)">Deadlocks</a> geben, die zu sporadischen,
+                    schwer aufsprübaren Fehlern führen.
                 </p>
 
                 <h5 class="dhbw-lightblue">Skalierbarkeitstransparenz</h5>
@@ -1467,15 +2092,17 @@
                     Quellcode hinterlegt sein und die Teilprogramme müssen so programmiert sein, dass sie mit jeder beliebigen
                     Datenmenge zurecht kommen.
                 </p>
+
+                <h5 class="dhbw-lightblue">Leistungstransparenz</h5>
+                <p>
+                    Damit ist gemeint, dass System und Anwendungen prinzipiell skalierbar sind, um erhöhten Leistungsanforderungen
+                    genügen zu können. Ob die Skalierung dabei wie in einer Cloud automatisch erfolgt oder von Hand durchgeführt
+                    werden muss, ist dafür unbedeutend. Wichtig ist nur, dass es geht.
+                </p>
             </aside>
         </section>
 
         <section>
-            <!-- TODO: Replikationsstrategien ergänzen -->
-            <!-- TODO: Replikationsstrategien ergänzen -->
-            <!-- TODO: Replikationsstrategien ergänzen -->
-            <!-- TODO: Replikationsstrategien ergänzen -->
-
             <h1>Das CAP-Theorem verteilter Anwendungen</h1>
             <article>
                 <div class="container-fluid">
@@ -1572,12 +2199,28 @@
             </aside>
         </section>
 
-        <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
-        <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
-        <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
-        <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
+        <section>
+            <h1>Zeitsynchronisation verteilter Anwendungen</h1>
+
+            <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
+            <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
+            <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
+            <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
+
+            <article>
+                TODO
+            </article>
+            <aside>
+                TODO
+            </aside>
+        </section>
 
         <section data-background-color="rgb(231, 221, 141)">
+            <!-- TODO: Frage zur Zeitsynchronisation ergänzen -->
+            <!-- TODO: Frage zur Zeitsynchronisation ergänzen -->
+            <!-- TODO: Frage zur Zeitsynchronisation ergänzen -->
+            <!-- TODO: Frage zur Zeitsynchronisation ergänzen -->
+
             <h1>Aufgabe 1: Ein kleines Verteilte-Systeme-Quiz</h1>
             <article>
                 <div>
@@ -1936,6 +2579,9 @@
             </article>
         </section>
 
+        <!-- TODO: Pusblish/Subscribe ergänzen -->
+        <!-- TODO: Bessere Abgrenzung? -->
+
         <section>
             <h1>Von Clients, Servern und Peers</h1>
             <article>
@@ -2124,11 +2770,6 @@
             </aside>
         </section>
 
-        <!-- TODO: Architekturmuster auf einer Folie zusammenfassen (mit Acordion) -->
-        <!-- TODO: Architekturmuster auf einer Folie zusammenfassen (mit Acordion) -->
-        <!-- TODO: Architekturmuster auf einer Folie zusammenfassen (mit Acordion) -->
-        <!-- TODO: Architekturmuster auf einer Folie zusammenfassen (mit Acordion) -->
-
         <section>
             <h1>Einfache Client/Server-Anwendungen</h1>
             <article>
@@ -2137,8 +2778,8 @@
                     Dies ist die einfachste Architektur von allen. Sie besteht lediglich aus einem Server,
                     der einen Dienst anbietet und den Clients, welche den Dienst aufrufen. Meistens kommt dabei
                     ein synchrones, den Client blockierendes Request/Reply-Verfahren zum Einsatz, das besonders
-                    einfach zu programmieren ist. Ohne Middleware nur mit Sockets kann aber auch jede andere
-                    Kommunikationsstrategie umgesetzt werden.
+                    einfach zu programmieren ist. Rein technisch gesehen ist dies aber kein Muss, da Sockets
+                    prinzipiell jede Reihenfolge bei der Kommuniktion zulassen.
                 </p>
                 <div class="d-flex justify-content-center">
                     <img src="architektur-client-server.svg" alt="Skizze eines Servers und dreier Clients" style="height: 18em; max-width: 100%; margin-bottom: 2em;" />
@@ -2207,10 +2848,10 @@
                 </p>
                 <p>
                     Hinsichtlich der Programmierung gilt, dass derartige Anwendungen sehr häufig komplett ohne
-                    Middleware realisiert werden, um kein Übertragungsvolumen zu verschenken und um sich nicht
-                    von einem fremden Softwareanbieter abhängig zu machen. Prinzipiell kann aber auch eine RPC-
-                    oder Webservice-basierte Middleware genutzt werden. Falls es sich um eine Webanwendung handelt,
-                    werden aus dem Browser heraus stattdessen oft AJAX- oder Websocket-Aufrufe verwendet.
+                    helfende Frameworks sondern nur auf Basis der eingebauten Socket API des Betriebssystems
+                    realisiert werden, um kein Übertragungsvolumen zu verschenken und um sich nicht von fremden
+                    Softwareanbietern abhängig zu machen. Falls es sich um eine Webanwendung handelt, werden aus
+                    dem Browser heraus stattdessen jedoch auch oft AJAX- oder Websocket-Aufrufe verwendet.
                 </p>
                 <p>
                     Mögliche Fallbeispiele könnten sein:
@@ -2708,232 +3349,6 @@
             </aside>
         </section>
 
-        <section>
-            <h1>Exkurs: Netzwerkprogrammierung im Laufe der Zeit</h1>
-            <article>
-                <!-- TODO: Microservices und Cloud ergänzen -->
-                <!-- TODO: Microservices und Cloud ergänzen -->
-                <!-- TODO: Microservices und Cloud ergänzen -->
-                <!-- TODO: Microservices und Cloud ergänzen -->
-
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="img-thumbnail" style="padding: 0.5em; height: 100%; display: flex; flex-direction: column;">
-                                <h2>Host-To-Host</h2>
-                                <table style="margin-bottom: 1em;">
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            🔌
-                                        </td>
-                                        <td>
-                                            Direkte Kabelverbindung zwischen zwei Rechnern
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            🔌
-                                        </td>
-                                        <td>
-                                            Keine Unterstützung durch das Betriebssystem
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div style="flex: 1;"></div>
-                                <img src="historie-kabel.svg" alt="Zwei VS-Knoten mit direkter Kabelverbindung" style="width: 100%; margin-bottom: 1em;" />
-                                <img src="historie-abb1.jpg" alt="" style="width: 100%;" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="img-thumbnail" style="padding: 0.5em; height: 100%; display: flex; flex-direction: column;">
-                                <h2>Packet Switching</h2>
-                                <table style="margin-bottom: 1em;">
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            📦
-                                        </td>
-                                        <td>
-                                            NCP und später TCP als Vorläufer von TCP/IP
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            📦
-                                        </td>
-                                        <td>
-                                            Weltweiter Datenaustausch zwischen allen Hosts
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            📦
-                                        </td>
-                                        <td>
-                                            Anschluss des Computers hierfür an einen
-                                            <a href="https://en.wikipedia.org/wiki/Interface_Message_Processor" target="_blank">IMP</a>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div style="flex: 1;"></div>
-                                <img src="historie-sockets.svg" alt="Zwei VS-Knoten mit Socketverbindung" style="width: 100%; margin-bottom: 1em;" />
-                                <img src="historie-abb2.jpg" alt="" style="width: 100%;" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="img-thumbnail" style="padding: 0.5em; height: 100%; display: flex; flex-direction: column;">
-                                <h2>Sockets und Middleware</h2>
-                                <table style="margin-bottom: 1em;">
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            📃
-                                        </td>
-                                        <td>
-                                            Erste Middlewares bereits in den 1970ern
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            📃
-                                        </td>
-                                        <td>
-                                            <a href="https://de.wikipedia.org/wiki/Remote_Procedure_Call" target="_blank">RPC</a>
-                                            anstelle direkter Socketprogrammierung
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            📃
-                                        </td>
-                                        <td>
-                                            Moderne TCP/IP-Sockets ab 1983 in BSD Unix
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div style="flex: 1;"></div>
-                                <img src="historie-middleware.svg" alt="Zwei VS-Knoten mit Middleware" style="width: 100%; margin-bottom: 1em;" />
-                                <img src="historie-abb3.jpg" alt="" style="width: 100%;" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="img-thumbnail" style="padding: 0.5em; height: 100%; display: flex; flex-direction: column;">
-                                <h2>Applikationsserver</h2>
-                                <table style="margin-bottom: 1em;">
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            🚢
-                                        </td>
-                                        <td>
-                                            Applikationsserver ab den 1990ern
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            🚢
-                                        </td>
-                                        <td>
-                                            Zunächst weiterhin RPC-basiert
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-right: 0.5em;">
-                                            🚢
-                                        </td>
-                                        <td>
-                                            Später auch für Webanwendungen
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div style="flex: 1;"></div>
-                                <img src="historie-appserver.svg" alt="Drei VS-Knoten von denen einer ein Applikationsserver ist" style="width: 100%; margin-bottom: 1em;" />
-                                <img src="historie-abb4.jpg" alt="" style="width: 100%;" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md">
-                            <small>
-                                <small>
-                                    Bildnachweise:
-                                    <a href="https://commons.wikimedia.org/wiki/File:G805315andremarcos.png" target="_blank">Wikimedia Commons: NASA</a>,
-                                    <a href="https://commons.wikimedia.org/wiki/File:Interface_Message_Processor_Front_Panel.jpg" target="_blank">Wikimedia Commons: FastLizard4</a>,
-                                    <a href="https://commons.wikimedia.org/wiki/File:Videoton_VDX_52600.jpg" target="_blank">Wikimedia Commons: FAndrey</a>,
-                                    <a href="https://commons.wikimedia.org/wiki/File:2007Computex_RegArea_Hall1_Corridor_PC.jpg" target="_blank">Wikimedia Commons: Rico Shen</a>
-                                </small>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <aside>
-                <p>
-                    Die Entwicklung verteilter Anwendungen unterlag schon immer einem großen Wandel. Angefangen von einfachen
-                    Host-To-Host-Anwendungen, bei denen einfach zwei Computer mit einem Kabel verbunden wurden, kam mit der
-                    Erfindung des <a href="https://en.wikipedia.org/wiki/ARPANET" target="_blank">ARPANET</a> als Vorläufer des
-                    heutigen Internets schnell der Wunsch auf, zwischen jeden beliebigen Computern weltweit Daten austauschen
-                    zu können. Technologischer Vorreiter hierfür war das
-                    <a href="https://en.wikipedia.org/wiki/Network_Control_Program" target="_blank">Network Control Program</a>
-                    der 1970er-Jahre, das eine einfache,
-                    <a href="https://en.wikipedia.org/wiki/Packet_switching" target="_blank">paketvermittelte</a>
-                    Kommunikation zwischen zwei Rechnern erlaubte. Hierfür wurden die „Host” genannten Rechner an einen speziellen
-                    zweiten Computer namens
-                    <a href="https://en.wikipedia.org/wiki/Interface_Message_Processor" target="_blank">Interface Message Processor</a>
-                    (kurz IMP) angeschlossen, der die eigentliche Netzwerkkommunikation durchführte. Technisch gesehen waren
-                    daher nur die IMP miteinander verbunden, was auch als „IMP subnet” bezeichnet wurde:
-                </p>
-                <p>
-                    <img src="imp-subnet.svg" alt="Skizee des IMP subnet" style="width: 100%;" />
-                </p>
-                <p>
-                    Auf dieser Basis wurde dann ab 1973 das
-                    <a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Development" target="_blank">Transmission Control Protocol</a>
-                    entwickelt, aus dem später <a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank">TCP/IP</a>
-                    hervorging. Jedoch sollte es noch bis 1983 dauern, bis TCP/IP das alte NCP im ARPANET ablöste, was allgemein als
-                    <a href="https://en.wikipedia.org/wiki/Network_Control_Program#Transition_to_TCP/IP" target="_blank">Geburtsstunde
-                    des Internet</a> gilt. Ab dieser Zeit verschwanden dann auch die IMP und mit
-                    <a href="https://en.wikipedia.org/wiki/Berkeley_Software_Distribution#Berkeley_sockets" target="_blank">BSD Unix</a>
-                    erschien das erste Betriebssystem mit eingebauten Internetfunktionen. 🌍 Gemessen an dem, was davor war, war
-                    die Programmierung dadurch relativ einfach geworden. Um Daten zu senden oder zu empfangen musste man nur
-                    eine spezielle Betriebssystemfunktion aufrufen, um einen Socket öffnen und diesen wie eine Datei lesen oder schreiben.
-                </p>
-                <p>
-                    Die ersten Middlewares wurden ebenfalls in den 1970ern entwickelt und sollten vor allem die Programmierung großer
-                    Anwendungen vereinfachen. Sie ermöglichten eine
-                    <a href="https://de.wikipedia.org/wiki/Remote_Procedure_Call" target="_blank">Remote Procedure Call</a> genannte
-                    Programmierung, bei der ein Programm direkt die Prozeduren¹ eines anderen Programms auf einem anderen Rechner
-                    aufrufen konnte. Somit musste man nur noch die Funktionen definieren, die man entfernt aufrufbar machen wollte, ohne
-                    sich über den genauen Ablauf und die hierfür zu übertragenden Daten Gedanken machen zu müssen. Bis heute hat sich
-                    dieser Programmierstil daher gehalten, auch wenn zwischenzeitlich natürlich viele Alternativen entstanden sind.
-                </p>
-                <p>
-                    <small>
-                        ¹ In Java würde man Methoden sagen, jedoch steckte die Objektorientierung damals noch in den Kinderschuhen.
-                    </small>
-                    👟
-                </p>
-                <p>
-                    Die 1980er 🕹️ waren dann von Client/Server-Anwendungen auf Basis von Sockets oder einer RPC-Middleware geprägt.
-                    Jedoch wurden die Anwendungen immer ausgefeilter und komplexer, so dass gegen Ende des Jahrzehnts die ersten
-                    großen Informationssysteme mit vielen Clients und mehreren, kooperierenden Servern entwickelt wurden. Dabei
-                    zeigte sich dann schnell, dass sie alle ähnliche Anforderungen wie eine Benutzer- und Rechteverwaltung oder
-                    den Zugriff auf relationale Datenbanken besaßen. Ab Mitte der 1990er-Jahre entstanden deshalb die heute bekannten
-                    Applikationsserver. Ihnen liegt zugrunde, dass der Server bereits als fertiges Programm einschließlich aller
-                    Grundfunktionen vorliegt und nur noch um fachliche Funktionalitäten erweitert werden muss.
-                </p>
-                <p>
-                    Anfangs wurden weiterhin RPC-artige Methodenaufrufe für die Kommunikation mit dem Applikationsserver genutzt.
-                    Ab den 2000ern wurden diese jedoch mehr und mehr durch Webservices verdrängt, so dass der Aufruf via RPC
-                    in vielen Bereichen heute eher selten geworden ist. Jedoch setzte zeitgleich eine weitere Entwicklung ein, die
-                    eine neue Nische für RPC schaffen sollte: Die Erfindung von
-                    <a href="https://de.wikipedia.org/wiki/Microservices" target="_blank">Microservices</a>.
-                    Denn dabei handelt es sich um kleine, in sich abgeschlossene Serverprogramme, die je eine komplette, fachliche
-                    Funktionalität realisieren, anstatt alle Funktionen in einem riesigen Zentralserver zu vereinen. Sie nutzen sehr
-                    häufig RPC, da es im Vergleich zu Webservices wesentlich effizienter ist und weniger Bandbreite beansprucht.
-                </p>
-            </aside>
-        </section>
-
         <section data-background-color="rgb(231, 221, 141)">
             <h1>Aufgabe 3: Ein kleines Architekturmuster-Quiz</h1>
             <article>
@@ -3160,7 +3575,7 @@
             ====================
         -->
         <section data-chapter data-background-image="../trennfolie.jpg">
-            <h1>Wichtige Begriffe</h1>
+            <h1>Hinweise zum Schluss</h1>
             <article>
                 <small>
                     <small>
