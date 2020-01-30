@@ -987,12 +987,162 @@
         </section>
 
         <section>
-            <h1>Die fünf Persepktiven des Systementwurfs</h1>
+            <h1>Die fünf Perspektiven des Systementwurfs</h1>
             <article>
-                TODO: Einfaches Grid mit Bild und fünf kleinen Erklärungen
+                <table>
+                    <tr>
+                        <td>
+                            📝
+                        </td>
+                        <td>
+                            Je größer und umfangreicher eine zu entwerfende Anwendung wird, desto mehr empfiehlt es sich, den
+                            Entwurf in kleinere Teildesigns zu zerlegen, um die Übersichtlichkeit zu erhöhen.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top: 1em;">
+                            📝
+                        </td>
+                        <td style="padding-top: 1em;">
+                            Jeder Teilentwurf bildet dabei gamäß ISO 10746 bzw. ISO 42010 eine eigene Sicht auf die Anwendung,
+                            die ein eigenständiges Ziel verfolgt und sich an unterschiedliche Zielgruppen richtet.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top: 1em;">
+                            📝
+                        </td>
+                        <td style="padding-top: 1em;">
+                            Konkrete Methoden zur Beschreibung der Entwürfe (z.B. User Stories für die Anforderungserhebung oder
+                            E/R-Diagramme für das Datenmodell usw.) werden allerdings nicht vorgeschrieben. Diese können daher gemäß
+                            der jeweiligen Erfordernisse frei gewählt werden.
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="container-fluid p-0" style="margin-top: 2em;">
+                    <!-- Funktionale Sicht -->
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="entwurf-funktional.jpg" class="d-block img-fluid img-thumbnail" />
+                        </div>
+                        <div class="col-md">
+                            <h3 class="dhbw-lightblue">Funktionale Sicht</h3>
+                            <p>
+                                Zweck und Umfang der zu erstellenden Anwendung, funktionale Anforderungen aus Anwendersicht
+                                sowie allgemeingültige Vorgaben. Diese Spezifikation steht über allen anderen.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Informationssicht -->
+                        <div class="col-md-2">
+                            <img src="entwurf-information.png" class="d-block img-fluid img-thumbnail" />
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="dhbw-lightblue">Informationssicht</h3>
+                            <p>
+                                Modellierung aller benötigten Datenstrukturen und den
+                                darauf aufbauenden Algorithmen.
+                            </p>
+                        </div>
+
+                        <!-- Modulsicht -->
+                        <div class="col-md-2">
+                            <img src="entwurf-modul.jpg" class="d-block img-fluid img-thumbnail" />
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="dhbw-lightblue">Modulsicht</h3>
+                            <p>
+                                Aufteilung in fachlich getrennte Teilsysteme bzw. Module inklusive
+                                der hierfür notwendigen Schnittstellen.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Konstruktive Sicht -->
+                        <div class="col-md-2">
+                            <img src="entwurf-konstruktiv.jpg" class="d-block img-fluid img-thumbnail" />
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="dhbw-lightblue">Konstruktive Sicht</h3>
+                            <p>
+                                Mechanismen und technische Vorgaben (z.B. die generelle Art des Datenaustausch),
+                                um eine auf die einzelne Rechenknoten zu unterstützen.
+                            </p>
+                        </div>
+
+                        <!-- Technologische Sicht -->
+                        <div class="col-md-2">
+                            <img src="entwurf-technologisch.jpg" class="d-block img-fluid img-thumbnail" />
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="dhbw-lightblue">Technologische Sicht</h3>
+                            <p>
+                                Auswahl der verwendeten Technologien wie Hardwareplattformen,
+                                Programmiersprachen oder Frameworks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <small>
+                        <small>
+                            Bildnachweise:
+                            <a href="https://pixabay.com/photos/tie-necktie-adjust-adjusting-man-690084/" target="_blank">Pixabay: Free-Photos</a>,
+                            <a href="https://pixabay.com/vectors/database-schema-data-tables-schema-1895779/" target="_blank">Pixabay: mcmurryjulie</a>,
+                            <a href="https://pixabay.com/photos/duplo-lego-build-toys-children-1981724/" target="_blank">Pixabay: Bru-nO</a>,
+                            <a href="https://pixabay.com/illustrations/gears-metal-industry-cogwheel-686316/" target="_blank">Pixabay: TheDigitalArtist</a>,
+                            <a href="https://pixabay.com/photos/technology-electronics-computer-1850021/" target="_blank">Pixabay: Pexels</a>
+                        </small>
+                    </small>
+                </p>
             </article>
             <aside>
-                TODO
+                <p>
+                    Bevor wir uns auf den folgenden Folien mit den grundsätzlichen Anforderungen an und der Architektur von
+                    verteilten Systemen beschäften, wollen wir hier einen kurzen Blick darauf werfen, wie ein verteiltes
+                    System überhaupt entworfen wird. Hierbei hilft uns insbesondere das <b>Reference Model of Open Distributed
+                    Processing (RM-ODP, ISO/IEC 10746)</b> weiter, da der Entwurf verteilter System darin ausführlich beschrieben
+                    ist. Zwar gibt die Norm (wie so oft) keine konkreten Methoden vor, die wir bei der Ausarbeitung einer eigenen
+                    Spezifikation verwenden können, sie gibt aber einen groben Überblick darüber, welche Arten von Entwürfen
+                    wir benötigen. Hierzu definiert sie fünf Sichten des Entwurfs, von denen sich jede an einen anderen
+                    Personenkreis wendet und deshalb auch einen anderen Teilaspekt behandelt.
+                </p>
+                <h5 class="dhbw-lightblue">Funktionale Sicht</h5>
+                <p>
+                    Am Anfang steht natürlich immer eine Idee bzw. ein Zweck, den das System erfüllen soll. Auch muss der Umfang
+                    des zu erstellenden Systems klar definiert werden. Dieser wird daher zusammen mit den funktionalen Anforderungen
+                    aus Anwendersicht sowie den allgemeinen Anforderungen in einer Funktionsbeschreibung festgehalten.
+                </p>
+                <h5 class="dhbw-lightblue">Informationssicht</h5>
+                <p>
+                    Anhand der funktionalen Anforderungen kann als nächstes ein Datenmodell mit dazu passenden Algorithmen entworfen
+                    werden. Das heißt, noch bevor wir uns überhaupt über die genaue Aufteilung des Systems Gedanken machen, legen
+                    wir erst einmal fest, welche Daten verarbeitet werden sollen, wie sie hierfür aufgebaut sein müssen und welche
+                    Algorithmen damit arbeiten.
+                </p>
+                <h5 class="dhbw-lightblue">Modulsicht</h5>
+                <p>
+                    Der nächste Schritt ist dann eine funktionale Dekomposition des Systems in eigenständige Teilsysteme oder Module.
+                    Hier legen wir fest, welche Teilsysteme es später geben soll und welche Aufgaben diese übernehmen. Hier können
+                    wir dann auch zwischen Frontend und Backend unterscheiden sowie die benötigten Services des Backends definieren.
+                    Wichtig sind hier auch die Schnittstellen der Teilsysteme untereinander.
+                </p>
+                <h5 class="dhbw-lightblue">Konstruktive Sicht</h5>
+                <p>
+                    Allgemeine Prinzipien und Mechanismen, wie die eben definierten Teilsysteme miteinander verbunden sind, gehören
+                    allerdings nicht in die Modulbeschreibung sondern in ein eigenes Dokument. Dieses ist daher eher technisch orientiert
+                    und legt die grundlegenden Prinzipien der verteilten Kommunikation fest.
+                </p>
+                <h5 class="dhbw-lightblue">Technologische Sicht</h5>
+                <p>
+                    Last but not least benötigen wir noch eine Technologieauswahl. Alle Komponenten, die wir nicht selbst implementieren,
+                    wie zum Beispiel die Hardwareplattform, Betriebssysteme, Programmiersprachen oder Frameworks werden in diesem Dokument
+                    gesammelt und beschrieben.
+                </p>
             </aside>
         </section>
 
