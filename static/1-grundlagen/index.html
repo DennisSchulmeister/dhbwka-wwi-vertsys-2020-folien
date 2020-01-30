@@ -21,8 +21,6 @@
             </p>
         </header>
 
-        <!-- TODO: Die fünf Sichten aus RM-ODP wie in den Folien unterbringen? -->
-
         <!--
             ===================
             Über dieses Kapitel
@@ -192,12 +190,12 @@
         </section>
 
         <!--
-            =================
-            Wichtige Begriffe
-            =================
+            ======================
+            Definition und Entwurf
+            ======================
         -->
         <section data-chapter data-background-image="../trennfolie.jpg">
-            <h1>Wichtige Begriffe</h1>
+            <h1>Definition und Entwurf</h1>
             <article>
                 <small>
                     <small>
@@ -985,6 +983,16 @@
                         ² Schade eigentlich …
                     </small>
                 </p>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Die fünf Persepktiven des Systementwurfs</h1>
+            <article>
+                TODO: Einfaches Grid mit Bild und fünf kleinen Erklärungen
+            </article>
+            <aside>
+                TODO
             </aside>
         </section>
 
@@ -2056,10 +2064,6 @@
                 </div>
             </article>
             <aside>
-                <!--
-                TODO: Bedeutung des Begriffs Transparenz allgemein. Bezug auf die Wikipedia-Artikel und ISO-Normen?
-                TODO: Abgrenzung zum Begriff Opaque.
-                -->
                 <blockquote cite="https://de.wikipedia.org/wiki/Clarkesche_Gesetze">
                     <i>
                         „Jede hinreichend komplexe Technologie ist von Magie nicht zu unterscheiden.”
@@ -2154,38 +2158,41 @@
             </article>
             <aside>
                 <p>
-                    In der Datenbankvorlesung haben wir alle mal gelernt, normalisierte Datenmodelle zu erstellen und Transaktionen
-                    zu nutzen, damit unsere Daten immer konsistent und widerspruchsfrei sind. <span style="color: darkgreen">✔️</span>
-                    Und in vielen Fällen will man das auch genauso haben. Doch eine zu einseitige Fixierung auf bedingungslose Konsistenz
-                    kann zu bedeutenden Nachteilen in anderen Punkten führen, wie das im Jahr 2000 formulierte und 2002 bewiesene CAP-Theorem
+                    Ein guter Datenbankentwurf beruht auf
+                    <a href="https://de.wikipedia.org/wiki/Normalisierung_(Datenbank)" target="_blank">normalisierten Datenmodellen</a>
+                    und <a href="https://de.wikipedia.org/wiki/Transaktion_(Informatik)" target="_blank">automaren Transaktionen</a>,
+                    um jederzeit konsistente und widerspruchsfreie Daten zu garantieren. <span style="color: darkgreen">✔️</span>
+                    Diese Grundregel lernt jede*r Informatiker*in gleich in der ersten Datenbankvorlesung. Und in den meisten Fällen
+                    ist sie auch völlig in Ordnung. Innerhalb einer verteilten Anwendung kann eine zu starke Fixierung auf konsistente
+                    Daten deutliche Nachteile nachsich ziehen, wie wie das im Jahr 2000 formulierte und 2002 bewiesene CAP-Theorem
                     besagt. Denn aus ihm folgt, dass eine verteilte Anwendung niemals alle drei der folgenden Eigenschaften gleichzeitig
                     erfüllen kann:
                 </p>
                 <ul>
                     <li>
-                        <b>Consistency (Konsistenz):</b> Betrachtet man nur eine einzelne Datenbank auf einem einzelnen Rechner, gibt
-                        es hier noch keine Probleme. Doch wenn die Daten auf mehrere Rechner repliziert werden, kann es für einen kurzen
-                        Zeitpunkt zu lokalen Unterschieden kommen, so lange die neusten Änderungen noch nicht an alle Repliken verteilt
+                        <b>Consistency (Konsistenz):</b> Werden die Daten einer Anwendung auf mehrere Rechner repliziert, kann es für einen
+                        kurzen Zeitpunkt zu lokalen Unterschieden kommen, so lange die neusten Änderungen noch nicht komplett verteilt
                         wurden. Will man das vermeiden, muss eine verteilte Transaktion genutzt werden, die erst als abgeschlossen gilt,
                         wenn alle Änderungen auf allen Rechnern nachgezogen wurden.
                     </li>
                     <li>
-                        <b>Availability (Verfügbarkeit):</b> Hiermit ist sowohl die generelle Verfügbarkeit im Sinne, dass das System
-                        überhaupt erreichbar ist, gemeint als auch die maximal zulässige Antwortzeit. Beispielsweise kann es vorkommen,
-                        dass das System während einer aktiven, verteilten Transaktionen lesende Anfragen warten lässt. Geht die Transaktion
-                        jedoch zu lange, weil besonders viele Daten geschrieben werden oder weil ein Deadlock aufgetreten ist, kann das System
-                        nicht mehr hinreichend schnell auf die anderen Anfragen reagieren.
+                        <b>Availability (Verfügbarkeit):</b> Hiermit sind sowohl die generelle Verfügbarkeit im Sinne, dass die Anwendung
+                        überhaupt erreichbar ist, als auch die maximal zulässige Antwortzeit gemeint. Beispielsweise kann es vorkommen,
+                        dass während einer aktiven, verteilten Transaktionen lesende Anfragen warten müssen. Dadurch kann es allerdings
+                        zu unerwünschten Verzögerungen kommen, wenn einzelne Transaktionen die Anwendung zu lange blockieren oder aufgrund
+                        von Deadlocks niemals zu Ende laufen.
                     </li>
                     <li>
                         <b>Partition Tolerance (Partitionstoleranz):</b> Zunächst würde man denken, damit sei die horizontale oder
                         vertikale Partitionierung von Daten auf mehrere Rechner gemeint. Stattdessen geht es hier aber darum, dass
                         eine Anwendung auch dann noch weiter arbeiten kann, wenn ein Teil ihrer Komponenten ausgefallen ist. Es kann
-                        sozusagen auch ein kleiner Teil (eine Partition) der Anwendung noch autonom weiter arbeiten.
+                        nach einem teilweisen Systemausfall sozusagen auch ein kleinerer Teil der Anwendung (eine Partition) noch
+                        weiter genutzt werden.
                     </li>
                 </ul>
                 <p>
-                    Das CAP-Theorem besagt, dass ein verteiltes System oder eine verteilte Anwendung immer nur zwei dieser Kriterien,
-                    niemals aber alle drei gänzlich erfüllen kann. Eine Verbesserung in einem Bereich führt also unweigerlich zu einer
+                    Das CAP-Theorem besagt, dass verteilte Systeme und Anwendungen immer nur zwei dieser Kriterien,
+                    niemals aber alle drei gänzlich erfüllen können. Eine Verbesserung in einem Bereich führt unweigerlich zu einer
                     Verschlechterung in einem der anderen. <span style="color: deepskyblue;">⬆️</span><span style="color: crimson;">⬇️</span>
                     Zwei einfache Beispiele sollen dies verdeutlichen:
                 </p>
@@ -2206,20 +2213,400 @@
 
         <section>
             <h1>Zeitsynchronisation verteilter Anwendungen</h1>
-
-            <!-- TODO: Probleme der Zeitsynchronisation hier ergänzen (Folie von Dietmar Ratz?) -->
-
             <article>
-                TODO
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "zeitprobleme-fallbeispiel-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#zeitprobleme-fallbeispiel"
+                                role          = "tab"
+                                aria-controls = "zeitprobleme-fallbeispiel"
+                                aria-expanded = "true"
+                            >
+                                Fallbeispiel
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "zeitprobleme-fallstricke-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#zeitprobleme-fallstricke"
+                                role          = "tab"
+                                aria-controls = "zeitprobleme-fallstricke"
+                            >
+                                Fallstricke
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "zeitprobleme-loesungen-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#zeitprobleme-loesungen"
+                                role          = "tab"
+                                aria-controls = "zeitprobleme-loesungen"
+                            >
+                                Lösungsansätze
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Fallbeispiel -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "zeitprobleme-fallbeispiel"
+                            role            = "tabpanel"
+                            aria-labelledby = "zeitprobleme-fallbeispiel-tab"
+                        >
+                            <img src="zeitproblem-karte.jpg" class="d-block img-fluid img-thumbnail" />
+                            <p>
+                                <small>
+                                    <small>
+                                        Bildnachweise:
+                                        <a href="https://pixabay.com/illustrations/map-central-europe-europe-1804891/s" target="_blank">Pixabay: Hans</a>,
+                                        <a href="https://pixabay.com/vectors/map-pin-illustrator-holder-place-42871/" target="_blank">Pixabay: Clker-Free-Vector-Images</a>
+                                    </small>
+                                </small>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>
+                                        🌡️
+                                    </td>
+                                    <td>
+                                        Aufzeichnung von Umweltdaten zur Vorhersage von Unwettern und Naturkatastrophen
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🗺️
+                                    </td>
+                                    <td>
+                                        Aktuell 19 Messstationen in verschiedenen Ländern und Zeitzonen
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🕒
+                                    </td>
+                                    <td>
+                                        Messung und Übermittlung eines kompletten Datensatzes alle fünf Minuten
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        💽
+                                    </td>
+                                    <td>
+                                        Speicherung aller Messwerte im Rechenzentrum in Frankfurt am Main
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- Fallstricke -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "zeitprobleme-fallstricke"
+                            role            = "tabpanel"
+                            aria-labelledby = "zeitprobleme-fallstricke-tab"
+                        >
+                            <div class="container-fluid p-0">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="zeitproblem-latenz-deutschland.jpg" alt="" class="img-thumbnail" style="width: 100%" />
+                                        <small>
+                                            Latenz beim Zugriff auf wpvs.de aus Deutschland
+                                        </small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="zeitproblem-latenz-spanien.jpg" alt="" class="img-thumbnail" style="width: 100%" />
+                                        <small>
+                                            Latenz beim Zugriff auf wpvs.de aus Südspanien
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    🗯️
+                                                </td>
+                                                <td>
+                                                    Werden Datum und Uhrzeit der Messwerte vor Ort oder vom Server ermittelt?
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    🗯️
+                                                </td>
+                                                <td>
+                                                    Wie kann die zeitliche Reihenfolge aller Messwerte garantiert werden?
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    🗯️
+                                                </td>
+                                                <td>
+                                                    Wie können Latenzen in der Datenübertragung ausgeglichen werden?
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    🗯️
+                                                </td>
+                                                <td>
+                                                    Was passiert, wenn die Uhren der Messstationen nicht gleich gehen?
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    🗯️
+                                                </td>
+                                                <td>
+                                                    Wie kann verhindert werden, dass die Uhren auseinander driften?
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    🗯️
+                                                </td>
+                                                <td>
+                                                    Wie sollen die Zeitzonen oder die Sommer-/Winterzeit berücksichtigt werden?
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    🗯️
+                                                </td>
+                                                <td>
+                                                    Wie können verspätet eintreffende Messwerte korrekt gespeichert werden?
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    🗯️
+                                                </td>
+                                                <td>
+                                                    Wie sollen fehlende Messdaten (z.B. wegen dem Ausfall einer Station) behandelt werden?
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Lösungsansätze -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "zeitprobleme-loesungen"
+                            role            = "tabpanel"
+                            aria-labelledby = "zeitprobleme-loesungen-tab"
+                        >
+                            <table>
+                                <tr>
+                                    <td>
+                                        🌞
+                                    </td>
+                                    <td>
+                                        Datum und Uhrzeit sowohl auf den Devices als auch dem Server ermitteln und vergleichen.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🌞
+                                    </td>
+                                    <td>
+                                        Alle Uhren in regelmäßigen Abständen via
+                                        <a href="https://de.wikipedia.org/wiki/Network_Time_Protocol" target="blank">NTP</a>
+                                        synchronisieren.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🌞
+                                    </td>
+                                    <td>
+                                        Sämtliche Messwerte zusätzlich zum Zeitstempel fortlaufend durchnummerieren.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🌞
+                                    </td>
+                                    <td>
+                                        Die Messwerte immer inklusive Zeitzone und Abweichung zur Normalzeit speichern.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🌞
+                                    </td>
+                                    <td>
+                                        Alternativ Datum und Uhrzeit immer in die Zeitzone des Servers umrechnen.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🌞
+                                    </td>
+                                    <td>
+                                        Nachträgliches Einfügen von Messwerten innerhalb eines gegebenen Zeitfensters zulassen.
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <h3 class="dhbw-lightblue" style="margin-top: 1em;">Beginn der Zeitrechnung</h3>
+
+                            <div class="container-fluid p-0">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <img src="zeitproblem-beginn-wissenschaft.jpg" class="d-block img-fluid img-thumbnail" />
+                                        <b>Wissenschaft:</b> Mit dem Urknall
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="zeitproblem-beginn-kirche.jpg" class="d-block img-fluid img-thumbnail" />
+                                        <b>Kirche:</b> Als Gott die Erde erschuf
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <img src="zeitproblem-beginn-sport.jpg" class="d-block img-fluid img-thumbnail" />
+                                        <b>Wettläufer:</b> Ab dem Startschuss
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="zeitproblem-beginn-entwickler.jpg" class="d-block img-fluid img-thumbnail" />
+                                        <b>Softwareentwickler:</b> <a href="https://de.wikipedia.org/wiki/Unixzeit" target="_blank">01.01.1970 0:00 Uhr</a> 🥴
+                                        <br />
+                                        <small>
+                                            <b>Youtube:</b>
+                                            <a href="https://www.youtube.com/watch?v=jNQXAC9IVRw" target="_blank">23.04.2005</a>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>
+                                            <small>
+                                                <small>
+                                                    Bildnachweise:
+                                                    <a href="https://pixabay.com/illustrations/universe-space-expansion-big-bang-11636/" target="_blank">Pixabay: WikiImages</a>,
+                                                    <a href="https://pixabay.com/photos/genesis-mosaic-iconography-2435989/" target="_blank">Pixabay: dimitrisvetsikas1969</a>,
+                                                    <a href="https://pixabay.com/photos/race-finish-line-athletes-695303/" target="_blank">Pixabay: skeeze</a>,
+                                                    <a href="https://commons.wikimedia.org/wiki/File:Vt100-adventure.jpg" target="_blank">Wikimedia: Shieldforyoureyes</a>
+                                                </small>
+                                            </small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
-                TODO
+                <p>
+                    Verteilte Systeme erstecken sich, je nach Anwendungsfall, häufig über mehrere Länder und Kontinente.
+                    Manchmal ergibt sich das einfach nur aus der weltweiten Nutzung einer Anwendung, selbst wenn sie nur
+                    an einem Standort betrieben wird. Oftmals ist die geografische Verteilung aber auch wesenticher
+                    Bestandteil der Systemarchitektur. 🗺️ Ein Problem, das in beiden Fällen gerne mal übersehen wird, ist
+                    die zeitliche Synchronisierung aller Systemkomponenten. Zwar klingt es zunächst trivial, die zeitliche
+                    Reihenfolge zweier oder mehr Ereignisse festzustellen. Werden die Ereignisse jedoch von unterschiedlichen
+                    Rechnern erzeugt, genügt ein einfacher Datums- und Uhrzeitvergleich längst nicht aus, da hierfür erst
+                    einmal ein einheitliches Verständnis über die aktuelle Zeit 🕑 in allen Knoten hergestellt werden muss.
+                </p>
+                <p>
+                    Anhand eines einfachen Fallbeispiels lassen sich die auftretenden Probleme anschaulich erklären. Wir
+                    gehen deshalb im Folgenden von einem Projekt zur Vorhersage von Unwettern und Naturkatastrophen aus,
+                    für das in ganz Europa an 19 verschiedenen Standorten aktuelle Umweltdaten gemessen und an einen Server
+                    in Frankfurt am Main geschickt werden. Jede Messstation schickt hierfür alle fünf Minuten aktuelle Messwerte
+                    an den Server, um diese zu speichern, wobei das genaue Intervall an dieser Stelle gar nicht wichtig ist.
+                    Die Karte auf der Folie ziegt die Standorte, an denen die Messwerte jeweils erhoben werden.
+                </p>
+                <p>
+                    Klar ist, dass zu jeder Messung folgende Daten gespeichert werden müssen:
+                </p>
+                <ul>
+                    <li>
+                        Standort der Messung
+                    </li>
+                    <li>
+                        Datum und Uhrzeit der Messung
+                    </li>
+                    <li>
+                        Gemessene Werte
+                    </li>
+                </ul>
+                <p>
+                    Daraus ergeben sich allerdings mehrere Fallstricke, die beim Systementwurf beachtet werden müssen.
+                    Zunächst ist da zum Beispiel die Frage zu klären, ob Datum und Uhrzeit einer Messung auf Seiten
+                    der jeweiligen Messstation oder des Servers ermittelt werden und wie dabei die zeitliche Reihenfolge
+                    der Messwerte sichergestellt werden kann. Denn immerhin kann es ja sein, dass die Uhr einer Station
+                    etwas vor geht und ihre Messwerte somit fälschlich vor denen der anderen Stationen eingeordnet werden.
+                    Werden die Zeitstempel vom Server ermittelt, müssen Verzögerungen während der Datenübertragung, die
+                    so genannte Latenz, ausgeglichen werden, um die zeitliche Reihenfolge zu gewähren. Erfolgt die Ermittlung
+                    durch die Stationen, müssen ihre Uhren regelmäßig synchronisiert werden. Außerdem müssen die Auswirkungen
+                    unterschiedliche Zeitzonen sowie von Sommer- und Winterzeit berücksichtigt werden und es muss bedacht
+                    werden, dass Messwerte möglicherweise verloren gehen oder erst mit Verspätung beim Server eintreffen. 😲
+                </p>
+                <p>
+                    Die Beantwortung dieser Fragen hängt immer vom konkreten Anwendungsfall ab. Mögliche Lösungsansätze,
+                    die hierbei in Erwägung gezogen werden können, sind folgende:
+                </p>
+                <ul>
+                    <li>
+                        Datum und Uhrzeit könnten nicht einfach nur durch die Messstationen sondern zusätzlich auf dem Server
+                        ermittelt werden. Durch einen Vergleich beider Werte ḱann, sofern die Uhren auf beiden Seiten richtig
+                        gehen und die Daten sofort versendet werden, die Latenz der Datenübertragung abgeleitet werden.
+                        Diese sollte dabei niemals größer als ein/zwei Sekunden sein. Andernfalls geht eine der Uhren falsch
+                        oder es findet eine Replay-Attacke statt.
+                    </li>
+                    <li>
+                        Die exakte Synchronisation aller Uhren kann mit dem
+                        <a href="https://de.wikipedia.org/wiki/Network_Time_Protocol" target="blank">Network Time Protocol</a>
+                        sichergestellt werden. Alle bekannten Betriebssysteme unterstützen dieses Verfahren, wodurch die
+                        Abweichungen zwischen den Uhren auf wenige Millisekunden reduziert werden können.
+                    </li>
+                    <li>
+                        Zusätzlich sollten alle Messwerte mit einer fortlaufenden Nummer versehen werden, um Vertauschungen
+                        auch ohne korrekt eingestellte Uhren erkennen zu können.
+                    </li>
+                    <li>
+                        Für die Weiterverarbeitung der Daten sehr wichtig ist das Format, in dem die Zeitstempel übertragen
+                        und gespeichert werden.¹ Hier ist zu prüfen, ob das Format den erforderlichen Zeitraum überhaupt mit
+                        einer ausreichenden Genauigkeit abdeckt. Außerdem sollten neben den Werten für Datum und Uhrzeit immer
+                        auch der Name der Zeitzone und/oder die Abweichung zur Normalzeit enthalten sein, um die Werte
+                        unterschiedlicher Standort miteinander vergleichen zu können.
+                    </li>
+                    <li>
+                        Manche System konvertieren sämtliche Zeitstempel stattdessen in die Zeitzone des Servers, um somit
+                        Probleme aufgrund unterschiedlicher Zeitzonen zu umgehen. Prominentestes Beispiel hierfür ist Youtube,
+                        wo sich das Uploaddatum eines Videos immer auf die aktuelle Uhrzeit in Kalifornien bezieht.
+                    </li>
+                    <li>
+                        Sollte ein nachträgliches Einfügen von Messwerten aufgrund der verwendeten Technologie nicht möglich
+                        oder nicht praktikabel sein, kann es ganz hilfreich zu sein, zunächst mehrere Datensätze auf dem
+                        Server zu sammeln, und diese zum Beispiel nur einmal je Minute zu sichern. Beispielsweise kann eine
+                        Blockchain nur aufeinander folgende Werte beinhalten. Durch die Speicherung in Blöcken können aber
+                        während eines kurzen Zeitraums nachträglich noch Werte eingefügt werden, solange diese noch nicht in
+                        der Blockchain persistiert wurden.
+                    </li>
+                </ul>
+                <p>
+                    ¹
+                    <small>
+                        Die Folie enthält hierfür ein paar mehr oder weniger ernst gemeinte Beispiele.
+                    </small>
+                </p>
             </aside>
         </section>
 
         <section data-background-color="rgb(231, 221, 141)">
-            <!-- TODO: Frage zur Zeitsynchronisation ergänzen -->
-
             <h1>Aufgabe 1: Ein kleines Verteilte-Systeme-Quiz</h1>
             <article>
                 <div>
@@ -2561,6 +2948,58 @@
             </aside>
         </section>
 
+        <section data-background-color="rgb(231, 221, 141)">
+            <h1>Aufgabe 2: Wer hat an der Uhr gedreht?</h1>
+            <article>
+                <p>
+                    Wichtige Anforderung an verteilte Systeme ist häufig, dass die <b>Kausalordnung</b> von Ereignissen
+                    erhalten bleibt, das heißt, dass die zeitliche Abfolge von Ursache und Wirkung nicht vertauscht
+                    wird. Doch auch ohne kausalen Zusammenhang müssen so genannte <b>Happened-Before</b>-Beziehungen
+                    erhalten bleiben. In beiden Fällen läuft es auf einen Vergleich von Zeitstempeln hinaus, wofür
+                    entweder eine <b>Echtzeituhr</b> oder eine <b>logische Uhr</b> verwendet werden kann.
+                </p>
+                <p class="mt-3">
+                    a) Recherchiere folgende Begriffe und formuliere eine dazu passende Definition:
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Kausalordnung
+                    </li>
+                    <li>
+                        Happened-Before-Relation
+                    </li>
+                    <li>
+                        Echtzeituhr
+                    </li>
+                    <li>
+                        Lamport-Uhr
+                    </li>
+                </ol>
+                <p class="mt-3">
+                    b) Zeige anhand eines minimalen Beispiels, wie die zeitliche Abfolge mehrerer Ereignisse anhand
+                    einer logischen Uhr sichergestellt werden kann.
+                </p>
+                <p class="mt-3">
+                    c) Erkläre, warum eine einfache Lamport-Uhr keine nebenläufigen Prozesse abbilden kann und zeige,
+                    wie dies anhand einer Vektoruhr möglich wird.
+                </p>
+            </article>
+            <aside>
+                <p>
+                    Diese Aufgabe ist eine Vertiefungsaufgabe zum Thema „Zeitsynchronisation in verteilten Systemen”.
+                    Die Antworten müssen daher selbständig recherchiert werden, wobei die deutsche Wikipedia bereits
+                    sehr gute Artikel 📑 zu den einzelnen Begriffen enthält.
+                </p>
+                <img src="pocket-watch.svg" class="d-block" style="max-width: 20em;" />
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/vectors/pocket-watch-fob-watch-147107/" target="_blank">Pixabay: OpenClipart-Vectors</a>
+                    </small>
+                </p>
+            </aside>
+        </section>
+
         <!--
             ====================================
             Architekturmuster verteilter Systeme
@@ -2579,7 +3018,7 @@
         </section>
 
         <!-- TODO: Pusblish/Subscribe ergänzen -->
-        <!-- TODO: Bessere Abgrenzung? -->
+        <!-- TODO: Bessere Abgrenzung? Hierfür Texte gegenlesen und anpassen. -->
 
         <section>
             <h1>Von Clients, Servern und Peers</h1>
