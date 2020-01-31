@@ -1055,7 +1055,7 @@
                         <div class="col-md-4">
                             <h3 class="dhbw-lightblue">Modulsicht</h3>
                             <p>
-                                Aufteilung in fachlich getrennte Teilsysteme bzw. Module inklusive
+                                Aufteilung in fachlich getrennte Teilsysteme (Module) inklusive
                                 der hierfür notwendigen Schnittstellen.
                             </p>
                         </div>
@@ -1069,8 +1069,7 @@
                         <div class="col-md-4">
                             <h3 class="dhbw-lightblue">Konstruktive Sicht</h3>
                             <p>
-                                Mechanismen und technische Vorgaben (z.B. die generelle Art des Datenaustausch),
-                                um eine auf die einzelne Rechenknoten zu unterstützen.
+                                Technische Vorgaben und allgemeine Mechanismen zur Kommunikation zwischen den Modulen.
                             </p>
                         </div>
 
@@ -1081,8 +1080,7 @@
                         <div class="col-md-4">
                             <h3 class="dhbw-lightblue">Technologische Sicht</h3>
                             <p>
-                                Auswahl der verwendeten Technologien wie Hardwareplattformen,
-                                Programmiersprachen oder Frameworks.
+                                Zu verwendende Technologien wie Hardwareplattformen, Programmiersprachen oder Frameworks.
                             </p>
                         </div>
                     </div>
@@ -3167,9 +3165,6 @@
             </article>
         </section>
 
-        <!-- TODO: Pusblish/Subscribe ergänzen -->
-        <!-- TODO: Bessere Abgrenzung? Hierfür Texte gegenlesen und anpassen. -->
-
         <section>
             <h1>Von Clients, Servern und Peers</h1>
             <article>
@@ -3237,11 +3232,11 @@
                     <div class="row" style="margin-bottom: 2em;">
                         <div class="col-md">
                             <h3 class="dhbw-lightblue">Client/Server-Architektur</h3>
-                            <img src="client-server.svg" alt="Skizze mit vielen Clients und einem Server in der Mitte" style="width: calc(100% - 2em);" />
+                            <img src="client-server.svg" alt="Skizze mit vielen Clients und einem Server in der Mitte" style="max-width: calc(100% - 2em);" />
                         </div>
                         <div class="col-md">
                             <h3 class="dhbw-lightblue">Peer-To-Peer-Architektur</h3>
-                            <img src="peer-to-peer.svg" alt="Skizze mit vielen untereinander verbundenen Peers" style="width: calc(100% - 2em);" />
+                            <img src="peer-to-peer.svg" alt="Skizze mit vielen untereinander verbundenen Peers" style="max-width: calc(100% - 2em);" />
                         </div>
                     </div>
 
@@ -3364,13 +3359,13 @@
                 <h2>Beschreibung</h2>
                 <p style="margin-bottom: 2em;">
                     Dies ist die einfachste Architektur von allen. Sie besteht lediglich aus einem Server,
-                    der einen Dienst anbietet und den Clients, welche den Dienst aufrufen. Meistens kommt dabei
-                    ein synchrones, den Client blockierendes Request/Reply-Verfahren zum Einsatz, das besonders
-                    einfach zu programmieren ist. Rein technisch gesehen ist dies aber kein Muss, da Sockets
-                    prinzipiell jede Reihenfolge bei der Kommuniktion zulassen.
+                    der einen Dienst anbietet und den Clients, welche den Dienst konsumieren. Sehr oft kommt
+                    dabei ein synchrones, den Client blockierendes Request/Reply-Verfahren zum Einsatz, das
+                    besonders einfach zu programmieren ist. Technisch gesehen ist dies aber kein Muss, da
+                    Sockets prinzipiell jede Kommunikationsreihenfolge zulassen.
                 </p>
                 <div class="d-flex justify-content-center">
-                    <img src="architektur-client-server.svg" alt="Skizze eines Servers und dreier Clients" style="height: 18em; max-width: 100%; margin-bottom: 2em;" />
+                    <img src="architektur-client-server.svg" alt="Skizze eines Servers und dreier Clients" style="max-height: 18em; max-width: 100%; margin-bottom: 2em;" />
                 </div>
 
                 <h2>Fallbeispiele</h2>
@@ -3413,7 +3408,7 @@
                             ✔️
                         </td>
                         <td>
-                            Zentrale Quellcodeverwaltung mit einem Git-Server
+                            Zentrale Quellcodeverwaltung mit Subversion
                         </td>
                     </tr>
                     <tr>
@@ -3428,42 +3423,16 @@
             </article>
             <aside>
                 <p>
-                    Mehr Anwendungen als man denkt nutzen tatsächlich nur eine einfache Client/Server-Architektur
-                    mit nur einem Server. Es handelt sich dabei sozusagen um die einfachste Art einer verteilten
-                    Anwendung, die man überhaupt schreiben kann. 🐈 In vielen Fällen reicht dies auch völlig aus,
-                    beispielsweise, wenn einfach nur eine bisher lokale Anwendung für mehrere Benutzer zur Verfügung
-                    gestellt werden soll.
+                    Sehr viele Anwendungen nutzen tatsächlich nur eine ganz einfache Client/Server-Architektur
+                    mit einem Server und einer Art von Client. Es handelt sich dabei um die einfachste Art
+                    verteilter Anwendungen, die man überhaupt schreiben kann. 🐈 In vielen Fällen reicht dies
+                    auch völlig aus, beispielsweise, wenn eine bisher lokale Anwendung für entfernte Benutzer
+                    verfügbar gemacht werden soll. Hinsichtlich der Programmierung gilt, dass derartige Anwendungen
+                    sehr häufig komplett ohne helfende Frameworks sondern nur auf Basis der eingebauten Socket API
+                    des Betriebssystems realisiert werden, um kein Übertragungsvolumen zu verschenken und um sich
+                    nicht von fremden Softwareanbietern abhängig zu machen. Falls es sich um eine Webanwendung handelt,
+                    werden aus dem Browser heraus stattdessen jedoch auch oft AJAX- oder Websocket-Aufrufe verwendet.
                 </p>
-                <p>
-                    Hinsichtlich der Programmierung gilt, dass derartige Anwendungen sehr häufig komplett ohne
-                    helfende Frameworks sondern nur auf Basis der eingebauten Socket API des Betriebssystems
-                    realisiert werden, um kein Übertragungsvolumen zu verschenken und um sich nicht von fremden
-                    Softwareanbietern abhängig zu machen. Falls es sich um eine Webanwendung handelt, werden aus
-                    dem Browser heraus stattdessen jedoch auch oft AJAX- oder Websocket-Aufrufe verwendet.
-                </p>
-                <p>
-                    Mögliche Fallbeispiele könnten sein:
-                </p>
-                <ul>
-                    <li>
-                        Browser und Webserver im World Wide Web
-                    </li>
-                    <li>
-                        Browser App mit Zugriff auf den Server via Websockets
-                    </li>
-                    <li>
-                        Wartungszugang auf einen Rechner per Secure Shell
-                    </li>
-                    <li>
-                        Zugriff auf ein E-Mailpostfach mit IMAP
-                    </li>
-                    <li>
-                        Zentrale Quellcodeverwaltung mit einem Git-Server
-                    </li>
-                    <li>
-                        WebDAV-Zugriff auf einen geteilten Onlineordner
-                    </li>
-                </ul>
             </aside>
         </section>
 
@@ -3482,7 +3451,7 @@
                                 aria-controls = "schichten-typische3"
                                 aria-expanded = "true"
                             >
-                                3-Schichtenarchitektur
+                                Dreischichtenarchitektur
                             </a>
                         </li>
                         <li class="nav-item">
@@ -3494,12 +3463,12 @@
                                 role          = "tab"
                                 aria-controls = "schichten-reiter2"
                             >
-                                4-Schichtenarchitektur
+                                Vierschichtenarchitektur
                             </a>
                         </li>
                     </ul>
                     <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
-                        <!-- 3-Schichtenarchitektur -->
+                        <!-- Dreischichtenarchitektur -->
                         <div
                             class           = "tab-pane fade show active"
                             id              = "schichten-typische3"
@@ -3508,14 +3477,14 @@
                         >
                             <h2>Beschreibung</h2>
                             <p style="margin-bottom: 2em;">
-                                Hierbei handelt es sich ebenfalls um eine Client-/Server-Architektur, jedoch greift der Server zusätzlich
+                                Hierbei handelt es sich ebenfalls um eine Client/Server-Architektur, jedoch greift der Server zusätzlich
                                 auf eine Datenbank zu. Client, Server und Datenbank werden daher den drei Schichten <b>Darstellung</b>,
                                 <b>Anwendungslogik</b> und <b>Datenhaltung</b> zugeordnet. Für die Darstellung wurden früher ausschließlich
-                                native Clients verwendet, die heute zunehmend von Weboberflächen verdrängt werden. Die Schichten für die
-                                Anwendungslogik und Datenhaltung können hingegen auch mehrere Server umfassen.
+                                native Clients verwendet, die heute zunehmend von Webanwendungen und mobilen Apps verdrängt werden. Die
+                                Schichten für die Anwendungslogik und Datenhaltung können hingegen auch mehrere Server umfassen.
                             </p>
                             <div class="d-flex justify-content-center">
-                                <img src="architektur-3schichten.svg" alt="Skizze einer 3-Schichtenarchitektur" style="height: 16em; max-width: 100%; margin-bottom: 2em;" />
+                                <img src="architektur-3schichten.svg" alt="Skizze einer Dreischichtenarchitektur" style="max-height: 16em; max-width: 100%; margin-bottom: 2em;" />
                             </div>
 
                             <h2>Fallbeispiele</h2>
@@ -3554,7 +3523,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <!-- 4-Schichtenarchitektur -->
+                        <!-- Vierschichtenarchitektur -->
                         <div
                             class           = "tab-pane fade"
                             id              = "schichten-reiter2"
@@ -3563,12 +3532,12 @@
                         >
                             <h2>Beschreibung</h2>
                             <p style="margin-bottom: 2em;">
-                                Hierbei handelt es sich um eine Variation der 3-Schichtenarchitektur, bei der die mittlere Sicht
-                                in eine <b>Präsentations-</b> und eine <b>Anwendungsschicht</b> aufgeteilt wurde. Dieses Modell
-                                findet man häufig bei ERP-Systemen, die nachträglich um weitere Clienttechnologien erweitert wurden.
+                                Hierbei handelt es sich um eine Variation der Dreischichtenarchitektur, bei der die mittlere Sicht
+                                in eine <b>Präsentations-</b> und eine <b>Anwendungsschicht</b> zerlegt wurde. Dieses Modell
+                                findet man häufig bei ERP-Systemen, die mehrere Clienttechnologien unterstützen müssen.
                             </p>
                             <div class="d-flex justify-content-center">
-                                <img src="architektur-4schichten.svg" alt="Skizze einer 3-Schichtenarchitektur" style="height: 16em; max-width: 100%; margin-bottom: 2em;" />
+                                <img src="architektur-4schichten.svg" alt="Skizze einer Dreischichtenarchitektur" style="max-height: 16em; max-width: 100%; margin-bottom: 2em;" />
                             </div>
 
                             <h2>Fallbeispiele</h2>
@@ -3596,10 +3565,10 @@
             </article>
             <aside>
                 <p>
-                    Große Informationssysteme wie die meisten CRM- und ERP-Systeme nutzen häufig eine ausgefeiltere Variante
-                    der Client-/Server-Architektur. Anstatt alle Funktionen auf einem zentralen Server zu vereinen nutzt der
-                    Server im Hintergrund einen Datenbankserver für die Datenhaltung. Der vorgeschaltete Server hat dann nur
-                    noch die Aufgabe, die fachlichen Anwendungsfunktionen auszuführen, ohne sich mit der Speicherung der Daten
+                    Große Informationssysteme, wie die meisten CRM- und ERP-Systeme, nutzen häufig eine ausgefeiltere Variante
+                    der Client/Server-Architektur. Anstatt alle Funktionen auf einem zentralen Server zu vereinen nutzt der
+                    Server mindestens einen separaten Datenbankserver für die Datenhaltung. Der vorgeschaltete Server hat dann
+                    nur noch die Aufgabe, die fachlichen Anwendungsfunktionen auszuführen, ohne sich mit der Speicherung der Daten
                     beschäftigen zu müssen. Dadurch besteht dann auch die Möglichkeit, sowohl auf Datenbankseite als auch auf
                     Seite des Anwendungsservers eine Lastverteilung über mehrere Instanzen aufzusetzen, oder unterschiedliche
                     Teilfunktionen auf unterschiedliche Server auszulagern. Gedanklich teilt man das System daher in die drei
@@ -3613,7 +3582,7 @@
                     den Datenbanken dann die Möglichkeit gegeben, ausführbaren Programmcode zu speichern (sogenannte Stored
                     Procedures), so dass immer mehr Funktionen von den Clients in die Datenbanken gewandert sind. Als das dann
                     irgendwann nicht mehr handhabbar war, wurde die Anwendungslogik aus den Datenbanken ausgelagert, wodurch
-                    die heute bekannte <b>3-Schichtenarchitektur</b> hervorgegangen ist.
+                    die heute bekannte <b>Dreischichtenarchitektur</b> hervorgegangen ist.
                 </p>
                 <p>
                     Da der Client seither nur noch für die Darstellung zuständig ist, wird er heute immer der Darstellungsschicht
@@ -3622,7 +3591,7 @@
                     Fall, wenn eine Altanwendung um weitere Clienttechnologien wie zum Beispiel eine Weboberfläche oder mobile
                     Apps erweitert wurde. Die Server der Präsentationsschicht übernehmen dann die Aufgabe, die vom Anwendungsserver
                     zurückgelieferten Daten für den jeweiligen Client passend aufzubereiten. In diesem Fall spricht man von einer
-                    <b>4-Schichtenarchitektur</b>.
+                    <b>Vierschichtenarchitektur</b>.
                 </p>
             </aside>
         </section>
@@ -3674,7 +3643,7 @@
                                 Anfragen weiterleitet oder selbst beantwortet.
                             </p>
                             <div class="d-flex justify-content-center">
-                                <img src="proxy-clientseitig.png" alt="Architekturskizze mit clientseitigem Proxy" style="height: 16em; max-width: 100%; margin-bottom: 2em;" />
+                                <img src="proxy-clientseitig.png" alt="Architekturskizze mit clientseitigem Proxy" style="max-height: 16em; max-width: 100%; margin-bottom: 2em;" />
                             </div>
 
                             <h2>Anwendungsbeispiele</h2>
@@ -3684,7 +3653,7 @@
                                         ✔️
                                     </td>
                                     <td>
-                                        Steigerung der Performance durch Cachen häufig angefragter Daten
+                                        Steigerung der Performance durch Caching häufig angefragter Daten
                                     </td>
                                 </tr>
                                 <tr>
@@ -3719,7 +3688,7 @@
                                 Inhalte zu cachen oder eine transparente Lastverteilung vorzunehmen.
                             </p>
                             <div class="d-flex justify-content-center">
-                                <img src="proxy-serverseitig.png" alt="Architekturskizze mit serverseitigem Proxy" style="height: 16em; max-width: 100%; margin-bottom: 2em;" />
+                                <img src="proxy-serverseitig.png" alt="Architekturskizze mit serverseitigem Proxy" style="max-height: 16em; max-width: 100%; margin-bottom: 2em;" />
                             </div>
 
                             <h2>Anwendungsbeispiele</h2>
@@ -3729,7 +3698,7 @@
                                         ✔️
                                     </td>
                                     <td>
-                                        Steigerung der Performance durch Cachen häufig angefragter Daten
+                                        Steigerung der Performance durch Caching häufig angefragter Daten
                                     </td>
                                 </tr>
                                 <tr>
@@ -3804,6 +3773,12 @@
                     Proxyserver geleitet wird. Serverseitig gehören die Entlastung kritischer Server durch vorgeschaltete Caches sowie eine
                     transparente Lastverteilung zu den häufigsten Anwendungsfällen.
                 </p>
+                <p>
+                    Anzumerken ist, dass der Einsatz von Proxyservern kein eigenes Architekturmodell begründet. Prinzipiell lassen
+                    sich die hier gezeigten Konfigurationen mit jedem Architekturmodell realisieren. Beispielsweise werden die
+                    Anwendungsserver einer Drei- oder Vierschichtenarchitektur sehr häufig mehrfach redundant ausgelegt und mit
+                    einem vorgeschalteten Reverse Proxy versehen, um eine Lastverteilung zu implementieren.
+                </p>
             </aside>
         </section>
 
@@ -3813,12 +3788,12 @@
                 <h2>Beschreibung</h2>
                 <p>
                     Microservices zerlegen eine große, monolithische Anwendung in viele kleine Teilanwendungen. Jeder Microservice hat
-                    ein klar umrissenes Aufgabengebiet, besitzt eine gut dokumentierte und versionierte Schnittstelle und wird von einem
-                    eigenen Team entwickelt und betrieben. Entwicklung, Test und Betrieb sind sehr stark automatisiert. Microservices
-                    eignen sich daher eher für große Firmen mit mehreren, unabhängigen Entwicklungsmannschaften.
+                    ein klar umrissenes Aufgabengebiet, besitzt eine gut dokumentierte und versionierte Schnittstelle und wird in der
+                    Regel von einem eigenen Team entwickelt und betrieben. Entwicklung, Test und Betrieb sind sehr stark automatisiert.
+                    Microservices eignen sich daher oft für große Firmen mit mehreren, unabhängigen Entwicklungsmannschaften.
                 </p>
                 <div class="d-flex justify-content-center">
-                    <img src="microservices.svg" alt="Skizze einer Microservicearchitektur" style="height: 26em; max-width: 100%;" />
+                    <img src="microservices.svg" alt="Skizze einer Microservicearchitektur" style="max-height: 26em; max-width: 100%;" />
                 </div>
 
                 <h2>Fallbeispiele</h2>
@@ -3843,14 +3818,13 @@
             </article>
             <aside>
                 <p>
-                    Auf der Folie zuvor hast du eben die 3-Schichtenarchitektur kennengelernt. Es handelt sich dabei
+                    Wenige Folien zuvor wurde die Dreischichtenarchitektur vorgestellt. Es handelt sich dabei
                     um einen bewährten Ansatz, der vielmals zu guten Ergebnissen und einer sauberen Gesamtarchitektur
                     geführt hat. Allerdings nur solange, wie die Anwendung eine gewisse Maximalgröße nicht überschritten
                     hatte und die Rahmenbedingungen innerhalb des Entwicklerteams es zuließen. Denn die klassische
-                    3-Schichtenarchitektur, wie sie ja gerade von den Applikationsservern favorisiert wird, neigt dazu,
-                    sämmtliche Funktionen einer Anwendung in einem großen, monolithischen Monsterserver zu vereinen. 👾
-                    Für viele Anwendungen und viele Teams ist das genau der richtige Ansatz. Ab einer gewissen Größe
-                    lohnt es sich aber, die Architektur nochmal zu hinterfragen.
+                    Dreischichtenarchitektur neigt dazu, sämtliche Funktionen einer Anwendung in einem großen, monolithischen
+                    Monsterserver zu vereinen. 👾 Für viele Anwendungen und viele Teams ist das genau der richtige Ansatz.
+                    Ab einer gewissen Größe lohnt es sich aber, die Architektur nochmal zu hinterfragen.
                 </p>
                 <p>
                     Die generelle Trennung zwischen Anwendungslogik und Datenhaltung ist sicher keine schlechte Idee,
@@ -3908,26 +3882,24 @@
                     nie genannt hat.
                 </p>
                 <p>
-                    Auf der Folie siehst du, dass die einzelnen Microservices meist nach einer vereinfachten 2-Schichtenarchitektur
-                    aufgebaut sind. Der Grund hierfür ist, dass Microservices keine Benutzeroberfläche besitzen und daher die
-                    Präsentationsschicht wegfällt. Stattdessen bieten Microservices einfach nur eine öffentliche Schnittstelle,
-                    zum Beispiel in Form von Webservices, über die sie aufgerufen werden können. Die Aufgabe, alle Services zu einer
-                    einheitlichen Oberfläche zu vereinen, obliegt dann einem vorgeschalteten Frontserver¹, der die eigentliche
-                    Weboberfläche (falls eine Weboberfläche genutzt wird) beinhaltet und alle Services in der richtigen Reihenfolge
-                    aufrufen kann. Er ist dabei so intelligent, dass die Weboberfläche auch dann noch funktioniert, wenn einzelne
-                    Microservices ausgefallen sind oder nur sehr langsam reagieren.
+                    Microservices besitzen in der Regel keine eigene Benutzeroberfläche (oder wenn, dann nur eine interne
+                    Benutzeroberfläche zur Administration) und können daher meistens als vereinfachte Zweischichtenarchitektur
+                    implementiert werden. In jedem Fall besitzen sie jedoch eine öffentliche Schnittstelle, die sehr häufig
+                    durch REST-Webservices gegeben ist, um von den anderen Microservices sowie der Frontend-App aufgerufen
+                    werden zu können. Ein vorgeschaltetes API-Gateway fungiert dabei als serverseitiger Reverse Proxy, um
+                    die Verwender der Microservices von den eigentichen Serviceimplementierungen zu entkoppeln und nach außen
+                    Hin den Anschein einer zusammengehörenden Anwendung zu wahren.
                 </p>
                 <p>
-                    <small>
-                        ¹ Wichtig anzumerken ist, dass es sich beim Frontserver weder um einen Peer noch um einen Proxy handelt.
-                        Denn in Richtung der Clients könnte er beispielsweise eine HTTP-Schnittstelle für die Weboberfläche bieten
-                        und auf der anderen Seite zum Beispiel RPC nutzen, um die Funktionen der Microservices aufzurufen.
-                        Dies unterscheidet ihn von einem gewöhnlichen Proxy, der zum Einen ganz andere Aufgaben hat und zum Anderen
-                        in beide Richtungen immer „dieselbe Sprache” sprechen würde.
-                    </small>
+                    Immer mehr Firmen gehen inzwischen dazu über, die über das API-Gateway integrierten Dienste auch anderen
+                    Firmen und Kunden zugänglich zu machen. Zusätzlich bieten aber auch oft noch eine eigene Webanwendung,
+                    über welche die Dienste auch für Endkunden nutzbar sind, wenn der Sinn und Zweck der Microservices nicht
+                    ohnehin nur darin besteht, das Backend dieser Webanwendung bereitzustellen. Die Webanewndung wird hierfür
+                    einfach über einen separaten Webserver, manchmal auch Frontserver genannt, bereitgestellt. Dieser greift
+                    dann ebenfalls über das API-Gateway auf die einzelnen Backend-Dienste zu.
                 </p>
                 <p>
-                    Insgesamt ergibt sich somit eine Architektur, die viele der Anforderungen von <a href="#9">Folie 9</a> erfüllen kann,
+                    Insgesamt ermöglichen Microservies eine Architektur, die viele der Anforderungen von <a href="#9">Folie 9</a> erfüllen kann,
                     beispielsweise da sie einfach erweiterbar und jeder Microservice unabhängig von den anderen skalierbar ist. Dennoch handelt
                     es sich um keinen <a href="https://www.youtube.com/watch?v=UM_mMtyz6ig" target="_blank">heiligen Gral</a>. Gerade, wenn die
                     organisatorischen Voraussetzungen, wie das Vorhandensein mehrerer, unabhängiger Entwicklerteams, eine hohe Testautomatisierung
@@ -3940,10 +3912,232 @@
         <section>
             <h1>Asynchroner Nachrichtenaustausch</h1>
             <article>
-                TODO
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "pubsub-grundmodell-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#pubsub-grundmodell"
+                                role          = "tab"
+                                aria-controls = "pubsub-grundmodell"
+                                aria-expanded = "true"
+                            >
+                                Grundmodell
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "pubsub-iot-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#pubsub-iot"
+                                role          = "tab"
+                                aria-controls = "pubsub-iot"
+                            >
+                                IoT-Gesamtarchitektur
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Grundmodell -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "pubsub-grundmodell"
+                            role            = "tabpanel"
+                            aria-labelledby = "pubsub-grundmodell-tab"
+                        >
+                            <h2>Beschreibung</h2>
+                            <p style="margin-bottom: 2em;">
+                                Beim asynchronen Nachrichtenaustausch wird nicht zwischen Clients und Servern sondern zwischen
+                                Sendern und Empfängern unterschieden, die sich über einen Message Broker gegenseitig Nachrichten
+                                schicken. Technisch gesehen sind die Sender und Empfänger zwar Clientprogramme, die sich mit dem
+                                Message Broker verbinden, für den Nachrichtenaustausch ist dies aber nebensächlich. Konzeptionell
+                                wird stattdessen jede Nachricht an eine Warteschlange gesendet, ohne dass der Sender weiß, ob
+                                und wie viele Empfänger die Warteschlange überwachen. Deshalb erwartet der Sender in der Regel
+                                auch keine direkte Antwort, sondern verlässt sich darauf, dass seine Nachrichten zeitversetzt
+                                von den zuständigen Empfängern abgearbeitet werden.
+                            </p>
+                            <div class="d-flex justify-content-center">
+                                <img src="pubsub-allgemein.png" alt="Architekturskizze mit einem zentralen Message Broker" style="max-height: 20em; max-width: 100%; margin-bottom: 2em;" />
+                            </div>
+
+                            <h2>Anwendungsbeispiele</h2>
+                            <table style="margin-bottom: 1em;">
+                                <tr>
+                                    <td style="font-weight: bold; color: navy; padding-right: 0.5em;">
+                                        ✔️
+                                    </td>
+                                    <td>
+                                        Austausch von Messwerten und Steuerbefehlen in IoT-Anwendungen
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; color: navy; padding-right: 0.5em;">
+                                        ✔️
+                                    </td>
+                                    <td>
+                                        Vereinfachung bestehender Systemarchitekturen durch physische Entkopplung
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; color: navy; padding-right: 0.5em;">
+                                        ✔️
+                                    </td>
+                                    <td>
+                                        Zeitliche Entkopplung performancekritischer Systemkomponenten
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; color: navy; padding-right: 0.5em;">
+                                        ✔️
+                                    </td>
+                                    <td>
+                                        Zeitgleiche Kommunikation mit mehreren Sendern und Empfängern
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; color: navy; padding-right: 0.5em;">
+                                        ✔️
+                                    </td>
+                                    <td>
+                                        Nutzung des Message Brokers zur automatischen Lastverteilung
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- IoT-Gesamtarchitektur -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "pubsub-iot"
+                            role            = "tabpanel"
+                            aria-labelledby = "pubsub-iot-tab"
+                        >
+                            <h2>Beschreibung</h2>
+                            <p style="margin-bottom: 2em;">
+                                In größeren IoT-Installation kann es vorkommen, dass nur die Anbindung der IoT-Devices über den Message Broker
+                                erfolgt. Eine übliche Architektur mit mobilen Apps und Webanwendungen zur Verwaltung der Devices und Auswertung
+                                der gesammelten Daten besteht deshalb häufig aus drei Schichten für Frontent (Benutzeroberfläche), Backend
+                                (Anwendungslogik) und die IoT-Devices. Frontend und Backend kommunizieren dann üblicherweise über REST-Webservices
+                                und das Backend mit den IoT-Devices über das MQTT-Protokoll.
+                            </p>
+                            <div class="d-flex justify-content-center">
+                                <img src="pubsub-iot.png" alt="Skizze einer typischen IoT-Architektur" style="max-height: 18em; max-width: 100%; margin-bottom: 1em;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
-                TODO
+                <h4 class="dhbw-lightblue">Nachteile synchroner Kommunikationsmodelle</h4>
+                <p>
+                    Alle bisher gezeigten Architekturmodelle beruhen auf der Annahme, dass sich alle Anwendungskomponenten
+                    einer verteilten Anwendung als Client oder Server kategorisieren lassen, also dass jede Komponente
+                    entweder Dienste bereitstellt oder diese konsumiert. 🥤 Jeder Client muss dabei zu jedem Server, mit dem
+                    Daten ausgetauscht werden sollen, eine Punkt-zu-Punkt-Verbindung, die auch als ein Kommunikationskanal
+                    mit zwei Teilnehmern betrachtet werden kann, herstellen. Sehr häufig kann dann noch die Einschränkung
+                    hinzu, dass der Datenaustausch über den Kanal nach einem Request/Reply-Verfahren erfolgt, wodurch die
+                    Implementierung meist vereinfacht werden soll. Derartige Architekturen eignen sich daher am besten für
+                    Anwendungen mit einer überschaubaren Anzahl an Komponenten oder einfachen Kommunikationsanforderungen. 🙊
+                    In vielen Fällen kann die enge Kopplung der Clients und Server aber auch große Nachteile bringen:
+                </p>
+                <ul>
+                    <li>
+                        Jeglicher Datenaustausch erfolgt immer zwischen zwei Teilnehmern. Sollen dieselben Daten an mehrere
+                        Empfänger gesendet werden, müssen die Daten hierfür über getrennte Verbindungen mehrfach versendet
+                        werden.
+                    </li>
+                    <li>
+                        In vielen Fällen ist es für den Sender einer Nachricht gar nicht wichtig, dass diese sofort verarbeitet
+                        wird. Erfolgt die Kommunikation nach dem Request/Reply-Verfahren, kann der Client seine Arbeit erst
+                        fortführen, nachdem er eine Antwort vom Server erhalten hat. Erfolgt die Antwort deshalb erst, nachdem
+                        die Nachricht komplett verarbeitet wurde, kann dies die Performance des Gesamtsystems deutlich reduzieren.
+                    </li>
+                    <li>
+                        Durch geschickte Programmierung lassen sich die eben genannten Probleme auch bei einem synchronen
+                        Nachrichtenaustausch umgehen. Dies erfordert jedoch deutlich komplexeren Programmcode auf beiden Seiten.
+                    </li>
+                    <li>
+                        Der Verbindungsaufbau mit einem Server klappt natürlich nur, wenn der gerufene Rechner erreichbar
+                        und der gewünschte Serverdienst aktiv ist. Ist der Dienst kurzfristig nicht verfügbar, gibt es keine
+                        einfache Möglichkeit, eine gewünschte Anfrage zwischenzuspeichern und zeitversetzt an den Server zu
+                        schicken.
+                    </li>
+                    <li>
+                        Die Systemarchitektur wird umso komplexer, je mehr Komponenten daran beteiligt sind. Dies kann den
+                        Aufwand für Wartung und Betrieb der Komponenten im schlimmsten Fall quadratisch ansteigen lassen.
+                    </li>
+                </ul>
+
+                <h4 class="dhbw-lightblue">Grundmodell der asynchronen Kommunikation</h4>
+                <p>
+                    Asynchrone Kommunikationsmodelle umgehen die eben genannten Nachteile, in dem sie jeglichen Datenaustausch
+                    über einen zentralen <b>Message Broker</b> abwickeln. Anstelle vieler kleiner Punkt-zu-Punkt-Verbindungen
+                    zwischen den Clients und Servern trit hier jeweils eine einzige Verbindung der beteiligten Programme mit dem
+                    Message Broker, wodurch die Systemarchitektur entscheidend vereinfacht wird. In diesem Szenario übernimmt
+                    der Message Broker die Rolle eines Servers, mit dem sich alle anderen Programme als Clients verbinden.
+                    Für den eigentlichen Datenaustausch ist dies allerdings nebensächlich, da bei den beteiligten Programmen
+                    nicht mehr nach Clients und Servern sondern nach <b>Sendern und Empfängern</b> von Nachrichten an den
+                    Message Broker unterschieden wird. Selbstverständlich kann ein Programm auch beides gleichzeitig sein. 👫
+                </p>
+                <p>
+                    Wesentliches Merkmal jegliche Kommunikation ist, dass sich die Sender und Empfänger der Nachrichten gar
+                    nicht kennen, sondern über eine oder mehrere Warteschlangen zeitlich und physisch entkoppelt werden.
+                    Jede Nachricht muss hierfür an eine Warteschlange auf dem Message Broker adressiert werden, in welche
+                    sie nach dem FIFO-Prinzip eingereiht wird. Direkt danach kann der Sender seine Verarbeitung fortführen,
+                    weshalb das Modell auch <b>asynchrone Kommunikation</b> genannt wird. Denn dem Sender ist in der Regel
+                    nicht bekannt, ob und wie viele Empfänger eine Warteschlange überwachen und wann die darin gesammelten
+                    Nachrichten verarbeitet werden. Stattdessen verlässt sich der Sender einfach darauf, dass seine Nachrichten
+                    die richtigen Empfänger irgendwann erreichen wird.
+                </p>
+                <p>
+                    Form und Inhalt der Nachrichten sowie die Namen der Warteschlangen sind in allen gängigen Implementierungen
+                    durch die Anwendung frei wählbar. Jedoch unterscheiden viele Message Broker zwischen Broadcast- (auch Topic
+                    genannt) und Point-to-Point-Warteschlangen (auch Queue genannt):
+                </p>
+                <ul>
+                    <li>
+                        <b>Broadcast-Warteschlangen:</b> Diese können von beliebig vielen Empfängern überwacht werden, wobei
+                        jede Nachricht an alle Empfänger weitergeleitet wird. Die Nachrichten können aber auch verloren gehen,
+                        wenn zu einem bestimmten Zeitpunkt kein Empfänger eine bestimmte Warteschlange überwacht, da die
+                        Nachrichten in diesem Fall nicht zwischengespeichert werden.
+                    </li>
+                    <li>
+                        <b>Point-to-Point-Warteschlangen:</b> Können ebenfalls von beliebig vielen Empfängern überwacht werden,
+                        wobei jede Nachricht immer nur an einen Empfänger weitergeleitet wird. Es wird davon ausgegangen, dass
+                        prinzipiell jeder Empfänger in der Lage ist, eine Nachricht vollständig zu verarbeiten, so dass sie nur
+                        an einen Empfänger tatsächlich zugestellt werden muss. Auf diese Weise entsteht eine automatische
+                        Lastverteilung zwischen allen Empfängern.
+                    </li>
+                </ul>
+
+                <h4 class="dhbw-lightblue">Anwendung im IoT-Kontext</h4>
+                <p>
+                    In kleineren Anwendungen kommt es häufig vor, dass tatsächlich alle Anwendungskomponenten ausschließlich
+                    über den Message Broker miteinander verknüpft werden. In größeren IoT-Installationen dient der Message
+                    Broker hingegen oft nur der Anbindung der IoT-Devices an eine ansonsten klassische Anwendungsarchitektur.
+                    Sehr weit verbreitet sind daher IoT-Anwendungen mit einer oder mehrere Mobile und Web-Anwendungen zur
+                    Verwaltung beliebig vieler IoT-Devices und Auswertung der gesammelten Daten. Diese Anwendungen sind dann
+                    meistens in folgende drei Schichten aufgeteilt:
+                </p>
+                <ul>
+                    <li>
+                        <b>Frontend:</b> Web/Mobile Apps für die Benutzeroberfläche
+                    </li>
+                    <li>
+                        <b>Backend:</b> Klassische Schichten-Architektur für die Anwendungslogik
+                    </li>
+                    <li>
+                        <b>IoT-Devices:</b> Über einen Message Broker angebundene Geräte mit eingebauten Sensoren und Aktoren
+                        zur Interaktion mit ihrer Umwelt
+                    </li>
+                </ul>
+                <p>
+                    Frontend und Backend kommunizieren in diesem Fall sehr häufig über so genannte REST-Webservices (also über
+                    HTTP und JSON) und das Backend mit den IoT-Devices über das MQTT-Protokoll. Beide Techniken werden wir in
+                    den Folgekapiteln der Vorlesung deshalb weiter vertiefen.
+                </p>
             </aside>
         </section>
 
@@ -4035,10 +4229,10 @@
                     </li>
                 </ol>
 
-                <h2>Aufgabe 3.3: 3-Schichtenarchitektur</h2>
+                <h2>Aufgabe 3.3: Dreischichtenarchitektur</h2>
 
                 <p>
-                    a) Welche der folgenden Schichten gehören zur 3-Schichtenarchitektur?
+                    a) Welche der folgenden Schichten gehören zur Dreischichtenarchitektur?
                 </p>
                 <ol class="dhbw-liste-mit-viel-text">
                     <li>
@@ -4062,7 +4256,7 @@
                 </ol>
 
                 <p>
-                    b) Welche der folgenden Schichten gehören zur 4-Schichtenarchitektur?
+                    b) Welche der folgenden Schichten gehören zur Vierschichtenarchitektur?
                 </p>
                 <ol class="dhbw-liste-mit-viel-text">
                     <li>
@@ -4088,7 +4282,7 @@
                 <h2>Aufgabe 3.4: Microservices</h2>
 
                 <p>
-                    a) Jeder Microservice entspricht einer 3-Schichtenarchitektur?
+                    a) Jeder Microservice entspricht einer Dreischichtenarchitektur?
                 </p>
                 <ol class="dhbw-liste-mit-viel-text">
                     <li>
@@ -4147,15 +4341,88 @@
                     </li>
                 </ol>
 
+                <h2>Aufgabe 3.5: Asynchrone Kommunikation</h2>
+
+                <p>
+                    a) Beim asynchronen Modell wird zwischen Sendern und Empfängern unterschieden. Ein
+                    Sender ist dabei immer ein Client und ein Emfpänger immer ein Server.
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Wahr
+                    </li>
+                    <li>
+                        Falsch
+                    </li>
+                </ol>
+
+                <p>
+                    b) Welche der folgenden Ausagen über asynchrone Kommunikation sind korrekt?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Jegliche Kommunikation wird über den Message Broker abgewickelt, der die Sender und
+                        Empfänger auf diese Weise voneinander entkoppelt.
+                    </li>
+                    <li>
+                        Die Kommunikation erfolgt immer nach einem Request/Reply-Verfahren, in dem jede Nachricht
+                        eines Senders mit einer Antwortnachricht eines Empfängers quitiert wird.
+                    </li>
+                    <li>
+                        Form und Inhalt der gesendeten Nachrichten können von der Anwendung meist frei definiert werden.
+                    </li>
+                    <li>
+                        Jede Nachricht wird immer an eine Warteschlange gesendwet, ohne dass der Sender weiß, ob und
+                        wie viele Empfänger diese überwachen.
+                    </li>
+                </ol>
+
+                <p>
+                    c) Was passiert mit einer Nachricht, die an eine Broadcast-Warteschlange gesendet wird?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Aus allen Empfängern, welche die Warteschlange überwachen, wird einer ausgewählt, dem
+                        die Nachricht weitergeleitet wird. Dies beruht auf der Annahme, dass jeder Empfänger
+                        die Nachricht vollständig bearbeiten könnte und daher eine Lastverteilung umgesetzt
+                        werden kann. Die Nachrichten werden bei Bedarf in der Warteschlange zwischengespeichert,
+                        falls aktuell kein Empfänger verfügbar ist.
+                    </li>
+                    <li>
+                        Die Nachricht wird an alle Empfänger weitergeleitet, die die Warteschlange zum aktuellen
+                        Zeitpunkt überwachen. Haben keine Empfänger die entsprechende Warteschlange aboniert,
+                        geht die Nachricht jedoch verloren.
+                    </li>
+                </ol>
+
+                <p>
+                    d) Was passiert mit einer Nachricht, die an eine Point-to-Point-Warteschlange gesendet wird?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Aus allen Empfängern, welche die Warteschlange überwachen, wird einer ausgewählt, dem
+                        die Nachricht weitergeleitet wird. Dies beruht auf der Annahme, dass jeder Empfänger
+                        die Nachricht vollständig bearbeiten könnte und daher eine Lastverteilung umgesetzt
+                        werden kann. Die Nachrichten werden bei Bedarf in der Warteschlange zwischengespeichert,
+                        falls aktuell kein Empfänger verfügbar ist.
+                    </li>
+                    <li>
+                        Die Nachricht wird an alle Empfänger weitergeleitet, die die Warteschlange zum aktuellen
+                        Zeitpunkt überwachen. Haben keine Empfänger die entsprechende Warteschlange aboniert,
+                        geht die Nachricht jedoch verloren.
+                    </li>
+                </ol>
+
                 <hr />
 
                 <p style="transform: scaleY(-1) scaleX(-1); display: inline-block;">
                     <small>
                         <b>Lösung:</b><br />
                         Aufgabe 3.1: 2, 2, 1 + 3 <br />
-                        Aufgabe 3.2: 3, 2;<br />
-                        Aufgabe 3.3: 1 + 3 + 6, 2 + 3 + 5 + 6;<br />
-                        Aufgabe 3.4: 2, 1, 1 + 2 + 4, 2
+                        Aufgabe 3.2: 3, 2; <br />
+                        Aufgabe 3.3: 1 + 3 + 6, 2 + 3 + 5 + 6; <br />
+                        Aufgabe 3.4: 2, 1, 1 + 2 + 4, 2 <br />
+                        Aufgabe 3.5: 2, 1 + 3 + 4, 2, 1
                     </small>
                 </p>
             </article>
