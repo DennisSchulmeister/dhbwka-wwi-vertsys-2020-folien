@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>REST API-Entwicklung</title>
+
+        <link rel="shortcut icon" href="../favicon.svg" />
+        <link rel="stylesheet" href="../style.css" />
+        <script src="../learning-slides.bundle.js"></script>
+    </head>
+    <body class="slides invisible" data-title="REST API-Entwicklung" tabindex="0">
+        <header>
+            <h2>Inhaltsverzeichnis</h2>
+            <p>
+                Klassische Webanwendungen besitzen keine Trennung zwischen Frontend und Backend,
+                sondern nutzen den Server auch zur Generierung des HTML-Codes der Benzeroberfläche. 🖌️
+                REST-Webservices erlauben uns stattdessen, Frontend und Backend getrennt voneinader
+                zu entwickeln. In diesem Kapitel lernst du wie.
+            </p>
+        </header>
+
+        <!--
+            ===================
+            Über dieses Kapitel
+            ===================
+        -->
+        <section data-chapter data-background-image="../trennfolie.jpg">
+            <h1>Über dieses Kapitel</h1>
+            <article>
+                <small>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/en/adult-break-business-caucasian-2398561/" target="_blank">Pixabay: rawpixel</a>
+                    </small>
+                </small>
+            </article>
+        </section>
+
+        <section data-background-color="rgb(210,190,210)">
+            <!--
+                TODO
+                Serverseitige Webentwicklung / Die drei Arten ...:
+                 » Unterschiede server- vs. clientseitige Webanwendung
+                 » Beispiele für rein clientseitige Webanwendungen
+            -->
+            <h1>Datenaustausch im World Wide Web</h1>
+            <article>
+                …
+            </article>
+            <aside>
+                Arthur Dent hatte schon lange keinen so schlechten Tag mehr wie den, an dem die Erde in die Luft flog. 🔥
+                Halt, Moment, Stopp. Falsches Buch. 📘 Hier geht es ja um REST-Webservices und entfernte Schnittstellen,
+                häufig auch API für Application Programming Interface genannt. …
+            </aside>
+        </section>
+
+        <section data-background-color="rgb(210,190,210)">
+            <h1>Lernziele dieser Einheit</h1>
+            <article>
+                <h3>Nach Abschluss dieser Einheit kannst du …</h3>
+                <ul>
+                    <li>
+                        den Begriff <span class="dhbw-lightblue font-weight-bold">verteiltes System</span>
+                        erklären und von ähnlichen Begriffen abgrenzen.
+                    </li>
+                </ul>
+                <span style="font-size: 240px; color: white;" class="dhbw-text-shadow" >🏁</span>
+            </article>
+            <aside>
+                <p>
+                    …
+                </p>
+            </aside>
+        </section>
+
+        <!--
+            =============================
+            REST-Webservices im Überblick
+            =============================
+        -->
+        <section data-chapter data-background-image="../../trennfolie.jpg">
+            <h1>REST-Webservices im Überblick</h1>
+            <article>
+                <small>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/en/adult-break-business-caucasian-2398561/" target="_blank">Pixabay: rawpixel</a>
+                    </small>
+                </small>
+            </article>
+        </section>
+
+        <!--
+            TODO
+            REST-Wesbervices / SOAP vs. REST:
+             » In ähnlicher Form übernehmen? REST vs. "Andere Techniken"?
+
+            REST-Wesbervices / REST-Webservices testen:
+             » Umschreiben auf Postman
+
+            REST-Webservices / Aufgaben 1 und 2
+             » Übernehmen
+
+            SOAP-Webservices
+             » HTTP + JSON = REST ?
+        -->
+
+        <section>
+            <h1>Was passiert beim Aufruf einer Webseite?</h1>
+
+            <article>
+                <style>
+                    #http-intro > div {
+                        display: inline-block;
+                        float: left;
+                        box-sizing: border-box;
+
+                        position: relative;
+                        padding-bottom: 30%;
+                    }
+
+                    #http-intro .http-intro-w3  { width: 25%; }
+                    #http-intro .http-intro-w4  { width: 34%; }
+                    #http-intro .http-intro-w6  { width: 50%; }
+                    #http-intro .http-intro-w8  { width: 66%; }
+                    #http-intro .http-intro-w12 { width: 100%; }
+
+                    #http-intro .img-thumbnail {
+                        margin-right: 0.33em;
+                        margin-bottom: 0.33em;
+                        padding: 0;
+                        overflow: hidden;
+
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+
+                        border: 1px solid rgb(214, 214, 214);
+                        border-radius: 0.3em;
+                    }
+
+                    #http-intro .img-thumbnail img {
+                        position: absolute;
+                        bottom: 0;
+                        display: block;
+                        width: 100%;
+                    }
+
+                    #http-intro .img-thumbnail p {
+                        width: 100%;
+                        padding: 0.2em;
+                    }
+
+                    .http-intro-hidden {
+                        display: none !important;
+                    }
+
+                    .http-intro-next > .img-thumbnail {
+                        background-color: rgb(223, 247, 252);
+                        color: rgb(18, 84, 116);
+                        font-size: 80%;
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        transition: filter 0.2s, box-shadow: 0.2s, opacity 0.75s;
+                    }
+
+                    .http-intro-next > .img-thumbnail:hover {
+                        filter: contrast(90%);
+                        box-shadow: 0 0 2px rgba(0,0,0,0.25);
+                        cursor: pointer;
+                    }
+
+                    @media all and (max-width: 1500px) {
+                        #http-intro > div {
+                            display: block;
+                            width: 100% !important;
+                            padding-bottom: 0;
+                            float: none;
+                        }
+
+                        #http-intro .img-thumbnail {
+                            position: relative;
+                        }
+
+                        #http-intro .img-thumbnail img {
+                            width: auto;
+                            height: 100%;
+                            position: relative;
+                        }
+                    }
+                </style>
+
+                <script>
+                let http_intro_showNext = (event, classHidden) => {
+                    let element = document.querySelector(`.${classHidden}`);
+                    if (element != null) element.classList.remove(classHidden);
+
+                    element = document.querySelector(`.${classHidden}`);
+                    if (element === null) event.target.parentNode.remove(event.target);
+                };
+                </script>
+
+                <div id="http-intro">
+                    <div class="http-intro-w8">
+                        <div class="img-thumbnail">
+                            <p>
+                                Unsere Geschichte beginnt mit einen Browser und einem Webserver.
+                            </p>
+                            <img src="http_intro_01.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w4 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Und einem Anwender, der eine URL eingibt.
+                            </p>
+                            <img src="http_intro_02.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w6 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Daraufhin baut der Browser eine Verbindung zum Server auf.
+                            </p>
+                            <img src="http_intro_03.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w6 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Und sendet ihm eine Anfrage, um die Seite abzurufen. In diesem Fall eine GET-Anfrage.
+                            </p>
+                            <img src="http_intro_04.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w12 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Der Server antwortet mit Statuscode 200 und dem Inhalt der Seite.
+                            </p>
+                            <img src="http_intro_05.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w3 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Sogleich macht sich der Browser daran die Seite darzustellen.
+                            </p>
+                            <img src="http_intro_06.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w3 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Doch halt! Die Seite enthält ja noch Stylesheets, Skripte und Bilder.
+                            </p>
+                            <img src="http_intro_07.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w6 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Diese muss der Browser alle vom Server abrufen.
+                            </p>
+                            <img src="http_intro_08.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w8 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Und der Server antwortet fleißig mit den gesuchten Dateien.
+                            </p>
+                            <img src="http_intro_09.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w4 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Am Ende ist die Seite vollständig aufgebaut und die Verbindung wird getrennt.
+                            </p>
+                            <img src="http_intro_10.svg" />
+                        </div>
+                    </div>
+
+                    <div class="http-intro-w3 http-intro-next" onclick="http_intro_showNext(event, 'http-intro-hidden')">
+                        <div class="img-thumbnail">
+                            <span style="font-size: 400%">🖼️</span>
+                            Nächstes Bild anzeigen
+                        </div>
+                    </div>
+                </div>
+
+                <p style="clear: both;">
+                    <small>
+                        <small>
+                            Bildnachweise:
+                            <a href="https://pixabay.com/de/computer-schreibtisch-modern-ger%C3%A4t-154114/" target="_blank">Pixabay: OpenClipart-Vectors</a>,
+                            <a href="https://pixabay.com/de/server-hardware-netzwerk-computer-37258/" target="_blank">Pixabay: Clker-Free-Vector-Images</a>,
+                            <a href="https://pixabay.com/de/mann-gesch%C3%A4ft-cartoon-kaufmann-1351761/" target="_blank">Pixabay: ROverhate</a>,
+                            <a href="https://pixabay.com/de/palette-farben-malerei-werkzeug-1817857/" target="_blank">Pixabay: Jsprzperez</a>
+                        </small>
+                    </small>
+                </p>
+            </article>
+            <aside>
+                <p>
+                    Erinnerst du dich noch an den Anfang der Vorlesung, als wir uns die
+                    Grundlagen des World Wide Web angeschaut haben? Dort gab es eine kleine
+                    Übersicht, welche Techniken zusammen das Web ausmachen:
+                </p>
+                <ul>
+                    <li>
+                        <b>HTML:</b> Beschreibungssprache für Webseiten und Dokumente im
+                        Web
+                    </li>
+                    <li>
+                        <b>CSS:</b> Stylesheet-Sprache zur Gestaltung der HTML-Dateien
+                    </li>
+                    <li>
+                        <b>JavaScript:</b> (Mehr oder weniger) einfache Skriptsprache
+                        für die Clientlogik
+                    </li>
+                    <li>
+                        <b>HTTP:</b> Übertragungsprotokoll für den Datenaustausch mit
+                        dem Server
+                    </li>
+                    <li>
+                        <b>WebSockets:</b> Zusätzliches, asynchrones Übertragungsprotokoll
+                    </li>
+                </ul>
+                <p>
+                    Das Meisten davon haben wir uns inzwischen genauer angeschaut, so dass
+                    du heute sicher viel besser nachvollziehen kannst, warum diese Techniken
+                    für das Web so wichtig sind. Aber halt, Moment mal. 🙋 Haben wir nicht
+                    etwas vergessen? Ach ja richtig: Der Server! Den haben wir uns ja noch
+                    gar nicht angeschaut. Und das, obwohl er für so viele Webanwendungen so
+                    unheimlich wichtig ist. Zeit also, dass wir das hier nun nachholen.
+                    Doch bevor wir das tun können, müssen wir erst eine ganz zentrale Frage
+                    beantworten¹:
+                </p>
+                <p>
+                    <i>
+                        Wie funktioniert das eigentlich, wenn der Browser eine Seite
+                        vom Server abruft?
+                    </i>
+                </p>
+                <p>
+                    Die Antwort darauf siehst du auf dieser Folie.
+                </p>
+                <p>
+                    <small>
+                        ¹ Nein, ausnahmsweise einmal nicht <a href="https://www.google.de/search?q=answer+to+life+the+universe+and+everything"
+                        target="_blank">die Frage nach dem Leben, dem Universum und dem ganzen Rest.</a>
+                        Die Antwort darauf kennen wir ja schon: 42.
+                    </small>
+                    🤖 🐬
+                </p>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Inahlt einer HTTP-Nachricht</h1>
+            <article>
+                <style>
+                    #http-nachricht1 table {
+                        color: rgb(80,80,80);
+                    }
+
+                    #http-nachricht1 td {
+                        vertical-align: top;
+                        padding: 0;
+                        padding: 0 0.3em 0 0.3em;
+                    }
+
+                    #http-nachricht1 .http-nachricht {
+                        font-family: monospace;
+                        color: black;
+                        background-color: rgb(240,240,240);
+                    }
+
+                    #http-nachricht1 .http-verb       { color: darkred; }
+                    #http-nachricht1 .http-url        { color: darkgreen; }
+                    #http-nachricht1 .http-version    { color: darkcyan; }
+                    #http-nachricht1 .http-header     { color: darkblue; }
+                    #http-nachricht1 .http-statuscode { color: darkred; }
+                    #http-nachricht1 .http-statustext { color: darkgreen; }
+                    #http-nachricht1 .http-optional   { color: red; }
+                </style>
+                <div id="http-nachricht1" style="margin-bottom: 1em;">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "http-nachricht1-anfrage-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#http-nachricht1-anfrage"
+                                role          = "tab"
+                                aria-controls = "http-nachricht1-anfrage"
+                                aria-expanded = "true"
+                            >
+                                Anfrage
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "http-nachricht1-antwort-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#http-nachricht1-antwort"
+                                role          = "tab"
+                                aria-controls = "http-nachricht1-antwort"
+                            >
+                                Antwort
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "http-nachricht1-beispiel-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#http-nachricht1-beispiel"
+                                role          = "tab"
+                                aria-controls = "http-nachricht1-beispiel"
+                            >
+                                Beispiel
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Anfrage -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "http-nachricht1-anfrage"
+                            role            = "tabpanel"
+                            aria-labelledby = "http-nachricht1-anfrage-tab"
+                        >
+                            <table>
+                                <tr>
+                                    <td>
+                                        Verb
+                                    </td>
+                                    <td>
+                                        Pfad
+                                    </td>
+                                    <td>
+                                        HTTP-Version
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="http-nachricht http-verb">
+                                        POST
+                                    </td>
+                                    <td class="http-nachricht http-url">
+                                        /feedback/save.php
+                                    </td>
+                                    <td class="http-nachricht http-version">
+                                        HTTP/1.1
+                                    </td>
+                                    <td>
+                                        Anfragezeile
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="http-nachricht http-header" colspan="3" >
+                                        Host: www.wpvs.de <br />
+                                        Content-Type: text/json <br />
+                                        Accept: text/json <br />
+                                        Connection: keep-alive <br />
+                                    </td>
+                                    <td>
+                                        Header Fields
+                                        <span class="http-optional">¹</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="http-nachricht" colspan="3">
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        Leerzeile
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="http-nachricht http-body" colspan="3">
+                                        { <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"course": "webprog", <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"year": 2017, <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"text": "Vielen Dank für diese tolle Vorlesung!" <br />
+                                        }
+                                    </td>
+                                    <td>
+                                        Request Body
+                                        <span class="http-optional">¹</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- Antwort -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "http-nachricht1-antwort"
+                            role            = "tabpanel"
+                            aria-labelledby = "http-nachricht1-antwort-tab"
+                        >
+                            <table>
+                                <tr>
+                                    <td>
+                                        HTTP-Version
+                                    </td>
+                                    <td>
+                                        Statuscode
+                                    </td>
+                                    <td>
+                                        Bezeichnung
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="http-nachricht http-version">
+                                        HTTP/1.1
+                                    </td>
+                                    <td class="http-nachricht http-statuscode">
+                                        200
+                                    </td>
+                                    <td class="http-nachricht http-statustext">
+                                        Ok
+                                    </td>
+                                    <td>
+                                        Antwortzeile
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="http-nachricht http-header" colspan="3" >
+                                        Content-Type: text/json <br />
+                                        Content-Length: 55 <br />
+                                        Date: Sun, 15 Oct 2017 20:18:17 GMT
+                                    </td>
+                                    <td>
+                                        Header Fields
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="http-nachricht" colspan="3">
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        Leerzeile
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="http-nachricht http-body" colspan="3">
+                                        { <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"type": "success", <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"message": "Feedback wurde gespeichert", <br />
+                                        }
+                                    </td>
+                                    <td>
+                                        Response Body
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- Beispiel -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "http-nachricht1-beispiel"
+                            role            = "tabpanel"
+                            aria-labelledby = "http-nachricht1-beispiel-tab"
+                        >
+                            <ul class="dhbw-carousel-links">
+                                <li>
+                                    <a href="#http-nachricht1-beispiel-tab-carousel" role="button" data-slide="next">Nächstes Bild</a>
+                                </li>
+                                <li>
+                                    <a href="#http-nachricht1-beispiel-tab-carousel" role="button" data-slide="prev">Vorheriges Bild</a>
+                                </li>
+                                <li>
+                                    <a href="#http-nachricht1-beispiel-tab-carousel" role="button" data-slide-to="0">Nochmal von vorne</a>
+                                </li>
+                            </ul>
+                            <div id="http-nachricht1-beispiel-tab-carousel" class="carousel" data-interval="false">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item img-thumbnail active">
+                                        <p>
+                                            Wir starten mit einer leeren Konsole. Du kennst doch die Konsole deines Betriebssystems, oder? 🐒
+                                        </p>
+                                        <img class="active d-block w-100" src="http_demo_01.gif" />
+                                    </div>
+                                    <div class="carousel-item img-thumbnail">
+                                        <p>
+                                            Mit <tt>telnet</tt> stellen wir eine <a href="https://de.wikipedia.org/wiki/Socket_(Software)"
+                                            target="_blank">TCP/IP-Verbindung</a> zum Webserver her.
+                                        </p>
+                                        <img class="active d-block w-100" src="http_demo_02.gif" />
+                                    </div>
+                                    <div class="carousel-item img-thumbnail">
+                                        <p>
+                                            Daraufhin meldet <tt>telnet</tt>, dass die Verbindung erfolgreich aufgebaut wurde und der Server wartet
+                                            auf Eingaben.
+                                        </p>
+                                        <img class="active d-block w-100" src="http_demo_03.gif" />
+                                    </div>
+                                    <div class="carousel-item img-thumbnail">
+                                        <p>
+                                            Wir schicken eine <tt>GET</tt>-Anfrage zum Abruf der Datei <tt>/webprog/hallo-http.txt</tt>.
+                                        </p>
+                                        <img class="active d-block w-100" src="http_demo_04.gif" />
+                                    </div>
+                                    <div class="carousel-item img-thumbnail">
+                                        <p>
+                                            Als nächstes folgt das Header Field <tt>Host</tt>, da es mehrere Domains mit derselben IP-Adresse gibt.
+                                        </p>
+                                        <img class="active d-block w-100" src="http_demo_05.gif" />
+                                    </div>
+                                    <div class="carousel-item img-thumbnail">
+                                        <p>
+                                            Das war es dann auch schon mit den Header Fields. Zum Abschluss folgt deshalb eine Leerzeile.
+                                        </p>
+                                        <img class="active d-block w-100" src="http_demo_06.gif" />
+                                    </div>
+                                    <div class="carousel-item img-thumbnail">
+                                        <p>
+                                            Und schon schickt uns der Server die Antwort und trennt die Verbindung.
+                                        </p>
+                                        <img class="active d-block w-100" src="http_demo_07.gif" />
+                                    </div>
+                                    <div class="carousel-item img-thumbnail">
+                                        <p>
+                                            So einfach ist das. 👍🏻 Allerdings nur mit HTTP/1, denn HTTP/2 kodiert die Nachrichten in einer kompakteren
+                                            Binärform.
+                                        </p>
+                                        <img class="active d-block w-25 m-auto" src="../finish.svg" />
+                                        <p>
+                                            <small>
+                                                <small>
+                                                    Bildnachweis: <a href="https://pixabay.com/en/symbol-gui-internet-internet-page-2480163/" target="_blank">Pixabay: janf93</a>
+                                                </small>
+                                            </small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        <small>
+                            <small>
+                                <span class="http-optional">¹</span> Optional
+                            </small>
+                        </small>
+                    </p>
+                </div>
+
+                <div id="http-nachricht2">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "http-nachricht2-verben-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#http-nachricht2-verben"
+                                role          = "tab"
+                                aria-controls = "http-nachricht2-verben"
+                                aria-expanded = "true"
+                            >
+                                Verben
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "http-nachricht2-statuscodes-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#http-nachricht2-statuscodes"
+                                role          = "tab"
+                                aria-controls = "http-nachricht2-statuscodes"
+                            >
+                                Statuscodes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "http-nachricht2-versionen-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#http-nachricht2-versionen"
+                                role          = "tab"
+                                aria-controls = "http-nachricht2-versionen"
+                            >
+                                HTTP-Versionen
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Verben -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "http-nachricht2-verben"
+                            role            = "tabpanel"
+                            aria-labelledby = "http-nachricht2-verben-tab"
+                        >
+                            <h2>GET</h2>
+                            <ul>
+                                <li>
+                                    Inhalte vom Server abrufen
+                                </li>
+                                <li>
+                                    Die Anfrage darf keinen Request Body enthalten
+                                </li>
+                                <li>
+                                    Der Server antwortet mit dem gewünschten Inhalt oder einer Fehlerseite
+                                </li>
+                            </ul>
+
+                            <h2>PUT</h2>
+                            <ul>
+                                <li>
+                                    Neue Inhalte auf den Server hochladen
+                                </li>
+                                <li>
+                                    Der Inhalt der Datei muss im Request Body mitgeschickt werden
+                                </li>
+                                <li>
+                                    Der Server antwortet mit einer neuen HTML-Seite oder einer Fehlerseite
+                                </li>
+                            </ul>
+
+                            <h2>POST</h2>
+                            <ul>
+                                <li>
+                                    Daten zur Verarbeitung an den Server schicken
+                                </li>
+                                <li>
+                                    Wird häufig verwendet, um vorhandene Daten auf dem Server zu aktualisieren
+                                </li>
+                                <li>
+                                    Der Server antwortet mit einer neuen HTML-Seite oder einer Fehlerseite
+                                </li>
+                            </ul>
+
+                            <h2>DELETE</h2>
+                            <ul>
+                                <li>
+                                    Daten auf dem Server löschen
+                                </li>
+                                <li>
+                                    Die Anfrage darf keinen Request Body enthalten
+                                </li>
+                                <li>
+                                    Der Server antwortet mit einer neuen HTML-Seite oder einer Fehlerseite
+                                </li>
+                            </ul>
+
+                            <h2>Seltener verwendete Verben</h2>
+                            <p>
+                                <tt>HEAD</tt>, <tt>OPTIONS</tt>, <tt>TRACE</tt>, <tt>PATCH</tt>
+                            </p>
+                        </div>
+                        <!-- Statuscodes -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "http-nachricht2-statuscodes"
+                            role            = "tabpanel"
+                            aria-labelledby = "http-nachricht2-statuscodes-tab"
+                        >
+                            <h2>1xx: Informationen</h2>
+                            <ul>
+                                <li>
+                                    Zwischenmeldung, um die Verbindung aufrecht zu erhalten
+                                </li>
+                                <li>
+                                    Verhindert, dass die Verbindung durch einen Timeout vorzeitig beendet wird
+                                </li>
+                            </ul>
+
+                            <h2>2xx: Erfolgreicher Abschluss</h2>
+                            <ul>
+                                <li>
+                                    Die Anfrage wurde erfolgreich bearbeitet
+                                </li>
+                                <li>
+                                    <tt>200 OK</tt>: Alles roger! Der Response Body beinhaltet die gewünschten Daten 👌🏼
+                                </li>
+                                <li>
+                                    <tt>202 Accepted</tt>: Die Anfrage wurde empfangen, wird aber erst später bearbeitet
+                                </li>
+                                <li>
+                                    …
+                                </li>
+                            </ul>
+
+                            <h2>3xx: Umleitung</h2>
+                            <ul>
+                                <li>
+                                    Es sind weitere Aktionen vom Client notwendig
+                                </li>
+                                <li>
+                                    <tt>300 Multiple Choice</tt>: Die Anfrage war nicht eindeutig genug
+                                </li>
+                                <li>
+                                    <tt>301 Moved Permanently</tt>: Umleitung des Clients auf eine andere URL
+                                </li>
+                                <li>
+                                    …
+                                </li>
+                            </ul>
+
+                            <h2>4xx: Client Fehler</h2>
+                            <ul>
+                                <li>
+                                    Der Client hat etwas falsch gemacht; die Verarbeitung wird abgelehnt
+                                </li>
+                                <li>
+                                    <tt>400 Bad Request</tt>: Ungültige bzw. fehlerhafte Anfrage
+                                </li>
+                                <li>
+                                    <tt>401 Unauthorized</tt>: Keine Berechtigung für diese Aktion
+                                </li>
+                                <li>
+                                    <tt>403 Forbidden</tt>: Die Aktion ist prinzipiell nicht erlaubt
+                                </li>
+                                <li>
+                                    <tt>404 Not Found</tt>: Der gesuchte Inhalt wurde nicht gefunden
+                                </li>
+                                <li>
+                                    …
+                                </li>
+                            </ul>
+
+                            <h2>5xx: Server Fehler</h2>
+                            <ul>
+                                <li>
+                                    Anfrage kann aufgrund eines Serverfehlers nicht bearbeitet werden
+                                </li>
+                                <li>
+                                    <tt>500 Internal Server Error</tt>: Schwerer technischer Fehler, alles ist kaputt! 🗑️
+                                </li>
+                                <li>
+                                    <tt>501 Not Implemented</tt>: Die Funktion ist nicht verfügbar
+                                </li>
+                                <li>
+                                    <tt>503 Service Unavailable</tt>: Temporärer Fehler, bitte später nochmal versuchen
+                                </li>
+                                <li>
+                                    …
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Versionen -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "http-nachricht2-versionen"
+                            role            = "tabpanel"
+                            aria-labelledby = "http-nachricht2-versionen-tab"
+                        >
+                            <h2>HTTP/0.9</h2>
+                            <p>
+                                Dies war die ursprüngliche von Tim Berners-Lee entwickelte HTTP-Version, wie sie 1991 veröffentlicht wurde.
+                                In dieser Version gab es nur GET-Anfragen und noch keine Header Fields. Eine Anfrage bestand daher lediglich
+                                aus einer Zeile:
+                            </p>
+                            <source-code language="http">
+                                GET /index.html
+                            </source-code>
+                            <p>
+                                Die Antwort des Servers beinhalte nur den Inhalt der abgerufenen Datei, sonst nichts.
+                            </p>
+
+                            <h2 style="margin-top: 1em;">HTTP/1.0</h2>
+                            <p>
+                                1996 wurde HTTP/1.0 veröffentlicht. Ab hier haben die HTTP-Nachrichten den oben gezeigten Aufbau.
+                            </p>
+
+                            <h2 style="margin-top: 1em;">HTTP/1.1</h2>
+                            <p>
+                                Diese Version wurde 1999 veröffentlicht und brachte weitreichende Verbesserungen. Unter anderem
+                                die Möglichkeit, die Verbindung zwischen zwei Anfragen offen zu halten. Denn zuvor wurde die Verbindung
+                                nach jeder Antwort automatisch getrennt. Da aber gerade der Verbindungsaufbau bei TCP/IP sehr langsam ist,
+                                führte dies zu langen Wartezeiten, wenn mehrere Dateien vom selben Server abgerufen werden mussten.
+                            </p>
+
+                            <h2 style="margin-top: 1em;">HTTP/2</h2>
+                            <p>
+                                2015 wurde HTTP/2 offiziell verabschiedet. In seinen Grundzügen basiert es auf dem von Google entwickelten
+                                SPDY-Protokoll. Die Inhalte der HTTP-Nachrichten sind weitgehend gleich geblieben, jedoch werden sie nicht
+                                mehr in der oben gezeigten Textform kodiert. Stattdessen kommt ein kompaktes und in vielen Dingen eindeutiger
+                                spezifiziertes Binärformat zum Einsatz.¹
+                            </p>
+                            <p>
+                                Als weitere größere Neuerung führt HTTP/2 <b>Server Push</b> ein, wodurch der Server beim Abruf einer
+                                HTML-Seite selbstständig weitere Dateien an den Browser schicken kann. Somit können Stylesheets, Skripte
+                                und Bilder schon an den Browser geschickt werden, bevor dieser überhaupt weiß, dass er sie benötigen wird.
+                            </p>
+                            <p>
+                                Stand 2017 hat sich HTTP/2 noch nicht gegen HTTP/1 durchgesetzt. Die meisten Webseiten verwenden weiterhin
+                                HTTP/1. Man kann aber davon ausgehen, dass sich das im Laufe der Jahre ändern wird.
+                            </p>
+                            <p>
+                                <small>
+                                    <small>
+                                        ¹ Beispielsweise war bei HTTP/1.x nie definiert, welche Bytefolge ein Zeilenende markiert.
+                                    </small>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside>
+                <p>
+                    Das Übertragungsprotokoll, mit dem der Browser Daten vom Server abruft, heißt HTTP. Die Abkürzung steht eigentlich
+                    für <b>HyperText Transfer Protocol</b>. Heute nennt es aber niemand mehr so. 🙂
+                </p>
+
+                <h2>Alles beginnt mit einer Anfrage</h2>
+                <p>
+                    HTTP ist wirklich ein simples Protokoll. Oder zumindest war es das einmal, als es erfunden wurde. Denn im
+                    Laufe der Zeit wurde es natürlich immer mehr erweitert. In seinen Grundzügen ist es aber immer noch relativ
+                    einfach: Der Browser stellt eine Verbindung zum Server her, sendet eine Anfrage und alle leben Glücklich
+                    bis an ihr Lebensende. Die Anfrage beinhaltet dabei stets folgende Daten:
+                </p>
+                <ul>
+                    <li>
+                        <b>Verb:</b> Kennzeichnet die Aktion, die der Server ausführen soll. Zum Beispiel <tt>GET</tt> für
+                        den Abruf einer Seite, oder <tt>PUT</tt> zum Hochladen einer Datei.
+                    </li>
+                    <li>
+                        <b>Pfad:</b> Der Dateipfad, auf den sich die Anfrage bezieht. Oft handelt es sich einfach um eine
+                        Datei, die der Server zurückschicken soll. Das muss aber nicht so sein, wie wir später noch sehen
+                        werden.
+                    </li>
+                    <li>
+                        <b>HTTP-Version:</b> In HTTP/1 dient dies hauptsächlich dazu, die Anfrage von der Antwort zu unterscheiden.
+                        Bei der Anfrage steht die HTTP-Version in der ersten Zeile hinten, bei der Antwort ganz am Anfang. Darüber
+                        hinaus steuert die HTTP-Version aber auch welche Header Fields (siehe nächster Punkt) die Gegenseite
+                        verstehen muss.
+                    </li>
+                    <li>
+                        <b>Header Fields (optional):</b> Dies sind Daten, die das Verhalten des Servers beeinflussen. Beispielsweise
+                        wird hier die angeforderte Domain mitgeschickt, da heutzutage die meisten Webserver mehrere Domains mit derselben
+                        IP-Adresse bedienen.
+                    </li>
+                    <li>
+                        <b>Request Body (optional):</b> Hier können Daten an den Server geschickt werden, die dieser speichern
+                        oder weiterverarbeiten soll. Ob der Server einen Request Body erwartet hängt dabei vom verwendeten
+                        HTTP-Verb ab.
+                    </li>
+                </ul>
+                <p>
+                    Den genauen Aufbau einer HTTP-Anfrage sowie alle erlaubten Verben findest du auf der Folie. 📄
+                </p>
+
+                <h2>Und endet mit einer Antwort</h2>
+                <p>
+                    Die Antwort des Servers sieht im Prinzip genauso aus. Anstelle von Verb und Pfad beinhaltet sie jedoch einen
+                    Statuscode, der darüber Auskunft gibt, ob die angeforderte Aktion ausgeführt werden konnte. Jede Antwort
+                    beinhaltet daher folgende Daten:
+                </p>
+                <ul>
+                    <li>
+                        <b>HTTP-Version:</b> Die HTTP-Version, nach deren Regeln die Antwort aufgebaut ist
+                    </li>
+                    <li>
+                        <b>Statuscode:</b> Nummerischer Code, der die Art der Antwort definiert
+                    </li>
+                    <li>
+                        <b>Statustext:</b> Kurze, menschenverständliche Beschreibung zum Statuscode
+                    </li>
+                    <li>
+                        <b>Header Fields:</b> Verschiedene Informationen über die gelieferten Daten, zum Beispiel das Datenformat
+                        (<a href="https://de.wikipedia.org/wiki/Multipurpose_Internet_Mail_Extensions" target="_blank">MIME-Type</a>)
+                        und die Anzahl Bytes
+                    </li>
+                    <li>
+                        <b>Response Body:</b> Die eigentlichen abgerufenen Daten oder bei Fehlern eine HTML-Seite mit einer Fehlerbeschreibung
+                    </li>
+                </ul>
+                <p>
+                    Dabei ist der Statuscode schon so eine komische Sache, da er vom Browser eigentlich gar nicht angezeigt wird. 🙈
+                    Verschiedene Statuscodes lösen aber ein unterschiedliches Verhalten beim Browser aus. Meistens zeigt der Browser
+                    einfach nur den Inhalt des Responsy Body an. Der Statuscode 301 führt aber zum Beispiel dazu, dass der Browser
+                    auf eine neue Seite weitergeleitet wird.
+                </p>
+
+                <h2>Über die verschiedenen HTTP-Versionen</h2>
+                <p>
+                    Heute sind eigentlich nur zwei HTTP-Versionen von Bedeutung: HTTP/1.1 und HTTP/2. HTTP/1.1 ist dabei zur Zeit
+                    noch deutlich in der Überzahl, langfristig wird es aber wohl durch HTTP/2 abgelöst werden. Inhaltlich sind die
+                    beiden Versionen nahezu identisch. Jedoch verwendet HTTP/2 nicht mehr die auf de Folie gezeigte Textform
+                    sondern ersetzt diese durch eine effizientere binäre Darstellung. 🏎️
+                </p>
+            </aside>
+        </section>
+
+        <!--
+            TODO
+            Serverseitige Webentwicklung / Wer die Wahl hat ...:
+             » Statische Inhalte vs. dynamisch erzeugte Inhalte (Bilder übernehmen?)
+        -->
+
+        <section>
+            <h1>…</h1>
+            <article>
+                …
+            </article>
+            <aside>
+                <p>
+                    …
+                </p>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Technische Hintergründe zu REST</h1>
+            <article>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "technik-get_liste-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#technik-get_liste"
+                                role          = "tab"
+                                aria-controls = "technik-get_liste"
+                                aria-expanded = "true"
+                            >
+                                Liste abrufen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "technik-get_ressource-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#technik-get_ressource"
+                                role          = "tab"
+                                aria-controls = "technik-get_ressource"
+                            >
+                                Ressource abrufen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "technik-post-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#technik-post"
+                                role          = "tab"
+                                aria-controls = "technik-post"
+                                aria-expanded = "true"
+                            >
+                                Ressource anlegen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "technik-wadl-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#technik-wadl"
+                                role          = "tab"
+                                aria-controls = "technik-wadl"
+                            >
+                                WADL-Beschreibung
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Liste abrufen -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "technik-get_liste"
+                            role            = "tabpanel"
+                            aria-labelledby = "technik-get_liste-tab"
+                        >
+                            <p>
+                                Bei den URLs für einen REST-Webservice wird häufig zwischen <b>Collections</b> und <b>Ressourcen</b>
+                                unterschieden. Eine Collection ist dabei immer eine Sammlung von Einträgen, die als Ganzes
+                                abgerufen werden kann. Oftmals können beim Abruf dann noch <b>Query Parameter</b> mitgegeben
+                                werden, um die Liste einzugrenzen.
+                            </p>
+                            <img src="http-get-liste.svg" alt="" class="d-block" style="width: 100%;" />
+                        </div>
+                        <!-- Ressource abrufen -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "technik-get_ressource"
+                            role            = "tabpanel"
+                            aria-labelledby = "technik-get_ressource-tab"
+                        >
+                            <p>
+                                Eine einzelne Ressource erkennt man daran, dass in der URL ihr Schlüsselwert enthalten ist.
+                                Im Gegensatz zu den Collections schickt der Server dann genau ein Objekt mit den Daten der
+                                angeforderten Ressource.
+                            </p>
+                            <img src="http-get-ressource.svg" alt="" class="d-block" style="width: 100%;" />
+                        </div>
+                        <!-- Ressource anlegen -->
+                        <div
+                            class           = "tab-pane fade show"
+                            id              = "technik-post"
+                            role            = "tabpanel"
+                            aria-labelledby = "technik-post-tab"
+                        >
+                            <p>
+                                Die Anlage von Ressourcen erfolgt häufig, indem ihre JSON-Repräsentation als <b>POST-Anfrage
+                                an die Collection</b> geschickt wird. Der Server speichert daraufhin den Eintrag und schickt
+                                die gespeicherten Daten, nun um die Key-Werte angereichert, zurück.
+                            </p>
+                            <img src="http-post.svg" alt="" class="d-block" style="width: 100%;" />
+                        </div>
+                        <!-- WADL-Beschreibung -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "technik-wadl"
+                            role            = "tabpanel"
+                            aria-labelledby = "technik-wadl-tab"
+                        >
+                            <p>
+                                Im Gegensatz zu SOAP besitzen REST-Webservices meistens keine formale Beschreibung.
+                                Viele REST-API-Anbieter liefern daher vorgefertigte SDKs zum Aufruf ihrer Services
+                                mit verschiedenen Sprachen. Im Javaumfeld hat man sich stattdessen das
+                                <a href="https://en.wikipedia.org/wiki/Web_Application_Description_Language" target="_blank">WADL-Format</a>
+                                als eine Art „WSDL für beliebige Webanwendungen” überlegt. Es beschreibt die URLs
+                                eines Webservices und mit welchen HTTP-Methoden sie aufgerufen werden.
+                            </p>
+                            <table style="margin-bottom: 1em;">
+                                <tr>
+                                    <td style="padding-right: 0.5em;">
+                                        ⚛️
+                                    </td>
+                                    <td>
+                                        Welche URLs besitzt der Webservice?
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em;">
+                                        ⚛️
+                                    </td>
+                                    <td>
+                                        Welche URL-Parameter können einer URL mitgegeben werden?
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em;">
+                                        ⚛️
+                                    </td>
+                                    <td>
+                                        Welche HTML-Formularfelder können an die URL geschickt werden?
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em;">
+                                        ⚛️
+                                    </td>
+                                    <td>
+                                        Welche Daten können mit POST, PUT oder PATCH an die URL geschickt werden?
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em;">
+                                        ⚛️
+                                    </td>
+                                    <td>
+                                        Welche HTTP-Statuscodes kann die Antwort enthalten?
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em;">
+                                        ⚛️
+                                    </td>
+                                    <td>
+                                        Welche Daten werden bei welchem Statuscode zurückgeschickt?
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <h2>Beispiel</h2>
+
+                            <source-code language="xml">
+                                &lt;application xmlns="http://wadl.dev.java.net/2009/02"
+                                        xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+
+                                    &lt;!--
+                                    Hier könnten XML-Schema-Anweisungen stehen, mit welchen die Struktur
+                                    der ausgetauschten Daten formal definiert wird, wenn der Webservice
+                                    XML als Datenformat verwendet. Dieser hier nutzt allerdings JSON. 🙄
+                                    --&gt;
+                                    &lt;grammars/&gt;
+
+                                    &lt;!--
+                                    Die Basis-URL des Webservice lautet
+                                    http://localhost:8080/TheXFiles/rest/
+                                    --&gt;
+                                    &lt;resources base="http://localhost:8080/TheXFiles/rest/"&gt;
+
+                                        &lt;!--
+                                        Nachfolgend wird die URL
+                                        http://localhost:8080/TheXFiles/rest/xfiles2018/
+                                        beschrieben.
+                                        --&gt;
+                                        &lt;resource path="xfiles2018"&gt;
+                                            &lt;!--
+                                            Schicken wir eine GET-Anfrage an die URL, wird dadurch die Methode
+                                            findEpisodes() aufgerufen.
+                                            --&gt;
+                                            &lt;method id="findEpisodes" name="GET"&gt;
+                                                &lt;!--
+                                                Optional können wir der Methode einen Parameter namens "query"
+                                                mitgeben. Der Parameter ist ein String und muss als URL-Parameter
+                                                an die URL angehängt werden. Zum Beispiel so:
+
+                                                http://localhost:8080/TheXFiles/rest/xfiles2018/?query=My%20Struggle
+                                                --&gt;
+                                                &lt;request&gt;
+                                                    &lt;param name="query" style="query" type="xs:string"/&gt;
+                                                &lt;/request&gt;
+
+                                                &lt;!--
+                                                Als Antwort erhalten wir dann einen JSON-String.
+                                                --&gt;
+                                                &lt;response&gt;
+                                                    &lt;representation mediaType="application/json"/&gt;
+                                                &lt;/response&gt;
+                                            &lt;/method&gt;
+
+                                            &lt;!--
+                                            Eine POST-Anfrage würde hingegen die Methode saveNewEpisode() zur
+                                            Anlage eines neuen Datensatzes aufrufen.
+                                            --&gt;
+                                            &lt;method id="saveNewEpisode" name="POST"&gt;
+                                                &lt;!--
+                                                Als Anfrage müssen wir einen JSON-String mitschicken.
+                                                --&gt;
+                                                &lt;request&gt;
+                                                    &lt;representation mediaType="application/json"/&gt;
+                                                &lt;/request&gt;
+
+                                                &lt;!--
+                                                Im Gegenzug schickt uns der Server ein JSON zurück.
+                                                --&gt;
+                                                &lt;response&gt;
+                                                    &lt;representation mediaType="application/json"/&gt;
+                                                &lt;/response&gt;
+                                            &lt;/method&gt;
+
+                                            &lt;!--
+                                            Mit der URL http://localhost:8080/TheXFiles/rest/xfiles2018/{id}/
+                                            können wir auf einzelne Datensätze zugreifen. {id} ist dabei ein
+                                            Platzhalter, der mit der ID des Datensatzes ersetzt werden muss.
+                                            --&gt;
+                                            &lt;resource path="{id}"&gt;
+                                                &lt;!--
+                                                Die ID kann ein beliebiger String sein. Häufig kommt es aber
+                                                auch vor, dass es sich um einen Long oder irgendeinen anderen
+                                                primitiven Datentypen handeln muss.
+                                                --&gt;
+                                                &lt;param name="id" style="template" type="xs:string"/&gt;
+
+                                                &lt;!--
+                                                Schicken wir eine GET-Anfrage an die URL, wird dadurch die Methode
+                                                getEpisode() aufgerufen. Sie schickt uns eine einzelne Episode im
+                                                JSON-Format zurück.
+                                                --&gt;
+                                                &lt;method id="getEpisode" name="GET"&gt;
+                                                    &lt;response&gt;
+                                                        &lt;representation mediaType="application/json"/&gt;
+                                                    &lt;/response&gt;
+                                                &lt;/method&gt;
+
+                                                &lt;!--
+                                                Schicken wir eine DELETE-Anfrage, wird stattdessen die Methode
+                                                deleteEpisode() aufgerufen. Auch sie schickt uns die gelöschte
+                                                Episode im JSON-Format zurück.
+                                                --&gt;
+                                                &lt;method id="deleteEpisode" name="DELETE"&gt;
+                                                    &lt;response&gt;
+                                                        &lt;representation mediaType="application/json"/&gt;
+                                                    &lt;/response&gt;
+                                                &lt;/method&gt;
+
+                                                &lt;!--
+                                                Schicken wir eine PUT-Anfrage, können wir dadurch die Methode
+                                                updateEpisode() zum Aktualisieren eines Datensatzes aufrufen.
+                                                Hierfür müssen wir ein JSON mit den Episodendaten hinschicken
+                                                und bekommen ein JSON mit den gespeicherten Daten zurück.
+                                                --&gt;
+                                                &lt;method id="updateEpisode" name="PUT"&gt;
+                                                    &lt;request&gt;
+                                                        &lt;representation mediaType="application/json"/&gt;
+                                                    &lt;/request&gt;
+                                                    &lt;response&gt;
+                                                        &lt;representation mediaType="application/json"/&gt;
+                                                    &lt;/response&gt;
+                                                &lt;/method&gt;
+
+                                            &lt;/resource&gt;
+                                            &lt;!-- http://localhost:8080/TheXFiles/rest/xfiles2018/{id}/ --&gt;
+
+                                        &lt;/resource&gt;
+                                        &lt;!-- http://localhost:8080/TheXFiles/rest/xfiles2018/ --&gt;
+
+                                    &lt;/resources&gt;
+                                    &lt;!-- http://localhost:8080/TheXFiles/rest/ --&gt;
+                                &lt;/application&gt;
+                            </source-code>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside>
+                <p>
+                    Auf dieser Folie siehst du ein Beispiel dafür, wie die verschiedenen HTTP-Verben bei REST genutzt werden, um Daten vom Server
+                    zu lesen oder zu schreiben. Als Ressourcen dienen dabei die Episoden einer Fernsehserie¹. Anhand dieses Beispiels sieht man auch
+                    schön, wie unterschiedliche URLs bei REST unterschiedliche Bedeutungen haben. So handelt es sich bei der URL <code>/rest/xfiles2018/</code>
+                    um eine <b>Collection</b>, also um eine Liste von Ressourcen, die mit einer einzigen GET-Anfrage abgerufen werden kann. Diese URL,
+                    die eine Liste von Episoden beschreibt, erlaubt daher nur GET und POST-Anfragen:
+                </p>
+                <ul>
+                    <li>
+                        <b>GET:</b> Abruf der Liste
+                    </li>
+                    <li>
+                        <b>POST:</b> Speichern eines neuen Eintrags
+                    </li>
+                </ul>
+                <p>
+                    <small>
+                        ¹ Hier Akte X, die im Jahr 2018 mit <a href="https://en.m.wikipedia.org/wiki/The_X-Files_(season_11)" target="_blank">Season 11</a>
+                        schon zum zweiten mal nach dem eigentlichen Ende 2002 auf die heimischen Fernseher zurückkehrte.
+                    </small>
+                    👽
+                </p>
+                <p>
+                    Bei der URL <code>/rest/xfiles2018/2AYW04/</code> handelt es sich hingegen um eine einzelne Episode, 🛸 also um eine einzelne
+                    Ressource des Webservices. Sie erlaubt die folgenden HTTP-Anfragen:
+                </p>
+                <ul>
+                    <li>
+                        <b>GET:</b> Abruf aller Detailinformationen
+                    </li>
+                    <li>
+                        <b>PUT:</b> Speichern einer neuen Version
+                    </li>
+                    <li>
+                        <b>PATCH:</b> Einzelne Felder überschreiben
+                    </li>
+                    <li>
+                        <b>DELETE:</b> Eintrag löschen
+                    </li>
+                </ul>
+                <p>
+                    Bei GET und DELETE müssen keine weiteren Daten an den Server gesendet werden. Die URL alleine reicht bereits aus, damit der Server
+                    weiß, um welchen Datensatz es sich handelt und wie er damit umgehen muss. Bei POST muss hingegen der komplette Datensatz an den
+                    Server geschickt werden, damit dieser die vorhandene Version überschreiben kann. Bei PATCH, sofern es der Webservice unterstützt,
+                    müssen hingegen nur die Felder übertragen werden, die man tatsächlich ändern will.
+                </p>
+                <p>
+                    Als Datenformat kommt bei allen Anfragen jeweils JSON zum Einsatz, was der Client durch das Header Field <code>Accept: application/json</code>
+                    signalisiert. Er fordert den Server damit auf, seine Daten im JSON-Format zu übertragen. Dass die zurückgeschickten Daten dann auch wirklich
+                    im JSON-Format kommen, wird hingegen durch das Header Field <code>Content-Type: application/json</code> definiert. Dadurch können sich Client
+                    und Server auf ein Datenformat einigen, wenn der Server mehre unterstützt. Häufig kommt es daher vor, dass man die URL eines REST-Services
+                    auch einfach im Browser eingeben kann, um eine HTML-Darstellung der Ressource zu erhalten, oder dass noch weitere Formate wie XML oder
+                    <a href="https://de.wikipedia.org/wiki/YAML" target="_blank">YAML</a> unterstützt werden.
+                </p>
+
+                <h2>WADL-Beschreibung</h2>
+                <p>
+                    Ursprünglich war für REST-Webservices keine formale Beschreibung ähnlich der WSDL für SOAP vorgesehen, und sehr viele, wenn nicht sogar die
+                    allermeisten REST-Webservices besitzen auch keine, sondern kommen nur mit einer menschenlesbaren Dokumentation oder (zumindest bei den großen
+                    Anbietern) mehreren <a href="https://de.wikipedia.org/wiki/Software_Development_Kit" target="_blank">SDKs</a> für verschiedene Programmiersprachen
+                    im Gepäck. 🛍️
+                    Im Javaumfeld hat sich jedoch das  <a href="https://en.wikipedia.org/wiki/Web_Application_Description_Language" target="_blank">WADL-Format</a>
+                    als mögliche Alternative entwickelt. Es handelt sich dabei um eine automatisch generierte XML-Datei, die man durch Anhängen von <code>?_wadl</code>
+                    an die Basis-URL des Webservices abrufen kann. Sie beschreibt die erlaubten URLs, auch mit möglichen Platzhaltern und URL-Parametern sowie die
+                    jeweils zulässigen HTTP-Verben und welche Datenformate der Server jeweils empfangen und senden kann. Optional kann sie auch Schemadefinitionen
+                    für die ausgetauschten Daten enthalten. Wie wir auf der nächsten Folien sehen werden, lassen sich in Java entwickelte REST-Services dadurch in
+                    SoapUI sehr gut testen.
+                </p>
+            </aside>
+        </section>
+
+        <section data-background-color="rgb(231, 221, 141)">
+            <h1>Aufgabe 1: Ein kleines HTTP-Quiz</h1>
+            <article>
+                <h2>Aufgabe 1.1: HTTP-Verben</h2>
+
+                <p>
+                    a) Was bedeutet das HTTP-Verb <tt>POST</tt>?
+                </p>
+                <ol>
+                    <li>
+                        Vorhandene Daten vom Server abrufen
+                    </li>
+                    <li>
+                        Daten auf dem Server löschen (<tt>POST</tt> = Postpone)
+                    </li>
+                    <li>
+                        Daten zur Verarbeitung an den Server schicken
+                    </li>
+                </ol>
+
+                <p>
+                    b) Was bedeutet das HTTP-Verb <tt>DELETE</tt>?
+                </p>
+                <ol>
+                    <li>
+                        Daten im Browser löschen
+                    </li>
+                    <li>
+                        Daten auf dem Server löschen
+                    </li>
+                    <li>
+                        Prüfen, ob die Daten gelöscht werden können
+                    </li>
+                </ol>
+
+                <p>
+                    c) Was bedeutet das HTTP-Verb <tt>GET</tt>?
+                </p>
+                <ol>
+                    <li>
+                        Daten vom Server abrufen, zum Beispiel eine HTML-Datei
+                    </li>
+                    <li>
+                        Abrufen einer Dateiliste vom Server mit allen Dateien einer Webseite
+                    </li>
+                    <li>
+                        Übertrag einer Datei vom Browser an den Server
+                    </li>
+                </ol>
+
+                <h2>Aufgabe 1.2: Statuscodes</h2>
+
+                <p>
+                    a) Was bedeutet der Statuscode <tt>401 Unauthorized</tt>?
+                </p>
+                <ol>
+                    <li>
+                        Die gesuchten Daten wurden nicht gefunden
+                    </li>
+                    <li>
+                        Die gewünschte Funktion wurde nicht ausprogrammiert
+                    </li>
+                    <li>
+                        Der Anwender ist für die gewünschte Funktion nicht berechtigt
+                    </li>
+                </ol>
+
+                <p>
+                    b) Was bedeutet der Statuscode <tt>503 Service Unavailble</tt>?
+                </p>
+                <ol>
+                    <li>
+                        Es ist ein temporärer Fehler aufgetreten, bitte später nochmal versuchen
+                    </li>
+                    <li>
+                        Es ist ein schwerwiegender Fehler aufgetreten
+                    </li>
+                    <li>
+                        Die gesuchte Information wurde nicht gefunden
+                    </li>
+                </ol>
+
+                <p>
+                    c) Welcher Statuscode signalisiert, dass die Seite nicht gefunden wurde?
+                </p>
+                <ol>
+                    <li>
+                        <tt>200</tt>
+                    </li>
+                    <li>
+                        <tt>301</tt>
+                    </li>
+                    <li>
+                        <tt>404</tt>
+                    </li>
+                </ol>
+
+                <p>
+                    d) Welcher Statuscode wird geschickt, wenn alles okay ist?
+                </p>
+                <ol>
+                    <li>
+                        <tt>100</tt>
+                    </li>
+                    <li>
+                        <tt>200</tt>
+                    </li>
+                    <li>
+                        <tt>300</tt>
+                    </li>
+                </ol>
+
+                <hr />
+
+                <p style="transform: scaleY(-1) scaleX(-1); display: inline-block;">
+                    <small>
+                        <b>Lösung:</b> Aufgabe 1.1: 3, 2, 1; Aufgabe 1.2: 3, 1, 3, 2
+                    </small>
+                </p>
+            </article>
+            <aside>
+                <p>
+                    Wie immer an dieser Stelle: Ein kleines Quiz mit dem du prüfen kannst,
+                    ob du dir die wichtigsten Dinge gemerkt hast. 🐧
+                </p>
+            </aside>
+        </section>
+
+        <!--
+            ===========================
+            Backendentwicklung mit Java
+            ===========================
+        -->
+        <section data-chapter data-background-image="../../trennfolie.jpg">
+            <h1>Backendentwicklung mit Java</h1>
+            <article>
+                <small>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/en/adult-break-business-caucasian-2398561/" target="_blank">Pixabay: rawpixel</a>
+                    </small>
+                </small>
+            </article>
+        </section>
+
+        <!--
+            TODO
+            Serverseitige Webentwicklung / Aufgabe 2...:
+             » Ähnlich gelagerte kleine Programmieraufgabe?
+        -->
+
+        <section>
+            <h1>…</h1>
+            <article>
+                …
+            </article>
+            <aside>
+                <p>
+                    …
+                </p>
+            </aside>
+        </section>
+
+        <!--
+            ===========================
+            Fallbeispiel: Rent-A-Splash
+            ===========================
+        -->
+        <section data-chapter data-background-image="rent-a-splash.jpg">
+            <h1>Fallbeispiel: Rent-A-Splash</h1>
+            <article>
+                <small>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/photos/surfer-surfing-surfboard-sports-1209179/" target="_blank">Pixabay: Free-Photos</a>
+                    </small>
+                </small>
+            </article>
+        </section>
+
+        <section>
+            <h1>…</h1>
+            <article>
+                …
+            </article>
+            <aside>
+                <p>
+                    …
+                </p>
+            </aside>
+        </section>
+
+        <!--
+            ====================
+            Hinweise zum Schluss
+            ====================
+        -->
+        <section data-chapter data-background-image="../../trennfolie.jpg">
+            <h1>Hinweise zum Schluss</h1>
+            <article>
+                <small>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/en/adult-break-business-caucasian-2398561/" target="_blank">Pixabay: rawpixel</a>
+                    </small>
+                </small>
+            </article>
+        </section>
+
+        <section data-background-color="rgb(238, 179, 110)">
+            <h1>Do &amp; Don't</h1>
+            <article>
+                <h4>Darauf solltest du achten</h4>
+                <ul>
+                    <li>
+                        …
+                    </li>
+                </ul>
+            </article>
+            <aside>
+                <p>
+                    Dies sind sie: Die berühmten letzten Worte. 📄 Auf dieser Folie haben wir ein paar allgemeine
+                    Tipps zusammengestellt, worauf du bei der Entwicklung deiner eigenen REST APIs achten solltest.
+                </p>
+                <img src="../../do-dont.svg" class="d-block" style="width: 20em; max-width: 100%; margin-bottom: 0.5em;" />
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/en/dialog-tip-advice-hint-speaking-148815/" target="_blank" style="color: rgb(25, 68, 49);">Pixabay: OpenClipart-Vectors</a>
+                    </small>
+                </p>
+            </aside>
+        </section>
+
+        <section data-background-color="rgb(238, 179, 110)">
+            <h1>Interessante Links</h1>
+            <article>
+                <h4>Thema 1</h4>
+                <ul>
+                    <li>
+                        <a href="" target="_blank">Link</a>
+                    </li>
+                </ul>
+            </article>
+            <aside>
+                <p>
+                    Wenn du es bis hierhin geschafft hast, solltest du schon einen guten Überblick über
+                    die Funktionsweise, Entwicklung und Nutzung von REST-Webservices haben. Klar ist aber
+                    auch, dass es noch viel mehr zu entdecken gibt. 🔭 Viel mehr wie einen Überblick können
+                    wir in der Vorlesung eben leider nicht geben. Auf dieser Folie haben wir deshalb
+                    interessante Links 🗺️ als Ausgangslage für deine eigenen Recherchen zusammengestellt.
+                </p>
+                <img src="../../link.png" class="d-block" style="width: 20em; max-width: 100%; margin-bottom: 0.5em;" />
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/vectors/mouse-globe-clean-internet-306274/" target="_blank" style="color: rgb(25, 68, 49);">Clker-Free-Vector-Images</a>
+                    </small>
+                </p>
+            </aside>
+        </section>
+
+        <section data-background-color="rgb(158, 203, 231)">
+            <h1>Rechtshinweise</h1>
+            <article>
+                <h4>Creative Commons Namensnennung 4.0 International</h4>
+                <ul>
+                    <li>Beliebiges Teilen ist erlaubt</li>
+                    <li>Die Unterlagen dürfen bearbeitet und verändert werden</li>
+                    <li>Wenn die Namens- und Urheberangaben erhalten bleiben</li>
+                    <li>Und keine weiteren Einschränkungen auferlegt werden</li>
+                </ul>
+                <span style="font-size: 400px; color: white;" class="dhbw-text-shadow" >§</span>
+            </article>
+            <aside style="font-size: 80%">
+                <h4>Kontaktdaten</h4>
+                <p>
+                    Dennis Schulmeister-Zimolong<br/>
+                    E-Mail: <a data-email-address>dhbw windows3.de</a><br/>
+                </p>
+
+                <h4>Urheberrecht und Lizenzvereinbarung</h4>
+                <p>
+                    © 2020 Dennis Schulmeister-Zimolong<br/>
+                    <a href="https://github.com/DennisSchulmeister/dhbwka-wwi-vertsys-2020-folien" target="_blank">https://github.com/DennisSchulmeister/dhbwka-wwi-vertsys-2020-folien</a>
+                </p>
+                <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="Creative Commons Lizenzvertrag" />
+                <p>
+                    Das Werk <i>Vorlesung "Verteilte Systeme" im Studiengang Wirtschaftsinformatik an der DHBW Karlsruhe (ab 2020)</i>
+                    von <a href="http://www.wpvs.de" target="_blank">Dennis Schulmeister-Zimolong</a> ist lizenziert unter
+                    <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><i>Creative Commons Namensnennung 4.0 International</i></a>.
+                </p>
+                <p>
+                    Du darfst:
+                </p>
+                <ul>
+                    <li>
+                        <b>Teilen</b> — das Material in jedwedem Format oder Medium vervielfältigen
+                        und weiterverbreiten
+                    </li>
+                    <li>
+                        <b>Bearbeiten</b> — das Material remixen, verändern und darauf aufbauen
+                        und zwar für beliebige Zwecke, sogar kommerziell.
+                    </li>
+                </ul>
+                <p>
+                    Unter folgenden Bedingungen:
+                </p>
+                <ul>
+                    <li>
+                        <b>Namensnennung</b> — Du musst angemessene Urheber- und Rechteangaben
+                        machen, einen Link zur Lizenz beifügen und angeben, ob Änderungen
+                        vorgenommen wurden. Diese Angaben dürfen in jeder angemessenen Art
+                        und Weise gemacht werden, allerdings nicht so, dass der Eindruck
+                        entsteht, der Lizenzgeber unterstütze gerade dich oder deine Nutzung
+                        besonders.
+                    </li>
+                    <li>
+                        <b>Keine weiteren Einschränkungen</b> — Du darfst keine zusätzlichen Klauseln
+                        oder technische Verfahren einsetzen, die anderen rechtlich irgendetwas
+                        untersagen, was die Lizenz erlaubt.
+                    </li>
+                </ul>
+                <p>
+                    Es werden keine Garantien gegeben und auch keine Gewähr geleistet.
+                    Die Lizenz verschafft dir möglicherweise nicht alle Erlaubnisse,
+                    die du für die jeweilige Nutzung brauchst. Es können beispielsweise
+                    andere Rechte wie Persönlichkeits- und Datenschutzrechte zu beachten
+                    sein, die deine Nutzung des Materials entsprechend beschränken.
+                </p>
+            </aside>
+        </section>
+    </body>
+</html>
