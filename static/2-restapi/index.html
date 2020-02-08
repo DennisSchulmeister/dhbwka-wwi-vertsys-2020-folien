@@ -51,7 +51,148 @@
             -->
             <h1>Webanwendungen früher und heute</h1>
             <article>
-                …
+                <table style="margin-bottom: 1em;">
+                    <tr>
+                        <td style="padding-right: 0.5em">
+                            🌎
+                        </td>
+                        <td>
+                            SOAP-Webservices erlauben Clients den entfernten Aufruf von Methoden eines Servers.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-right: 0.5em">
+                            🌍
+                        </td>
+                        <td>
+                            HTTP dient dabei als plattformunabhängiges Transportprotokoll für XML-SOAP-Nachrichten.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-right: 0.5em">
+                            🌏
+                        </td>
+                        <td>
+                            Üblicherweise wird es in Unternehmen zur Entwicklung betriebswirtschaftlicher Anwendungen genutzt.
+                        </td>
+                    </tr>
+                </table>
+
+                <h2>Typische Anwendungsfälle</h2>
+
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "anwendungen-webapp-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#anwendungen-webapp"
+                                role          = "tab"
+                                aria-controls = "anwendungen-webapp"
+                            >
+                                Moderne Webanwendungen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "anwendungen-mobile-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#anwendungen-mobile"
+                                role          = "tab"
+                                aria-controls = "anwendungen-mobile"
+                            >
+                                Mobile Apps
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "anwendungen-b2b-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#anwendungen-b2b"
+                                role          = "tab"
+                                aria-controls = "anwendungen-b2b"
+                                aria-expanded = "true"
+                            >
+                                Business-To-Business
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Moderne Webanwendungen -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "anwendungen-webapp"
+                            role            = "tabpanel"
+                            aria-labelledby = "anwendungen-webapp-tab"
+                        >
+                            <p>
+                                Dieses Beispiel zeigt ein großes Webportal mit mehreren, von der restlichen Anwendungslogik entkoppelten Webfrontends.
+                                Zur besseren Skalierung werden getrennte Server für die Webfrontends (sog. „Webcontainer"¹) und das Backend genutzt.
+                                Im Backend werden zusätzlich die Dienste fremder Anbieter per Webservice integriert.
+                            </p>
+                            <p style="line-height: 1; margin-bottom: 1em;">
+                                <small>
+                                    <small>
+                                        ¹ Vollwertige Jakarta&nbsp;EE-Applikationsserver bestehen im Grunde genommen aus nichts anderem als einem
+                                        Webcontainer und einem EJB-Container, wobei der Webcontainer die Servlet- und webbezogenen APIs zur
+                                        Verfügung stellt und der EJB-Container den Rest. Wenn man aber weiß, dass man die Funktionen des EJB-Containers
+                                        nicht benötigt, kann man den Webcontainer auch separat installieren.
+                                    </small>
+                                </small>
+                            </p>
+                            <img src="anwendungen-reiseportal.jpg" alt="Architekturskizze eines großen Reiseportals" class="d-block" style="width: 100%; margin-bottom: 1em;" />
+                            <p>
+                                <small>
+                                    <small>
+                                        Bildnachweise:
+                                        <a href="https://pixabay.com/en/computer-laptop-blank-empty-screen-3036166/" target="_blank">Pixabay: www_slon_pics</a>,
+                                        <a href="https://pixabay.com/en/polynesia-french-polynesia-tahiti-3021072/" target="_blank">Pixabay: Julius_Silver</a>,
+                                        <a href="https://pixabay.com/en/tropical-sunset-summer-beach-sunset-1651426/" target="_blank">Pixabay: TheDigitalArtist</a>,
+                                        <a href="https://pixabay.com/en/train-railway-s-bahn-transport-797072/" target="_blank">Pixabay: Didgeman</a>,
+                                        <a href="https://pixabay.com/en/transportation-system-vehicle-3064387/" target="_blank">Pixabay: joe137</a>,
+                                        <a href="https://pixabay.com/en/hotel-room-bed-pillows-room-hotel-1447201/" target="_blank">Pixabay: Olichel</a>
+                                    </small>
+                                </small>
+                            </p>
+                        </div>
+                        <!-- Mobile Apps -->
+                        <div
+                            class           = "tab-pane fade show"
+                            id              = "anwendungen-mobile"
+                            role            = "tabpanel"
+                            aria-labelledby = "anwendungen-mobile-tab"
+                        >
+                            TODO: Mobile Apps
+                        </div>
+                        <!-- Business-To-Business -->
+                        <div
+                            class           = "tab-pane fade show"
+                            id              = "anwendungen-b2b"
+                            role            = "tabpanel"
+                            aria-labelledby = "anwendungen-b2b-tab"
+                        >
+                            <p>
+                                Sehr häufig werden Webservices dazu genutzt, B2B-Szenarios zwischen mehreren Unternehmen abzubilden, wofür ein Unternehmen
+                                Webservices bietet, die von seinen Kunden und Lieferanten aufgerufen werden können. Dadurch können die Systeme untereinander
+                                Daten austauschen, um manuelle Prozessschritte zu eliminieren. Die Abbildung zeigt zum Beispiel, wie ein Großkunde 🐕 eine
+                                Bestellung bei einem Händler aufgibt, was wiederum zur automatischen Erteilung eines Produktions- und eines Lieferauftrags
+                                bei zwei weiteren Unternehmen führt.
+                            </p>
+                            <img src="anwendungen-b2b.svg" alt="Systemintegration zwischen Unternehmen" class="d-block" style="width: 100%;" />
+                            <p>
+                                <small>
+                                    <small>
+                                        Bildnachweis:
+                                        <a href="https://pixabay.com/de/hund-laptop-computer-gl%C3%A4ser-2983021/" target="_blank">Pixabay: Kaz</a>
+                                    </small>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
                 Arthur Dent hatte schon lange keinen so schlechten Tag mehr wie den, an dem die Erde in die Luft flog. 🔥
@@ -66,15 +207,59 @@
                 <h3>Nach Abschluss dieser Einheit kannst du …</h3>
                 <ul>
                     <li>
-                        den Begriff <span class="dhbw-lightblue font-weight-bold">verteiltes System</span>
-                        erklären und von ähnlichen Begriffen abgrenzen.
+                        Typische <span class="dhbw-lightblue font-weight-bold">Anwendungsfälle</span> REST-basierter
+                        APIs benennen.
+                    </li>
+                    <li>
+                        die Funktionsweise des <span class="dhbw-lightblue font-weight-bold">HTTP-Protokolls</span>
+                        mitsamt der wichtigsten Befehle und Statuscodes wiedergeben.
+                    </li>
+                    <li>
+                        REST-Webserviceaufrufe von anderen Verwendungen von HTTP abgrenzen.
+                    </li>
+                    <li>
+                        Die Vorteile und Funktionsweise von
+                        <span class="dhbw-lightblue font-weight-bold">HATEOAS</span> beschreiben.
+                    </li>
+                    <li>
+                        Vorhandene REST-Webservices mit Postman testen.
+                    </li>
+                    <li>
+                        Die grundlegende Struktur und Funktionen des
+                        <span class="dhbw-lightblue font-weight-bold">Spring-Frameworks</span> verstehen.
+                    </li>
+                    <li>
+                        Einfache <span class="dhbw-lightblue font-weight-bold">REST-Webservices mit Datenbankanbindung</span>
+                        in Java programmieren.
+                    </li>
+                    <li>
+                        Das <span class="dhbw-lightblue font-weight-bold">AJAX-Prinzip</span> anwenden, um REST-Webservices
+                        aus <span class="dhbw-lightblue font-weight-bold">JavaScript</span> heraus aufzurufen.
                     </li>
                 </ul>
                 <span style="font-size: 240px; color: white;" class="dhbw-text-shadow" >🏁</span>
             </article>
             <aside>
                 <p>
-                    …
+                    Nachdem wir ja eben schon gesehen haben, wie wichtig REST-Webservices und APIs im Allgemeinen
+                    heute sind, wollen wir jetzt natürlich wissen, wie sie genau funktionieren. Beginnen werden
+                    wir daher mit einer Wiederholung zum <b>HTTP-Protokoll</b>, da dieses die Grundlage für alle
+                    REST-basierten APIs bildet. Am Anfang des Kapitels lernen wir daher nochmal den genauen Aufbau
+                    einer HTTP-Nachricht kennen und sehen, welche Anfragemethoden und Statuscodes was bedeuten.
+                    Diese können wir dann im nächsten Schritt auf REST übertragen, um daraus den allgemeinen Aufbau
+                    REST-basierter Schnittstellen abzuleiten. Wie so oft gibt es aber mehrere Möglichkeiten, wie
+                    eine REST API im Detail aufgebaut sein kann. Will man jedoch sicherstellen, dass sich Client
+                    und Server tatsächlich unabhängig voneinander weiterentwickeln lassen, kommt man um das
+                    <b>HATEOAS-Prinzip</b> jedoch nicht herum. Dieses hilft uns dann auch beim <b>Testen mit Postman</b>.
+                </p>
+                <p>
+                    Im zweiten Teil geht es in die Programmierung. Denn schließlich wollen wir REST nicht nur verstehen,
+                    sondern auch eigene Webservices programmieren können. Auch hier gibt es mehrere Alternativen,
+                    konkret werden wir aber das <b>Spring-Framework</b> verwenden, das wir uns hiefür ein wenig
+                    genauer anschauen werden. Zumindest werden wir es uns soweit anschauen, dass wir seine grundlegende
+                    Struktur verstehen und ein einfaches REST-Backend mit Datenbankanbindung ausprogrammieren können.
+                    Den Abschluss bildet dann ein kleiner <b>Ausflug nach JavaScript</b>, damit wir unsere neuen
+                    REST-Webservices im Frontend auch nutzen können.
                 </p>
             </aside>
         </section>
@@ -84,7 +269,7 @@
             REST-Webservices im Überblick
             =============================
         -->
-        <section data-chapter data-background-image="../../trennfolie.jpg">
+        <section data-chapter data-background-image="../trennfolie.jpg">
             <h1>REST-Webservices im Überblick</h1>
             <article>
                 <small>
@@ -1394,32 +1579,537 @@
         <section>
             <h1>Vergleich mit SOAP-Webservices</h1>
             <article>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "soap_vs_rest-soap-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#soap_vs_rest-soap"
+                                role          = "tab"
+                                aria-controls = "soap_vs_rest-soap"
+                                aria-expanded = "true"
+                            >
+                                SOAP-Webservices
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "soap_vs_rest-vergleich-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#soap_vs_rest-vergleich"
+                                role          = "tab"
+                                aria-controls = "soap_vs_rest-vergleich"
+                                aria-expanded = "true"
+                            >
+                                Vergleich mit REST
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "soap_vs_rest-datenvolumen-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#soap_vs_rest-datenvolumen"
+                                role          = "tab"
+                                aria-controls = "soap_vs_rest-datenvolumen"
+                            >
+                                Umfang der Daten
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "soap_vs_rest-soap"
+                            role            = "tabpanel"
+                            aria-labelledby = "soap_vs_rest-soap-tab"
+                        >
+                            <p>
+                                Anfrage und Antwort werden im SOAP-XML-Format kodiert und durch einen einfachen HTTP-Aufruf übertragen. Die aufgerufene URL, sowie
+                                der genaue Inhalte der XML-Nachrichten ergibt sich aus der WSDL-Beschreibung. Der Aufruf erfolgt immer als POST-Anfrage.
+                            </p>
+                            <img src="soap-request.svg" alt="" class="d-block" style="width: 100%; max-width: 60em; margin: 0 auto; margin-bottom: 3em;" />
+                            <img src="soap-response.svg" alt="" class="d-block" style="width: 100%; max-width: 60em; margin: 0 auto;" />
+                        </div>
+                        <!-- Vergleich mit REST -->
+                        <div
+                            class           = "tab-pane fade show"
+                            id              = "soap_vs_rest-vergleich"
+                            role            = "tabpanel"
+                            aria-labelledby = "soap_vs_rest-vergleich-tab"
+                        >
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h2>SOAP</h2>
+                                        <img src="soap-rest-01.jpg" alt="" class="d-block img-thumbnail" style="width: 100%; margin-bottom: 1em;" />
+                                        <table style="margin-bottom: 1em;">
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐘
+                                                </td>
+                                                <td>
+                                                    Eine URL für den gesamten Webservice
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐘
+                                                </td>
+                                                <td>
+                                                    Ermöglicht den Aufruf beliebiger Methoden
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐘
+                                                </td>
+                                                <td>
+                                                    Nutzt von HTTP lediglich das Verb POST
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐘
+                                                </td>
+                                                <td>
+                                                    SOAP-XML als fest vorgegebenes Datenformat
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐘
+                                                </td>
+                                                <td>
+                                                    Verbindliche WSDL-Beschreibung je Service
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐘
+                                                </td>
+                                                <td>
+                                                    Häufigste Verwendung im Unternehmenskontext
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-md">
+                                        <h2>REST</h2>
+                                        <img src="soap-rest-02.jpg" alt="" class="d-block img-thumbnail" style="width: 100%; margin-bottom: 1em;" />
+                                        <table style="margin-bottom: 1em;">
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐇
+                                                </td>
+                                                <td>
+                                                    Je eine URL für eine Ressource¹
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐇
+                                                </td>
+                                                <td>
+                                                    Bildet die üblichen CRUD-Operationen² ab
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐇
+                                                </td>
+                                                <td>
+                                                    Nutzt alle Verben des HTTP-Protokolls
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐇
+                                                </td>
+                                                <td>
+                                                    Beliebige Datenformate, in der Regel JSON
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐇
+                                                </td>
+                                                <td>
+                                                    Optionale WADL-Beschreibung möglich
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-right: 0.5em;">
+                                                    🐇
+                                                </td>
+                                                <td>
+                                                    Häufigste Verwendung für Cloud, Web und Mobile
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <p>
+                                            <small>
+                                                ¹ Im Sinne eines einzelnen Datensatzes, zum Beispiel ein Artikel oder eine Bestellung.
+                                            </small>
+                                        </p>
+                                        <p>
+                                            <small>
+                                                ² Create, Read, Update und Delete
+                                            </small>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <small>
+                                            <small>
+                                                Bildnachweise:
+                                                <a href="https://pixabay.com/de/safari-elefant-s%C3%A4ugetier-tierwelt-3035333/" target="_blank">Pixabay: ronbd</a>,
+                                                <a href="https://pixabay.com/de/hase-wiese-kaninchen-gras-839297/" target="_blank">Pixabay: Bru-nO</a>,
+                                            </small>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Umfang der Daten -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "soap_vs_rest-datenvolumen"
+                            role            = "tabpanel"
+                            aria-labelledby = "soap_vs_rest-datenvolumen-tab"
+                        >
+                            <img src="soap-rest-03.png" alt="SOAP is so much more polite than REST" class="d-block" style="width: 30em; max-width: 100%; margin: 0 auto;" />
+                            <p>
+                                <small>
+                                    <small>
+                                        Bildnachweis:
+                                        <a href="http://geek-and-poke.com/geekandpoke/2009/11/30/service-calling-made-easy-part-1.html" target="_blank">Geek &amp; Poke: 30.11.2009</a>
+                                    </small>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
+                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 1em">
+                    <iframe src="https://www.youtube-nocookie.com/embed/Nzf-TbvswDU" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p>
+                    Um zu verstehen, wie sich SOAP und REST unterscheiden und warum beide so definiert sind, wie sie sind,
+                    muss man sich die Hintergründe und die Entstehung beider Ansätze anschauen.
+                </p>
+                <p>
+                    Da wäre also zum einen SOAP, dessen
+                    Vorläufer <a href="https://de.wikipedia.org/wiki/XML-RPC" target="_blank">XML-RPC</a> ab 1998 bei Microsoft entstand
+                    und der sich, wie der Name schon andeutet, direkt am Aufruf entfernter Methoden über das Internet orientiert.¹
+                    Dabei lag der Fokus schon immer auf der Entwicklung betriebswirtschaftlicher Anwendungen, was sich auch an der
+                    Beteiligung von IBM und anderen Firmen aus diesem Bereich zeigt. Der kurioseste Anwendungsfall ist dabei sicher
+                    <a href="https://de.wikipedia.org/wiki/Universal_Plug_and_Play" target="_blank">Universal Plug and Play</a>, das
+                    auch heute noch zur automatischen Entdeckung und Wiedergabe von Medieninhalten auf verteilten Geräten innerhalb
+                    des heimischen LAN genutzt wird. Davon abgesehen zielt SOAP jedoch voll und ganz auf Unternehmensanwendungen ab,
+                    die ja nur sehr selten für die Nutzung hipper und aktueller Technologien bekannt sind, dafür aber sehr häufig
+                    folgende Anforderungen haben:
+                </p>
+                <ul>
+                    <li>
+                        Interoperabilität mit möglichst vielen Programmiersprachen
+                    </li>
+                    <li>
+                        Einfache Programmierung ohne viel „Boilerplate-Code”
+                    </li>
+                    <li>
+                        Nutzung von zuverlässigen und praxiserprobten Technologien
+                    </li>
+                    <li>
+                        Sichere Datenübertragung durch Signierung und Verschlüsselung
+                    </li>
+                    <li>
+                        Gute Werkzeug-Unterstützung beim Programmieren und Testen
+                    </li>
+                </ul>
+                <p>
+                    Aus diesem Grund ist die Wahl von HTTP-POST zur Datenübertragung und XML als Datenformat auch nur pragmatisch,
+                    da jedes Unternehmen durch die weite Verbreitung des World Wide Web ohnehin schon auf den Abruf von Daten via
+                    HTTP vorbereitet ist und es für XML seit jeher ein exzellentes Tooling gibt. Ebenso lässt sich dadurch erklären,
+                    wie rund um SOAP eine ganze Menge <a href="https://de.wikipedia.org/wiki/WS-*" target="_blank">WS-*</a> genannter
+                    Standards entstehen konnten, die so höchst unterschiedliche Themen wie die XML-Signierung, die Übertragung von
+                    Binärdaten oder die Modellierung von Geschäftsprozessen abdecken.
+                </p>
+                <p>
+                    <small>
+                        ¹ RPC = Remote Procedure Call, also der Aufruf entfernter Prozeduren, wobei man in Java (da es sich ja um
+                        eine objektorientierte Sprache handelt) von Methoden sprechen würde.
+                    </small>
+                </p>
+                <p>
+                    Diesem wahren Schwergewicht 🏋️ steht nun <a href="https://de.wikipedia.org/wiki/Representational_State_Transfer" target="_blank">REST</a>
+                    als leichtgewichtige Alternative und konzeptioneller Gegenentwurf entgegen. Im Jahr 2000 in der Dissertation
+                    von Roy Fielding beschrieben, orientiert sich REST voll und ganz am HTTP-Protokoll und nutzt es als Möglichkeit,
+                    beliebige Ressourcen² über eindeutige URLs zu adressieren und mit den verschiedenen HTTP-Verben entsprechend
+                    ihrer Bedeutung darauf zuzugreifen:
+                </p>
+                <ul>
+                    <li>
+                        <b>GET:</b> Daten einer Ressource abrufen
+                    </li>
+                    <li>
+                        <b>POST:</b> Anlage einer neuen Ressource³
+                    </li>
+                    <li>
+                        <b>PUT:</b> Neue Version einer vorhandenen Ressource speichern³
+                    </li>
+                    <li>
+                        <b>PATCH:</b> Einzelne Felder einer Ressource überschreiben
+                    </li>
+                    <li>
+                        <b>DELETE:</b> Löschen einer Ressource
+                    </li>
+                </ul>
+                <p>
+                    <small>
+                        ² In einer Datenbankanwendung würde man einzelne Datensätze, wie einen Kunden oder einen Zahlungsbeleg,
+                        als Ressource abbilden. Davon abgesehen kann es sich aber um beliebige „Dinge” handeln, die man über
+                        den Webservice verwalten will. Ein E-Mailprovider könnte daher zum Beispiel die Mail Accounts seiner
+                        Kunden sowie einzelne E-Mails als Ressourcen mit eigenen URLs ansprechbar machen.
+                    </small>
+                </p>
+                <p>
+                    <small>
+                        ³ Tatsächlich ist die Abgrenzung zwischen POST und PUT nicht immer strikt gewählt. Es gibt auch viele
+                        Webservices, die POST zur Neuanlage und PUT zur Änderung von Daten oder nur ein Verb für beides nutzen.
+                    </small>
+                </p>
+                <p>
+                    <small>
+                        Auch ist die hier getroffene Unterscheidung formal nicht ganz korrekt. Die absolut korrekte Version ist,
+                        dass POST immer dann verwenet wird, wenn der Client die spätere URL der Ressource nicht genau kennt und PUT,
+                        eben wenn er sie kennt. Haben wir zum Beispiel die URL <code>/Songs/</code> für eine Liste mit Songs und
+                        <code>/Songs/42/</code> für den einzelnen Song mit der ID 42, kann man eine POST-Anfrage an <code>/Songs/</code>
+                        senden, um einen neuen Eintrag unter eine beliebigen ID abzulegen oder eine PUT-Anfrage an <code>/Songs/42/</code>,
+                        um den Song mit der ID 42 anzulegen oder zu überschreiben.
+                    </small>
+                </p>
+                <p>
+                    Das Format der übertragenen Daten ist dabei nicht verbindlich definiert, allermeistens wird jedoch JSON
+                    verwendet, da es platzsparender als XML ist und mit JavaScript besonders einfach verarbeitet werden kann.
+                    Auch gibt es nicht zwingend eine formale XML-Beschreibung, die alle Operationen eines Webservices sowie
+                    die syntaktische Struktur der übertragenen Daten definiert. Hierfür gibt es zwar WADL (Web Application
+                    Description Language) und andere Formate als Quasi-Ersatz, sie haben aber alle keine weite Verbreitung.
+                </p>
             </aside>
         </section>
 
         <section>
             <h1>REST-Webservices testen mit Postman</h1>
             <article>
+                <ul class="dhbw-carousel-links">
+                    <li>
+                        <a href="#postman-carousel" role="button" data-slide="next">Nächstes Bild</a>
+                    </li>
+                    <li>
+                        <a href="#postman-carousel" role="button" data-slide="prev">Vorheriges Bild</a>
+                    </li>
+                    <li>
+                        <a href="#postman-carousel" role="button" data-slide-to="0">Nochmal von vorne</a>
+                    </li>
+                </ul>
+                <div id="postman-carousel" class="carousel slide" style="margin-bottom: 1em;" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item img-thumbnail active">
+                            <p>
+                                TODO
+                            </p>
+                            <img class="active d-block w-100" src="postman-01.png" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Damit endet unsere kleine SoapUI-Tour. Das Tool sollte ein keinem Werkzeugkoffer fehlen. 🔧
+                            </p>
+                            <img class="active d-block w-25 m-auto" src="../finish.svg" />
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <small>
+                        <small>
+                            Bildnachweis für das Endesymbol: <a href="https://pixabay.com/en/symbol-gui-internet-internet-page-2480163/" target="_blank">Pixabay: janf93</a>
+                        </small>
+                    </small>
+                </p>
             </article>
             <aside>
+                <p>
+                    Die einfachste Möglichkeit, einen neuen Webservice kennenzulernen oder eigene Webservices zu testen, ist sie
+                    mit dem kostenlosen Tool <a href="https://www.postman.com/downloads/" target="_blank">Postman</a> zu untersuchen.
+                    Die nachfolgenden Abbildungen zeigen dir, wir du hierfür vorgehen musst. 🔬
+                </p>
+                <img src="rest.jpg" alt="" class="d-block img-thumbnail" style="width: 100%;" />
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/de/hund-tier-s%C3%A4ugetier-niedlich-3209824/" target="_blank">Pixabay: LauraHalsel</a>
+                    </small>
+                </p>
             </aside>
         </section>
 
         <section data-background-color="rgb(231, 221, 141)">
             <h1>Aufgabe 1: Hey, Mister Postman!</h1>
-            <!-- Video zum gleichnamigen Song der Carpenters -->
+            <!-- Video zum gleichnamigen Song der Carpenters, JSONPlaceholder testen -->
             <article>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md">
+                            <p>
+                                Nun, welche Musik hörst du gerne? 🎼 Hier hast du die einmalige Gelegenheit, sie über einen REST-Webservice in eine Datenbank einzutragen. 😎
+                                Hierfür musst du dir lediglich das Beispielprojekt von Moodle herunterladen und in Netbeans zum Laufen bekommen. Anschließend öffnet sich
+                                eine kleine Seite im Browser, mit der du erste Versuche unternehmen kannst. Gehe dabei wie folgt vor:
+                            </p>
+                            <ol>
+                                <li>
+                                    Klicke jeden Link einmal an und schaue, was passiert.
+                                </li>
+                                <li>
+                                    Falls die Links mit der ID 10 keine Daten liefern, tausche die ID in der URL aus.
+                                </li>
+                                <li>
+                                    Schaue dir die WADL-Datei an und versuche, sie zu verstehen.
+                                </li>
+                                <li>
+                                    Importiere die WADL-Datei in SoapUI und teste die verschiedenen Webservice-Operationen.
+                                </li>
+                            </ol>
+                            <p>
+                                Um einen neuen Song anzulegen, kannst du folgende JSON-Daten an den Server schicken:
+                            </p>
+                            <source-code language="json">
+                                {
+                                    "name": "Circle of Life",
+                                    "artist": "Elton John",
+                                    "songwriters": "Tim Rice",
+                                    "releaseYear": 1994
+                                }
+                            </source-code>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="aufgabe1-browser.jpg" alt="Screenshot des Webservices im Browser" class="d-block img-thumbnail" style="width: 100%; background-color: rgb(72, 116, 140);" />
+                        </div>
+                        <div class="col-md">
+                            <img src="aufgabe1-postman.png" alt="Screenshot des Webservices in Postman" class="d-block img-thumbnail" style="width: 100%; background-color: rgb(72, 116, 140);" />
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
+                <p>
+                    Hier kannst du nun deine ersten, praktischen Erfahrungen mit REST sammeln. Lade dir hierfür einfach
+                    das Beispiel von Moodle runter und erkunde es mit Postman. Danach solltest mit der nächsten Aufgabe
+                    keine Probleme mehr haben. 🎓
+                    <a href="https://www.youtube.com/watch?v=dcLbS0yxzdk" target="_blank">Den gleichnamigen Song</a>
+                    (in der Version von den Carpenters) findest du derweil auf Youtube.
+                </p>
+                <img src="mail.png" class="img-fluid d-block" style="max-width: 15em;"/>
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/vectors/communication-document-letter-mail-2024204/" target="_blank">Pixabay: OpenClipart-Vectors</a>
+                    </small>
+                </p>
             </aside>
         </section>
 
         <section data-background-color="rgb(231, 221, 141)">
-            <h1>Aufgabe 2: Ein kleines HTTP- und REST-Quiz</h1>
+            <h1>Aufgabe 2: Musik liegt in der Luft</h1>
+            <!-- Song verlinken: Music is in the air, HTTP/JSON für einfachen REST-WS definieren -->
             <article>
-                <h2>Aufgabe 1.1: HTTP-Verben</h2>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "aufgabe2-aufgabe-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#aufgabe2-aufgabe"
+                                role          = "tab"
+                                aria-controls = "aufgabe2-aufgabe"
+                                aria-expanded = "true"
+                            >
+                                Aufgabe
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "aufgabe2-loesung-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#aufgabe2-loesung"
+                                role          = "tab"
+                                aria-controls = "aufgabe2-loesung"
+                            >
+                                Lösung
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Aufgabe -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "aufgabe2-aufgabe"
+                            role            = "tabpanel"
+                            aria-labelledby = "aufgabe2-aufgabe-tab"
+                        >
+                            TODO: Aufgabe
+                        </div>
+                        <!-- Lösung -->
+                        <div
+                            class           = "tab-pane fade show"
+                            id              = "aufgabe2-loesung"
+                            role            = "tabpanel"
+                            aria-labelledby = "aufgabe2-loesung-tab"
+                        >
+                            TODO: Lösung
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside>
+                <p>
+                    Mit <a href="https://www.youtube.com/watch?v=o18uc4kVhTU" target="_blank">Musik</a> geht alles
+                    gleich viel einfacher. Als einfaches Beispiel für REST-basierte Schnittstellen sollst du deshalb
+                    eine kleine API zur Abfrage von Albumtiteln entwerfen.
+                </p>
+                <img src="music.svg" class="img-fluid d-block" style="max-width: 20em;"/>
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/vectors/sheep-animal-farm-funny-headphones-158247/" target="_blank">Pixabay: OpenClipart-Vectors</a>
+                    </small>
+                </p>
+                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 1em">
+                    <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/4bRuh9cNgl8?rel=0" allow="encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 1em">
+                    <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/o18uc4kVhTU?rel=0" allow="encrypted-media" allowfullscreen></iframe>
+                </div>
+            </aside>
+        </section>
+
+        <section data-background-color="rgb(231, 221, 141)">
+            <h1>Aufgabe 3: Ein kleines HTTP- und REST-Quiz</h1>
+            <article>
+                <h2>Aufgabe 3.1: HTTP-Verben</h2>
 
                 <p>
                     a) Was bedeutet das HTTP-Verb <tt>POST</tt>?
@@ -1466,7 +2156,7 @@
                     </li>
                 </ol>
 
-                <h2>Aufgabe 1.2: Statuscodes</h2>
+                <h2>Aufgabe 3.2: Statuscodes</h2>
 
                 <p>
                     a) Was bedeutet der Statuscode <tt>401 Unauthorized</tt>?
@@ -1532,7 +2222,7 @@
 
                 <p style="transform: scaleY(-1) scaleX(-1); display: inline-block;">
                     <small>
-                        <b>Lösung:</b> Aufgabe 1.1: 3, 2, 1; Aufgabe 1.2: 3, 1, 3, 2
+                        <b>Lösung:</b> Aufgabe 3.1: 3, 2, 1; Aufgabe 3.2: 3, 1, 3, 2
                     </small>
                 </p>
             </article>
@@ -1544,21 +2234,12 @@
             </aside>
         </section>
 
-        <section data-background-color="rgb(231, 221, 141)">
-            <h1>Aufgabe 3: Musik liegt in der Luft</h1>
-            <!-- Song verlinken: Music is in the air -->
-            <article>
-            </article>
-            <aside>
-            </aside>
-        </section>
-
         <!--
             ===========================
             Backendentwicklung mit Java
             ===========================
         -->
-        <section data-chapter data-background-image="../../trennfolie.jpg">
+        <section data-chapter data-background-image="../trennfolie.jpg">
             <h1>Backendentwicklung mit Java</h1>
             <article>
                 <small>
@@ -1593,14 +2274,491 @@
         <section>
             <h1>Von der Idee zur fertigen Anwendung</h1>
             <article>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "vorgehen-uebersicht-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#vorgehen-uebersicht"
+                                role          = "tab"
+                                aria-controls = "vorgehen-uebersicht"
+                                aria-expanded = "true"
+                            >
+                                Übersicht
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "vorgehen-datenmodell-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#vorgehen-datenmodell"
+                                role          = "tab"
+                                aria-controls = "vorgehen-datenmodell"
+                            >
+                                Datenmodell
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "vorgehen-services-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#vorgehen-services"
+                                role          = "tab"
+                                aria-controls = "vorgehen-services"
+                            >
+                                Services
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "vorgehen-benutzeroberflaeche-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#vorgehen-benutzeroberflaeche"
+                                role          = "tab"
+                                aria-controls = "vorgehen-benutzeroberflaeche"
+                            >
+                                Benutzeroberfläche
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Übersicht -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "vorgehen-uebersicht"
+                            role            = "tabpanel"
+                            aria-labelledby = "vorgehen-uebersicht-tab"
+                        >
+                            <p>
+                                Die untenstehende Zeichnung zeigt die wesentlichen Schritte, die bei der Entwicklung einer Jakarta-EE-Anwendung anfallen.
+                                Die wichtigsten davon schauen wir uns anhand eines kleinen Fallbeispiels etwas genauer an.
+                            </p>
+                            <img src="vorgehen-uebersicht.svg" alt="Schritte während der Entwicklung" class="d-block" style="width: 100%;" />
+                        </div>
+                        <!-- Datenmodell -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "vorgehen-datenmodell"
+                            role            = "tabpanel"
+                            aria-labelledby = "vorgehen-datenmodell-tab"
+                        >
+                            <p>
+                                Zunächst brauchen wir ein gutes Datenmodell, das nicht zu kompliziert aber dennoch flexibel ist. Unsere kleine Anwendung modelliert
+                                eine Buchsammlung. Wir haben daher Entitäten wie <span class="dhbw-lightblue">Buch</span>, <span class="dhbw-lightblue">Autor</span>
+                                oder <span class="dhbw-lightblue">Verlag</span>, die in Beziehung zueinander stehen. Zusätzlich hat jeder Autor und jeder Verlag eine
+                                <span class="dhbw-lightblue">Adresse</span>.
+                            </p>
+                            <img
+                                src   = "vorgehen-datenmodell.svg"
+                                alt   = "Datenmodell mit den Entitäten Buch, Autor, Verlag und Adresse"
+                                class = "d-block"
+                                style = "width: 35em; max-width: 100%; margin: 0 auto; margin-top: 1em; margin-bottom: 1em;"
+                            />
+                            <p>
+                                In Javacode sieht das ganze ungefähr so aus. Die Details dazu schauen wir uns natürlich noch an.
+                            </p>
+                            <source-code language="java">
+                                @Entity
+                                public class Buch implements Serializable {
+                                    @Id
+                                    private String isbn = "";
+
+                                    private String titel = "";
+                                    private String untertitel = "";
+                                    private BuchKategorie kategorie = BuchKategorie.UNBEKANNT;
+                                    private int anzahlSeiten = 0;
+
+                                    @ManyToMany
+                                    List&lt;Autor&gt; autoren = new ArrayList&lt;&gt;();
+
+                                    @ManyToOne
+                                    private Verlag verlag = null;
+
+                                    // Setter und Getter …
+                                }
+
+                                public enum BuchKategorie {
+                                    UNBEKANNT, BELLETRISTIK, FACHBUCH, SAMMELBAND, ZEITSCHRIFT;
+                                }
+
+                                @Entity
+                                public class Autor implements Serializable {
+                                    @Id
+                                    @GeneratedValue
+                                    private long id;
+
+                                    private String vorname;
+                                    private String nachname;
+                                    private String titel;
+
+                                    @OneToOne
+                                    Adresse adresse = null;
+
+                                    @ManyToMany(mappedBy="autoren")
+                                    List&lt;Buch&gt; buecher = new ArrayList&lt;&gt;();
+
+                                    // Setter und Getter …
+                                }
+
+                                @Entity
+                                public class Verlag implements Serializable {
+                                    @Id
+                                    @GeneratedValue
+                                    private long id;
+
+                                    private String name;
+                                    private String rechtsform;
+
+                                    @OneToOne
+                                    Adresse adresse = null;
+
+                                    @OneToMany(mappedBy="verlag")
+                                    List&lt;Buch&gt; buecher = new ArrayList&lt;&gt;();
+
+                                    // Setter und Getter …
+                                }
+
+                                @Entity
+                                public class Adresse implements Serializable {
+                                    @Id
+                                    @GeneratedValue
+                                    private long id;
+
+                                    private String strasse = "";
+                                    private String hausnummer = "";
+                                    private String postleitzahl = "";
+                                    private String ort = "";
+                                    private String land = "";
+
+                                    // Setter und Getter …
+                                }
+                            </source-code>
+                        </div>
+                        <!-- Services -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "vorgehen-services"
+                            role            = "tabpanel"
+                            aria-labelledby = "vorgehen-services-tab"
+                        >
+                            <p>
+                                Darauf aufbauend können wir nun Services definieren, die sinnvolle Funktionen rund um die Entitäten zur Verfügung stellen.
+                                Im einfachsten Fall bieten wir die üblichen CRUD-Operationen: <span class="dhbw-lightblue">Create</span>,
+                                <span class="dhbw-lightblue">Read</span>, <span class="dhbw-lightblue">Update</span> und <span class="dhbw-lightblue">Delete</span>.
+                            </p>
+
+                            <img
+                                src   = "vorgehen-services.svg"
+                                alt   = "Klassendiagramm der Klassen BuchService, AutorService, VerlagService"
+                                class = "d-block"
+                                style = "width: 42em; max-width: 100%; margin: 0 auto; margin-top: 1em; margin-bottom: 1em;"
+                            />
+
+                            <source-code language="java">
+                                @Stateless
+                                public class BuchService {
+                                    @PersistenceContext
+                                    protected EntityManager em;
+
+                                    // Bücher selektieren
+                                    public Buch findByIsbn(String isbn) { … }
+                                    public List&lt;Buch&gt; findByAutor(Autor autor) { … }
+                                    public List&lt;Buch&gt; findByVerlag(Verlag verlag) { … }
+                                    public List&lt;Buch&gt; findByTitleContains(String title) { … }
+
+                                    // Neue Bücher speichern
+                                    public Buch saveNew(Buch buch) { … }
+
+                                    // Bücher Verlage ändern
+                                    public Buch update(Buch buch) { … }
+                                    public void delete(Buch buch) { … }
+                                }
+
+                                @Stateless
+                                public class VerlagService {
+                                    …
+                                }
+
+                                @Stateless
+                                public class AutorService {
+                                    …
+                                }
+                            </source-code>
+                        </div>
+                        <!-- Benutzeroberfläche -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "vorgehen-benutzeroberflaeche"
+                            role            = "tabpanel"
+                            aria-labelledby = "vorgehen-benutzeroberflaeche-tab"
+                        >
+                            <p>
+                                Und last but not least eine schöne Benutzeroberfläche, entweder als serverseitige MVC-Webanwendung,
+                                als clientseitige Webanwendung oder als Native Client. Oder jede beliebige Kombination daraus,
+                                ganz wie du willst.
+                            </p>
+                            <img
+                                src   = "vorgehen-ui.png"
+                                alt   = "Benutzeroberflächen für Smartphone, Tablet, Desktop und Notebook"
+                                class = "d-block"
+                                style = "width: 100%; margin-top: 1em;"
+                            />
+
+                            <source-code language="java">
+                                @WebServlet(urlPatterns={"/start/"})
+                                public class StartPageServlet extends HttpServlet {
+                                    @EJB
+                                    BuchService buchService;
+
+                                    @EJB
+                                    AutorService autorService;
+
+                                    @EJB
+                                    VerlagService verlagService;
+
+                                    @Override
+                                    public void doGet(HttpServletRequest request, HttpServletResponse)
+                                    throws ServletException, IOException {
+                                        …
+                                    }
+                                }
+                            </source-code>
+
+                            <p>
+                                <small>
+                                    <small>
+                                        Bildnachweise:
+                                        <a href="https://pixabay.com/de/imac-ipad-iphone-macbook-laptop-1999636/" target="_blank">Pixabay: Nick_H</a>,
+                                        <a href="https://pixabay.com/de/buch-rack-regal-m%C3%B6bel-design-holz-2943383/" target="_blank">Pixabay: JuralMin</a>
+                                    </small>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
+                <p>
+                    Ordnung ist das halbe Leben. Was im Alltag gilt, gilt natürlich auch bei der Entwicklung großer Anwendungen,
+                    wie sie bei Jakarta&nbsp;EE häufig vorkommen. Bevor du also einfach so drauf los programmierst, solltest du eine
+                    möglichst genaue Vorstellung davon haben, was für eine Anwendung du schreiben willst, wie der Quellcode aufgebaut
+                    sein muss und wie du hierfür am besten vorgehst. Kurz um: Du brauchst einen Plan, damit du dich nicht in eine Ecke
+                    programmierst, aus der du nur schwer wieder herauskommst: 🙃
+                </p>
+                <a href="https://xkcd.com/1513/" target="_blank">
+                    <img src="https://imgs.xkcd.com/comics/code_quality.png" class="d-block" style="width: 100%;" />
+                </a>
+                <p>
+                    <small>
+                        I honestly didn't think you could even USE emoji in variable names. <br />
+                        Or that there were so many different crying ones. <br />
+                        Bildnachweis: <a href="https://xkcd.com/1513/" target="_blank">Randall Munroe, xkcd 1513</a>
+                    </small>
+                </p>
+                <p>
+                    Das Gute daran ist, dass das gar nicht so schwer ist. Denn immerhin gibt es die Jakarta Enterprise Edition nun schon
+                    so lange, dass reichlich viel Erfahrung in ihre Entwicklung geflossen ist. Ein klein wenig strukturiertes Vorgehen
+                    gepaart mit einfachen Regeln aus dem Software-Engingeering-Fundus und schon ergibt sich der Rest fast von alleine. 🦋
+                </p>
+                <p>
+                    Anfangen solltest du daher immer mit dem Datenmodell, denn es ist das Fundament, auf dem alles andere aufbaut. Bevor
+                    du also auch nur daran denkst, die IDE zu starten, solltest du erst das Datenmodell definieren und so genau wie möglich
+                    beschreiben. <a href="https://de.wikipedia.org/wiki/Entity-Relationship-Modell" target="_blank">ER-Diagramme</a> können
+                    dabei eine große Hilfe sein, aber natürlich tut es auch jede andere Darstellungsform. Wichtig ist nur, dass alle Tabellen
+                    mit allen Feldern gut durchdacht sind, es keine Redundanzen gibt und das Datenmodell nicht komplexer als unbedingt nötig
+                    ist. Reicht zum Beispiel ein Feld für die Telefonnummer oder muss sie in ihre einzelnen Bestandteile¹ zerlegt werden?
+                    Hat eine Firma nur eine Adresse oder müssen auch ihre Niederlassungen abgespeichert werden? Reicht dabei die aktuelle
+                    Adresse oder werden auch historische Adressen benötigt? Solche Fragen musst du dir stellen und beantworten, bevor zu
+                    programmieren anfängst.
+                </p>
+                <p>
+                    <small>
+                        ¹ Ländervorwahl, Ortsvorwahl, Anschlussnummer, Durchwahl
+                    </small>
+                </p>
+                <p>
+                    Als nächstes gilt es dann, das Datenmodell im Quellcode abzubilden, also <b>Persistence Entities</b> zu schreiben,
+                    wobei du dir aussuchen kannst, ob du erst die Klassen schreibst und daraus dann Tabellen generieren lässt, oder
+                    ob du erst die Tabellen anlegst und daraus dann die Klassen generierst. Alternativ kannst du natürlich auch sowohl
+                    die Klassen als auch die Tabellen manuell anlegen, je nachdem, was dir lieber ist. In der Vorlesung machen wir es
+                    uns jedoch einfach und schreiben nur die Klassen. Den Rest darf Jakarta&nbsp;EE alleine machen. 😋 Wie die Klassen
+                    hierfür aussehen müssen, schauen wir uns gleich genauer an. Für den Anfang reicht es aber zu wissen, dass es sich
+                    um ganz normale Javaklassen handelt, von denen je ein Objekt einer Tabellenzeile entspricht. Die Klassen müssen
+                    hierfür lediglich mit <code>@Entity</code> gekennzeichnet werden und für jedes Tabellenfeld ein Attribut mit
+                    Settern und Gettern enthalten:
+                </p>
+                <source-code language="java">
+                    @Entity
+                    public class Buch {
+                        @Id
+                        private String isbn;
+
+                        public String getIsbn() {
+                            return this.isbn;
+                        }
+
+                        public void setIsbn(String isbn) {
+                            this.isbn = isbn;
+                        }
+
+                        …
+                    }
+                </source-code>
+                <p>
+                    Als nächstes folgen <b>Enterprise Java Beans</b>, die sinnvolle Methoden rund um das Datenmodell definieren.
+                    Sie bilden sozusagen die Schnittstelle, mit der auf die Daten zugegriffen werden kann. Die Beans sollten daher
+                    die üblichen CRUD-Methoden zum Anlegen, Lesen, Aktualisieren und Löschen von Einträgen beinhalten. Darüber hinaus
+                    können Sie natürlich noch alle möglichen, weiteren Methoden umfassen, die für den Umgang mit den Daten nützlich sind.
+                </p>
+                <source-code language="java">
+                    @Stateless
+                    public class BuchService {
+                        @PersistenceContext
+                        protected EntityManager em;
+
+                        // Bücher selektieren
+                        public Buch findByIsbn(String isbn) { … }
+                        public List&lt;Buch&gt; findByTitleContains(String title) { … }
+
+                        // Neue Bücher speichern
+                        public Buch saveNew(Buch buch) { … }
+
+                        // Bücher Verlage ändern
+                        public Buch update(Buch buch) { … }
+                        public void delete(Buch buch) { … }
+                    }
+                </source-code>
+                <p>
+                    Auf dieser Ebene würde man dann auch <a href="https://de.wikipedia.org/wiki/Modultest" target="_blank">Unit Tests</a>
+                    schreiben, um jederzeit die richtige Funktionsweise der Beans überprüfen zu können. Zusätzlich können die Beans mit
+                    ganz wenig Aufwand zu Webservices ausgebaut werden, um somit auch von entfernten Clients aufgerufen werden zu können.
+                    Die Details dazu schauen wir uns im Webservice-Kapitel an. Um dir zu zeigen, dass es aber wirklich ganz einfach geht,
+                    hier ein minimales Beispiel:
+                </p>
+                <source-code language="java">
+                    @Stateless
+                    @WebService
+                    public class BuchService {
+                        @PersistenceContext
+                        protected EntityManager em;
+
+                        @WebMethod
+                        @WebResult(name="buch")
+                        public Buch findByIsbn(@WebParam(name="isbn") String isbn) {
+                            …
+                        }
+                    }
+                </source-code>
+                <p>
+                    Fehlt dann nur noch die Benutzeroberfläche, für die dir das volle Programm zur Verfügung steht: Serverseitige
+                    Webanwendungen, clientseitige Webanwendungen oder Native Clients für verschiedene Betriebssysteme. Alles ist erlaubt.
+                </p>
             </aside>
         </section>
 
         <section>
             <h1>Gestatten, mein Name ist Spring!</h1>
             <article>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-funktionen-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#spring-funktionen"
+                                role          = "tab"
+                                aria-controls = "spring-funktionen"
+                                aria-expanded = "true"
+                            >
+                                Funktionsumfang
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-webserver-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#spring-webserver"
+                                role          = "tab"
+                                aria-controls = "spring-webserver"
+                            >
+                                Eingebetteter Webserver
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-datenbank-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#spring-datenbank"
+                                role          = "tab"
+                                aria-controls = "spring-datenbank"
+                            >
+                                Datenbankzugriff
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Funktionsumfang -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "spring-funktionen"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-funktionen-tab"
+                        >
+                            <div class="container-fluid p-0">
+                                <div class="row">
+                                    <div class="col-md">
+                                        TODO, z.B. mit Bildern links und Text rechts
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Eingebetteter Webserver -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "spring-webserver"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-webserver-tab"
+                        >
+                            TODO: Eingebetter Webserver
+                            <!-- TODO: Screenshot aus Terminal, wie der eingebettete Apache startet -->
+                        </div>
+                        <!-- Datenbankzugriff -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "spring-datenbank"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-datenbank-tab"
+                        >
+                            <img src="spring-or-mapping.svg" alt="O/R-Mapping in Java" class="d-block" style="width: 100%; margin-bottom: 1em;" />
+                            <table>
+                                <tr>
+                                    <td style="padding-right: 0.5em">
+                                        🛢️
+                                    </td>
+                                    <td>
+                                        <b>JDBC:</b> Allgemeine API für den Zugriff auf relationale Datenbanken
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em">
+                                        🛢️
+                                    </td>
+                                    <td>
+                                        <b>JPA:</b> Auf JDBC aufbauende API für O/R-Mapper, die Javaobjekte in Tabelleneinträge und umgekehrt verwandeln
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
             </aside>
@@ -1642,8 +2800,70 @@
             <h1>Aufgabe 4: Was steht auf dem Plan?</h1>
             <!-- Schauburg-Beipsiel start vereinfacht als REST-WS, nur die Spielzeiten von Filmen -->
             <article>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "aufgabe4-aufgabe-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#aufgabe4-aufgabe"
+                                role          = "tab"
+                                aria-controls = "aufgabe4-aufgabe"
+                                aria-expanded = "true"
+                            >
+                                Aufgabe
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "aufgabe4-loesung-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#aufgabe4-loesung"
+                                role          = "tab"
+                                aria-controls = "aufgabe4-loesung"
+                            >
+                                Lösung
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Aufgabe -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "aufgabe4-aufgabe"
+                            role            = "tabpanel"
+                            aria-labelledby = "aufgabe4-aufgabe-tab"
+                        >
+                            TODO: Aufgabe
+                        </div>
+                        <!-- Lösung -->
+                        <div
+                            class           = "tab-pane fade show"
+                            id              = "aufgabe4-loesung"
+                            role            = "tabpanel"
+                            aria-labelledby = "aufgabe4-loesung-tab"
+                        >
+                            TODO: Lösung
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
+                <p>
+                    Zum Abschluss des Kapitels kannst du hier deinen ersten, eigenen Webservice schreiben.
+                    Nichts Besonderes. Du solltest aber mal alle Schritte von der Anlage des neuen Projekts
+                    über das Ausprogrammieren der Klassen bis zum Test mit Postman einmal durchlaufen, bevor
+                    es mit der Vorlesung weiter geht. 🏇
+                </p>
+                <img src="../github_atom.png" class="img-fluid d-block"/>
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://atom.io/" target="_blank">Atom Webseite</a>
+                    </small>
+                </p>
             </aside>
         </section>
 
@@ -1651,16 +2871,105 @@
             <h1>Aufgabe 5: Eine kleine Webanwendung</h1>
             <!-- Integration von JSONPlaceholder in eine vorgegebene HTML-Datei, soll sauber gekapselt sein? -->
             <article>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "aufgabe5-aufgabe-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#aufgabe5-aufgabe"
+                                role          = "tab"
+                                aria-controls = "aufgabe5-aufgabe"
+                                aria-expanded = "true"
+                            >
+                                Aufgabe
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "aufgabe5-loesung-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#aufgabe5-loesung"
+                                role          = "tab"
+                                aria-controls = "aufgabe5-loesung"
+                            >
+                                Lösung
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Aufgabe -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "aufgabe5-aufgabe"
+                            role            = "tabpanel"
+                            aria-labelledby = "aufgabe5-aufgabe-tab"
+                        >
+                            TODO: Aufgabe
+                        </div>
+                        <!-- Lösung -->
+                        <div
+                            class           = "tab-pane fade show"
+                            id              = "aufgabe5-loesung"
+                            role            = "tabpanel"
+                            aria-labelledby = "aufgabe5-loesung-tab"
+                        >
+                            TODO: Lösung
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
+                <p>
+                    Hier kannst du noch die Verwendung einer REST-Schnittstelle in einer Webanwendung ausprobieren.
+                    Hierfür verweden wir wieder <a href="https://jsonplaceholder.typicode.com/" target="_blank">JSONPlaceholder</a>,
+                    damit du die Aufgabe auch machen kannst, wenn die Java-Aufgabe nicht geklappt hat. 🎀
+                </p>
+                <img src="../github_atom.png" class="img-fluid d-block"/>
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://atom.io/" target="_blank">Atom Webseite</a>
+                    </small>
+                </p>
             </aside>
         </section>
 
         <section data-background-color="rgb(231, 221, 141)">
             <h1>Aufgabe 6: Ein kleines API-Quiz</h1>
             <article>
+                <h2>Aufgabe 6.1: TODO</h2>
+
+                <p>
+                    a) Eine schlaue Frage hier …
+                </p>
+                <ol>
+                    <li>
+                        Antwort 1
+                    </li>
+                    <li>
+                        Antwort 2
+                    </li>
+                    <li>
+                        Antwort 3
+                    </li>
+                </ol>
+
+                <hr />
+
+                <p style="transform: scaleY(-1) scaleX(-1); display: inline-block;">
+                    <small>
+                        <b>Lösung:</b> Aufgabe 6.1: TODO
+                    </small>
+                </p>
             </article>
             <aside>
+                <p>
+                    Ganz zum Schluss haben wir hier noch ein paar Wiederholungsfragen für dich vorbereitet.
+                    Wenn du diese schaffst, bist du bestens auf die nächste Vorlesung vorbereitet. 🎙️
+                </p>
             </aside>
         </section>
 
@@ -1718,7 +3027,7 @@
             Hinweise zum Schluss
             ====================
         -->
-        <section data-chapter data-background-image="../../trennfolie.jpg">
+        <section data-chapter data-background-image="../trennfolie.jpg">
             <h1>Hinweise zum Schluss</h1>
             <article>
                 <small>
@@ -1745,7 +3054,7 @@
                     Dies sind sie: Die berühmten letzten Worte. 📄 Auf dieser Folie haben wir ein paar allgemeine
                     Tipps zusammengestellt, worauf du bei der Entwicklung deiner eigenen REST APIs achten solltest.
                 </p>
-                <img src="../../do-dont.svg" class="d-block" style="width: 20em; max-width: 100%; margin-bottom: 0.5em;" />
+                <img src="../do-dont.svg" class="d-block" style="width: 20em; max-width: 100%; margin-bottom: 0.5em;" />
                 <p>
                     <small>
                         Bildnachweis:
@@ -1773,7 +3082,7 @@
                     wir in der Vorlesung eben leider nicht geben. Auf dieser Folie haben wir deshalb
                     interessante Links 🗺️ als Ausgangslage für deine eigenen Recherchen zusammengestellt.
                 </p>
-                <img src="../../link.png" class="d-block" style="width: 20em; max-width: 100%; margin-bottom: 0.5em;" />
+                <img src="../link.png" class="d-block" style="width: 20em; max-width: 100%; margin-bottom: 0.5em;" />
                 <p>
                     <small>
                         Bildnachweis:
