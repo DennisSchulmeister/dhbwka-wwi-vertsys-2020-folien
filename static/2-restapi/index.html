@@ -38,18 +38,7 @@
         </section>
 
         <section data-background-color="rgb(210,190,210)">
-            <!--
-                TODO
-                Serverseitige Webentwicklung / Die drei Arten ...:
-                 » Unterschiede server- vs. clientseitige Webanwendung
-                 » Beispiele für rein clientseitige Webanwendungen
-
-                Aufbau ähnlich wie im SOAP-Kapitel "HTTP+XML=SOAP", ähnliches Beispiel mit dem Hund
-
-                EJB / Fallbeispiele für Java auf dem Server
-                 » Reisebüro-Beispiel anpassen
-            -->
-            <h1>Webanwendungen früher und heute</h1>
+            <h1>Typische Anwendungsfälle</h1>
             <article>
                 <table style="margin-bottom: 1em;">
                     <tr>
@@ -57,7 +46,7 @@
                             🌎
                         </td>
                         <td>
-                            SOAP-Webservices erlauben Clients den entfernten Aufruf von Methoden eines Servers.
+                            Clientseitige Webanwendungen nutzen REST-Webservices häufig als Backend-Schnittstelle.
                         </td>
                     </tr>
                     <tr>
@@ -65,7 +54,7 @@
                             🌍
                         </td>
                         <td>
-                            HTTP dient dabei als plattformunabhängiges Transportprotokoll für XML-SOAP-Nachrichten.
+                            Mobile Apps aber auch Desktopanwendungen kommunzieren oft via REST mit Cloud- und Serverdiensten.
                         </td>
                     </tr>
                     <tr>
@@ -73,12 +62,10 @@
                             🌏
                         </td>
                         <td>
-                            Üblicherweise wird es in Unternehmen zur Entwicklung betriebswirtschaftlicher Anwendungen genutzt.
+                            Unternehmen nutzen REST-Webservices zur Realisierung firmenübergreifender Geschäftsprozesse.
                         </td>
                     </tr>
                 </table>
-
-                <h2>Typische Anwendungsfälle</h2>
 
                 <div>
                     <ul class="nav nav-tabs" role="tablist">
@@ -128,20 +115,12 @@
                             role            = "tabpanel"
                             aria-labelledby = "anwendungen-webapp-tab"
                         >
-                            <p>
-                                Dieses Beispiel zeigt ein großes Webportal mit mehreren, von der restlichen Anwendungslogik entkoppelten Webfrontends.
-                                Zur besseren Skalierung werden getrennte Server für die Webfrontends (sog. „Webcontainer"¹) und das Backend genutzt.
-                                Im Backend werden zusätzlich die Dienste fremder Anbieter per Webservice integriert.
-                            </p>
-                            <p style="line-height: 1; margin-bottom: 1em;">
-                                <small>
-                                    <small>
-                                        ¹ Vollwertige Jakarta&nbsp;EE-Applikationsserver bestehen im Grunde genommen aus nichts anderem als einem
-                                        Webcontainer und einem EJB-Container, wobei der Webcontainer die Servlet- und webbezogenen APIs zur
-                                        Verfügung stellt und der EJB-Container den Rest. Wenn man aber weiß, dass man die Funktionen des EJB-Containers
-                                        nicht benötigt, kann man den Webcontainer auch separat installieren.
-                                    </small>
-                                </small>
+                            <p class="mb-4">
+                                Moderne Webanwendungen entkoppeln das Frontend als browserseitige Anwendung vom Backend, indem
+                                beide unabhängig voneinander entwickelt werden und nur über REST-Schnittstellen kommunizieren.
+                                In großen Anwendungen befinden hierfür sich sogar die Codedateien des Frontends auf einem eigenen
+                                Webserver. Dies steht im Gegensatz zu klassischen Webanwendungen ohne JavaScript, in denen der
+                                Server nach jeder Aktion dynamisch erzeugten HTML-Code an den Browser schickt.
                             </p>
                             <img src="anwendungen-reiseportal.jpg" alt="Architekturskizze eines großen Reiseportals" class="d-block" style="width: 100%; margin-bottom: 1em;" />
                             <p>
@@ -165,7 +144,20 @@
                             role            = "tabpanel"
                             aria-labelledby = "anwendungen-mobile-tab"
                         >
-                            TODO: Mobile Apps
+                        <p class="mb-4">
+                            Mobile Apps und auch Desktopanwendungen kommunizieren häufig mit Clouddiensten und Servern im Internet.
+                            In neueren Anwendungen kommen hierfür vermehrt REST-Webservices als universale Schnitttelle zum Einsatz.
+                        </p>
+                        <img src="anwendungen-mobile.png" alt="Architekturskizze einer Mobile Abb mit Java-Backend" class="d-block" style="width: 100%; margin-bottom: 1em;" />
+                        <p>
+                            <small>
+                                <small>
+                                    Bildnachweise:
+                                    <a href="https://pixabay.com/illustrations/iphone-iphone-6s-smartphone-mobile-1936818/" target="_blank">Pixabay: Webflippy</a>,
+                                    <a href="https://pixabay.com/vectors/user-interface-android-play-store-1655006/" target="_blank">Pixabay: 200degress</a>,
+                                </small>
+                            </small>
+                        </p>
                         </div>
                         <!-- Business-To-Business -->
                         <div
@@ -174,14 +166,13 @@
                             role            = "tabpanel"
                             aria-labelledby = "anwendungen-b2b-tab"
                         >
-                            <p>
-                                Sehr häufig werden Webservices dazu genutzt, B2B-Szenarios zwischen mehreren Unternehmen abzubilden, wofür ein Unternehmen
-                                Webservices bietet, die von seinen Kunden und Lieferanten aufgerufen werden können. Dadurch können die Systeme untereinander
-                                Daten austauschen, um manuelle Prozessschritte zu eliminieren. Die Abbildung zeigt zum Beispiel, wie ein Großkunde 🐕 eine
-                                Bestellung bei einem Händler aufgibt, was wiederum zur automatischen Erteilung eines Produktions- und eines Lieferauftrags
-                                bei zwei weiteren Unternehmen führt.
+                            <p class="mb-4">
+                                REST-Webservices (und häufig auch noch SOAP-Webservices) werden im Unternehmensumfeld häufig eingesetzt,
+                                um firmenübergreifende Geschäftsprozesse abzubilden oder ganz allgemein Geschäftsvorfälle digital abzuwickeln
+                                und zu automatisieren. Immer mehr Unternehmen ermöglichen deshalb eine Beauftragung ihrer Leistungen über eine
+                                REST-API, um damit in die Warenwirtschaftssysteme ihrer Kunden integriert werden zu können.
                             </p>
-                            <img src="anwendungen-b2b.svg" alt="Systemintegration zwischen Unternehmen" class="d-block" style="width: 100%;" />
+                            <img src="anwendungen-b2b.png" alt="Systemintegration zwischen Unternehmen" class="d-block" style="width: 100%;" />
                             <p>
                                 <small>
                                     <small>
@@ -195,9 +186,74 @@
                 </div>
             </article>
             <aside>
-                Arthur Dent hatte schon lange keinen so schlechten Tag mehr wie den, an dem die Erde in die Luft flog. 🔥
-                Halt, Moment, Stopp. Falsches Buch. 📘 Hier geht es ja um REST-Webservices und entfernte Schnittstellen,
-                häufig auch API für Application Programming Interface genannt. …
+                <p>
+                    Arthur Dent hatte schon lange keinen so schlechten Tag mehr wie den, an dem die Erde in die Luft flog. 🔥
+                    Halt, Moment, Stopp. Falsches Buch. 📘 Hier geht es ja um REST-Webservices und entfernte Schnittstellen.
+                    Also um die Möglichkeit, Webtechnologien wie das HTTP-Protokoll zur Kommunikationsabwicklung in verteilten
+                    Anwendungen zu nutzen. Auf dieser Folie wollen wir uns daher ein paar typische Anwendungsfälle für REST-APIs¹
+                    anschauen. Diese haben wir hierfür in drei Kategorien unterteilt:
+                </p>
+                <ol>
+                    <li>
+                        Moderne Webanwendungen
+                    </li>
+                    <li>
+                        Mobile Apps
+                    </li>
+                    <li>
+                        Business-To-Business
+                    </li>
+                </ol>
+                <p>
+                    ¹
+                    <small>
+                        REST steht für „Representational state transfer” und API für „Application Programming Interface”.
+                        Was dies genau bedeutet, schauen wir uns gleich an.
+                    </small>
+                </p>
+
+                <h5>Moderne Webanwendungen</h5>
+                <p>
+                    Noch vor wenigen Jahren wurden Webanwendungen fast ausschließlich serverseitig entwickelt, wobei JavaScript
+                    nur für Effekte und die Überprüfung von Benutzereingaben genutzt wurde. Die gesamte Anwendungslogik befindet
+                    hier auf dem Server, weshalb der Browser regelmäßig eine neue Seite anfordern muss, um eine Aktion auszulösen. 🖱️
+                    Der Server generiert dann jedes Mal eine neue HTML-Seite, in der das Ergebnis dargestellt wird. Es gibt heute
+                    deshalb eine große Anzahl an Anwendungen und Frameworks, die genauso funktionieren. Seit einiger Zeit hat sich
+                    jedoch insbesondere für neue Anwendung eine bessere Trennung zwischen Frontend und Backend durchgesetzt, wobei
+                    die Benutzeroberfläche (also das Frontend) als eigene, in JavaScript geschriebene Browser-Anwendung betrachtet
+                    wird, die über funktionale Schnittstellen Daten mit dem Server austauschen kann, ohne dabei bei einer Anfrage
+                    komplett neugeladen zu werden.
+                </p>
+                <p>
+                    Das Frontend besteht in solchen Anwendungen oftmals nur aus statischen Codedateien mit dem HTML-, CSS- und JavaScript-Code,
+                    den ein auf die performante Auslieferung unveränderlicher Dateien spezialisierter Webserver an den Browser schickt. Die Anwendung
+                    beginnt sogleich im Browser zu laufen, muss aber gegebenfalls nach dem AJAX-Prinzip weitere Daten nachladen. Im JavaScript-Code
+                    werden daher an verschiedenen Stellen HTTP-Anfragen an das Backend ausgelöst, das hierfür häufig getrennt betrieben wird.
+                    Wichtig dabei ist, dass die ausgetauschen HTTP-Nachrichten nur maschinenlesbare Daten, in der Regel im JSON-Format, fast nie
+                    aber HTML-Code beinhalten, da das Backend hiermit nichts anfangen kann. 🤖
+                </p>
+
+                <h5>Mobile Apps</h5>
+                <p>
+                    Mobile Anwendungen für Smartphones und Tablets setzen wie selbstverständlich eine funktionierende Internetverbindung
+                    voraus, um Cloud- und Serverdienste zur Anreicherung ihrer Funktionalitäten nutzen zu können. Manche Apps funktionieren
+                    sogar gar nicht offline, da sie nur dazu dienen, die Dienste eines bestimmten Anbieters nutzbar zu machen. 🏢
+                    REST-Webservices kommen hierfür sehr häufig zum Einsatz, da sie auch mit anderen Programmiersprachen wie Java, Swift
+                    oder Objective-C einfach aufgerufen werden können.
+                </p>
+
+                <h5>Business-To-Business</h5>
+                <p>
+                    Auch wenn es oft anders dargestellt wird, gehört die Digitalisierung von Geschäftsprozessen schon seit Jahrzehnten
+                    zum Alltag. 💻 Kein Wunder, wenn man bedenkt, dass Computer spätestens seit den 1960er-Jahren in immer mehr Unternehmen
+                    zum Einsatz kommen. Neu ist heute jedoch, dass die Digitalisierung nicht nur die internen sondern auch die externen
+                    Prozesse mit Kunden- oder Lieferantenbeteiligung umfasst. Immer mehr Unternehmen haben daher das API Driven Business
+                    für sich erkannt, und bieten leicht zu verwendende Schnittstellen zur Integration ihrer Dienstleistungen in die
+                    IT-Systeme ihrer Geschäftspartner, selbst dann, wenn es sich gar nicht um IT-Unternehmen im engeren Sinne handelt.
+                    Die hierbei verwendeten Webservices werden in diesem Zusammenhang häufig auch API genannt, da sie dafür gedacht sind,
+                    in die Fachanwendungen der beteiligten Unternehmen integriert zu werden. Betriebswirtschaftlich können sie aber auch
+                    als Vertriebskanal mit besonders enger Kundenbindung betrachtet werden. 💸
+                </p>
             </aside>
         </section>
 
