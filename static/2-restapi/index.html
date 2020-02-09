@@ -442,7 +442,7 @@
                     <div class="http-intro-w8">
                         <div class="img-thumbnail">
                             <p>
-                                Unsere Geschichte beginnt mit einen Browser und einem Webserver.
+                                Unsere Geschichte beginnt mit einen Browser, einem Webserver …
                             </p>
                             <img src="http_intro_01.svg" />
                         </div>
@@ -450,7 +450,7 @@
                     <div class="http-intro-w4 http-intro-hidden">
                         <div class="img-thumbnail">
                             <p>
-                                Und einem Anwender, der eine URL eingibt.
+                                … und einem Anwender, der eine URL eingibt.
                             </p>
                             <img src="http_intro_02.svg" />
                         </div>
@@ -466,7 +466,7 @@
                     <div class="http-intro-w6 http-intro-hidden">
                         <div class="img-thumbnail">
                             <p>
-                                Und sendet ihm eine Anfrage, um die Seite abzurufen. In diesem Fall eine GET-Anfrage.
+                                Und sendet eine Anfrage zum Abruf der Seite. Eine GET-Anfrage.
                             </p>
                             <img src="http_intro_04.svg" />
                         </div>
@@ -498,7 +498,7 @@
                     <div class="http-intro-w6 http-intro-hidden">
                         <div class="img-thumbnail">
                             <p>
-                                Diese muss der Browser alle vom Server abrufen.
+                                Sie müssen natürlich auch alle abgerufen werden.
                             </p>
                             <img src="http_intro_08.svg" />
                         </div>
@@ -506,7 +506,7 @@
                     <div class="http-intro-w8 http-intro-hidden">
                         <div class="img-thumbnail">
                             <p>
-                                Und der Server antwortet fleißig mit den gesuchten Dateien.
+                                Und der Server antwortet wie immer fleißig mit den gewünschten Dateien.
                             </p>
                             <img src="http_intro_09.svg" />
                         </div>
@@ -514,7 +514,7 @@
                     <div class="http-intro-w4 http-intro-hidden">
                         <div class="img-thumbnail">
                             <p>
-                                Die Anwendung benötigt aber noch Daten zum anzeigen.
+                                Die Seite benötigt aber noch Daten zum anzeigen.
                             </p>
                             <img src="http_intro_10.svg" />
                         </div>
@@ -522,7 +522,7 @@
                     <div class="http-intro-w6 http-intro-hidden">
                         <div class="img-thumbnail">
                             <p>
-                                Also sendet die Anwendung noch mehr HTTP-Anfragen an den Server.
+                                Also sendet sie noch mehr HTTP-Anfragen an den Server.
                             </p>
                             <img src="http_intro_11.svg" />
                         </div>
@@ -906,6 +906,18 @@
                         </li>
                         <li class="nav-item">
                             <a
+                                id            = "http-nachricht2-headerfields-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#http-nachricht2-headerfields"
+                                role          = "tab"
+                                aria-controls = "http-nachricht2-headerfields"
+                            >
+                                Header Fields
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
                                 id            = "http-nachricht2-versionen-tab"
                                 class         = "nav-link"
                                 data-toggle   = "tab"
@@ -1008,7 +1020,13 @@
                                     <tt>200 OK</tt>: Alles roger! Der Response Body beinhaltet die gewünschten Daten 👌🏼
                                 </li>
                                 <li>
+                                    <tt>201 Created</tt>: Der an den Server gesendete Datensatz wurde erfolgreich angelegt
+                                </li>
+                                <li>
                                     <tt>202 Accepted</tt>: Die Anfrage wurde empfangen, wird aber erst später bearbeitet
+                                </li>
+                                <li>
+                                    <tt>204 No Content</tt>: Alles in Ordnung. Der Body enthält jedoch keine Daten
                                 </li>
                                 <li>
                                     …
@@ -1049,6 +1067,9 @@
                                     <tt>404 Not Found</tt>: Der gesuchte Inhalt wurde nicht gefunden
                                 </li>
                                 <li>
+                                    <tt>409 Conflict</tt>: Der übermittelte Inhalt wiederspricht anderen Daten
+                                </li>
+                                <li>
                                     …
                                 </li>
                             </ul>
@@ -1071,6 +1092,74 @@
                                     …
                                 </li>
                             </ul>
+                        </div>
+                        <!-- Header Fields -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "http-nachricht2-headerfields"
+                            role            = "tabpanel"
+                            aria-labelledby = "http-nachricht2-headerfields-tab"
+                        >
+                            <!-- Anfrage -->
+                            <h2>Anfrage</h2>
+
+                            <h4>Host</h4>
+                            <p>
+                                Domain des aufgerufenen Servers, um zwischen mehreren Domains mit derselben IP-Adresse unterscheiden zu können
+                            </p>
+
+                            <h4>User-Agent</h4>
+                            <p>
+                                Name, Version und Betriebssystem des Clients, wobei die Angaben meistens nicht stimmen
+                            </p>
+
+                            <h4>Content-Type</h4>
+                            <p>
+                                MIME-Type und ggf. Zeichensatz der im Body enthaltenen Daten
+                            </p>
+
+                            <h4>Accept</h4>
+                            <p>
+                                MIME-Type der erwarteten Antwort
+                            </p>
+
+                            <h4>Accept-Language</h4>
+                            <p>
+                                Erwartete Sprachen (deutsch, englisch, …) der Antwort
+                            </p>
+
+                            <h4>Connection</h4>
+                            <p>
+                                Hinweise zur Aufrechterhaltung der TCP/IP-Verbindung für weitere Anfragen
+                            </p>
+
+                            <!-- Antwort -->
+                            <h2>Antwort</h2>
+
+                            <h4>Content-Type</h4>
+                            <p>
+                                MIME-Type und ggf. Zeichensatz der im Body enthaltenen Daten
+                            </p>
+
+                            <h4>Location</h4>
+                            <p>
+                                Umleitung auf eine neue URL bzw. URL der gespeicherten Daten
+                            </p>
+
+                            <h4>Cache-Control</h4>
+                            <p>
+                                Hinweise zur Pufferung der Antwort im Browsercache
+                            </p>
+
+                            <h4>Last-Modified</h4>
+                            <p>
+                                Datum und Uhrzeit der letzten Änderung an den Daten
+                            </p>
+
+                            <h4>ETag</h4>
+                            <p>
+                                Hashwert zur schnelleren Identifizierung der Daten im Browsercache
+                            </p>
                         </div>
                         <!-- Versionen -->
                         <div
@@ -1118,8 +1207,8 @@
                                 und Bilder schon an den Browser geschickt werden, bevor dieser überhaupt weiß, dass er sie benötigen wird.
                             </p>
                             <p>
-                                Stand 2017 hat sich HTTP/2 noch nicht gegen HTTP/1 durchgesetzt. Die meisten Webseiten verwenden weiterhin
-                                HTTP/1. Man kann aber davon ausgehen, dass sich das im Laufe der Jahre ändern wird.
+                                Stand 2020 hat sich HTTP/2 noch nicht vollständig gegen HTTP/1 durchgesetzt. Sehr viele Webseiten verwenden
+                                weiterhin HTTP/1. Inzwischen unterstützen aber alle Server, Browser und Frameworks das neue Protokoll.
                             </p>
                             <p>
                                 <small>
@@ -1225,367 +1314,1013 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a
-                                id            = "technik-get_liste-tab"
+                                id            = "grundprinzipien-zugriff-tab"
                                 class         = "nav-link active"
-                                data-toggle   = "tab"2
-                                href          = "#technik-get_liste"
+                                data-toggle   = "tab"
+                                href          = "#grundprinzipien-zugriff"
                                 role          = "tab"
-                                aria-controls = "technik-get_liste"
+                                aria-controls = "grundprinzipien-zugriff"
                                 aria-expanded = "true"
                             >
-                                Liste abrufen
+                                Zugriff auf Ressourcen
                             </a>
                         </li>
                         <li class="nav-item">
                             <a
-                                id            = "technik-get_ressource-tab"
+                                id            = "grundprinzipien-http-tab"
                                 class         = "nav-link"
                                 data-toggle   = "tab"
-                                href          = "#technik-get_ressource"
+                                href          = "#grundprinzipien-http"
                                 role          = "tab"
-                                aria-controls = "technik-get_ressource"
+                                aria-controls = "grundprinzipien-http"
                             >
-                                Ressource abrufen
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                id            = "technik-post-tab"
-                                class         = "nav-link"
-                                data-toggle   = "tab"
-                                href          = "#technik-post"
-                                role          = "tab"
-                                aria-controls = "technik-post"
-                                aria-expanded = "true"
-                            >
-                                Ressource anlegen
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                id            = "technik-wadl-tab"
-                                class         = "nav-link"
-                                data-toggle   = "tab"
-                                href          = "#technik-wadl"
-                                role          = "tab"
-                                aria-controls = "technik-wadl"
-                            >
-                                WADL-Beschreibung
+                                Typische HTTP-Anfragen
                             </a>
                         </li>
                     </ul>
                     <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
-                        <!-- Liste abrufen -->
+                        <!-- Zugriff auf Ressourcen -->
                         <div
                             class           = "tab-pane fade show active"
-                            id              = "technik-get_liste"
+                            id              = "grundprinzipien-zugriff"
                             role            = "tabpanel"
-                            aria-labelledby = "technik-get_liste-tab"
+                            aria-labelledby = "grundprinzipien-zugriff-tab"
                         >
-                            <p>
-                                Bei den URLs für einen REST-Webservice wird häufig zwischen <b>Collections</b> und <b>Ressourcen</b>
-                                unterschieden. Eine Collection ist dabei immer eine Sammlung von Einträgen, die als Ganzes
-                                abgerufen werden kann. Oftmals können beim Abruf dann noch <b>Query Parameter</b> mitgegeben
-                                werden, um die Liste einzugrenzen.
-                            </p>
-                            <img src="http-get-liste.svg" alt="" class="d-block" style="width: 100%;" />
-                        </div>
-                        <!-- Ressource abrufen -->
-                        <div
-                            class           = "tab-pane fade"
-                            id              = "technik-get_ressource"
-                            role            = "tabpanel"
-                            aria-labelledby = "technik-get_ressource-tab"
-                        >
-                            <p>
-                                Eine einzelne Ressource erkennt man daran, dass in der URL ihr Schlüsselwert enthalten ist.
-                                Im Gegensatz zu den Collections schickt der Server dann genau ein Objekt mit den Daten der
-                                angeforderten Ressource.
-                            </p>
-                            <img src="http-get-ressource.svg" alt="" class="d-block" style="width: 100%;" />
-                        </div>
-                        <!-- Ressource anlegen -->
-                        <div
-                            class           = "tab-pane fade show"
-                            id              = "technik-post"
-                            role            = "tabpanel"
-                            aria-labelledby = "technik-post-tab"
-                        >
-                            <p>
-                                Die Anlage von Ressourcen erfolgt häufig, indem ihre JSON-Repräsentation als <b>POST-Anfrage
-                                an die Collection</b> geschickt wird. Der Server speichert daraufhin den Eintrag und schickt
-                                die gespeicherten Daten, nun um die Key-Werte angereichert, zurück.
-                            </p>
-                            <img src="http-post.svg" alt="" class="d-block" style="width: 100%;" />
-                        </div>
-                        <!-- WADL-Beschreibung -->
-                        <div
-                            class           = "tab-pane fade"
-                            id              = "technik-wadl"
-                            role            = "tabpanel"
-                            aria-labelledby = "technik-wadl-tab"
-                        >
-                            <p>
-                                Im Gegensatz zu SOAP besitzen REST-Webservices meistens keine formale Beschreibung.
-                                Viele REST-API-Anbieter liefern daher vorgefertigte SDKs zum Aufruf ihrer Services
-                                mit verschiedenen Sprachen. Im Javaumfeld hat man sich stattdessen das
-                                <a href="https://en.wikipedia.org/wiki/Web_Application_Description_Language" target="_blank">WADL-Format</a>
-                                als eine Art „WSDL für beliebige Webanwendungen” überlegt. Es beschreibt die URLs
-                                eines Webservices und mit welchen HTTP-Methoden sie aufgerufen werden.
-                            </p>
-                            <table style="margin-bottom: 1em;">
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <img src="grundprinzipien-ressource.jpg" class="d-block img-thumbnail" style="width: 100%" />
+                                        <h5>Ressourcen</h5>
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="grundprinzipien-collection.jpg" class="d-block img-thumbnail" style="width: 100%" />
+                                        <h5>Collections</h5>
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="grundprinzipien-store.jpg" class="d-block img-thumbnail" style="width: 100%" />
+                                        <h5>Store</h5>
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="grundprinzipien-action.jpg" class="d-block img-thumbnail" style="width: 100%" />
+                                        <h5>Controller / Actions</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table class="mb-4">
                                 <tr>
-                                    <td style="padding-right: 0.5em;">
-                                        ⚛️
+                                    <td>
+                                        🏝️
                                     </td>
                                     <td>
-                                        Welche URLs besitzt der Webservice?
+                                        REST-Webservices nutzen HTTP und in der Regel JSON für den Zugriff auf maschinenlesbare Daten
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-right: 0.5em;">
-                                        ⚛️
+                                    <td>
+                                        🏝️
                                     </td>
                                     <td>
-                                        Welche URL-Parameter können einer URL mitgegeben werden?
+                                        Das Grundprinzip orientiert sich am Anlegen, Lesen, Aktualisieren und Löschen strukturierter Datensätze
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-right: 0.5em;">
-                                        ⚛️
+                                    <td>
+                                        🏝️
                                     </td>
                                     <td>
-                                        Welche HTML-Formularfelder können an die URL geschickt werden?
+                                        Anhand verschiedener URLs kann auf Ressourcen, Collections, Stores und Actions zugegriffen werden
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-right: 0.5em;">
-                                        ⚛️
+                                    <td>
+                                        🏝️
                                     </td>
                                     <td>
-                                        Welche Daten können mit POST, PUT oder PATCH an die URL geschickt werden?
+                                        Das verwendete HTTP-Verb definiert dabei, ob die Daten gelesen, geschrieben oder gelöscht werden
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-right: 0.5em;">
-                                        ⚛️
+                                    <td>
+                                        🏝️
                                     </td>
                                     <td>
-                                        Welche HTTP-Statuscodes kann die Antwort enthalten?
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-right: 0.5em;">
-                                        ⚛️
-                                    </td>
-                                    <td>
-                                        Welche Daten werden bei welchem Statuscode zurückgeschickt?
+                                        Abruf und Änderung der Daten erfolgen in fast allen Fällen durch den Austausch kompletter Datensätze
                                     </td>
                                 </tr>
                             </table>
 
-                            <h2>Beispiel</h2>
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Ressourcen</h3>
+                                        <p>
+                                            Ein einzelner Datensatz wird <b>Ressource</b> genannt. Jede Ressource besitzt eine eindeutige URL,
+                                            unter der sie aufgerufen werden kann.
+                                        </p>
+                                        <p class="dhbw-tt">
+                                            https://example.com/api/customers/<span style="font-weight: bold; color: darkred;">{id}</span> <br />
+                                            https://example.com/api/customers/<span style="color: darkred;">47110815</span>
+                                        </p>
+                                        <source-code language="json">
+                                            {
+                                                "id": "47110815",
+                                                "first_name": "Martina",
+                                                "last_name": "Musterfrau",
+                                                "registration_date": "2020-02-09"
+                                            }
+                                        </source-code>
+                                    </div>
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Collections</h3>
+                                        <p>
+                                            Mehrere Datensätze werden in einer <b>Collection</b> gesammelt, ähnlich wie die Tabellen einer
+                                            SQL-Datenbank.
+                                        </p>
+                                        <p class="dhbw-tt">
+                                            https://example.com/api/<span style="font-weight: bold; color: darkred;">{collection}</span> <br />
+                                            https://example.com/api/<span style="color: darkred;">customers</span>
+                                        </p>
+                                        <source-code language="json">
+                                            [
+                                                {"id": "47110815", name: "Martina Musterfrau"},
+                                                {"id": "47110816", name: "Toll Es Beispiel"},
+                                                {"id": "47110817", name: "Klaus Kunde"}
+                                            ]
+                                        </source-code>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Stores</h3>
+                                        <p>
+                                            Im Gegensatz zu Collections speichern <b>Stores</b> zwar ebenfalls mehrere Datensätze, die URL
+                                            wird jedoch vom Client festgelegt.
+                                        </p>
+                                        <p class="dhbw-tt">
+                                            https://example.com/api/customers/<span style="font-weight: bold; color: darkred;">{id}</span>/<span style="font-weight: bold; color: darkblue;">{store}</span> <br />
+                                            https://example.com/api/customers/<span style="color: darkred;">47110815</span>/<span style="color: darkblue;">favorites</span>
+                                        </p>
+                                        <source-code language="json">
+                                            [
+                                                {"article": "9573387", "date_added": "2020-01-02"},
+                                                {"article": "5975741", "date_added": "2020-01-14"},
+                                                {"article": "1572246", "date_added": "2020-02-07"}
+                                            ]
+                                        </source-code>
+                                    </div>
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Actions</h3>
+                                        <p>
+                                            Prozedurale Aktionen, die nicht dem üblichen Lesen und Schreiben entsprechen, werden <b>Controller</b>¹
+                                            oder auch <b>Actions</b> genannt.
+                                        </p>
+                                        <p class="dhbw-tt">
+                                            https://example.com/api/customers/<span style="font-weight: bold; color: darkred;">{id}</span>/<span style="font-weight: bold; color: darkblue;">{action}</span> <br />
+                                            https://example.com/api/customers/<span style="color: darkred;">47110815</span>/<span style="color: darkblue;">checkout</span>
+                                        </p>
+                                        <p>
+                                            ¹
+                                            <small>
+                                                Der Name <b>Controller</b> ist unglücklich gewählt, weil die serverseitigen Klassen zur Implementierung
+                                                eines REST-Webservices in den meisten Frameworks auch Controller genannt werden. In der Vorlesung verwenden
+                                                wir daher lieber den Begriff <b>Action</b>.
+                                            </small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <source-code language="xml">
-                                &lt;application xmlns="http://wadl.dev.java.net/2009/02"
-                                        xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+                            <p>
+                                ✅ <b>Hierarchische URL-Struktur</b> <br />
+                                Wie an den Beispielen zu sehen ist, sind die URLs hierarchisch aufgebaut, so dass Ressourcen, Collections, Stores und Actions
+                                beliebig miteinander kombiniert werden können. Wichtig dabei ist, dass die URL immer eindeutig ausdrücken muss, auf welche
+                                Daten zugegriffen werden soll, da die Serverseite in der Regel zustandslos, also ohne Situngsverwaltung, implementiert wird.
+                                Statt also zum Beispiel den Bezahlvorgang in einem Webshop anhand der URL <src-code language="url">https://example.com/api/checkout</src-code>
+                                anzustoßen, ist es besser, über die URL <src-code language="url">https://example.com/api/customers/47110815/checkout</src-code>
+                                den Kunden mitzugeben, dessen Warenkorb bezahlt werden soll.
+                            </p>
+                            <p>
+                                ✅ <b>Schreibweise der URLs</b> <br />
+                                Weit verbreitet ist, die URLs klein und ohne abschließenden Schrägstrich zu schreiben. Mehrere Wörter werden durch ein
+                                Minuszeichen getrennt. Collections und Stores werden im Plural beschrieben, Actions hingegen im Singular.
+                            </p>
+                            <p>
+                                <small>
+                                    Bildnachweise:
+                                    <a href="https://pixabay.com/photos/breakfast-coffee-cup-drink-glass-1869772/" target="_blank">Pixabay: Pexels</a>,
+                                    <a href="https://pixabay.com/photos/binder-records-data-documents-532220/" target="_blank">Pixabay: Mizianitka</a>,
+                                    <a href="https://pixabay.com/photos/shirts-hangers-exhibition-shop-428600/" target="_blank">Pixabay: jarmoluk</a>,
+                                    <a href="https://pixabay.com/photos/movie-director-clap-film-cinema-2545676/" target="_blank">Pixabay: stokpic</a>
+                                </small>
+                            </p>
+                        </div>
+                        <!-- Typische HTTP-Anfragen -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "grundprinzipien-http"
+                            role            = "tabpanel"
+                            aria-labelledby = "grundprinzipien-http-tab"
+                        >
+                            <table class="mb-4">
+                                <tr>
+                                    <td>
+                                        🏝️
+                                    </td>
+                                    <td>
+                                        Jedes HTTP-Verb und jeder Stautscode besitzt in REST eine genau definierte Semantik
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🏝️
+                                    </td>
+                                    <td>
+                                        Bei einer Anfrage muss daher immer das zum gewünschten Zugriff passende HTTP-Verb gesendet werden
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🏝️
+                                    </td>
+                                    <td>
+                                        Ebenso muss in der Antwort der Statuscode ausgewertet werden, um den Erfolg der Anfrage zu prüfen
+                                    </td>
+                                </tr>
+                            </table>
 
-                                    &lt;!--
-                                    Hier könnten XML-Schema-Anweisungen stehen, mit welchen die Struktur
-                                    der ausgetauschten Daten formal definiert wird, wenn der Webservice
-                                    XML als Datenformat verwendet. Dieser hier nutzt allerdings JSON. 🙄
-                                    --&gt;
-                                    &lt;grammars/&gt;
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Häufig verwendete HTTP-Verben</h3>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <b>GET</b>
+                                                </td>
+                                                <td>
+                                                    Daten lesen
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>POST</b>
+                                                </td>
+                                                <td>
+                                                    Daten unter einer vom Server generierten URL speichern
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>PUT</b>
+                                                </td>
+                                                <td>
+                                                    Daten unter einer bereits bekannten URL speichern
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>PATCH</b>
+                                                </td>
+                                                <td>
+                                                    Einzelne Felder eines vorhandenen Datensatzes ändern
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>DELETE</b>
+                                                </td>
+                                                <td>
+                                                    Daten löschen
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>POST / PUT</b>
+                                                </td>
+                                                <td>
+                                                    Aufruf einer prozeduralen Aktion
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Häufig verwendete Statuscodes</h3>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <b>200 Ok</b>
+                                                </td>
+                                                <td>
+                                                    Allgemeine Erfolgsmeldung
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>201 Created</b>
+                                                </td>
+                                                <td>
+                                                    Daten wurden angelegt
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>204 No Content</b>
+                                                </td>
+                                                <td>
+                                                    Alles okay, ohne Daten zu schicken
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>401 Unauthorized</b>
+                                                </td>
+                                                <td>
+                                                    Unzureichende Berechtigungen
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>403 Forbidden</b>
+                                                </td>
+                                                <td>
+                                                    Zugriff prinzipiell nicht vorgesehen
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b>404 Not Found</b>
+                                                </td>
+                                                <td>
+                                                    Ungültige uRL
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    &lt;!--
-                                    Die Basis-URL des Webservice lautet
-                                    http://localhost:8080/TheXFiles/rest/
-                                    --&gt;
-                                    &lt;resources base="http://localhost:8080/TheXFiles/rest/"&gt;
+                            <h3 class="dhbw-lightblue">Beispiele</h3>
 
-                                        &lt;!--
-                                        Nachfolgend wird die URL
-                                        http://localhost:8080/TheXFiles/rest/xfiles2018/
-                                        beschrieben.
-                                        --&gt;
-                                        &lt;resource path="xfiles2018"&gt;
-                                            &lt;!--
-                                            Schicken wir eine GET-Anfrage an die URL, wird dadurch die Methode
-                                            findEpisodes() aufgerufen.
-                                            --&gt;
-                                            &lt;method id="findEpisodes" name="GET"&gt;
-                                                &lt;!--
-                                                Optional können wir der Methode einen Parameter namens "query"
-                                                mitgeben. Der Parameter ist ein String und muss als URL-Parameter
-                                                an die URL angehängt werden. Zum Beispiel so:
+                            <div id="rest-methoden" class="accordion mb-4">
+                                <!-- GET – Collection abrufen -->
+                                <div class="card">
+                                    <div
+                                        id            = "rest-methoden-get1-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "rest-methoden-get1-content"
+                                        href          = "#rest-methoden-get1-content"
+                                    >
+                                        <h4>
+                                            GET
+                                            <span class="float-right">Liste abrufen</span>
+                                        </h4>
+                                    </div>
+                                    <div
+                                        id              = "rest-methoden-get1-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "rest-methoden-get1-title"
+                                        data-parent     = "#rest-methoden"
+                                    >
+                                        <p>
+                                            <tt>GET</tt>-Anfragen an einer Collection oder einen Store führen in der Regel dazu,
+                                            dass eine Zusammenfassung aller enthaltenen Daten gesendet wird. Oftmals können Anzahl,
+                                            Umfang und Sortierung der Daten über URL-Parameter gesteuert werden.
+                                        </p>
 
-                                                http://localhost:8080/TheXFiles/rest/xfiles2018/?query=My%20Struggle
-                                                --&gt;
-                                                &lt;request&gt;
-                                                    &lt;param name="query" style="query" type="xs:string"/&gt;
-                                                &lt;/request&gt;
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Anfrage</h3>
+                                                    <source-code language="http">
+                                                        GET /api/xfiles2018?sort_by=episode HTTP/1.1
+                                                        Host: example.com
+                                                        Accept: application/json
+                                                    </source-code>
+                                                </div>
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Antwort</h3>
+                                                    <source-code language="http">
+                                                        HTTP/1.1 200 Ok
+                                                        Content-Type: application/json; charset=utf-8
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        [{ "episode": "2AYW01", "title": "My Struggle III" },
+                                                         { "episode": "2AYW02", "title": "This" },
+                                                         { "episode": "2AYW03", "title": "Plus One" },
+                                                         { "episode": "2AYW04", "title": "The Lost Art of Forehead Sweat" },
+                                                         { "episode": "2AYW05", "title": "Ghouli" },
+                                                         { "episode": "2AYW06", "title": "Kitten" },
+                                                         { "episode": "2AYW07", "title": "Rm9sbG93ZXJz" },
+                                                         { "episode": "2AYW08", "title": "Familiar" },
+                                                         { "episode": "2AYW09", "title": "Nothing Lasts Forever" },
+                                                         { "episode": "2AYW10", "title": "My Struggle IV" }]
+                                                    </source-code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                &lt;!--
-                                                Als Antwort erhalten wir dann einen JSON-String.
-                                                --&gt;
-                                                &lt;response&gt;
-                                                    &lt;representation mediaType="application/json"/&gt;
-                                                &lt;/response&gt;
-                                            &lt;/method&gt;
+                                <!-- GET – Ressource abrufen -->
+                                <div class="card">
+                                    <div
+                                        id            = "rest-methoden-get2-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "rest-methoden-get2-content"
+                                        href          = "#rest-methoden-get2-content"
+                                    >
+                                        <h4>
+                                            GET
+                                            <span class="float-right">Ressource abrufen</span>
+                                        </h4>
+                                    </div>
+                                    <div
+                                        id              = "rest-methoden-get2-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "rest-methoden-get2-title"
+                                        data-parent     = "#rest-methoden"
+                                    >
+                                        <p class="mb-4">
+                                            <tt>GET</tt>-Anfragen an eine einzelne Ressourcen führen dazu, dass der komplette
+                                            Datensatz übermittelt wird. Manche Webservices erlauben auch hier, über URL-Parameter
+                                            nur bestimmte Felder anzufordern. Die meisten Webservices liefern aber einfach die
+                                            komplette Ressource.
+                                        </p>
 
-                                            &lt;!--
-                                            Eine POST-Anfrage würde hingegen die Methode saveNewEpisode() zur
-                                            Anlage eines neuen Datensatzes aufrufen.
-                                            --&gt;
-                                            &lt;method id="saveNewEpisode" name="POST"&gt;
-                                                &lt;!--
-                                                Als Anfrage müssen wir einen JSON-String mitschicken.
-                                                --&gt;
-                                                &lt;request&gt;
-                                                    &lt;representation mediaType="application/json"/&gt;
-                                                &lt;/request&gt;
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Anfrage</h3>
+                                                    <source-code language="http">
+                                                        GET /api/xfiles2018/2AYW04 HTTP/1.1
+                                                        Host: example.com
+                                                        Accept: application/json
+                                                    </source-code>
+                                                </div>
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Antwort</h3>
+                                                    <source-code language="http">
+                                                        HTTP/1.1 200 Ok
+                                                        Content-Type: application/json; charset=utf-8
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        {
+                                                            "episode": "2AYW04",
+                                                            "title": "The Lost Art of Forehead Sweat",
+                                                            "directed_by": "Darin Morgan",
+                                                            "written_by": "Darin Morgan",
+                                                            "usa_air_date": "January 24, 2018",
+                                                            "de_air_date": "March 15, 2018",
+                                                            "running_time": 43,
+                                                            "guest_starts": [
+                                                                "Brian Huskey",
+                                                                "Stuart Margolin"
+                                                            ]
+                                                        }
+                                                    </source-code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                &lt;!--
-                                                Im Gegenzug schickt uns der Server ein JSON zurück.
-                                                --&gt;
-                                                &lt;response&gt;
-                                                    &lt;representation mediaType="application/json"/&gt;
-                                                &lt;/response&gt;
-                                            &lt;/method&gt;
+                                <!-- POST – Ressource anlegen -->
+                                <div class="card">
+                                    <div
+                                        id            = "rest-methoden-post-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "rest-methoden-post-content"
+                                        href          = "#rest-methoden-post-content"
+                                    >
+                                        <h4>
+                                            POST
+                                            <span class="float-right">Ressource anlegen</span>
+                                        </h4>
+                                    </div>
+                                    <div
+                                        id              = "rest-methoden-post-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "rest-methoden-post-title"
+                                        data-parent     = "#rest-methoden"
+                                    >
+                                        <p class="mb-4">
+                                            <tt>POST</tt>-Anfragen werden in der Regel an eine Collection geschickt, um neue Daten
+                                            anzulegen. Der Server vergibt daraufhin eine neue URL und teilt diese zusammen mit einer
+                                            Kopie der gespeicherten Daten mit. Stellt der Server fest, dass der anzulegende Datensatz
+                                            bereits vorhanden ist, kann er diesen entweder überschreiben oder dies mit dem Statuscode
+                                            <tt>409 Conflict</tt> ablehnen.
+                                        </p>
 
-                                            &lt;!--
-                                            Mit der URL http://localhost:8080/TheXFiles/rest/xfiles2018/{id}/
-                                            können wir auf einzelne Datensätze zugreifen. {id} ist dabei ein
-                                            Platzhalter, der mit der ID des Datensatzes ersetzt werden muss.
-                                            --&gt;
-                                            &lt;resource path="{id}"&gt;
-                                                &lt;!--
-                                                Die ID kann ein beliebiger String sein. Häufig kommt es aber
-                                                auch vor, dass es sich um einen Long oder irgendeinen anderen
-                                                primitiven Datentypen handeln muss.
-                                                --&gt;
-                                                &lt;param name="id" style="template" type="xs:string"/&gt;
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Anfrage</h3>
+                                                    <source-code language="http">
+                                                        POST /api/xfiles2018/2AYW04/reviews HTTP/1.1
+                                                        Host: example.com
+                                                        Content-Type: application/json; charset=utf-8
+                                                        Accept: application/json
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        {
+                                                            "star_rating": 10,
+                                                            "text": "One of the funniest episodes …"
+                                                        }
+                                                    </source-code>
+                                                </div>
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Antwort</h3>
+                                                    <source-code language="http">
+                                                        HTTP/1.1 201 Created
+                                                        Location: /api/xfiles2018/2AYW04/reviews/42
+                                                        Content-Type: application/json; charset=utf-8
+                                                        Cache-Control: no-cache
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        {
+                                                            "id": 42,
+                                                            "episode": "2AYW04",
+                                                            "star_rating": 10,
+                                                            "text": "One of the funniest episodes …"
+                                                        }
+                                                    </source-code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                &lt;!--
-                                                Schicken wir eine GET-Anfrage an die URL, wird dadurch die Methode
-                                                getEpisode() aufgerufen. Sie schickt uns eine einzelne Episode im
-                                                JSON-Format zurück.
-                                                --&gt;
-                                                &lt;method id="getEpisode" name="GET"&gt;
-                                                    &lt;response&gt;
-                                                        &lt;representation mediaType="application/json"/&gt;
-                                                    &lt;/response&gt;
-                                                &lt;/method&gt;
+                                <!-- PUT – Ressource austauschen -->
+                                <div class="card">
+                                    <div
+                                        id            = "rest-methoden-put-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "rest-methoden-put-content"
+                                        href          = "#rest-methoden-put-content"
+                                    >
+                                        <h4>
+                                            PUT
+                                            <span class="float-right">Ressource aktualisieren</span>
+                                        </h4>
+                                    </div>
+                                    <div
+                                        id              = "rest-methoden-put-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "rest-methoden-put-title"
+                                        data-parent     = "#rest-methoden"
+                                    >
+                                        <p class="mb-4">
+                                            Bei einer <tt>PUT</tt>-Anfrage kennt der Client die URL der abzuspeichernden Daten bereits, so dass
+                                            die Anfrage direkt an die Ressource geschickt werden kann. Meistens wird dies zum Überschreiben
+                                            vorhandener Datensätze genutzt. Es gibt aber auch Services, welche eine Neuanlage auf diese
+                                            Weise erlauben. Manche Webservices liefern auch hier als Antwort eine Kopie der gespeicherten
+                                            Daten. Üblich ist aber auch, einfach mit Status <tt>204 No Content</tt> zu antworten und davon
+                                            auszugehen, dass der Client due vollständigen Daten entweder bereits kennt oder mit einer
+                                            nachfolgenden GET-Anfrage abrufen kann.
+                                        </p>
 
-                                                &lt;!--
-                                                Schicken wir eine DELETE-Anfrage, wird stattdessen die Methode
-                                                deleteEpisode() aufgerufen. Auch sie schickt uns die gelöschte
-                                                Episode im JSON-Format zurück.
-                                                --&gt;
-                                                &lt;method id="deleteEpisode" name="DELETE"&gt;
-                                                    &lt;response&gt;
-                                                        &lt;representation mediaType="application/json"/&gt;
-                                                    &lt;/response&gt;
-                                                &lt;/method&gt;
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Anfrage</h3>
+                                                    <source-code language="http">
+                                                        PUT /api/xfiles2018/2AYW07 HTTP/1.1
+                                                        Host: example.com
+                                                        Content-Type: application/json; charset=utf-8
+                                                        Accept: application/json
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        {
+                                                            "episode": "2AYW07",
+                                                            "title": "Rm9sbG93ZXJz",
+                                                            "directed_by": "Glen Morgan",
+                                                            "written_by": "Shannon Hamblin & Kristen Cloke",
+                                                            "usa_air_date": "February 28, 2018",
+                                                            "de_air_date": "April 4, 2018",
+                                                            "running_time": 43,
+                                                            "guest_starts": [
+                                                                "Candus Churchill"
+                                                            ]
+                                                        }
+                                                    </source-code>
+                                                </div>
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Antwort</h3>
+                                                    <source-code language="http">
+                                                        HTTP/1.1 204 No Content
+                                                        Location: /api/xfiles2018/2AYW07
+                                                    </source-code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                &lt;!--
-                                                Schicken wir eine PUT-Anfrage, können wir dadurch die Methode
-                                                updateEpisode() zum Aktualisieren eines Datensatzes aufrufen.
-                                                Hierfür müssen wir ein JSON mit den Episodendaten hinschicken
-                                                und bekommen ein JSON mit den gespeicherten Daten zurück.
-                                                --&gt;
-                                                &lt;method id="updateEpisode" name="PUT"&gt;
-                                                    &lt;request&gt;
-                                                        &lt;representation mediaType="application/json"/&gt;
-                                                    &lt;/request&gt;
-                                                    &lt;response&gt;
-                                                        &lt;representation mediaType="application/json"/&gt;
-                                                    &lt;/response&gt;
-                                                &lt;/method&gt;
+                                <!-- PATCH – Einzelne Felder aktualisieren -->
+                                <div class="card">
+                                    <div
+                                        id            = "rest-methoden-patch-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "rest-methoden-patch-content"
+                                        href          = "#rest-methoden-patch-content"
+                                    >
+                                        <h4>
+                                            PATCH
+                                            <span class="float-right">Einzelne Felder aktualisieren</span>
+                                        </h4>
+                                    </div>
+                                    <div
+                                        id              = "rest-methoden-patch-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "rest-methoden-patch-title"
+                                        data-parent     = "#rest-methoden"
+                                    >
+                                        <p class="mb-4">
+                                            Soll ein vorhandener Datensatz aktualisiert werden, kann häufig eine <tt>PATCH</tt>-Anfrage gesendet
+                                            werden, in welcher nur die zu überschreibenden Felder enthalten sind. Auf diese Weise wird unnötiger
+                                            Traffic zwischen Client und Server vermieden.
+                                        </p>
 
-                                            &lt;/resource&gt;
-                                            &lt;!-- http://localhost:8080/TheXFiles/rest/xfiles2018/{id}/ --&gt;
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Anfrage</h3>
+                                                    <source-code language="http">
+                                                        PATCH /api/xfiles2018/2AYW09 HTTP/1.1
+                                                        Host: example.com
+                                                        Content-Type: application/json; charset=utf-8
+                                                        Accept: application/json
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        {
+                                                            "directed_by": "James Wong",
+                                                            "written_by": "Karen Nielsen"
+                                                        }
+                                                    </source-code>
+                                                </div>
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Antwort</h3>
+                                                    <source-code language="http">
+                                                        HTTP/1.1 200 Ok
+                                                        Location: /api/xfiles2018/2AYW09
+                                                        Content-Type: application/json; charset=utf-8
+                                                        Cache-Control: no-cache
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        {
+                                                            "episode": "2AYW09",
+                                                            "title": "Nothing Lasts Forever",
+                                                            "directed_by": "James Wong",
+                                                            "written_by": "Karen Nielsen",
+                                                            "usa_air_date": "March 14, 2018",
+                                                            "de_air_date": "April 11, 2018",
+                                                            "running_time": 44,
+                                                            "guest_starts": [
+                                                                "Fiona Vroom",
+                                                                "Carlena Britch",
+                                                                "Jere Burns"
+                                                            ]
+                                                        }
+                                                    </source-code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                        &lt;/resource&gt;
-                                        &lt;!-- http://localhost:8080/TheXFiles/rest/xfiles2018/ --&gt;
+                                <!-- DELETE – Ressource löschen -->
+                                <div class="card">
+                                    <div
+                                        id            = "rest-methoden-delete-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "rest-methoden-delete-content"
+                                        href          = "#rest-methoden-delete-content"
+                                    >
+                                        <h4>
+                                            DELETE
+                                            <span class="float-right">Ressource löschen</span>
+                                        </h4>
+                                    </div>
+                                    <div
+                                        id              = "rest-methoden-delete-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "rest-methoden-delete-title"
+                                        data-parent     = "#rest-methoden"
+                                    >
+                                        <p class="mb-4">
+                                            Eine <tt>DELETE</tt>-Anfrage dient, wie der Name bereits sagt, dem Löschen von Daten.
+                                            Sie wird daher in der Regel an eine einzelne Ressource geschickt, kann aber auch an
+                                            eine Collection oder einen Store geschickt werden, um alle Daten auf einmal zu löschen.
+                                            Als Antwort wird häufig nur eine Bestätigung ohne Dateninhalt geliefert.
+                                        </p>
 
-                                    &lt;/resources&gt;
-                                    &lt;!-- http://localhost:8080/TheXFiles/rest/ --&gt;
-                                &lt;/application&gt;
-                            </source-code>
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Anfrage</h3>
+                                                    <source-code language="http">
+                                                        DELETE /api/reviews/13 HTTP/1.1
+                                                        Host: example.com
+                                                    </source-code>
+                                                </div>
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Antwort</h3>
+                                                    <source-code language="http">
+                                                        HTTP/1.1 204 No Content
+                                                    </source-code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PUT – Aktion ausführen -->
+                                <div class="card">
+                                    <div
+                                        id            = "rest-methoden-action-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "rest-methoden-action-content"
+                                        href          = "#rest-methoden-action-content"
+                                    >
+                                        <h4>
+                                            PUT
+                                            <span class="float-right">Aktion ausführen</span>
+                                        </h4>
+                                    </div>
+                                    <div
+                                        id              = "rest-methoden-action-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "rest-methoden-action-title"
+                                        data-parent     = "#rest-methoden"
+                                    >
+                                        <p class="mb-4">
+                                            Prozedurale Aktionen werden durch eine <tt>PUT</tt>- oder <tt>POST</tt>-Anfrage ausgelöst,
+                                            keinesfalls durch <tt>GET</tt>!¹ Viele Webservices verwenden <tt>POST</tt>, weil dies auch
+                                            bei SOAP-Webservices (dem zweiten großen Standard neben REST) praktiziert wird, <tt>PUT</tt>
+                                            wäre aber eigentlich logischer, da der Client die aufzurufende URL ja genau kennt.
+                                        </p>
+                                        <p>
+                                            ¹
+                                            <small>
+                                                <tt>GET</tt> ist nur zum Abruf bereits vorhandener Daten gedacht und darf deshalb
+                                                keine Seiteneffekte haben.
+                                            </small>
+                                        </p>
+
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Anfrage</h3>
+                                                    <source-code language="http">
+                                                        PUT /api/xfiles2018/2AYW01/stream HTTP/1.1
+                                                        Host: example.com
+                                                        Content-Type: application/json; charset=utf-8
+                                                        Accept: application/json
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        {
+                                                            "to_device": "smart_tv1",
+                                                            "start_at_timecode": 0,
+                                                            "audio": "english"
+                                                        }
+                                                    </source-code>
+                                                </div>
+                                                <div class="col-md">
+                                                    <h3 class="dhbw-lightblue mt-4">HTTP-Antwort</h3>
+                                                    <source-code language="http">
+                                                        HTTP/1.1 200 Ok
+                                                        Content-Type: application/json; charset=utf-8
+                                                    </source-code>
+                                                    <source-code language="json">
+                                                        {
+                                                            "stream_id": "2AYW01.smart_tv1.english"
+                                                        }
+                                                    </source-code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </article>
             <aside>
                 <p>
-                    Auf dieser Folie siehst du ein Beispiel dafür, wie die verschiedenen HTTP-Verben bei REST genutzt werden, um Daten vom Server
-                    zu lesen oder zu schreiben. Als Ressourcen dienen dabei die Episoden einer Fernsehserie¹. Anhand dieses Beispiels sieht man auch
-                    schön, wie unterschiedliche URLs bei REST unterschiedliche Bedeutungen haben. So handelt es sich bei der URL <code>/rest/xfiles2018/</code>
-                    um eine <b>Collection</b>, also um eine Liste von Ressourcen, die mit einer einzigen GET-Anfrage abgerufen werden kann. Diese URL,
-                    die eine Liste von Episoden beschreibt, erlaubt daher nur GET und POST-Anfragen:
+                    Bisher haben wir HTTP nur als Protokoll zum Abruf statischer Dateien von einem Webserver kennen gelernt, das
+                    der Browser nutzt, um den Quellcode einer Webseite zu laden. Das anfängliche Konzept sah darüber hinaus aber
+                    auch vor, Webseiten im Browser bearbeiten und hierfür zurück auf den Server übertragen zu können. Zwar hat
+                    sich diese Idee nie durchgesetzt, dadurch wird es aber möglich, HTTP auch für andere Inhalte zu verwenden,
+                    die nicht direkt im Browser dargestellt werden. Ende der 1990er-Jahre kam deshalb die Idee auf, HTTP als
+                    universelles Transportprotokoll verteilter Anwendungen zu nutzen, woraus zwei heute weit verbreitete Standards
+                    hervorgegangen sind:
                 </p>
                 <ul>
                     <li>
-                        <b>GET:</b> Abruf der Liste
+                        <b>SOAP:</b> Simple Object Access Protocol
                     </li>
                     <li>
-                        <b>POST:</b> Speichern eines neuen Eintrags
+                        <b>REST:</b> Represntational State Transfer
                     </li>
                 </ul>
                 <p>
-                    <small>
-                        ¹ Hier Akte X, die im Jahr 2018 mit <a href="https://en.m.wikipedia.org/wiki/The_X-Files_(season_11)" target="_blank">Season 11</a>
-                        schon zum zweiten mal nach dem eigentlichen Ende 2002 auf die heimischen Fernseher zurückkehrte.
-                    </small>
-                    👽
-                </p>
-                <p>
-                    Bei der URL <code>/rest/xfiles2018/2AYW04/</code> handelt es sich hingegen um eine einzelne Episode, 🛸 also um eine einzelne
-                    Ressource des Webservices. Sie erlaubt die folgenden HTTP-Anfragen:
-                </p>
-                <ul>
-                    <li>
-                        <b>GET:</b> Abruf aller Detailinformationen
-                    </li>
-                    <li>
-                        <b>PUT:</b> Speichern einer neuen Version
-                    </li>
-                    <li>
-                        <b>PATCH:</b> Einzelne Felder überschreiben
-                    </li>
-                    <li>
-                        <b>DELETE:</b> Eintrag löschen
-                    </li>
-                </ul>
-                <p>
-                    Bei GET und DELETE müssen keine weiteren Daten an den Server gesendet werden. Die URL alleine reicht bereits aus, damit der Server
-                    weiß, um welchen Datensatz es sich handelt und wie er damit umgehen muss. Bei POST muss hingegen der komplette Datensatz an den
-                    Server geschickt werden, damit dieser die vorhandene Version überschreiben kann. Bei PATCH, sofern es der Webservice unterstützt,
-                    müssen hingegen nur die Felder übertragen werden, die man tatsächlich ändern will.
-                </p>
-                <p>
-                    Als Datenformat kommt bei allen Anfragen jeweils JSON zum Einsatz, was der Client durch das Header Field <code>Accept: application/json</code>
-                    signalisiert. Er fordert den Server damit auf, seine Daten im JSON-Format zu übertragen. Dass die zurückgeschickten Daten dann auch wirklich
-                    im JSON-Format kommen, wird hingegen durch das Header Field <code>Content-Type: application/json</code> definiert. Dadurch können sich Client
-                    und Server auf ein Datenformat einigen, wenn der Server mehre unterstützt. Häufig kommt es daher vor, dass man die URL eines REST-Services
-                    auch einfach im Browser eingeben kann, um eine HTML-Darstellung der Ressource zu erhalten, oder dass noch weitere Formate wie XML oder
-                    <a href="https://de.wikipedia.org/wiki/YAML" target="_blank">YAML</a> unterstützt werden.
+                    Beide Standards sind weit verbreitet, SOAP-Webservices werden heute aber zunehmend durch REST ersetzt.
+                    SOAP wollen wir uns darum später nur kurz anschauen, um die wichtigsten Unterschiede zu REST zu beleuchten. 🔦
+                    Zunächst wollen aber erst REST näher kennenlernen.
                 </p>
 
-                <h2>WADL-Beschreibung</h2>
+                <h3 class="dhbw-lightblue">HTTP als Transportprotokoll</h3>
                 <p>
-                    Ursprünglich war für REST-Webservices keine formale Beschreibung ähnlich der WSDL für SOAP vorgesehen, und sehr viele, wenn nicht sogar die
-                    allermeisten REST-Webservices besitzen auch keine, sondern kommen nur mit einer menschenlesbaren Dokumentation oder (zumindest bei den großen
-                    Anbietern) mehreren <a href="https://de.wikipedia.org/wiki/Software_Development_Kit" target="_blank">SDKs</a> für verschiedene Programmiersprachen
-                    im Gepäck. 🛍️
-                    Im Javaumfeld hat sich jedoch das  <a href="https://en.wikipedia.org/wiki/Web_Application_Description_Language" target="_blank">WADL-Format</a>
-                    als mögliche Alternative entwickelt. Es handelt sich dabei um eine automatisch generierte XML-Datei, die man durch Anhängen von <code>?_wadl</code>
-                    an die Basis-URL des Webservices abrufen kann. Sie beschreibt die erlaubten URLs, auch mit möglichen Platzhaltern und URL-Parametern sowie die
-                    jeweils zulässigen HTTP-Verben und welche Datenformate der Server jeweils empfangen und senden kann. Optional kann sie auch Schemadefinitionen
-                    für die ausgetauschten Daten enthalten. Wie wir auf der nächsten Folien sehen werden, lassen sich in Java entwickelte REST-Services dadurch in
-                    SoapUI sehr gut testen.
+                    Die Grundidee hinter REST ist, die in HTTP bereits vorgesehenen Anfrageverben zum Anlegen, Lesen, Bearbeiten
+                    und Löschen beliebiger Dokumente zu verwenden, ohne dass diese notwendigerweise als statische Dateien auf dem
+                    Server vorliegen müssen. Viel mehr werden die Daten vom Server erst zur Laufzeit erzeugt, indem sie zum Beispiel
+                    anhand den Einträgen einer Datenbank zusammengestellt werden. Die ausgetauschen Daten werden deshalb so gut wie
+                    immer durch Programmcode zur Laufzeit generiert. Zur leichteren Unterscheiden von herkömmlichen HTML-Dokumenten
+                    werden sie in REST daher meist <b>Ressourcen</b> genannt. Die HTTP-Verben haben dabei folgende Bedeutung:
                 </p>
+                <ul>
+                    <li>
+                        <tt><b>GET</b>:</tt> Abrufen einer Ressource
+                    </li>
+                    <li>
+                        <tt><b>POST</b>:</tt> Speichern einer meist neuen Ressource
+                    </li>
+                    <li>
+                        <tt><b>PUT</b>:</tt> Speichern einer meist schon vorhandenen Ressource
+                    </li>
+                    <li>
+                        <tt><b>PATCH</b>:</tt> Ändern einzelner Datenfelder einer Ressource
+                    </li>
+                    <li>
+                        <tt><b>DELETE</b>:</tt> Löschen einer Ressource
+                    </li>
+                </ul>
+                <p>
+                    Diese Darstellung ist allerdings an einer Stelle etwas vereinfacht. Zwar nutzen viele REST-Webservices das
+                    Verb <tt>POST</tt> für die Neuanlage und <tt>PUT</tt> zum Überschreiben bestehender Daten. Dies muss aber
+                    nicht immer der Fall sein. Denn die genaue Definition ist, dass der Client bei einer <tt>PUT</tt>-Anfrage
+                    die spätere URL der zu speichernden Daten bereits kennt und bei <tt>POST</tt> eben nicht. Meistens werden
+                    die beiden Verben aber genau wie oben beschrieben verwendet.
+                </p>
+                <p>
+                    Genau wie im klassischen Web kommt der URL bei REST eine zentrale Bedeutung zu, da sie die einzelnen Ressourcen
+                    eindeutig adressiert. Jede Ressource besitzt bei REST daher immer eine eigene URL. Dabei hat es sich als
+                    gängige Praxis herauskristalisiert, 💎 eine hierarchische URL-Struktur zu verwenden, um auf diese Weise
+                    mehrere Arten von Ressourcen unterscheiden zu können, die hierfür in jeweils eigenen <b>Collections</b> oder
+                    <b>Stores</b> liegen. Der erste Teil nach dem allgemeinen URL-Prefix des Services kennzeichnet daher immer
+                    die Collection oder den Store, zu dem eine Ressource gehört, nicht ganz unähnlich zu einer Tabelle in einer
+                    relationalen SQL-Datenbank:
+                </p>
+                <p class="dhbw-tt">
+                    https://host/prefix/<span style="font-weight: bold; color: darkred;">{collection}</span> <br />
+                    https://host/prefix/<span style="font-weight: bold; color: darkred;">{collection}</span>/<span style="font-weight: bold; color: darkblue;">{id}</span>
+                </p>
+                <p>
+                    So veraten bereits folgende URLs ganz eindeutig, welche Art von Datensätzen über sie abgerufen werden:
+                </p>
+                <p class="dhbw-tt">
+                    https://example.com/api/<span style="font-weight: bold; color: darkred;">book</span>/<span style="font-weight: bold; color: darkblue;">9783446452121</span> <br />
+                    https://example.com/api/<span style="font-weight: bold; color: darkred;">dvd</span>/<span style="font-weight: bold; color: darkblue;">picard-season1</span>
+                </p>
+                <p>
+                    Der Unterschied zwischen Collections und Stores ist, dass die URL der angelegten Daten bei einer Collection
+                    vom Server bestimmt wird und bei einem Store vom Client. Collections kommen daher immer dann zum Einsatz,
+                    wenn die Daten unter einer eindeutigen, vom Server vergebenen ID abgespeichert werden, die später in der
+                    URL enthalten sein muss, um die Daten abrufen zu können. Stores werden hingegen immer dann genutzt, wenn
+                    die URL genau bekannt ist, zum Beispiel weil es nur einen Warenkorb für einen Benutzer geben kann. Eine
+                    typische URL für einen Store wäre daher:
+                </p>
+                <p class="dhbw-tt">
+                    https://example.com/api/<span style="font-weight: bold; color: darkred;">{collection}</span>/<span style="font-weight: bold; color: darkblue;">{id}</span>/<span style="font-weight: bold; color: darkmagenta;">{store}</span> <br />
+                    https://example.com/api/<span style="font-weight: bold; color: darkred;">user</span>/<span style="font-weight: bold; color: darkblue;">riker</span>/<span style="font-weight: bold; color: darkmagenta;">shoppingcart</span>
+                </p>
+                <p>
+                    Wie die Datensätze vom Server behandelt werden, ist durch REST nicht vorgegeben. Die Ablage in einer
+                    Datenbank ist nur eine Möglichkeit. Tatsächlich können auch noch weitere Aktionen mit der Anlage oder
+                    dem Löschen einer Ressource verbunden sein. So könnte ein Webservice zur Verwaltung von IoT-Devices
+                    zum Beispiel ein neues Device nicht nur in seiner Datenbank abspeichern, sondern auch gleich konfigurieren
+                    und in Betrieb nehmen.
+                </p>
+                <p>
+                    Nicht immer lässt sich eine Aktion jedoch durch die gängige CRUD-Operationen¹ von HTTP gut beschreiben.
+                    In diesem Fall können auch durch Senden von <tt>PUT</tt> oder <tt>POST</tt>-Anfragen an spezielle
+                    <b>Controller</b> oder besser <b>Action</b> genannte URLs prozedurale Aktionen ausgeführt werden.
+                    Beispielsweise könnte der Bezahlvorgang in einem Webshop ganz klassisch durch Anlagen eines neuen
+                    Zahlungsvorgangs in einer Collection für Zahlungen oder als prozedurale Aktion mit folgender URL
+                    modelliert werden:
+                </p>
+                <p class="dhbw-tt">
+                    https://example.com/api/users/mrdata/<span style="font-weight: bold; color: darkred;">pay-and-confirm-order</span>
+                </p>
+                <p>
+                    ¹
+                    <small>
+                    Create, Read, Update, Delete
+                    </small>
+                </p>
+                <p>
+                    Als Standard hat es sich dabei durchgesetzt, die URLS immer klein und ohne abschließenden Schrägstrich
+                    zu schreiben. Jede Ressource gehört immer zu einer ihr vorne angestellten Collection oder einem Store,
+                    wobei Collections und Stores immer im Plural benannt werden. Actions stehen hingegen immer ganz hinten
+                    und werden im Singular benannt. 👩‍🏫
+                </p>
+                <p>
+                    Ob eine Aktion erfolgreich war oder nicht, erfährt der Client durch Auswertung des Statuscodes und
+                    ggf. der Header Fields in der HTTP-Antwort. Folgende Statuscodes werden deshalb häufig vom Server
+                    gesetzt:
+                </p>
+                <ul>
+                    <li>
+                        <tt><b>200 Ok</b></tt>: Alles in Ordnung
+                    </li>
+                    <li>
+                        <tt><b>201 Created</b></tt>: Daten wurden angelegt
+                    </li>
+                    <li>
+                        <tt><b>204 No Content</b></tt>: Erfolgsmeldung ohne Daten im Body
+                    </li>
+                    <li>
+                        <tt><b>401 Unauthorized</b></tt>: Zugriff nicht erlaubt
+                    </li>
+                    <li>
+                        <tt><b>403 Forbidden</b></tt>: Zugriff nicht vorgesehen
+                    </li>
+                    <li>
+                        <tt><b>404 Not Found</b></tt>: Unbekannte URL
+                    </li>
+                </ul>
+                <p>
+                    Über das <tt>Location</tt> Header Field teil der Server darüber hinaus häufig auch die URL mit,
+                    unter der eine gespeicherte oder veränderte Ressource erneut abgerufen werden kann.
+                </p>
+
+                <h3 class="dhbw-lightblue">Repräsentation der Ressourcen</h3>
+                <p>
+                    Ein weiteres Merkmal von REST ist, dass es keine Vorgaben gibt, in welchem Datenformat die
+                    Ressourcen beschrieben werden. Sehr viele Webservices verstehen daher mehrere Datenformat und
+                    erlauben zum Beispiel, je nach Vorliebe des Clients, die Daten im XML- oder im JSON-Format
+                    zu senden. Da REST-Webservices aber traditionell aus browserseitigen Webanwendungen heraus
+                    aufgerufen werden, hat sich JSON als Quasistandard herausgebildet. In jedem Fall müssen Client
+                    und Server das Format der gesendeten Daten im <tt>Content-Type</tt> Header Field der Gegenseite
+                    mitteilen. Und der Client muss im <tt>Accept</tt> Feld mitteilen, in welchem Format er die
+                    Datem vom Server zurück erwartet. Meistens findet man bei REST daher HTTP-Anfragen wie die
+                    folgende:
+                </p>
+                <source-code language="http">
+                    GET /api/xfiles2018 HTTP/1.1
+                    Host: example.com
+                    Accept: application/json
+                </source-code>
+                <p>
+                    Worauf der Server wie folgt antworten würde:
+                </p>
+                <source-code language="http">
+                    HTTP/1.1 200 Ok
+                    Content-Type: application/json; charset=utf-8
+                    …
+                </source-code>
+                <p>
+                    Das Format, in dem die Daten übertragen werden, wird auch ihre <b>Repräsentation</b> genannt,
+                    da sich dieselben Informationen prinzipiell ja in verschiedenen Datenformaten ausdrücken lassen.
+                    Definierendes Merkmal von REST ist dabei, dass in fast allen Fällen¹ immer komplette Datensätze
+                    hin und her geschickt werden. Auf diese Weise kann die Serverseite vollständig zustandslos, also
+                    ohne Sitzungsgedächtnis zur Unterscheidung mehrerer Anwender, implementiert werden. Hieraus leitet
+                    sich auch die Langform der Abkürzung REST ab, da Client und Server ständig den aktuellen Zustand
+                    einer Ressource in der zuvor gewählten Darstellungsart austauschen.
+                </p>
+                <p>
+                    ¹
+                    <small>
+                        Einzige Ausnahme sind <tt>PATCH</tt>-Anfragen zum Ändern einzelner Felder oder das
+                        bewussten Nichtzurücksenden der Daten nach einer Änderung, um Datenverkehr einzusparen.
+                    </small>
+                </p>
+
+                <h3 class="dhbw-lightblue">Beispiele auf der Folie</h3>
+                <p>
+                    Die eben genannten Prinzipien werden auf der Folie durch unterschiedliche Beispiele zu einem
+                    fiktiven Webservice verdeutlicht. Grundlage hierfür ist eine vor allem in den 1990ern und frühern
+                    2000ern beliebte Fernsehserie, die 2016 und 2018 ein kurzzeitiges Revival erlebte. 👽
+                </p>
+                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 1em">
+                    <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/v6EkU3ZezLY" allow="encrypted-media" allowfullscreen></iframe>
+                </div>
             </aside>
         </section>
 
