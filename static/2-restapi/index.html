@@ -337,21 +337,6 @@
             </article>
         </section>
 
-        <!--
-            TODO
-            REST-Wesbervices / SOAP vs. REST:
-             » In ähnlicher Form übernehmen? REST vs. "Andere Techniken"?
-
-            REST-Wesbervices / REST-Webservices testen:
-             » Umschreiben auf Postman
-
-            REST-Webservices / Aufgaben 1 und 2
-             » Übernehmen
-
-            SOAP-Webservices
-             » HTTP + JSON = REST ?
-        -->
-
         <section>
             <h1>Was passiert beim Aufruf einer Webseite?</h1>
 
@@ -529,12 +514,42 @@
                     <div class="http-intro-w4 http-intro-hidden">
                         <div class="img-thumbnail">
                             <p>
-                                Am Ende ist die Seite vollständig aufgebaut und die Verbindung wird getrennt.
+                                Die Anwendung benötigt aber noch Daten zum anzeigen.
                             </p>
                             <img src="http_intro_10.svg" />
                         </div>
                     </div>
-
+                    <div class="http-intro-w6 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Also sendet die Anwendung noch mehr HTTP-Anfragen an den Server.
+                            </p>
+                            <img src="http_intro_11.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w6 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Und wieder antwortet der Server, dieses Mal allerdings mit JSON-Daten.
+                            </p>
+                            <img src="http_intro_12.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w4 http-intro-hidden">
+                        <div class="img-thumbnail">
+                            <p>
+                                Am Ende ist die Seite vollständig aufgebaut und die Verbindung wird getrennt.
+                            </p>
+                            <img src="http_intro_13.svg" />
+                        </div>
+                    </div>
+                    <div class="http-intro-w8 http-intro-hidden">
+                        <div class="img-thumbnail" style="background-image: url(http_intro_14.jpg); background-size: cover;">
+                            <p style="text-align: center;">
+                                <b style="color: crimson; font-size: 300%; text-shadow: 1px 1px black;">Happy End!</b>
+                            </p>
+                        </div>
+                    </div>
                     <div class="http-intro-w3 http-intro-next" onclick="http_intro_showNext(event, 'http-intro-hidden')">
                         <div class="img-thumbnail">
                             <span style="font-size: 400%">🖼️</span>
@@ -551,62 +566,18 @@
                             <a href="https://pixabay.com/de/server-hardware-netzwerk-computer-37258/" target="_blank">Pixabay: Clker-Free-Vector-Images</a>,
                             <a href="https://pixabay.com/de/mann-gesch%C3%A4ft-cartoon-kaufmann-1351761/" target="_blank">Pixabay: ROverhate</a>,
                             <a href="https://pixabay.com/de/palette-farben-malerei-werkzeug-1817857/" target="_blank">Pixabay: Jsprzperez</a>
+                            <a href="https://pixabay.com/illustrations/love-couple-romance-valentine-560783/" target="_blank">Pixabay: bngdesigns</a>
                         </small>
                     </small>
                 </p>
             </article>
             <aside>
                 <p>
-                    Erinnerst du dich noch an den Anfang der Vorlesung, als wir uns die
-                    Grundlagen des World Wide Web angeschaut haben? Dort gab es eine kleine
-                    Übersicht, welche Techniken zusammen das Web ausmachen:
-                </p>
-                <ul>
-                    <li>
-                        <b>HTML:</b> Beschreibungssprache für Webseiten und Dokumente im
-                        Web
-                    </li>
-                    <li>
-                        <b>CSS:</b> Stylesheet-Sprache zur Gestaltung der HTML-Dateien
-                    </li>
-                    <li>
-                        <b>JavaScript:</b> (Mehr oder weniger) einfache Skriptsprache
-                        für die Clientlogik
-                    </li>
-                    <li>
-                        <b>HTTP:</b> Übertragungsprotokoll für den Datenaustausch mit
-                        dem Server
-                    </li>
-                    <li>
-                        <b>WebSockets:</b> Zusätzliches, asynchrones Übertragungsprotokoll
-                    </li>
-                </ul>
-                <p>
-                    Das Meisten davon haben wir uns inzwischen genauer angeschaut, so dass
-                    du heute sicher viel besser nachvollziehen kannst, warum diese Techniken
-                    für das Web so wichtig sind. Aber halt, Moment mal. 🙋 Haben wir nicht
-                    etwas vergessen? Ach ja richtig: Der Server! Den haben wir uns ja noch
-                    gar nicht angeschaut. Und das, obwohl er für so viele Webanwendungen so
-                    unheimlich wichtig ist. Zeit also, dass wir das hier nun nachholen.
-                    Doch bevor wir das tun können, müssen wir erst eine ganz zentrale Frage
-                    beantworten¹:
-                </p>
-                <p>
-                    <i>
-                        Wie funktioniert das eigentlich, wenn der Browser eine Seite
-                        vom Server abruft?
-                    </i>
-                </p>
-                <p>
-                    Die Antwort darauf siehst du auf dieser Folie.
-                </p>
-                <p>
-                    <small>
-                        ¹ Nein, ausnahmsweise einmal nicht <a href="https://www.google.de/search?q=answer+to+life+the+universe+and+everything"
-                        target="_blank">die Frage nach dem Leben, dem Universum und dem ganzen Rest.</a>
-                        Die Antwort darauf kennen wir ja schon: 42.
-                    </small>
-                    🤖 🐬
+                    Eine gute Präsentation erzählt immer eine Geschichte. 📖 Beginnen wollen das Kapitel daher mit einer
+                    wahren Geschichte, wie sie sich erst kürzlich zwischen einem studentischen Laptop und dem Server, auf
+                    dem diese Folien liegen, zugetragen hat. 📰 Das Leben schreibt eben immer noch die besten Geschichten.
+                    Wir sehen hier daher was passiert, wenn eine Webseite im Browser aufgerufen werden soll. Insbesondere
+                    der Austausch der hierfür benötigten HTTP-Nachrichten wird auf der Folie nochmal verdeutlicht.
                 </p>
             </aside>
         </section>
@@ -963,7 +934,7 @@
                                     Die Anfrage darf keinen Request Body enthalten
                                 </li>
                                 <li>
-                                    Der Server antwortet mit dem gewünschten Inhalt oder einer Fehlerseite
+                                    Der Server antwortet mit dem gewünschten Inhalt oder einer Fehlerbeschreibung
                                 </li>
                             </ul>
 
@@ -976,7 +947,7 @@
                                     Der Inhalt der Datei muss im Request Body mitgeschickt werden
                                 </li>
                                 <li>
-                                    Der Server antwortet mit einer neuen HTML-Seite oder einer Fehlerseite
+                                    Der Server antwortet mit dem gespeicherten Inhalt oder einer Fehlerbeschreibung
                                 </li>
                             </ul>
 
@@ -989,7 +960,7 @@
                                     Wird häufig verwendet, um vorhandene Daten auf dem Server zu aktualisieren
                                 </li>
                                 <li>
-                                    Der Server antwortet mit einer neuen HTML-Seite oder einer Fehlerseite
+                                    Der Server antwortet mit dem gespeicherten Inhalt oder einer Fehlerbeschreibung
                                 </li>
                             </ul>
 
@@ -1002,7 +973,7 @@
                                     Die Anfrage darf keinen Request Body enthalten
                                 </li>
                                 <li>
-                                    Der Server antwortet mit einer neuen HTML-Seite oder einer Fehlerseite
+                                    Der Server antwortet mit einer Bestätigung oder einer Fehlberbeschreibung
                                 </li>
                             </ul>
 
@@ -1246,12 +1217,6 @@
                 </p>
             </aside>
         </section>
-
-        <!--
-            TODO
-            Serverseitige Webentwicklung / Wer die Wahl hat ...:
-             » Statische Inhalte vs. dynamisch erzeugte Inhalte (Bilder übernehmen?)
-        -->
 
         <section>
             <h1>Grundprinzipien von REST</h1>
