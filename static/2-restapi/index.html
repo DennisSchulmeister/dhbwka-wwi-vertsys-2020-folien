@@ -2876,8 +2876,10 @@
                             aria-labelledby = "soap_vs_rest-soap-tab"
                         >
                             <p>
-                                Anfrage und Antwort werden im SOAP-XML-Format kodiert und durch einen einfachen HTTP-Aufruf übertragen. Die aufgerufene URL, sowie
-                                der genaue Inhalte der XML-Nachrichten ergibt sich aus der WSDL-Beschreibung. Der Aufruf erfolgt immer als POST-Anfrage.
+                                Anfrage und Antwort werden im SOAP-XML-Format kodiert und in der Regel via HTTP übertragen. Alle für den
+                                Aufruf benötigten Informationen ergeben sich aus maschinenlesbaren Webservice-Beschreibung, der so genannten
+                                WSDL. Als einziges HTTP-Kommando wird <tt>POST</tt> unterstützt, so dass im XML meist der Name einer auf
+                                dem Server aufzurufenden Methode enthalten ist.
                             </p>
                             <img src="soap-request.svg" alt="" class="d-block" style="width: 100%; max-width: 60em; margin: 0 auto; margin-bottom: 3em;" />
                             <img src="soap-response.svg" alt="" class="d-block" style="width: 100%; max-width: 60em; margin: 0 auto;" />
@@ -2889,7 +2891,7 @@
                             role            = "tabpanel"
                             aria-labelledby = "soap_vs_rest-vergleich-tab"
                         >
-                            <div class="container-fluid">
+                            <div class="container-fluid p-0">
                                 <div class="row">
                                     <div class="col-md">
                                         <h2>SOAP</h2>
@@ -2908,7 +2910,7 @@
                                                     🐘
                                                 </td>
                                                 <td>
-                                                    Ermöglicht den Aufruf beliebiger Methoden
+                                                    Sehr prozeduraler Programmierstil
                                                 </td>
                                             </tr>
                                             <tr>
@@ -2916,7 +2918,7 @@
                                                     🐘
                                                 </td>
                                                 <td>
-                                                    Nutzt von HTTP lediglich das Verb POST
+                                                    Nutzt von HTTP lediglich das Verb <tt>POST</tt>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -2954,7 +2956,7 @@
                                                     🐇
                                                 </td>
                                                 <td>
-                                                    Je eine URL für eine Ressource¹
+                                                    Je eine URL für eine Ressource
                                                 </td>
                                             </tr>
                                             <tr>
@@ -2962,7 +2964,7 @@
                                                     🐇
                                                 </td>
                                                 <td>
-                                                    Bildet die üblichen CRUD-Operationen² ab
+                                                    Bildet die üblichen CRUD-Operationen ab
                                                 </td>
                                             </tr>
                                             <tr>
@@ -2998,20 +3000,6 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md">
-                                        <p>
-                                            <small>
-                                                ¹ Im Sinne eines einzelnen Datensatzes, zum Beispiel ein Artikel oder eine Bestellung.
-                                            </small>
-                                        </p>
-                                        <p>
-                                            <small>
-                                                ² Create, Read, Update und Delete
-                                            </small>
-                                        </p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -3052,12 +3040,13 @@
                     <iframe src="https://www.youtube-nocookie.com/embed/Nzf-TbvswDU" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <p>
-                    Um zu verstehen, wie sich SOAP und REST unterscheiden und warum beide so definiert sind, wie sie sind,
-                    muss man sich die Hintergründe und die Entstehung beider Ansätze anschauen.
+                    Eigentlich geht es in diesem Kapitel nicht um SOAP-Webservices. Da SOAP historisch gesehen aber
+                    genauso weit verbreitet ist wie REST und gerade im Unternehmenskontext viele APIs mit der Zeit
+                    von SOAP auf REST umgestellt werden, lohnt sich ein kleiner Blick über den Tellerrand. 🍽️
                 </p>
                 <p>
-                    Da wäre also zum einen SOAP, dessen
-                    Vorläufer <a href="https://de.wikipedia.org/wiki/XML-RPC" target="_blank">XML-RPC</a> ab 1998 bei Microsoft entstand
+                    Da wäre also zum einen SOAP, dessen Vorläufer
+                    <a href="https://de.wikipedia.org/wiki/XML-RPC" target="_blank">XML-RPC</a> ab 1998 bei Microsoft entstand
                     und der sich, wie der Name schon andeutet, direkt am Aufruf entfernter Methoden über das Internet orientiert.¹
                     Dabei lag der Fokus schon immer auf der Entwicklung betriebswirtschaftlicher Anwendungen, was sich auch an der
                     Beteiligung von IBM und anderen Firmen aus diesem Bereich zeigt. Der kurioseste Anwendungsfall ist dabei sicher
@@ -3085,73 +3074,44 @@
                     </li>
                 </ul>
                 <p>
-                    Aus diesem Grund ist die Wahl von HTTP-POST zur Datenübertragung und XML als Datenformat auch nur pragmatisch,
-                    da jedes Unternehmen durch die weite Verbreitung des World Wide Web ohnehin schon auf den Abruf von Daten via
-                    HTTP vorbereitet ist und es für XML seit jeher ein exzellentes Tooling gibt. Ebenso lässt sich dadurch erklären,
-                    wie rund um SOAP eine ganze Menge <a href="https://de.wikipedia.org/wiki/WS-*" target="_blank">WS-*</a> genannter
-                    Standards entstehen konnten, die so höchst unterschiedliche Themen wie die XML-Signierung, die Übertragung von
-                    Binärdaten oder die Modellierung von Geschäftsprozessen abdecken.
-                </p>
-                <p>
-                    <small>
-                        ¹ RPC = Remote Procedure Call, also der Aufruf entfernter Prozeduren, wobei man in Java (da es sich ja um
-                        eine objektorientierte Sprache handelt) von Methoden sprechen würde.
-                    </small>
+                    SOAP-Webservices nutzen die Fähigkeiten von HTTP daher kaum aus, sondern nutzen es nur als eine von vielen
+                    Transportmethoden, um die Anfragen vom Client zum Server zu bekommen.² Alle Anfragen werden daher ohne
+                    Rücksicht auf Verluste als <tt>POST</tt>-Anfrage verschickt, wobei als Datenformat so gut wie immer XML
+                    genutzt wird. Dies ist in gewisser Weise sehr pragmatisch, da die Netzwerke in den Unternehmen dank dem
+                    World Wide Web HTTP-Anfragen meist problemlos durchlassen und es für XML seit jeher ein exzellentes Tooling
+                    gibt. Zudem wird jeder SOAP-Webservice durch eine WSDL genannte Datei beschrieben, anhand derer der Quellcode
+                    zu seinem Aufruf meist automatisch generiert werden kann. An SOAP angrenzende,
+                    <a href="https://de.wikipedia.org/wiki/WS-*" target="_blank">WS-*</a> genannte Standards, decken darüber
+                    hinaus so höchst unterschiedliche Themen wie die XML-Signierung, die Übertragung von Binärdaten oder die
+                    Modellierung von Geschäftsprozessen ab.
                 </p>
                 <p>
                     Diesem wahren Schwergewicht 🏋️ steht nun <a href="https://de.wikipedia.org/wiki/Representational_State_Transfer" target="_blank">REST</a>
-                    als leichtgewichtige Alternative und konzeptioneller Gegenentwurf entgegen. Im Jahr 2000 in der Dissertation
-                    von Roy Fielding beschrieben, orientiert sich REST voll und ganz am HTTP-Protokoll und nutzt es als Möglichkeit,
-                    beliebige Ressourcen² über eindeutige URLs zu adressieren und mit den verschiedenen HTTP-Verben entsprechend
-                    ihrer Bedeutung darauf zuzugreifen:
+                    als leichtgewichtige Alternative und konzeptioneller Gegenentwurf entgegen, das im Jahr 2000 in der Dissertation
+                    von Roy Fielding beschrieben wurde. REST wurde dabei von Anfang an am HTTP-Protokoll ausgerichtet und möglichst
+                    einfach definiert. Die meisten REST-Webservices besitzen daher keine maschinenlesbare Beschreibung, anhand derer
+                    der Quellcode zu ihrer Nutzung generiert werden kann³ und auch so fehlen im direkten Vergleich viele Komfortfeatures.
+                    Insgesamt beansprucht REST dafür aber die Ressourcen weniger und kann wesentlich einfacher in clientseitigem
+                    JavaScript-Code oder in mobilen Apps konsumiert werden.
                 </p>
-                <ul>
-                    <li>
-                        <b>GET:</b> Daten einer Ressource abrufen
-                    </li>
-                    <li>
-                        <b>POST:</b> Anlage einer neuen Ressource³
-                    </li>
-                    <li>
-                        <b>PUT:</b> Neue Version einer vorhandenen Ressource speichern³
-                    </li>
-                    <li>
-                        <b>PATCH:</b> Einzelne Felder einer Ressource überschreiben
-                    </li>
-                    <li>
-                        <b>DELETE:</b> Löschen einer Ressource
-                    </li>
-                </ul>
                 <p>
+                    ¹
                     <small>
-                        ² In einer Datenbankanwendung würde man einzelne Datensätze, wie einen Kunden oder einen Zahlungsbeleg,
-                        als Ressource abbilden. Davon abgesehen kann es sich aber um beliebige „Dinge” handeln, die man über
-                        den Webservice verwalten will. Ein E-Mailprovider könnte daher zum Beispiel die Mail Accounts seiner
-                        Kunden sowie einzelne E-Mails als Ressourcen mit eigenen URLs ansprechbar machen.
+                        „RPC” steht für „Remote Procedure Call”, also dem Aufruf entfernter Funktionen, wobei man in Java (da es sich
+                        ja um eine objektorientierte Sprache handelt) eher von Methoden sprechen würde.
                     </small>
                 </p>
                 <p>
+                    ²
                     <small>
-                        ³ Tatsächlich ist die Abgrenzung zwischen POST und PUT nicht immer strikt gewählt. Es gibt auch viele
-                        Webservices, die POST zur Neuanlage und PUT zur Änderung von Daten oder nur ein Verb für beides nutzen.
+                        Auch wenn sich andere Transportprotokolle in der Praxis kaum durchgesetzt haben.
                     </small>
                 </p>
                 <p>
+                    ³
                     <small>
-                        Auch ist die hier getroffene Unterscheidung formal nicht ganz korrekt. Die absolut korrekte Version ist,
-                        dass POST immer dann verwenet wird, wenn der Client die spätere URL der Ressource nicht genau kennt und PUT,
-                        eben wenn er sie kennt. Haben wir zum Beispiel die URL <code>/Songs/</code> für eine Liste mit Songs und
-                        <code>/Songs/42/</code> für den einzelnen Song mit der ID 42, kann man eine POST-Anfrage an <code>/Songs/</code>
-                        senden, um einen neuen Eintrag unter eine beliebigen ID abzulegen oder eine PUT-Anfrage an <code>/Songs/42/</code>,
-                        um den Song mit der ID 42 anzulegen oder zu überschreiben.
+                        Auch wenn es mehrere Quasi-Standards dafür gibt …
                     </small>
-                </p>
-                <p>
-                    Das Format der übertragenen Daten ist dabei nicht verbindlich definiert, allermeistens wird jedoch JSON
-                    verwendet, da es platzsparender als XML ist und mit JavaScript besonders einfach verarbeitet werden kann.
-                    Auch gibt es nicht zwingend eine formale XML-Beschreibung, die alle Operationen eines Webservices sowie
-                    die syntaktische Struktur der übertragenen Daten definiert. Hierfür gibt es zwar WADL (Web Application
-                    Description Language) und andere Formate als Quasi-Ersatz, sie haben aber alle keine weite Verbreitung.
                 </p>
             </aside>
         </section>
