@@ -708,8 +708,8 @@
                                 <tr>
                                     <td class="http-nachricht http-body" colspan="3">
                                         { <br />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;"course": "webprog", <br />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;"year": 2017, <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"course": "vertsys", <br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;"year": 2020, <br />
                                         &nbsp;&nbsp;&nbsp;&nbsp;"text": "Vielen Dank für diese tolle Vorlesung!" <br />
                                         }
                                     </td>
@@ -3134,13 +3134,106 @@
                     <div class="carousel-inner">
                         <div class="carousel-item img-thumbnail active">
                             <p>
-                                TODO
+                                Zunächst brauchen wir natürlich einen Webservice zum Testen. 🤦 Du kannst hierfür das
+                                <tt>MusicDB</tt>-Beispiel 🎶 aus Moodle verwenden und der IDE deiner Wahl starten.
+                                Hier sehen wir den Quellcode in Netbeans
                             </p>
-                            <img class="active d-block w-100" src="postman-01.png" />
+                            <img class="active d-block w-100" src="postman-01.png" style="border: 1px solid grey;" />
                         </div>
                         <div class="carousel-item img-thumbnail">
                             <p>
-                                Damit endet unsere kleine SoapUI-Tour. Das Tool sollte ein keinem Werkzeugkoffer fehlen. 🔧
+                                Unter der Adresse <a href="http://localhost:9090" target="_blank"><tt>http://localhost:9090</tt></a>
+                                lässt sich der Webservice aufrufen. Der Webservice bringt bereits eine browserbasierte
+                                Testanwendung mit. Wir wollen ihn hier aber mit Postman 📨 testen.
+                            </p>
+                            <img class="active d-block w-100" src="postman-02.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Zunächst sehen wir nur die Startseite von Postman. Wähle hier auf der linken Seiten <tt>Collections</tt>
+                                und dann <tt>New Collection</tt> aus, um einen neuen Ordner anzulegen. Dieser soll unsere späteren
+                                HTTP-Anfragen sammeln.
+                            </p>
+                            <img class="active d-block w-100" src="postman-03.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Gib im folgenden Fenster einen Namen und eine Beschreibung ein klicke dann auch <tt>Create</tt>.
+                            </p>
+                            <img class="active d-block w-100" src="postman-04.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Um eine neue HTTP-Anfrage anzulegen, klicke den eben erstellten Ordner mit der rechten Maustaste
+                                an und gehe auf <tt>Add Request</tt>.
+                            </p>
+                            <img class="active d-block w-100" src="postman-05.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Im folgenden Fenster kannst du der HTTP-Anfrage einen Namen und eine Beschreibung geben.
+                                Wir beginnen mit der Startadresse des Webservices.
+                            </p>
+                            <img class="active d-block w-100" src="postman-06.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Anschließend kannst du den Ordner aufklappen und die Anfrage durch einen Doppelklick bearbeiten.
+                            </p>
+                            <img class="active d-block w-100" src="postman-07.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Gib oben die URL <tt>http://localhost:9090/</tt> ein und klicke anschließend auf <tt>Send</tt>.
+                            </p>
+                            <img class="active d-block w-100" src="postman-08.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Wie praktisch. Der Webservice verrät uns die URLs all seiner Collections. 👍
+                                Klicke auf die zweite URL, um die Songs abzurufen.
+                            </p>
+                            <img class="active d-block w-100" src="postman-09.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Den Zusatz <tt>{?page,size,sort}</tt> musst du aus der URL entfernen, bevor du sie aufrufen
+                                kannst. Dies sind Platzhalter für optionale Request-Parameter.
+                            </p>
+                            <img class="active d-block w-100" src="postman-10.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Unten siehst du wieder die Antwort des Webservices.
+                            </p>
+                            <img class="active d-block w-100" src="postman-11.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Wir wollen nun allerdings einen neuen Datensatz anlegen. Ändere die Anfrageart daher
+                                auf <tt>POST</tt> und wähle unter <tt>Body</tt> den Typ <tt>raw</tt> aus. Danach
+                                übernehme den im Bild zu sehenden JSON-Code.
+                            </p>
+                            <img class="active d-block w-100" src="postman-12.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Unter <tt>Headers</tt> musst du noch den Header <tt>Content-Type</tt> mit dem Wert
+                                <tt>application/json</tt> hinzufügen, damit der Server die Anfrage versteht.
+                                Anschließend klicke auf <tt>Send</tt>.
+                            </p>
+                            <img class="active d-block w-100" src="postman-13.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Unten sehen wir wieder die Antwort. Wenn du willst, kannst du die Anfrage mit
+                                <tt>Save</tt> im aktuellen Ordner speichern.
+                            </p>
+                            <img class="active d-block w-100" src="postman-14.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Damit endet unsere kleine Postman-Tour. Das Tool sollte ein keinem Werkzeugkoffer fehlen. 🔧
                             </p>
                             <img class="active d-block w-25 m-auto" src="../finish.svg" />
                         </div>
@@ -3178,22 +3271,23 @@
                     <div class="row">
                         <div class="col-md">
                             <p>
-                                Nun, welche Musik hörst du gerne? 🎼 Hier hast du die einmalige Gelegenheit, sie über einen REST-Webservice in eine Datenbank einzutragen. 😎
-                                Hierfür musst du dir lediglich das Beispielprojekt von Moodle herunterladen und in Netbeans zum Laufen bekommen. Anschließend öffnet sich
-                                eine kleine Seite im Browser, mit der du erste Versuche unternehmen kannst. Gehe dabei wie folgt vor:
+                                Nun, welche Musik hörst du gerne? 🎼 Hier hast du die einmalige Gelegenheit, sie über einen REST-Webservice in eine
+                                Datenbank einzutragen. 😎 Hierfür musst du dir lediglich das Beispielprojekt von Moodle herunterladen und zum Laufen
+                                bekommen. Anschließend öffnet sich eine kleine Seite im Browser, mit der du erste Versuche unternehmen kannst. Gehe
+                                dabei wie folgt vor:
                             </p>
                             <ol>
                                 <li>
-                                    Klicke jeden Link einmal an und schaue, was passiert.
+                                    Finde heraus, wie du alle Songs und alle Playlisten anzeigen kannst.
                                 </li>
                                 <li>
-                                    Falls die Links mit der ID 10 keine Daten liefern, tausche die ID in der URL aus.
+                                    Finde heraus, wie du einen neuen Song speichern kannst.
                                 </li>
                                 <li>
-                                    Schaue dir die WADL-Datei an und versuche, sie zu verstehen.
+                                    Finde heraus, wo die vollständigen JSON-Daten einer Antwort zu sehen sind.
                                 </li>
                                 <li>
-                                    Importiere die WADL-Datei in SoapUI und teste die verschiedenen Webservice-Operationen.
+                                    Falls du willst, kannst du den Webservice auch mit Postman testen.
                                 </li>
                             </ol>
                             <p>
@@ -3211,10 +3305,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md">
-                            <img src="aufgabe1-browser.jpg" alt="Screenshot des Webservices im Browser" class="d-block img-thumbnail" style="width: 100%; background-color: rgb(72, 116, 140);" />
+                            <img src="aufgabe1-browser.png" alt="Screenshot des Webservices im Browser" class="d-block" style="width: 100%; border: 1px solid grey;" />
                         </div>
                         <div class="col-md">
-                            <img src="aufgabe1-postman.png" alt="Screenshot des Webservices in Postman" class="d-block img-thumbnail" style="width: 100%; background-color: rgb(72, 116, 140);" />
+                            <img src="aufgabe1-postman.png" alt="Screenshot des Webservices in Postman" class="d-block" style="width: 100%; border: 1px solid grey;" />
                         </div>
                     </div>
                 </div>
@@ -3239,7 +3333,7 @@
 
         <section data-background-color="rgb(231, 221, 141)">
             <h1>Aufgabe 2: Musik liegt in der Luft</h1>
-            <!-- Song verlinken: Music is in the air, HTTP/JSON für einfachen REST-WS definieren -->
+            <!-- TODO: HTTP/JSON für einfachen REST-WS definieren -->
             <article>
                 <div>
                     <ul class="nav nav-tabs" role="tablist">
@@ -3974,6 +4068,7 @@
         <section>
             <h1>Eine Spring-Anwendung entsteht</h1>
             <article>
+                <!-- https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.2.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=dhbwka.wwi.vertsys.rest&artifactId=musicdb&name=musicdb&description=Demo%20project%20for%20Spring%20Boot&packageName=dhbwka.wwi.vertsys.rest.musicdb&dependencies=data-rest,h2,hateoas,lombok,web,data-rest-hal,data-jpa -->
             </article>
             <aside>
             </aside>
@@ -4185,6 +4280,7 @@
             Fallbeispiel: Rent-A-Splash
             ===========================
         -->
+        <!--
         <section data-chapter data-background-image="rent-a-splash.jpg">
             <h1>Fallbeispiel: Rent-A-Splash</h1>
             <article>
@@ -4228,6 +4324,7 @@
             <aside>
             </aside>
         </section>
+        -->
 
         <!--
             ====================
