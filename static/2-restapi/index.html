@@ -1155,11 +1155,6 @@
                             <p>
                                 Datum und Uhrzeit der letzten Änderung an den Daten
                             </p>
-
-                            <h4>ETag</h4>
-                            <p>
-                                Hashwert zur schnelleren Identifizierung der Daten im Browsercache
-                            </p>
                         </div>
                         <!-- Versionen -->
                         <div
@@ -1507,11 +1502,13 @@
                             </p>
                             <p>
                                 <small>
-                                    Bildnachweise:
-                                    <a href="https://pixabay.com/photos/breakfast-coffee-cup-drink-glass-1869772/" target="_blank">Pixabay: Pexels</a>,
-                                    <a href="https://pixabay.com/photos/binder-records-data-documents-532220/" target="_blank">Pixabay: Mizianitka</a>,
-                                    <a href="https://pixabay.com/photos/shirts-hangers-exhibition-shop-428600/" target="_blank">Pixabay: jarmoluk</a>,
-                                    <a href="https://pixabay.com/photos/movie-director-clap-film-cinema-2545676/" target="_blank">Pixabay: stokpic</a>
+                                    <small>
+                                        Bildnachweise:
+                                        <a href="https://pixabay.com/photos/breakfast-coffee-cup-drink-glass-1869772/" target="_blank">Pixabay: Pexels</a>,
+                                        <a href="https://pixabay.com/photos/binder-records-data-documents-532220/" target="_blank">Pixabay: Mizianitka</a>,
+                                        <a href="https://pixabay.com/photos/shirts-hangers-exhibition-shop-428600/" target="_blank">Pixabay: jarmoluk</a>,
+                                        <a href="https://pixabay.com/photos/movie-director-clap-film-cinema-2545676/" target="_blank">Pixabay: stokpic</a>
+                                    </small>
                                 </small>
                             </p>
                         </div>
@@ -1556,7 +1553,7 @@
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <b>GET</b>
+                                                    <tt><b>GET</b>
                                                 </td>
                                                 <td>
                                                     Daten lesen
@@ -2312,6 +2309,8 @@
                     </small>
                 </p>
 
+                <hr />
+
                 <h3 class="dhbw-lightblue">Beispiele auf der Folie</h3>
                 <p>
                     Die eben genannten Prinzipien werden auf der Folie durch unterschiedliche Beispiele zu einem
@@ -2325,10 +2324,502 @@
         </section>
 
         <section>
-            <h1>Was ist erlaubt und was nicht?</h1>
+            <h1>Wo geht's denn hier bitte weiter?</h1>
             <article>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "hateoas-fallbeispiel-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#hateoas-fallbeispiel"
+                                role          = "tab"
+                                aria-controls = "hateoas-fallbeispiel"
+                                aria-expanded = "true"
+                            >
+                                Fallbeispiel
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "hateoas-ohne-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#hateoas-ohne"
+                                role          = "tab"
+                                aria-controls = "hateoas-ohne"
+                            >
+                                Ohne Hyperlinks
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "hateoas-mit-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#hateoas-mit"
+                                role          = "tab"
+                                aria-controls = "hateoas-mit"
+                            >
+                                Mit Hyperlinks
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Fallbeispiel -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "hateoas-fallbeispiel"
+                            role            = "tabpanel"
+                            aria-labelledby = "hateoas-fallbeispiel-tab"
+                        >
+                            <p>
+                                Vollwertige REST-Webservices sollten immer <b>hypermedia driven</b> sein. Das heißt, sie sollten gemäß dem
+                                <b>HATEOAS</b>-Prinzip (Hypertext is the engine of the application state) mit jeder Antwort neben den Daten
+                                auch eine Liste mit Hyperlinks für alle zulössigen Folgeaktionen schicken. Als Beispiel zur Verdeutlichung
+                                diene eine einfache Onlinebanking API, bei der ein Konto folgende Zustände mit folgenden erlaubten
+                                Folgeaktionen haben kann:
+                            </p>
+                            <div class="container-fluid p-0 mb-2">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <img src="hateoas-beispiel.svg" alt="Zustandsdiagramm für Bankkonten" class="d-block m-auto" style="width: 75%; height: 100%;" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="sparschwein.jpg" class="d-block" style="width: 100%; height: 100%;" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4 class="dhbw-lightblue">Hypertext is the engine of the application state</h4>
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <img src="hateoas-application.jpg" class="d-block img-thumbnail" style="width: 100%;" />
+                                        <b>Application:</b> Die verteilte Anwendung mit allen Komponenten
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="hateoas-state.svg" class="d-block img-thumbnail" style="width: 100%;" />
+                                        <b>State:</b> Die zulässigen Zustände der Anwendung
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="hateoas-engine.jpg" class="d-block img-thumbnail" style="width: 100%;" />
+                                        <b>Engine:</b> Regeln zur Ausführung der Zustandsübergänge
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="hateoas-hypertext.jpg" class="d-block img-thumbnail" style="width: 100%;" />
+                                        <b>Hypertext:</b> Verlinkungen zum Auslösen der Zustandswechsel
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>
+                                <small>
+                                    <small>
+                                        Bildnachweise:
+                                        <a href="https://pixabay.com/photos/piggy-bank-money-savings-financial-970340/" target="_blank">Pixabay: Skitterphoto</a>,
+                                        <a href="https://pixabay.com/illustrations/app-software-contour-settings-1013616/" target="_blank">Pixabay: Peggy_Marco</a>,
+                                        <a href="https://pixabay.com/photos/car-engine-motor-clean-customized-1548434/" target="_blank">Pixabay: paulbr75</a>,
+                                        <a href="https://pixabay.com/illustrations/webdesign-design-web-website-3411373/" target="_blank">Pixabay: kreatikar</a>
+                                    </small>
+                                </small>
+                            </p>
+                        </div>
+                        <!-- Ohne Hyperlinks -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "hateoas-ohne"
+                            role            = "tabpanel"
+                            aria-labelledby = "hateoas-ohne-tab"
+                        >
+                            <p>
+                                Ein nicht HATEOAS-konformer REST-Webservice liefert keine Metadaten in seinen Antworten. Die Information,
+                                welche Informationen unter welcher URL abgerufen werden können und wann welche Aktionen erlaubt sind,
+                                müssen stattdessen in der Webservice-Dokumentation beschrieben und fest in die Clients einprogrammiert werden.
+                                Webservice und Clients sind dadurch besonders einfach zu implementieren, jedoch wird es dadurch schwerer,
+                                den Webservice auf kompatible Weise zu verändern, ohne die bestehenden Clients zu beeinträchtigen.
+                            </p>
+                            <table class="mb-4">
+                                <tr>
+                                    <td>
+                                        🤔
+                                    </td>
+                                    <td>
+                                        Sämtliche URLs des Webservices müssen fest in die Clients einprogrammiert werden
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🤔
+                                    </td>
+                                    <td>
+                                        Dadurch können die URLs nicht mehr nachträglich geändert werden, ohne die Clients anzupassen
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🤔
+                                    </td>
+                                    <td>
+                                        Die Clients müssen einfach wissen, wann welche Aktion erlaubt ist und wann nicht
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="container-fluid p-0">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Abruf einer Kontenübersicht</h3>
+
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                Anfrage
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="http">
+                                                    GET /customer/47110815/accounts HTTP/1.1
+                                                </source-code>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Antwort
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="json">
+                                                    [
+                                                        {
+                                                            "number": 3699623,
+                                                            "type": "giro"
+                                                        }, {
+                                                            "number": 1013699623,
+                                                            "type": "savings"
+                                                        }
+                                                    ]
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Informationen zum Konto</h3>
+
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                Anfrage
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="http">
+                                                    GET /account/3699623 HTTP/1.1
+                                                </source-code>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Antwort
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="json">
+                                                    {
+                                                        "account_number": 3699623,
+                                                        "bank_name": "Parkbank",
+                                                        "currency": "EUR",
+                                                        "amount": "2411.83",
+                                                        "state": "covered"
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mit Hyperlinks -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "hateoas-mit"
+                            role            = "tabpanel"
+                            aria-labelledby = "hateoas-mit-tab"
+                        >
+                            <p>
+                                Bisher nutzen viele REST-Webservices HATEOAS noch nicht. Jedoch setzt sich immer mehr der
+                                Gedanke durch, dass es möglich sein muss, einen Webserivce ausgehend von seiner Basis-URL
+                                nur durch Anschauen der Antworten zu erkunden. Hierfür muss jede Antwort eine Liste von
+                                Links mit den zulässigen Folgeabrufen mitliefern. Einen einheitlichen Standard gibt es
+                                dafür nicht. Allgemein akzeptiert ist aber, dass die Links eine semantische Bezeichnung
+                                haben müssen, anhand derer die Clients sie erkennen können und dass beim Abruf einer
+                                Collection oder eines Stores sowohl Links die gesamte Liste als auch einzelne Einträge
+                                betreffend kommen müssen.
+                            </p>
+                            <table class="mb-4">
+                                <tr>
+                                    <td>
+                                        🙂
+                                    </td>
+                                    <td>
+                                        Die Clients müssen nur noch die Start-URL des Webservices kennen
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🙂
+                                    </td>
+                                    <td>
+                                        Alle anderen URLs lassen sich aus den Antworten des Webservices ableiten
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        🙂
+                                    </td>
+                                    <td>
+                                        Anhand der Antworten kann festgestelt werden, welche Folgeabrufe möglich sind
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="container-fluid p-0">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Gedecktes Konto</h3>
+
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                Anfrage
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="http">
+                                                    GET /account/3699623 HTTP/1.1
+                                                </source-code>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Antwort
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="json">
+                                                    {
+                                                        "account_number": 3699623,
+                                                        "bank_name": "Parkbank",
+                                                        "currency": "EUR",
+                                                        "amount": "2411.83",
+                                                        "state": "covered",
+                                                        "_links": {
+                                                            "self": {
+                                                                "href": "/account/3699623"
+                                                            },
+                                                            "deposit": {
+                                                                "href": "/account/3699623/deposit"
+                                                            },
+                                                            "pay": {
+                                                                "href": "/account/3699623/pay"
+                                                            },
+                                                            "cash-transfer": {
+                                                                "href": "/account/3699623/transfer"
+                                                            },
+                                                            "close": {
+                                                                "href": "/account/3699623/close"
+                                                            }
+                                                        }
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Überzogenes Konto</h3>
+
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                Anfrage
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="http">
+                                                    GET /account/3699623 HTTP/1.1
+                                                </source-code>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Antwort
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="json">
+                                                    {
+                                                        "account_number": 3699623,
+                                                        "bank_name": "Parkbank",
+                                                        "currency": "EUR",
+                                                        "amount": "0.00",
+                                                        "state": "not-covered",
+                                                        "_links": {
+                                                            "self": {
+                                                                "href": "/account/3699623"
+                                                            },
+                                                            "deposit": {
+                                                                "href": "/account/3699623/deposit"
+                                                            }
+                                                        }
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h3 class="dhbw-lightblue">Abruf einer Kontenübersicht</h3>
+
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                Anfrage
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="http">
+                                                    GET /customer/575741/accounts HTTP/1.1
+                                                </source-code>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Antwort
+                                            </div>
+                                            <div class="card-body pb-0">
+                                                <source-code language="json">
+                                                    {
+                                                        "_embedded": {
+                                                            "accounts": [
+                                                                {
+                                                                    "number": 3699623,
+                                                                    "type": "giro",
+                                                                    "_links": {
+                                                                        "self": {
+                                                                            "href": "/account/3699623"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "number": 1013699623,
+                                                                    "type": "savings",
+                                                                    "_links": {
+                                                                        "self": {
+                                                                            "href": "/account/1013699623"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "_links": {
+                                                            "self": {
+                                                                "href": "/customer/575741/accounts"
+                                                            }
+                                                        }
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
+                <p>
+                    Eine wesentliche Eigenschaft von REST-Webservices, die sehr oft übersehen wird, ist, dass diese
+                    <b>hypermedia driven</b> sein sollten. Gemeint ist, dass jede Antwort neben den angeforderten
+                    Daten auch Links für alle zulässigen Folgeaufrufe beinhalten sollte. Dies erscheint auf den ersten
+                    Blick ungewöhnlich, da solche Informationen in der Dokumentation eines Webservices 📚 (sofern es
+                    eine gibt) wesentlich ausführlicher beschrieben sind. Wird das Prinzip jedoch konsequent angewandt,
+                    müssen bis auf die Startadresse des Webservices keine URLs im Client hart-codiert werden, wodurch
+                    die Kopplung zwischen Client und Server weiter reduziert wird. Erklärtes Ziel dabei ist es, den
+                    Serverteil einer Anwendung verändern und weiterentwickeln zu können, ohne hierdurch die Funktion
+                    bestehender Clients zu gefährden.
+                </p>
+                <p>
+                    In letzter Zeit hat sich <b>HATEOAS</b> als feststehender Begriff hierfür etabliert, was für
+                    <b>Hypertext is the engine of the application state</b> steht. Doch was ist damit gemeint? 🤔
+                    Betrachten wir die Wörter in etwas anderer Reihenfolge, um uns dies klar zu machen:
+                </p>
+                <ul>
+                    <li>
+                        <b>Application:</b> Damit ist eine verteilte Anwendung mit all ihren Bestandteilen gemeint.
+                    </li>
+                    <li>
+                        <b>State:</b> Meint, dass es wohl definierte Zustände in der Anwendung gibt.
+                    </li>
+                    <li>
+                        <b>Engine:</b> Beschreibt die Regeln für die zulässigen Zustandsübergänge.
+                    </li>
+                    <li>
+                        <b>Hypertext:</b> Besagt, dass die Zustandswechsel durch Hyperlinks ausgelöst werden.
+                    </li>
+                </ul>
+                <p>
+                    Das klingt zunächst einmal furchtbar abstrakt, 👾 lässt sich anhand einem einfachen Beispiel aber
+                    schnell erklären (vgl. <a href="https://en.wikipedia.org/wiki/HATEOAS" target="_blank">Wikipedia</a>).
+                    Eine Anwendung zum Onlinebanking könnte zum Beispiel Informationen über ein Girokonto vom Server
+                    abrufen und dem Anwender darstellen. Besitzt das Konto ausreichend Deckung, liefert der Webservice
+                    in seiner Antwort verschiedene Links zum Ein- und Auszahlen von Geld, zur Ausführung von Überweisungen
+                    oder zum Auflösen des Kontos. Ist das Konto hingegen überzogen, liefert er nur einen Link zum Einzahlen
+                    von Geld. Die anderen Links werden nicht geliefert, da sie in diesem Zustand des Kontos nicht erlaubt sind.
+                </p>
+                <p>
+                    Leider hat sich bis heute kein einheitlicher Standard, wie die Links in der Webservice-Antwort geliefert
+                    werden, durchgesetzt. Sehr häufig werden die Links aber einfach unter der Bezeichnung <tt>_links</tt>
+                    in die JSON-Struktur integriert, wobei der Unterstrich das Feld von den eigentlichen Daten abheben soll:
+                </p>
+                <source-code language="json">
+                    {
+                        "account_number": 3699623,
+                        "bank_name": "Parkbank",
+                        "currency": "EUR",
+                        "amount": "2411.83",
+                        "state": "covered",
+                        "_links": {
+                            "self":          { "href": "/account/3699623"          },
+                            "deposit":       { "href": "/account/3699623/deposit"  },
+                            "pay":           { "href": "/account/3699623/pay"      },
+                            "cash-transfer": { "href": "/account/3699623/transfer" },
+                            "close":         { "href": "/account/3699623/close"    }
+                        }
+                    }
+                </source-code>
+                <p>
+                    Wird eine Liste mit Daten vom Server abgerufen, muss zwischen den Links zur gesamten Liste und den Links
+                    zu den einzelnen Einträgen unterschieden werden. Dies geschieht häufig wie folgt. Schön zu erkennen ist,
+                    wie jeder Eintrag in der Liste einen Link zum Abruf seiner Details enthält.
+                </p>
+                <source-code language="json">
+                    {
+                        "_embedded": {
+                            "accounts": [{
+                                "number": 3699623,
+                                "type": "giro",
+                                "_links": {
+                                    "self": { "href": "/account/3699623" }
+                                }
+                            }, {
+                                "number": 1013699623,
+                                "type": "savings",
+                                "_links": {
+                                    "self": { "href": "/account/1013699623" }
+                                }
+                            }]
+                        },
+                        "_links": {
+                            "self": { "href": "/customer/575741/accounts" }
+                    }
+                </source-code>
             </aside>
         </section>
 
@@ -3823,10 +4314,13 @@
         <section data-background-color="rgb(238, 179, 110)">
             <h1>Mehr zum Thema</h1>
             <article>
-                <h4>Thema 1</h4>
+                <h4>REST-Webservices allgemein</h4>
                 <ul>
                     <li>
-                        <a href="" target="_blank">Link</a>
+                        <a href="https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api" target="_blank">Best-Practices für den Entwurf von REST-Webservices</a>
+                    </li>
+                    <li>
+                        <a href="https://heise.de/-3550392" target="_blank">Heise-Artikel mit Erklärungen und Beispielen zu HATEOAS</a>
                     </li>
                 </ul>
             </article>
