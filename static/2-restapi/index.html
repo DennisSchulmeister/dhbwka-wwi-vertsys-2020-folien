@@ -3273,34 +3273,43 @@
                             <p>
                                 Nun, welche Musik hörst du gerne? 🎼 Hier hast du die einmalige Gelegenheit, sie über einen REST-Webservice in eine
                                 Datenbank einzutragen. 😎 Hierfür musst du dir lediglich das Beispielprojekt von Moodle herunterladen und zum Laufen
-                                bekommen. Anschließend öffnet sich eine kleine Seite im Browser, mit der du erste Versuche unternehmen kannst. Gehe
-                                dabei wie folgt vor:
+                                bekommen. Anfangs kannst du die Adresse <a href="http://localhost:9090/" target="_blank">http://localhost:9090/</a>
+                                im Browser öffnen und den Webservice dort erkunden. Da aber nicht jeder Webservice ein solches Testwerkzeug besitzt,
+                                wechsle anschließend in Postman und führe dort folgende Aktionen aus:
                             </p>
                             <ol>
                                 <li>
-                                    Finde heraus, wie du alle Songs und alle Playlisten anzeigen kannst.
+                                    Sende eine <tt>GET</tt>-Anfrage an die Startadresse des Webservices.
                                 </li>
                                 <li>
-                                    Finde heraus, wie du einen neuen Song speichern kannst.
+                                    Hangle dich von der Antwort zur Songliste und von dort zum Song mit der ID 3 vor.
                                 </li>
                                 <li>
-                                    Finde heraus, wo die vollständigen JSON-Daten einer Antwort zu sehen sind.
+                                    Gehe zurück zur Songliste und finde heraus, welcher Link für Suchanfragen benutzt wird.
                                 </li>
                                 <li>
-                                    Falls du willst, kannst du den Webservice auch mit Postman testen.
+                                    Suche anschließend alle Songs von den Dire Straits.
+                                </li>
+                                <li>
+                                    <p>
+                                        Sende eine <tt>POST</tt>-Anfrage an die Song-Collection, um folgenden Song anzulegen:
+                                    </p>
+                                    <source-code language="json">
+                                        {
+                                            "name": "Circle of Life",
+                                            "artist": "Elton John",
+                                            "songwriters": "Tim Rice",
+                                            "releaseYear": 1994
+                                        }
+                                    </source-code>
+                                </li>
+                                <li>
+                                    Ändere anschließend mit einer <tt>PATCH</tt>-Anfrage die Songwriter auf „Elton John, Tim Rice”.
+                                </li>
+                                <li>
+                                    Ändere mit einer <tt>PUT</tt>-Anfrage den Songtitel auf „Circle of Life (from Lion King)”.
                                 </li>
                             </ol>
-                            <p>
-                                Um einen neuen Song anzulegen, kannst du folgende JSON-Daten an den Server schicken:
-                            </p>
-                            <source-code language="json">
-                                {
-                                    "name": "Circle of Life",
-                                    "artist": "Elton John",
-                                    "songwriters": "Tim Rice",
-                                    "releaseYear": 1994
-                                }
-                            </source-code>
                         </div>
                     </div>
                     <div class="row">
@@ -3333,7 +3342,6 @@
 
         <section data-background-color="rgb(231, 221, 141)">
             <h1>Aufgabe 2: Musik liegt in der Luft</h1>
-            <!-- TODO: HTTP/JSON für einfachen REST-WS definieren -->
             <article>
                 <div>
                     <ul class="nav nav-tabs" role="tablist">
@@ -3371,8 +3379,146 @@
                             role            = "tabpanel"
                             aria-labelledby = "aufgabe2-aufgabe-tab"
                         >
-                            TODO: Aufgabe
+                            <p>
+                                Bisher hat der in den Folien gezeigte Beispiel-Webservice folgende Struktur:
+                            </p>
+
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <!-- URL-Struktur -->
+                                        <div class="card" style="height: 100%">
+                                            <div class="card-header">
+                                                URL-Struktur
+                                            </div>
+                                            <div class="card-body text-left">
+                                                <ul style="list-style-type: '⮡'; font-size: 90%;">
+                                                    <li>
+                                                        <b>Startadresse</b>
+                                                        <ul style="list-style-type: '⮡';">
+                                                            <li>
+                                                                <b>Collection</b> <tt>/songs</tt>
+                                                                <ul style="list-style-type: '⮡';">
+                                                                    <li>
+                                                                        <b>Ressource</b> <tt>/{id}</tt>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <b>Collection</b> <tt>/playlist</tt>
+                                                                <ul style="list-style-type: '⮡';">
+                                                                    <li>
+                                                                        <b>Ressource</b> <tt>/{id}</tt>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <!-- Song -->
+                                        <div class="card" style="height: 100%">
+                                            <div class="card-header">
+                                                Song
+                                            </div>
+                                            <div class="card-body text-left">
+                                                <source-code language="json">
+                                                    {
+                                                        "name": "Tunnel of Love",
+                                                        "artist": "Dire Straits",
+                                                        "songwriters": "Mark Knopfler",
+                                                        "releaseYear": 1980
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <!-- Playlist -->
+                                        <div class="card" style="height: 100%">
+                                            <div class="card-header">
+                                                Playlist
+                                            </div>
+                                            <div class="card-body text-left">
+                                                <source-code language="json">
+                                                    {
+                                                        "name": "Classic Rock",
+                                                        "songs": [1, 2, 5, 9]
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>
+                                Typische URLs zum Aufruf des Webservices sind daher folgende:
+                            </p>
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <a href="http://localhost:9090/" target="_blank">http://localhost:9090/</a> <br />
+                                        <a href="http://localhost:9090/songs" target="_blank">http://localhost:9090/songs</a>
+                                    </div>
+                                    <div class="col-md">
+                                        <a href="http://localhost:9090/songs/4" target="_blank">http://localhost:9090/songs/4</a> <br />
+                                        <a href="http://localhost:9090/songs/search/findByArtist?artist=Queen" target="_blank">http://localhost:9090/songs/search/findByArtist?artist=Queen</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                                Allerdings ist der Webservice noch ein wenig einfach gestrickt, 🧶 da er keine Collections für
+                                Künstler und Alben besitzt. Definiere daher ähnlich wie hier gezeigt einen neuen REST-Webservice,
+                                der <b>Künstler</b>, <b>Alben</b> und <b>Songs</b> verwalten kann. Die URLs sollen dabei so
+                                gestalltet sein, dass ein Album immer zu einem Künstler und ein Song immer zu einem Album gehört.
+                            </p>
+                            <p>
+                                a) Definiere die Collections und Ressourcen des Webservices und lege ihre URLs fest.
+                            </p>
+                            <p>
+                                b) Gebe für jede Collection und jede Ressource mindestens eine Beispiel-URL an.
+                            </p>
+                            <p>
+                                c) Definiere anhand eines Beispiels die JSON-Strutkur für Künstler, Alben und Songs:
+                            </p>
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <h4 class="dhbw-lightblue">Künstler</h4>
+                                        <p style="font-size: 80%;">
+                                            Vorname <br />
+                                            Nachname <br />
+                                            Herkunftsland <br />
+                                            Jahr ab wann aktiv
+                                        </p>
+                                    </div>
+                                    <div class="col-md">
+                                        <h4 class="dhbw-lightblue">Album</h4>
+                                        <p style="font-size: 80%;">
+                                            Title <br />
+                                            Land der Aufnahme <br />
+                                            Plattenlabel <br />
+                                            Veröffentlichungsjahr
+                                        </p>
+                                    </div>
+                                    <div class="col-md">
+                                        <h4 class="dhbw-lightblue">Song</h4>
+                                        <p style="font-size: 80%;">
+                                            Nummer <br />
+                                            Name <br />
+                                            Textschreiber*in <br />
+                                            Musikschreiber*in <br />
+                                            Länge in Minuten
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                         <!-- Lösung -->
                         <div
                             class           = "tab-pane fade show"
@@ -3380,7 +3526,124 @@
                             role            = "tabpanel"
                             aria-labelledby = "aufgabe2-loesung-tab"
                         >
-                            TODO: Lösung
+                            <div class="container-fluid p-0">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <!-- URL-Struktur -->
+                                        <div class="card" style="height: 100%">
+                                            <div class="card-header">
+                                                URL-Struktur
+                                            </div>
+                                            <div class="card-body text-left">
+                                                <ul style="list-style-type: '⮡'; font-size: 90%;">
+                                                    <li>
+                                                        <b>Startadresse</b>
+                                                        <ul style="list-style-type: '⮡';">
+                                                            <li>
+                                                                <b>Collection</b> <tt>/artists</tt>
+                                                                <ul style="list-style-type: '⮡';">
+                                                                    <li>
+                                                                        <b>Ressource</b> <tt>/{id}</tt>
+                                                                        <ul style="list-style-type: '⮡';">
+                                                                            <li>
+                                                                                <b>Collection</b> <tt>/albums</tt>
+                                                                                <ul style="list-style-type: '⮡';">
+                                                                                    <li>
+                                                                                        <b>Ressource</b> <tt>/{id}</tt>
+                                                                                        <ul style="list-style-type: '⮡';">
+                                                                                            <li>
+                                                                                                <b>Collection</b> <tt>/songs</tt>
+                                                                                                <ul style="list-style-type: '⮡';">
+                                                                                                    <li>
+                                                                                                        <b>Ressource</b> <tt>/{id}</tt>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <p>
+                                                    <small>
+                                                        <a href="http://localhost:9090/" target="_blank">http://localhost:9090</a> →
+                                                        <a href="http://localhost:9090/artists" target="_blank">/artists</a> →
+                                                        <a href="http://localhost:9090/artists/45" target="_blank">/45</a> →
+                                                        <a href="http://localhost:9090/artists/45/albums" target="_blank">/albums</a> →
+                                                        <a href="http://localhost:9090/artists/45/albums/2" target="_blank">/2</a> →
+                                                        <a href="http://localhost:9090/artists/45/albums/2/songs" target="_blank">/songs</a> →
+                                                        <a href="http://localhost:9090/artists/45/albums/2/songs/7" target="_blank">/7</a>
+                                                    </small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <!-- Künstler -->
+                                        <div class="card" style="height: 100%;">
+                                            <div class="card-header">
+                                                Künstler
+                                            </div>
+                                            <div class="card-body text-left">
+                                                <source-code language="json">
+                                                    {
+                                                        "first_name": "Elton",
+                                                        "last_name": "John",
+                                                        "country": "UK",
+                                                        "active_since": "1970",
+                                                        "active_until": "2020"
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <!-- Album -->
+                                        <div class="card" style="height: 100%;">
+                                            <div class="card-header">
+                                                Album
+                                            </div>
+                                            <div class="card-body text-left">
+                                                <source-code language="json">
+                                                    {
+                                                        "title": "The Captain &amp; the Kid",
+                                                        "country": "UK",
+                                                        "label": "Interscope, Mercury",
+                                                        "release_year": 2006
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <!-- Song -->
+                                        <div class="card" style="height: 100%;">
+                                            <div class="card-header">
+                                                Song
+                                            </div>
+                                            <div class="card-body text-left">
+                                                <source-code language="json">
+                                                    {
+                                                        "track_nr": 7,
+                                                        "name": "The Bridge",
+                                                        "text_writer": "Bernie Taupin",
+                                                        "music_writer": "Elton John",
+                                                        "duration": "3:38"
+                                                    }
+                                                </source-code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
