@@ -950,26 +950,26 @@
                                 </li>
                             </ul>
 
-                            <h2>PUT</h2>
-                            <ul>
-                                <li>
-                                    Neue Inhalte auf den Server hochladen
-                                </li>
-                                <li>
-                                    Der Inhalt der Datei muss im Request Body mitgeschickt werden
-                                </li>
-                                <li>
-                                    Der Server antwortet mit dem gespeicherten Inhalt oder einer Fehlerbeschreibung
-                                </li>
-                            </ul>
-
                             <h2>POST</h2>
                             <ul>
                                 <li>
                                     Daten zur Verarbeitung an den Server schicken
                                 </li>
                                 <li>
+                                    Wird häufig dazu verwende, neue Inhalte auf dem Server abzulegen
+                                </li>
+                                <li>
+                                    Der Server antwortet mit dem gespeicherten Inhalt oder einer Fehlerbeschreibung
+                                </li>
+                            </ul>
+
+                            <h2>PUT</h2>
+                            <ul>
+                                <li>
                                     Wird häufig verwendet, um vorhandene Daten auf dem Server zu aktualisieren
+                                </li>
+                                <li>
+                                    Der Inhalt der Datei muss im Request Body mitgeschickt werden
                                 </li>
                                 <li>
                                     Der Server antwortet mit dem gespeicherten Inhalt oder einer Fehlerbeschreibung
@@ -2145,10 +2145,10 @@
                 <h3 class="dhbw-lightblue">HTTP als Transportprotokoll</h3>
                 <p>
                     Die Grundidee hinter REST ist, die in HTTP bereits vorgesehenen Anfrageverben zum Anlegen, Lesen, Bearbeiten
-                    und Löschen beliebiger Dokumente zu verwenden, ohne dass diese notwendigerweise als statische Dateien auf dem
+                    und Löschen beliebiger Daten zu verwenden, ohne dass diese notwendigerweise als statische Dateien auf dem
                     Server vorliegen müssen. Viel mehr werden die Daten vom Server erst zur Laufzeit erzeugt, indem sie zum Beispiel
-                    anhand den Einträgen einer Datenbank zusammengestellt werden. Die ausgetauschen Daten werden deshalb so gut wie
-                    immer durch Programmcode zur Laufzeit generiert. Zur leichteren Unterscheiden von herkömmlichen HTML-Dokumenten
+                    anhand von Einträgen einer Datenbank zusammengestellt werden. Die ausgetauschen Daten werden deshalb so gut wie
+                    immer durch Programmcode zur Laufzeit generiert. Zur leichteren Unterscheidung von herkömmlichen HTML-Dokumenten
                     werden sie in REST daher meist <b>Ressourcen</b> genannt. Die HTTP-Verben haben dabei folgende Bedeutung:
                 </p>
                 <ul>
@@ -2172,8 +2172,10 @@
                     Diese Darstellung ist allerdings an einer Stelle etwas vereinfacht. Zwar nutzen viele REST-Webservices das
                     Verb <tt>POST</tt> für die Neuanlage und <tt>PUT</tt> zum Überschreiben bestehender Daten. Dies muss aber
                     nicht immer der Fall sein. Denn die genaue Definition ist, dass der Client bei einer <tt>PUT</tt>-Anfrage
-                    die spätere URL der zu speichernden Daten bereits kennt und bei <tt>POST</tt> eben nicht. Meistens werden
-                    die beiden Verben aber genau wie oben beschrieben verwendet.
+                    die spätere URL der zu speichernden Daten, obwohl diese vom Server festgelegt wird, bereits kennt und bei
+                    <tt>POST</tt> eben nicht. Der Client weiß lediglich, dass die neu anzulegende Ressource unterhalb der URL
+                    verfügbar sein wird, an welche der Request gesendet wird. Daraus ergibt sich dann fast zwangsläufig, dass
+                    POST für neue und PUT für bereits vorhandene Ressourcen verwendet werden.
                 </p>
                 <p>
                     Genau wie im klassischen Web kommt der URL bei REST eine zentrale Bedeutung zu, da sie die einzelnen Ressourcen
@@ -2199,9 +2201,9 @@
                     Der Unterschied zwischen Collections und Stores ist, dass die URL der angelegten Daten bei einer Collection
                     vom Server bestimmt wird und bei einem Store vom Client. Collections kommen daher immer dann zum Einsatz,
                     wenn die Daten unter einer eindeutigen, vom Server vergebenen ID abgespeichert werden, die später in der
-                    URL enthalten sein muss, um die Daten abrufen zu können. Stores werden hingegen immer dann genutzt, wenn
-                    die URL genau bekannt ist, zum Beispiel weil es nur einen Warenkorb für einen Benutzer geben kann. Eine
-                    typische URL für einen Store wäre daher:
+                    URL enthalten ist, um die Daten abrufen zu können. Stores werden hingegen immer dann genutzt, wenn die URL
+                    genau bekannt ist, zum Beispiel weil es nur einen Warenkorb für einen Benutzer geben kann. Eine typische URL
+                    für einen Store wäre daher:
                 </p>
                 <p class="dhbw-tt">
                     https://example.com/api/<span style="font-weight: bold; color: darkred;">{collection}</span>/<span style="font-weight: bold; color: darkblue;">{id}</span>/<span style="font-weight: bold; color: darkmagenta;">{store}</span> <br />
@@ -2934,7 +2936,7 @@
                                                     🐘
                                                 </td>
                                                 <td>
-                                                    Verbindliche WSDL-Beschreibung je Service
+                                                    Madschinenlesbare WSDL-Beschreibung zu jedem Service
                                                 </td>
                                             </tr>
                                             <tr>
@@ -2980,7 +2982,7 @@
                                                     🐇
                                                 </td>
                                                 <td>
-                                                    Beliebige Datenformate, in der Regel JSON
+                                                    Beliebige Datenformate, oftmals JSON
                                                 </td>
                                             </tr>
                                             <tr>
@@ -2988,7 +2990,7 @@
                                                     🐇
                                                 </td>
                                                 <td>
-                                                    Optionale WADL-Beschreibung möglich
+                                                    In der Regel keine maschinenlesbare Servicebeschreibung
                                                 </td>
                                             </tr>
                                             <tr>
