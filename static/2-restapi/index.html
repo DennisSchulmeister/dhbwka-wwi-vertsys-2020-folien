@@ -1553,7 +1553,7 @@
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <tt><b>GET</b>
+                                                    <tt><b>GET</b></tt>
                                                 </td>
                                                 <td>
                                                     Daten lesen
@@ -1561,7 +1561,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <b>POST</b>
+                                                    <tt><b>POST</b></tt>
                                                 </td>
                                                 <td>
                                                     Daten unter einer vom Server generierten URL speichern
@@ -1569,7 +1569,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <b>PUT</b>
+                                                    <tt><b>PUT</b></tt>
                                                 </td>
                                                 <td>
                                                     Daten unter einer bereits bekannten URL speichern
@@ -1577,7 +1577,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <b>PATCH</b>
+                                                    <tt><b>PATCH</b></tt>
                                                 </td>
                                                 <td>
                                                     Einzelne Felder eines vorhandenen Datensatzes ändern
@@ -1585,7 +1585,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <b>DELETE</b>
+                                                    <tt><b>DELETE</b></tt>
                                                 </td>
                                                 <td>
                                                     Daten löschen
@@ -1593,7 +1593,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <b>POST / PUT</b>
+                                                    <tt><b>POST</b></tt> / <tt><b>PUT</b></tt>
                                                 </td>
                                                 <td>
                                                     Aufruf einer prozeduralen Aktion
@@ -3680,7 +3680,7 @@
                 <p>
                     a) Was bedeutet das HTTP-Verb <tt>POST</tt>?
                 </p>
-                <ol>
+                <ol class="dhbw-liste-mit-viel-text">
                     <li>
                         Vorhandene Daten vom Server abrufen
                     </li>
@@ -3695,7 +3695,7 @@
                 <p>
                     b) Was bedeutet das HTTP-Verb <tt>DELETE</tt>?
                 </p>
-                <ol>
+                <ol class="dhbw-liste-mit-viel-text">
                     <li>
                         Daten im Browser löschen
                     </li>
@@ -3710,7 +3710,7 @@
                 <p>
                     c) Was bedeutet das HTTP-Verb <tt>GET</tt>?
                 </p>
-                <ol>
+                <ol class="dhbw-liste-mit-viel-text">
                     <li>
                         Daten vom Server abrufen, zum Beispiel eine HTML-Datei
                     </li>
@@ -3722,12 +3722,12 @@
                     </li>
                 </ol>
 
-                <h2>Aufgabe 3.2: Statuscodes</h2>
+                <h2>Aufgabe 3.2: HTTP-Statuscodes</h2>
 
                 <p>
                     a) Was bedeutet der Statuscode <tt>401 Unauthorized</tt>?
                 </p>
-                <ol>
+                <ol class="dhbw-liste-mit-viel-text">
                     <li>
                         Die gesuchten Daten wurden nicht gefunden
                     </li>
@@ -3742,7 +3742,7 @@
                 <p>
                     b) Was bedeutet der Statuscode <tt>503 Service Unavailble</tt>?
                 </p>
-                <ol>
+                <ol class="dhbw-liste-mit-viel-text">
                     <li>
                         Es ist ein temporärer Fehler aufgetreten, bitte später nochmal versuchen
                     </li>
@@ -3757,7 +3757,7 @@
                 <p>
                     c) Welcher Statuscode signalisiert, dass die Seite nicht gefunden wurde?
                 </p>
-                <ol>
+                <ol class="dhbw-liste-mit-viel-text">
                     <li>
                         <tt>200</tt>
                     </li>
@@ -3772,7 +3772,7 @@
                 <p>
                     d) Welcher Statuscode wird geschickt, wenn alles okay ist?
                 </p>
-                <ol>
+                <ol class="dhbw-liste-mit-viel-text">
                     <li>
                         <tt>100</tt>
                     </li>
@@ -3784,11 +3784,168 @@
                     </li>
                 </ol>
 
+                <h2>REST-basierte Kommunikation</h2>
+
+                <p>
+                    a) Wofür steht die Abkürzung REST?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=qx9HEn8aq1c" target="_blank">Rest in Peace</a>
+                    </li>
+                    <li>
+                        Representational State Transfer
+                    </li>
+                    <li>
+                        Representational Standard Transfer
+                    </li>
+                    <li>
+                        Represent Every State Through HTTP
+                    </li>
+                </ol>
+
+                <p>
+                    b) Eine Ressource sollte immer einer Collection oder einem Store angehören?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Wahr
+                    </li>
+                    <li>
+                        Falsch
+                    </li>
+                </ol>
+
+                <p>
+                    c) Worin unterscheiden sich Collections und Stores?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Bei einer Collection werden neue Ressourcen vom Client eingefügt, bei einem Store vom Server.
+                    </li>
+                    <li>
+                        Bei einer Collection legt der Server fest, welche URL die Ressourcen erhalten, bei einem Store der Client.
+                    </li>
+                    <li>
+                        In einer Collection können nur gleichartige Ressourcen eingefügt werden, in einen Store alle Arten.
+                    </li>
+                    <li>
+                        In einer Collection besitzen alle Ressourcen eine natürliche Reihenfolge, in einem Store nicht.
+                    </li>
+                    <li>
+                        In einer Collection werden die Ressourcen dauerhaft gespeichert, in einem Store nicht?
+                    </li>
+                </ol>
+
+                <p>
+                    d) Welches HTTP-Verb wird typischerweise zum Anlegen neuer Ressourcen genutzt?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        <tt>POST</tt>
+                    </li>
+                    <li>
+                        <tt>PUT</tt>
+                    </li>
+                    <li>
+                        <tt>PATCH</tt>
+                    </li>
+                    <li>
+                        <tt>HEAD</tt>
+                    </li>
+                </ol>
+
+                <p>
+                    e) Welches HTTP-Version wird typischerweise zum Ändern einer Ressource genutzt?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        <tt>POST</tt>
+                    </li>
+                    <li>
+                        <tt>PUT</tt>
+                    </li>
+                    <li>
+                        <tt>PATCH</tt>
+                    </li>
+                    <li>
+                        <tt>HEAD</tt>
+                    </li>
+                </ol>
+
+                <p>
+                    f) Welche Aufgabe besitzt das HTTP-Verb <tt>PATCH</tt>?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Anlegen einer neuen Collection
+                    </li>
+                    <li>
+                        Anlegen einer neuen Ressource
+                    </li>
+                    <li>
+                        Ändern der URL einer Ressource
+                    </li>
+                    <li>
+                        Ändern einzelner Felder einer Ressource
+                    </li>
+                </ol>
+
+                <p>
+                    g) Warum sollten Actions niemals mit einer <tt>GET</tt>-Anfrage ausgelöst werden?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        Weil <tt>GET</tt>-Anfragen keine Seiteneffekte haben dürfen.
+                    </li>
+                    <li>
+                        Weil es mit <tt>DO</tt> ein besser geeignetes HTTP-Verb dafür gibt.
+                    </li>
+                    <li>
+                        Man darf schon, aber nur wenn die Action ein Ergebnis liefert.
+                    </li>
+                </ol>
+
+                <p>
+                    h) Welche der folgenden Antworten entspricht nicht dem HATEOAS-Prinzip?
+                </p>
+                <ol class="dhbw-liste-mit-viel-text">
+                    <li>
+                        <source-code language="json">
+                            {
+                                "id": 3110,
+                                "first_name": "Gilian",
+                                "last_name": "Anderson",
+                            }
+                        </source-code>
+                    </li>
+                    <li>
+                        <source-code language="json">
+                            {
+                                "id": 2512,
+                                "first_name": "David",
+                                "last_name": "Duchovny",
+                                "_links": {
+                                    "as-actor": {
+                                        "href": "/actors/3686/credited-as-actor"
+                                    },
+                                    "as-director": {
+                                        "href": "actors/3686/credited-as-director"
+                                    }
+                                }
+                            }
+                        </source-code>
+                    </li>
+                </ol>
+
                 <hr />
 
                 <p style="transform: scaleY(-1) scaleX(-1); display: inline-block;">
                     <small>
-                        <b>Lösung:</b> Aufgabe 3.1: 3, 2, 1; Aufgabe 3.2: 3, 1, 3, 2
+                        <b>Lösung:</b>
+                        Aufgabe 3.1: 3, 2, 1 <br />
+                        Aufgabe 3.2: 3, 1, 3, 2 <br />
+                        Aufgabe 3.3: 2, 1, 2, 1, 2, 4, 1, 1
                     </small>
                 </p>
             </article>
