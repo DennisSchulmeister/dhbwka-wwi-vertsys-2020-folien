@@ -4021,7 +4021,7 @@
                                 role          = "tab"
                                 aria-controls = "spring-webserver"
                             >
-                                Eingebetteter Webserver
+                                Webserver und Datenbank
                             </a>
                         </li>
                         <li class="nav-item">
@@ -4033,7 +4033,7 @@
                                 role          = "tab"
                                 aria-controls = "spring-datenbank"
                             >
-                                Datenbankzugriff
+                                O/R-Mapping
                             </a>
                         </li>
                     </ul>
@@ -4066,7 +4066,7 @@
                                                 Servlet API als Schnittstelle zu einem javabasierten Webserver
                                             </li>
                                             <li>
-                                                Websocket API für bi-direktionalen Datenaustausch mit den Browser
+                                                Websocket API für bidirektionalen Datenaustausch mit den Browser
                                             </li>
                                             <li>
                                                 Java Message Service zur Anbindung asynchroner Message Broker
@@ -4079,10 +4079,10 @@
                                                 Java Database Connection für die direkte Nutzung beliebiger SQL-Datenbanken
                                             </li>
                                             <li>
-                                                Java Persistence API für die objektorientierte Datenbankzugriffe mit einem O/R-Mapper
+                                                Java Persistence API für objektorientierte Datenbankzugriffe ohne SQL-Syntax
                                             </li>
                                             <li>
-                                                Java Transaction API zur Steuerung verteilter Transaktionene
+                                                Java Transaction API zur Steuerung verteilter Transaktionen
                                             </li>
                                         </ul>
 
@@ -4108,7 +4108,7 @@
                                             Im Kern ist Spring ein kleines Framework zur Umsetzung von
                                             <a href="https://de.wikipedia.org/wiki/Dependency_Injection" target="_blank">Dependency Injection</a> und
                                             <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming" target="_blank">aspektorientierter Programmierung</a>
-                                            in Java. Ziel ist die vereinfachte Programmierung, konfigurierbarer Programme.
+                                            in Java. Ziel ist die einfache Entwicklung modular aufgebauter Javaprogramme.
                                          </p>
 
                                         <h4>Spring Boot</h4>
@@ -4122,21 +4122,21 @@
                                         <h4>Spring Web</h4>
                                         <p>
                                             Gleich zwei Projekte ermöglichen die Entwicklung serverseitiger Webanwendungen mit Spring:
-                                            Spring MVC und Spring WebFlux. Insbesondere Spring MVC werden wir zur Entwicklung eigener
-                                            REST-Webservices nutzen.
+                                            Spring MVC und Spring WebFlux. In der Vorlesung verwenden wir Spring MVC zur Entwicklung
+                                            eigener REST-Webservices.
                                         </p>
 
                                         <h4>Spring Data</h4>
                                         <p>
-                                            Spring beinhaltet darüber hinaus alles, was für das Lesen und Schreiben von Datenbankeinträgen
-                                            benötigt wird, sowohl für SQL- als auch NoSQL-Datenbanken.
+                                            Spring beinhaltet darüber hinaus alles, was zur Anbindung einer Datenbank
+                                            benötigt wird. Es werden sowohl SQL als auch noSQL unterstützt.
                                         </p>
 
                                         <h4>Sonstige Module</h4>
                                         <p>
                                             Darüber hinaus bietet Spring eine Vielzahl weiterer Module und Projekte, die für die professionelle
                                             Entwicklung verteilter Anwendungen wichtig sind. Ein paar davon schauen wir uns im Microservice-Kapitel
-                                            noch an.
+                                            näher an.
                                         </p>
                                     </div>
                                     <div class="col-md-6 mb-4" style="display: flex; align-items: center;">
@@ -4145,7 +4145,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Eingebetteter Webserver -->
+                        <!-- Webserver und Datenbank -->
                         <div
                             class           = "tab-pane fade"
                             id              = "spring-webserver"
@@ -4153,7 +4153,11 @@
                             aria-labelledby = "spring-webserver-tab"
                         >
                             <p>
-                                TODO
+                                Praktischerweise benötigen wir für Spring keinen separaten Webserver und auch keine eigene Datenbank,
+                                da Spring einfach einen <b>eingebetteten Webserver</b> und eine <b>eingebettete Datenbank</b> hochfahren
+                                kann. Auf diese Weise lässt sich das Server-Backend einer Webanwendung als ein ausführbares Programm nach
+                                dem Prinzip von <a href="https://12factor.net/de/" target="_blank">Zwölf-Faktor-Apps</a> starten, was
+                                insbesondere für Cloud-Anwendungen eine wichtige Eigenschaft ist.
                             </p>
                             <img src="spring-boot.png" alt="Screenshot einer startenden Spring-Anwendung" class="d-block img-thumbnail mb-4" style="width: 100%;" />
                             <table class="mb-4">
@@ -4162,7 +4166,7 @@
                                         🤖
                                     </td>
                                     <td>
-                                        …
+                                        Mehrere eingebettete Java-Webcontainer¹ verfügbar: Tomcat, Undertow, Jetty (Default: Tomcat)
                                     </td>
                                 </tr>
                                 <tr>
@@ -4170,12 +4174,37 @@
                                         🤖
                                     </td>
                                     <td>
-                                        …
+                                        Mehrere eingebettete SQL-Datenbanken verfügbar: H2, HSQL, Derby
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em">
+                                        🤖
+                                    </td>
+                                    <td>
+                                        Start einer typischen Spring-Anwendung (mit Webserver und Datenbank) in unter fünf Sekunden
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em">
+                                        🤖
+                                    </td>
+                                    <td>
+                                        Traditionelles Deployment mit separatem Webserver und/oder getrennter Datenbank ebenfalls möglich
                                     </td>
                                 </tr>
                             </table>
+                            <p>
+                                <small>
+                                    ¹ Webcontainer sind in Java geschriebene Webserver, welche die
+                                    <a href="https://www.wpvs.de/repo/webprog/folien/4-server/http_jsp_servlets/#17" target="_blank">Servlet API</a>
+                                    implementieren und somit die Entwicklung serverseitiger Webanwendungen mit Java ermöglichen. Da die Servlet API
+                                    allerdings eher Low-Level angesiedelt ist, werden in der Praxis häufig auf der Servlet API aufbauende Frameworks
+                                    wie Spring MVC genutzt, um die Entwicklung zu vereinfachen.
+                                </small>
+                            </p>
                         </div>
-                        <!-- Datenbankzugriff -->
+                        <!-- O/R-Mapping -->
                         <div
                             class           = "tab-pane fade"
                             id              = "spring-datenbank"
@@ -4183,7 +4212,10 @@
                             aria-labelledby = "spring-datenbank-tab"
                         >
                             <p>
-                                TODO
+                                Eine weitere Vereinfachung der Programmierung ergibt sich aus der Verwendung so genannter <b>O/R-Mapper</b> mit
+                                der <b>Java Persistence API</b>, da diese die Verwendung von SQL mit der JDBC API komplett abstrahieren. Stattdessen
+                                können wir einfach Entity-Klassen definieren, deren Objekte automatisch in Datenbankeinträge umgewandelt werden.
+                                Auch hierfür bringt Spring bereits alle Bausteine mit.
                             </p>
                             <img src="spring-or-mapping.svg" alt="O/R-Mapping in Java" class="d-block mb-4" style="width: 100%;" />
                             <table class="mb-4">
@@ -4200,7 +4232,7 @@
                                         🛢️
                                     </td>
                                     <td>
-                                        <b>JPA:</b> Auf JDBC aufbauende API für O/R-Mapper, die Javaobjekte in Tabelleneinträge und umgekehrt verwandeln
+                                        <b>JPA:</b> Auf JDBC aufbauende API für O/R-Mapper
                                     </td>
                                 </tr>
                             </table>
@@ -4269,6 +4301,60 @@
                 </div>
             </article>
             <aside>
+                <p>
+                    Webservices bzw. die Backends verteilter Anwendungen werden in Java traditionell unter Verwendung der <b>Jakarta
+                    Enterprise Edition</b> (ehemals <b>Java Enterprise Edition</b>) programmiert. Zunächst von Sun/Oracle und heute
+                    der Eclipse Foundation vorangetrieben, handelt es sich dabei um eine Sammlung offener Spezifikationen für mehrere
+                    Programmierschnittstellen zur Entwicklung verteilter Anwendungen in Java. Charakteristisch für die Jakarta Enterprise
+                    Edition ist, dass sie einen Applikationsserver, 🐘 welcher die Spezifikation implementiert, zum Betrieb der mit ihr
+                    entwickelten Anwendungen voraussetzt. JEE-Anwendungen¹ sind daher meistens nicht selbstständig lauffähig, sondern
+                    müssen in einem separat zu installierenden Anwendungsserver zum Laufen gebracht werden.
+                </p>
+                <p>
+                    Da die ehemalige Java Enterprise Edition in den frühen Jahren darüber hinaus durchaus umständlich in der Programmierung war,
+                    entstand im Jahr 2002 mit dem Spring Framework eine in vierlerlei Hinsicht modernere Spezifikation, 🦝 die seither großen Einfluss
+                    auf die Java-Entwicklung ausübt. Dass die Jakarta Enterprise Edition heute deutlich einfacher als damals anzuwenden ist, liegt
+                    unter anderem auch darin begründet, dass viele Konzepte aus Spring später in JEE übernommen wurden. Umgekehrt finden aber auch
+                    viele JEE-APIs Verwendung in Spring, so dass beide Technologien auch gleichzeitig in einem Projekt genutzt werden können.
+                </p>
+                <p>
+                    Heutezutage sind JEE und Spring weit verbreitet, so dass das eine nicht besser als das andere ist. Der Hauptgrund,
+                    warum wir in der Vorlesung allerdings inzwischen auf Spring und nicht mehr auf JEE setzen, ist, dass Spring einen
+                    als „Put a Webserver in Your Application" oder auch „Bring Your Own Webserver” bekannten Programmierstil ermöglicht,
+                    bei dem eben kein gesonderter Applikationsserver eingerichtet werden muss, sondern dieser einfach als Teil der Anwendung
+                    selbst gestartet wird. Konrekt bedeutet das, dass eine Spring-Anwendung, anders als bei der Jakarta Enterprise Edition,
+                    weiterhin eine <src-code language="java">public static void main(String[] args)</src-code> Methode besitzt und somit
+                    ganz einfach auf der Kommandozeile gestartet werden kann. Spring-Anwendungen sind daher in der Regel in sich abgeschlossene
+                    Anwendungen, die dem <a href="https://12factor.net/de/" target="_blank">Zwölf-Faktor-Prinzip</a> moderner Cloud-Anwendungen
+                    entsprechen.
+                </p>
+                <div class="container-fluid p-0 mb-2">
+                    <div class="row">
+                        <div class="col">
+                            <img src="java_webcontainer.png" alt="Mehrere Webanwendungen innerhalb eines Applikationsservers" class="d-block img-thumbnail img-fluid m-auto" />
+                        </div>
+                        <div class="col">
+                            <img src="java_eingebetteter_webserver.png" alt="Eingebetteter Webserver als Teil einer Stand-Alone-Anwendung" class="d-block img-thumbnail img-fluid m-auto" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <small>
+                                <b>Links:</b> Mehrere Webanwendungen innerhalb eines separat installierten Applikationsservers (Prinzip von JEE). <br />
+                                <b>Rechts:</b> Webserver als Teil einer Stand-Alone-Webanwendung (Prinzip von Spring).
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    Auf der Folie sind deshalb die für uns wichtigsten Eigenschaften von Spring dargestellt.
+                </p>
+                <p>
+                    ¹
+                    <small>
+                        Jakarta Enterprise Edition
+                    </small>
+                </p>
             </aside>
         </section>
 
