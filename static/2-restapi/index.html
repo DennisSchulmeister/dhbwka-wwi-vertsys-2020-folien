@@ -4045,14 +4045,102 @@
                             role            = "tabpanel"
                             aria-labelledby = "spring-funktionen-tab"
                         >
+                            <p class="mb-4">
+                                Für die Programmierung greifen wir auf das weit verbreitete <b>Spring Framework</b> zurück.
+                                Denn dadurch wird die Entwicklung von Webanwendungen und Serverdiensten sehr vereinfacht,
+                                da das Framework von Haus aus bereits alle notwendigen Komponenten mitbringt. Spring greift
+                                hierfür auf ausgewählte Klassenbibliotheken der <b>Jakarta Enterprise Edition</b> (ehem. Java
+                                Enterprise Edition) zurück und ergänzt diese zu einer vollständigen Anwendungsplattform.
+                            </p>
+
+                            <h2 class="mb-4">Entliehene APIs der Jakarta Enterprise Edition</h2>
                             <div class="container-fluid p-0">
                                 <div class="row">
-                                    <div class="col-md">
-                                        TODO, z.B. mit Bildern links und Text rechts <br />
-                                        https://spring.io/projects/spring-framework <br />
-                                        https://spring.io/projects <br />
-                                        https://spring.io/ (Grafik unter Spring Cloud) <br />
-                                        https://en.wikipedia.org/wiki/Spring_Framework#Modules
+                                    <div class="col-md-4 mb-4" style="display: flex; align-items: center;">
+                                        <img src="spring-uebersicht-2.svg" class="d-block" style="width: 100;" />
+                                    </div>
+                                    <div class="col-md col-mb-4">
+                                        <h4>Kommunikation mit der Außenwelt</h4>
+                                        <ul>
+                                            <li>
+                                                Servlet API als Schnittstelle zu einem javabasierten Webserver
+                                            </li>
+                                            <li>
+                                                Websocket API für bi-direktionalen Datenaustausch mit den Browser
+                                            </li>
+                                            <li>
+                                                Java Message Service zur Anbindung asynchroner Message Broker
+                                            </li>
+                                        </ul>
+
+                                        <h4>Datenbankprogrammierung</h4>
+                                        <ul>
+                                            <li>
+                                                Java Database Connection für die direkte Nutzung beliebiger SQL-Datenbanken
+                                            </li>
+                                            <li>
+                                                Java Persistence API für die objektorientierte Datenbankzugriffe mit einem O/R-Mapper
+                                            </li>
+                                            <li>
+                                                Java Transaction API zur Steuerung verteilter Transaktionene
+                                            </li>
+                                        </ul>
+
+                                        <h4>Allgemein Nützliches</h4>
+                                        <ul>
+                                            <li>
+                                                Concurrency Utils zur vereinfachten Entwicklung nebenläufiger Programme
+                                            </li>
+                                            <li>
+                                                JSON Binding API für eine automatische Konvertierung von Objekten von und nach JSON
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2 class="mb-4">Darauf aufbauende Spring-Projekte</h2>
+                            <div class="container-fluid p-0">
+                                <div class="row">
+                                    <div class="col-md col-mb-4">
+                                        <h4>Spring Core Framework</h4>
+                                        <p>
+                                            Im Kern ist Spring ein kleines Framework zur Umsetzung von
+                                            <a href="https://de.wikipedia.org/wiki/Dependency_Injection" target="_blank">Dependency Injection</a> und
+                                            <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming" target="_blank">aspektorientierter Programmierung</a>
+                                            in Java. Ziel ist die vereinfachte Programmierung, konfigurierbarer Programme.
+                                         </p>
+
+                                        <h4>Spring Boot</h4>
+                                        <p>
+                                            Aufgrund seiner hohen Flexibilität ist Spring mitunter etwas aufwändig einzusetzen.
+                                            Spring Boot stellt deshalb leistungsfähige Grundkonfigurationen nach dem Prinzip
+                                            <a href="https://de.wikipedia.org/wiki/Konvention_vor_Konfiguration" target="_blank">Konvention vor Konfiguration</a>
+                                            zur Verfügung.
+                                        </p>
+
+                                        <h4>Spring Web</h4>
+                                        <p>
+                                            Gleich zwei Projekte ermöglichen die Entwicklung serverseitiger Webanwendungen mit Spring:
+                                            Spring MVC und Spring WebFlux. Insbesondere Spring MVC werden wir zur Entwicklung eigener
+                                            REST-Webservices nutzen.
+                                        </p>
+
+                                        <h4>Spring Data</h4>
+                                        <p>
+                                            Spring beinhaltet darüber hinaus alles, was für das Lesen und Schreiben von Datenbankeinträgen
+                                            benötigt wird, sowohl für SQL- als auch NoSQL-Datenbanken.
+                                        </p>
+
+                                        <h4>Sonstige Module</h4>
+                                        <p>
+                                            Darüber hinaus bietet Spring eine Vielzahl weiterer Module und Projekte, die für die professionelle
+                                            Entwicklung verteilter Anwendungen wichtig sind. Ein paar davon schauen wir uns im Microservice-Kapitel
+                                            noch an.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6 mb-4" style="display: flex; align-items: center;">
+                                        <img src="spring-uebersicht-1.svg" class="d-block m-auto" style="width: 100%;" />
                                     </div>
                                 </div>
                             </div>
@@ -4064,8 +4152,28 @@
                             role            = "tabpanel"
                             aria-labelledby = "spring-webserver-tab"
                         >
-                            TODO: Eingebetter Webserver
-                            <!-- TODO: Screenshot aus Terminal, wie der eingebettete Apache startet -->
+                            <p>
+                                TODO
+                            </p>
+                            <img src="spring-boot.png" alt="Screenshot einer startenden Spring-Anwendung" class="d-block img-thumbnail mb-4" style="width: 100%;" />
+                            <table class="mb-4">
+                                <tr>
+                                    <td style="padding-right: 0.5em">
+                                        🤖
+                                    </td>
+                                    <td>
+                                        …
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-right: 0.5em">
+                                        🤖
+                                    </td>
+                                    <td>
+                                        …
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <!-- Datenbankzugriff -->
                         <div
@@ -4074,8 +4182,11 @@
                             role            = "tabpanel"
                             aria-labelledby = "spring-datenbank-tab"
                         >
-                            <img src="spring-or-mapping.svg" alt="O/R-Mapping in Java" class="d-block" style="width: 100%; margin-bottom: 1em;" />
-                            <table>
+                            <p>
+                                TODO
+                            </p>
+                            <img src="spring-or-mapping.svg" alt="O/R-Mapping in Java" class="d-block mb-4" style="width: 100%;" />
+                            <table class="mb-4">
                                 <tr>
                                     <td style="padding-right: 0.5em">
                                         🛢️
@@ -4093,6 +4204,66 @@
                                     </td>
                                 </tr>
                             </table>
+
+                            <div class="container-fluid p-0">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <source-code language="java">
+                                            @Entity
+                                            public class Buch {
+                                                @Id
+                                                @GeneratedValue
+                                                private long id;
+
+                                                private Strint titel;
+                                                private String untertitel;
+
+                                                @ManyToOne
+                                                private Verlag verlag;
+
+                                                @ManyToOne
+                                                private Autor autor;
+
+                                                // Konstruktoren …
+                                                // Setter und Getter …
+                                            }
+                                        </source-code>
+                                    </div>
+                                    <div class="col-md">
+                                        <source-code language="java">
+                                            @Entity
+                                            public class Verlag {
+                                                @Id
+                                                @GeneratedValue
+                                                private long id;
+
+                                                private Strint name;
+                                                private String rechtsform;
+
+                                                // Konstruktoren …
+                                                // Setter und Getter …
+                                            }
+                                        </source-code>
+                                    </div>
+                                    <div class="col-md">
+                                        <source-code language="java">
+                                            @Entity
+                                            public class Autor {
+                                                @Id
+                                                @GeneratedValue
+                                                private long id;
+
+                                                private Strint vorname;
+                                                private String nachname;
+                                                private String titel;
+
+                                                // Konstruktoren …
+                                                // Setter und Getter …
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
