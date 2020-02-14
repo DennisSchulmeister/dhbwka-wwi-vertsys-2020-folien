@@ -4407,7 +4407,6 @@
                                 <src-code language="dummy">Lombok</src-code>,
                                 <src-code language="dummy">Spring Web</src-code>,
                                 <src-code language="dummy">Rest Repositories</src-code>,
-                                <src-code language="dummy">Rest Repositories HAL Browser</src-code>,
                                 <src-code language="dummy">Spring HATEOAS</src-code>,
                                 <src-code language="dummy">Spring Data JPA</src-code>,
                                 <src-code language="dummy">H2 Database</src-code>.
@@ -4489,7 +4488,652 @@
         </section>
 
         <section>
-            <h1>Ausprogrammieren des REST-Controllers</h1>
+            <h1>Grundstruktur des Quellcodes</h1>
+            <article>
+                <table class="mb-4">
+                    <tr>
+                        <td>
+                            🐹
+                        </td>
+                        <td>
+                            In der Main-Methode wird das Server-Backend als gewöhnliches Javaprogramm gestartet.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            🐹
+                        </td>
+                        <td>
+                            Controller-Klassen ermöglichen es der Anwendung, auf HTTP-Anfragen zu reagieren.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            🐹
+                        </td>
+                        <td>
+                            Optional können statische Dateien für ein HTML-Frontend mit aufgenommen werden.
+                        </td>
+                    </tr>
+                </table>
+
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-prog1-projektstruktur-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#spring-prog1-projektstruktur"
+                                role          = "tab"
+                                aria-controls = "spring-prog1-projektstruktur"
+                                aria-expanded = "true"
+                            >
+                                Projektstruktur
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-prog1-webservice-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#spring-prog1-webservice"
+                                role          = "tab"
+                                aria-controls = "spring-prog1-webservice"
+                            >
+                                REST-Webservice
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-prog1-frontend-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#spring-prog1-frontend"
+                                role          = "tab"
+                                aria-controls = "spring-prog1-frontend"
+                            >
+                                Frontend
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Projektstruktur -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "spring-prog1-projektstruktur"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-prog1-projektstruktur-tab"
+                        >
+                            <div class="container-fluid p-0 mb-2">
+                                <div class="row">
+                                    <div class="col-md-3 mb-4">
+                                        <img src="spring-anatomie.png" class="d-block w-100" />
+                                    </div>
+                                    <div class="col-md mb-4">
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md mb-2">
+                                                    <div class="card h-100">
+                                                        <div class="card-header">
+                                                            Source Packages
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <small>
+                                                                Serverseitig ausgeführter Javacode der Anwendung
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md mb-2">
+                                                    <div class="card h-100">
+                                                        <div class="card-header">
+                                                            Test Packages
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <small>
+                                                                Unit Tests zum automatisierten Durchtesten des Quellcodes
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md mb-2">
+                                                    <div class="card h-100">
+                                                        <div class="card-header">
+                                                            application.properties
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <small>
+                                                                Konfigurationsdatei für Spring. Hier können unter anderem die Portnummer des
+                                                                Webservers oder die Datenbankverbindung geändert werden.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md mb-2">
+                                                    <div class="card h-100">
+                                                        <div class="card-header">
+                                                            static
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <small>
+                                                                Direkt abrufbare, statische Dateien zum Beispiel für ein HTML-Frontend
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md mb-2">
+                                                    <div class="card h-100">
+                                                        <div class="card-header">
+                                                            templates
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <small>
+                                                                Vorlagen zur serverseitigen HTML-Generierung. Von uns nicht genutzt.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md mb-2">
+                                                    <div class="card h-100">
+                                                        <div class="card-header">
+                                                            pom.xml
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <small>
+                                                                Konfigurationsdatei für Maven. Hier werden benötigte Klassenbibliotheken sowie
+                                                                die verwendeten Spring-Module eingetragen.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                                Der Quellcode der vorgenerierten Hauptklasse ist ziemlich einfach aufgebaut. Sie muss lediglich
+                                mit der Annotation <src-code language="java">@SpringBootApplication</src-code> gekennzeichnet sein
+                                und <src-code language="java">SpringApplication.run()</src-code> ausführen, um die Anwendung
+                                zu starten. Vorerst müssen wir hier nichts ändern.
+                            </p>
+                            <source-code language="java">
+                                package dhbwka.wwi.vertsys.rest.demo;
+
+                                import org.springframework.boot.SpringApplication;
+                                import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+                                @SpringBootApplication
+                                public class DemoApplication {
+
+                                    public static void main(String[] args) {
+                                            SpringApplication.run(DemoApplication.class, args);
+                                    }
+
+                                }
+                            </source-code>
+                        </div>
+
+                        <!-- REST-Webservice -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "spring-prog1-webservice"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-prog1-webservice-tab"
+                        >
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        SCREENSHOT GET-ANFRAGE
+                                    </div>
+                                    <div class="col-md">
+                                        SCREENSHOT POST-ANFRAGE
+                                    </div>
+                                </div>
+                                <p>
+                                    … … …
+                                </p>
+                            </div>
+
+                            <div id="spring-prog1-webservice-files" class="accordion mb-4">
+                                <!-- Karte 1 -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog1-webservice-files-entry-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog1-webservice-files-entry-content"
+                                        href          = "#spring-prog1-webservice-files-entry-content"
+                                    >
+                                        <tt>GuestBookEntry.java</tt>
+                                        <span class="float-right">Datenklasse</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog1-webservice-files-entry-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog1-webservice-files-entry-title"
+                                        data-parent     = "#spring-prog1-webservice-files"
+                                    >
+                                        <p>
+                                            Inhalt 1
+                                        </p>
+                                        <source-code language="java">
+                                            package dhbwka.wwi.vertsys.rest.demo;
+
+                                            import java.time.LocalDateTime;
+                                            import lombok.Data;
+                                            import org.springframework.stereotype.Service;
+
+                                            /**
+                                             * Minimale Datentransferklasse für einen Gästebucheintrag.
+                                             */
+                                            @Data
+                                            @Service
+                                            public class GuestbookEntry {
+                                                private LocalDateTime timestamp = LocalDateTime.now();
+                                                private String name = "";
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                                <!-- Karte 2 -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog1-webservice-files-service-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog1-webservice-files-service-content"
+                                        href          = "#spring-prog1-webservice-files-service-content"
+                                    >
+                                    <tt>GuestBookService.java</tt>
+                                    <span class="float-right">Geschäftslogik</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog1-webservice-files-service-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog1-webservice-files-service-title"
+                                        data-parent     = "#spring-prog1-webservice-files"
+                                    >
+                                        <p>
+                                            Inhalt 2
+                                        </p>
+                                        <source-code language="java">
+                                            package dhbwka.wwi.vertsys.rest.demo;
+
+                                            import java.util.ArrayList;
+                                            import java.util.List;
+                                            import org.springframework.stereotype.Service;
+
+                                            /**
+                                             * Einfache Service-Klasse zur Verwaltung der Gästebucheinträge. Man
+                                             * beachte, dass diese Klasse die Gästebucheinträge nur temporär speichert,
+                                             * da wir uns Datenbankzugriffe noch nicht angeschaut haben.
+                                             *
+                                             * Die Annotation @Service kennzeichnet die Klasse als eine Serviceklasse,
+                                             * also eine Klasse mit Geschäftslogik.
+                                             */
+                                            @Service
+                                            public class GuestbookService {
+
+                                                private static final List&lt;GuestbookEntry&gt; ENTRIES = new ArrayList&lt;&gt;();
+
+                                                /**
+                                                 * Hinzufügen eines neuen Eintrags
+                                                 * @param entry Zu speichernder Eintrag
+                                                 */
+                                                public void addEntry(GuestbookEntry entry) {
+                                                    ENTRIES.add(entry);
+                                                }
+
+                                                /**
+                                                 * Auslesen einer Liste aller EInträge
+                                                 * @return Liste aller gespeicherten Einträge
+                                                 */
+                                                public List&lt;GuestbookEntry&gt; getEntries() {
+                                                    return ENTRIES;
+                                                }
+
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                                <!-- Karte 3 -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog1-webservice-files-controller-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog1-webservice-files-controller-content"
+                                        href          = "#spring-prog1-webservice-files-controller-content"
+                                    >
+                                    <tt>GuestBookController.java</tt>
+                                    <span class="float-right">HTTP-Schnittstelle</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog1-webservice-files-controller-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog1-webservice-files-controller-title"
+                                        data-parent     = "#spring-prog1-webservice-files"
+                                    >
+                                        <p>
+                                            Inhalt 3
+                                        </p>
+                                        <source-code language="java">
+                                            package dhbwka.wwi.vertsys.rest.demo;
+
+                                            import java.util.List;
+                                            import org.springframework.beans.factory.annotation.Autowired;
+                                            import org.springframework.http.HttpStatus;
+                                            import org.springframework.web.bind.annotation.GetMapping;
+                                            import org.springframework.web.bind.annotation.PostMapping;
+                                            import org.springframework.web.bind.annotation.RequestBody;
+                                            import org.springframework.web.bind.annotation.RequestMapping;
+                                            import org.springframework.web.bind.annotation.ResponseStatus;
+                                            import org.springframework.web.bind.annotation.RestController;
+
+                                            /**
+                                             * REST-Controller unseres einfachen Webservices.
+                                             */
+                                            @RestController
+                                            @RequestMapping("/api/guestbook")
+                                            public class GuestbookController {
+
+                                                // Dependency-Injection der Service-Klasse
+                                                @Autowired
+                                                private GuestbookService guestbookService;
+
+                                                /**
+                                                 * Handler-Methode für GET-Anfragen.
+                                                 * @return Liste aller vorhandenen Einträge.
+                                                 */
+                                                @GetMapping
+                                                public List&lt;GuestbookEntry&gt; getAllEntries() {
+                                                    return this.guestbookService.getEntries();
+                                                }
+
+                                                /**
+                                                 * Handler-Methode für POST-Anfragen.
+                                                 *
+                                                 * @param request Anzulegender Eintrag
+                                                 * @return Angelegter Eintrag
+                                                 */
+                                                @PostMapping
+                                                @ResponseStatus(HttpStatus.CREATED)
+                                                public GuestbookEntry createNewEntry(@RequestBody CreateRequest request) {
+                                                    // Neuen Eintrag speichern
+                                                    GuestbookEntry entry = new GuestbookEntry();
+                                                    entry.setName(request.name);
+                                                    this.guestbookService.addEntry(entry);
+
+                                                    // Gespeicherte Daten zurück geben
+                                                    return entry;
+                                                }
+
+                                                /**
+                                                 * Hilfsklasse zur Deserialisierung der JSON-Anfrage zur Anlage eines
+                                                 * Eintrags.
+                                                 */
+                                                public static class CreateRequest {
+                                                    public String name = "";
+                                                }
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Frontend -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "spring-prog1-frontend"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-prog1-frontend-tab"
+                        >
+                            <img src="spring-beispiel1.jpg" class="d-block img-fluid img-thumbnail w-100 mb-4"/>
+                            <p>
+                                Bei kleinen Anwendungen lohnt sich häufig eine strickte Trennung zwischen der Benutzeroberfläche
+                                und dem Backend nicht. In diesem Fall können die HTML-Dateien des Frontends einfach in das
+                                Java-Projekt unter <tt>src/main/resources/static</tt> aufgenommen werden. Die Dateien sind
+                                dadurch automatisch über den eingebauten Webserver abrufbar.
+                            </p>
+                            <div id="spring-prog1-frontend-files" class="accordion mb-4">
+                                <!-- index.html – UI-Struktur -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog1-frontend-files-html-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog1-frontend-files-html-content"
+                                        href          = "#spring-prog1-frontend-files-html-content"
+                                    >
+                                        <tt><b>index.html</b></tt>
+                                        <span class="float-right">UI-Struktur</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog1-frontend-files-html-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog1-frontend-files-html-title"
+                                        data-parent     = "#spring-prog1-frontend-files"
+                                    >
+                                        <source-code language="html">
+                                            &lt;!DOCTYPE html&gt;
+                                            &lt;html&gt;
+                                                &lt;head&gt;
+                                                    &lt;meta charset="utf-8"&gt;
+                                                    &lt;title&gt;REST-Gästebuch&lt;/title&gt;
+                                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+                                                    &lt;link rel="stylesheet" href="style.css"&gt;
+                                                    &lt;script src="script.js"&gt;&lt;/script&gt;
+                                                &lt;/head&gt;
+                                                &lt;body&gt;
+                                                    &lt;div class="container"&gt;
+                                                        &lt;h1&gt;Mein kleines Gästebuch&lt;/h1&gt;
+
+                                                        &lt;form id="form"&gt;
+                                                            &lt;input type="text" name="name" placeholder="Dein Name" /&gt;
+                                                            &lt;button type="submit"&gt;Abschicken&lt;/button&gt;
+                                                        &lt;/form&gt;
+
+                                                        &lt;ul id="entries"&gt;&lt;/ul&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/body&gt;
+                                            &lt;/html&gt;
+                                        </source-code>
+                                    </div>
+                                </div>
+                                <!-- style.css – Stylesheet -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog1-frontend-files-css-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog1-frontend-files-css-content"
+                                        href          = "#spring-prog1-frontend-files-css-content"
+                                    >
+                                        <tt><b>style.css</b></tt>
+                                        <span class="float-right">Stylesheet</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog1-frontend-files-css-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog1-frontend-files-css-title"
+                                        data-parent     = "#spring-prog1-frontend-files"
+                                    >
+                                        <source-code language="css">
+                                            html, body {
+                                                font-family: sans-serif;
+                                                font-size: 12pt;
+                                                height: 100%;
+
+                                                margin: 0;
+                                                padding: 0;
+                                            }
+
+                                            html {
+                                                background-image: url(https://picsum.photos/1024/?image=871);
+                                                background-repeat: no-repeat;
+                                                background-position: center center;
+                                                background-size: cover;
+                                            }
+
+                                            body {
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                            }
+
+                                            .container {
+                                                background: rgba(255,255,255,0.8);
+                                                border-radius: 0.5em;
+                                                padding: 1em;
+                                                margin: 2em;
+                                            }
+
+                                            h1, h2 {
+                                                color: crimson;
+                                                text-shadow: 0 0 1px rgba(0,0,0,0.5);
+                                                margin: 0 0 0.5em 0;
+                                            }
+
+                                            h2 {
+                                                color: deepskyblue;
+                                            }
+
+                                            input[type="text"] {
+                                                display: block;
+                                                width: 100%;
+                                                font-size: 110%;
+                                                box-sizing: border-box;
+                                                border: 1px solid grey;
+                                                margin-bottom: 0.5em;
+                                            }
+
+                                            ul {
+                                                list-style: none;
+                                                margin: 1em 0 0 0;
+                                                padding: 0;
+                                                font-size: 90%;
+                                            }
+
+                                            li {
+                                                margin: 0 0 0.75em 0;
+                                                padding: 0;
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                                <!-- script.js – Clientseitige Logik -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog1-frontend-files-javascript-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog1-frontend-files-javascript-content"
+                                        href          = "#spring-prog1-frontend-files-javascript-content"
+                                    >
+                                        <tt><b>script.js</b></tt>
+                                        <span class="float-right">Clientseitige Logik</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog1-frontend-files-javascript-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog1-frontend-files-javascript-title"
+                                        data-parent     = "#spring-prog1-frontend-files"
+                                    >
+                                        <source-code language="javascript">
+                                            API_URL = "/api/guestbook";
+
+                                            /**
+                                             * Daten nach dem Laden der Seite vom Server abrufen und anzeigen. Ebenso
+                                             * Event Handler zum Anlegen neuer Einträge registrieren.
+                                             */
+                                            window.addEventListener("load", async () =&gt; {
+                                                // Vorhandene Einträge abrufen und anzeigen
+                                                let entries = await fetch(API_URL);
+                                                entries = await entries.json();
+                                                entries.forEach(displayEntry);
+
+                                                // Event Handler zum Hinzufügen neuer Einträge
+                                                let formElement = document.getElementById("form");
+                                                formElement.addEventListener("submit", event =&gt; {
+                                                    createNewEntry(event);
+
+                                                    // Old-School Abschicken des Formulars unterdrücken
+                                                    event.preventDefault();
+                                                    return false;
+                                                });
+                                            });
+
+                                            /**
+                                             * Hilfsfunktion zum Anzeigen eines Gästebucheintrags
+                                             * @param {type} entry
+                                             * @returns {undefined}
+                                             */
+                                            function displayEntry(entry) {
+                                                let listElement = document.getElementById("entries");
+                                                listElement.innerHTML += `&lt;li&gt;&lt;b&gt;${entry.timestamp}:&lt;/b&gt; ${entry.name}`;
+                                            }
+
+                                            /**
+                                             * Hilfsfunktion zum Anlegen eines neuen Eintrags.
+                                             */
+                                            async function createNewEntry() {
+                                                // Eingegebenen Namen ermitteln
+                                                let formElement = document.getElementById("form");
+                                                let name = formElement.name.value;
+                                                if (name.trim() === "") return;
+                                                formElement.name.value = "";
+
+                                                // Backend-API aufrufen
+                                                let entry = await fetch(API_URL, {
+                                                    method: "POST",
+                                                    headers: {"Content-Type": "application/json"},
+                                                    body: JSON.stringify({name: name})
+                                                });
+
+                                                // Gespeicherten Eintrag anzeigen
+                                                displayEntry(await entry.json());
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Daten in der Datenbank speichern</h1>
+            <article>
+                <!-- JPA Grundlagen, Validierung? -->
+                <!-- Spring Repository -->
+                <!-- JPA in einem REST-Controller manuell (kurz) dann gleich Shortcut für JPA REST -->
+                <!-- Demodaten anlegen mit eigenem SQL-Skript -->
+                <!-- Freischaltung und Nutzung der H2 Konsole -->
+            </article>
+            <aside>
+            </aside>
+        </section>
+
+<!-- HATEOAS: Eher nicht, da bei JPA REST automatisch generier -->
+
+        <section>
+            <h1>Hinzufügen von OpenAPI und Swagger</h1>
             <article>
             </article>
             <aside>
@@ -4497,7 +5141,7 @@
         </section>
 
         <section>
-            <h1>Datenbankgestützte REST-Webservices</h1>
+            <h1>Übersicht der wichtigsten Schnittstellen</h1>
             <article>
             </article>
             <aside>
@@ -4514,7 +5158,7 @@
 
         <section data-background-color="rgb(231, 221, 141)">
             <h1>Aufgabe 4: Was steht auf dem Plan?</h1>
-            <!-- Schauburg-Beipsiel start vereinfacht als REST-WS, nur die Spielzeiten von Filmen -->
+            <!-- Schauburg-Beipsiel stark vereinfacht als REST-WS, nur die Spielzeiten von Filmen -->
             <article>
                 <div>
                     <ul class="nav nav-tabs" role="tablist">
