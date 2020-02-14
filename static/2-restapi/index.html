@@ -3974,26 +3974,6 @@
             </article>
         </section>
 
-        <!--
-            TODO
-            SOAP / Eigene Webservices definieren
-             » Als Vorlage
-
-            Serverseitige Webentwicklung / Aufgabe 2...:
-             » Ähnlich gelagerte kleine Programmieraufgabe?
-
-            EJB / Aufbau eines Applikationsserver:
-             » Vorlage für die Vorstellung von Spring?
-
-            EJB / Woher kommen eigentlich ...?
-             » Evtl. als Vorlage zur Erklärung für Dependency Injection
-
-            JPA / Wie Java mit der Datenbank spricht
-            JPA / Von der Idee zur fertigen Anwendung
-             » Kurversion von O/R-Mapping
-             » Link auf die alten Folien für weitere Details
-        -->
-
         <section>
             <h1>Gestatten, mein Name ist Spring!</h1>
             <article>
@@ -4361,9 +4341,150 @@
         <section>
             <h1>Eine Spring-Anwendung entsteht</h1>
             <article>
-                <!-- https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.2.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=dhbwka.wwi.vertsys.rest&artifactId=musicdb&name=musicdb&description=Demo%20project%20for%20Spring%20Boot&packageName=dhbwka.wwi.vertsys.rest.musicdb&dependencies=data-rest,h2,hateoas,lombok,web,data-rest-hal,data-jpa -->
+                <ul class="dhbw-carousel-links">
+                    <li>
+                        <a href="#initializr-carousel" role="button" data-slide="next">Nächstes Bild</a>
+                    </li>
+                    <li>
+                        <a href="#initializr-carousel" role="button" data-slide="prev">Vorheriges Bild</a>
+                    </li>
+                    <li>
+                        <a href="#initializr-carousel" role="button" data-slide-to="0">Nochmal von vorne</a>
+                    </li>
+                </ul>
+                <ul class="dhbw-carousel-links">
+                    <li>
+                        <small>
+                            <a href="#initializr-carousel" role="button" data-slide-to="0">Projekt konfigurieren</a>
+                        </small>
+                    </li>
+                    <li>
+                        <small>
+                            <a href="#initializr-carousel" role="button" data-slide-to="5">Projekt öffnen</a>
+                        </small>
+                    </li>
+                    <li>
+                        <small>
+                            <a href="#initializr-carousel" role="button" data-slide-to="8">Anwendung starten</a>
+                        </small>
+                    </li>
+                </ul>
+                <div id="initializr-carousel" class="carousel slide" style="margin-bottom: 1em;" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item img-thumbnail active">
+                            <p>
+                                Ein neues Spring-Projekt kann auf der Seite <a href="https://start.spring.io" target="_blank">start.spring.io</a>
+                                konfiguriert und anschließend heruntergeladen werden. Folgende Grundparameter verwenden wir dabei in der Vorlesung:
+                            </p>
+                            <ul class"dhbw-liste-mit-viel-text" style="line-height: 1.25; margin-bottom: 1.5rem;">
+                                <li>
+                                    <b>Project:</b> Maven Project
+                                </li>
+                                <li>
+                                    <b>Language:</b> Java
+                                </li>
+                                <li>
+                                    <b>Spring Boot:</b> Die jeweils voreingestellte Version
+                                </li>
+                                <li>
+                                    <b>Group:</b> Java-Paketname, beispielsweise <src-code language="dummy">dhbwka.wwi.vertsys.rest</src-code>
+                                </li>
+                                <li>
+                                    <b>Artifact:</b> Name der zu erstellenden Anwendung ohne Leerzeichen
+                                </li>
+                            </ul>
+                            <img class="active d-block w-100" src="initializr-01.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Weiter unten können die benötigten Spring-Komponenten entweder gesucht …
+                            </p>
+                            <img class="active d-block w-100" src="initializr-02.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                … oder in einer Liste ausgewählt werden. Folgende Komponenten benötigen wir:
+                                <src-code language="dummy">Lombok</src-code>,
+                                <src-code language="dummy">Spring Web</src-code>,
+                                <src-code language="dummy">Rest Repositories</src-code>,
+                                <src-code language="dummy">Rest Repositories HAL Browser</src-code>,
+                                <src-code language="dummy">Spring HATEOAS</src-code>,
+                                <src-code language="dummy">Spring Data JPA</src-code>,
+                                <src-code language="dummy">H2 Database</src-code>.
+                            </p>
+                            <img class="active d-block w-100" src="initializr-03.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Der Button <tt>Explore</tt> erlaubt es, das neue Projekt vorab anzuschauen.
+                            </p>
+                            <img class="active d-block w-100" src="initializr-04a.png" style="border: 1px solid grey; margin-bottom: 0.5em;" />
+                            <img class="active d-block w-100" src="initializr-04b.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Per Klick auf <tt>Generate</tt> kann es dann als ZIP-Archiv heruntergeladen werden.
+                            </p>
+                            <img class="active d-block w-100" src="initializr-05.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Das ZIP-File muss natürlich zunächst entpackt werden, damit der Quellcode bearbeitet werden kann.
+                            </p>
+                            <img class="active d-block w-100" src="initializr-06.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Anschließend kann das Projekt in einer beliebigen IDE mit Maven-Unterstützung geöffnet werden.
+                                Zum Beispiel in Eclipse via <tt>File</tt> → <tt>Import…</tt> → <tt>Existing Maven Projects</tt>.
+
+                            </p>
+                            <img class="active d-block w-100" src="initializr-07.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                In NetBeans reicht es aus, das Projekt einfach zu öffnen.
+                            </p>
+                            <img class="active d-block w-100" src="initializr-08.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                Der Quellcode besteht momentan nur aus einer einfachen Main-Klasse.
+                                Die Anwendung kann aber durchaus schon gestartet …
+                            </p>
+                            <img class="active d-block w-100" src="initializr-09.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                … und unter <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> im Browser
+                                getestet werden.
+                            </p>
+                            <img class="active d-block w-100" src="initializr-10.png" style="border: 1px solid grey;" />
+                        </div>
+                        <div class="carousel-item img-thumbnail">
+                            <p>
+                                So einfach ist das. Nun können wir anfangen zu Programmieren. 💻
+                            </p>
+                            <img class="active d-block w-25 m-auto" src="../finish.svg" />
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <small>
+                        <small>
+                            Bildnachweis für das Endesymbol: <a href="https://pixabay.com/en/symbol-gui-internet-internet-page-2480163/" target="_blank">Pixabay: janf93</a>
+                        </small>
+                    </small>
+                </p>
             </article>
             <aside>
+                <p>
+                    Das Grundgerüst einer Spring-Anwendung kann auf <a href="https://start.spring.io" target="_blank">start.spring.io</a> ganz leicht
+                    zusammengestellt und heruntergeladen werden. Auf der Folie werden aller hierfür notwendigen Schritte, inklusive der in der Vorlesung
+                    verwendeten Konfiguratio, vorgestellt. Das Endergebnis kann zusätzlich
+                    <a href="https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.2.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=dhbwka.wwi.vertsys.rest&artifactId=musicdb&name=musicdb&description=Demo%20project%20for%20Spring%20Boot&packageName=dhbwka.wwi.vertsys.rest.musicdb&dependencies=data-rest,h2,hateoas,lombok,web,data-rest-hal,data-jpa" target="_blank">hier</a>
+                    aufgerufen werden.
+                </p>
             </aside>
         </section>
 
