@@ -5105,7 +5105,7 @@
                                         </p>
                                         <hr />
                                         <source-code language="javascript">
-                                            API_URL = "/api/guestbook";
+                                            const API_URL = "/api/guestbook";
 
                                             /**
                                              * Daten nach dem Laden der Seite vom Server abrufen und anzeigen. Ebenso
@@ -5383,31 +5383,772 @@
         <section>
             <h1>Daten in der Datenbank speichern</h1>
             <article>
-                <!-- JPA Grundlagen, Validierung? -->
-                <!-- Spring Repository -->
-                <!-- JPA in einem REST-Controller manuell (kurz) dann gleich Shortcut für JPA REST -->
-                <!-- Demodaten anlegen mit eigenem SQL-Skript -->
-                <!-- Freischaltung und Nutzung der H2 Konsole -->
+                <div class="container-fluid p-0 mb-4">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="spring-anatomie2.png" class="d-block w-100" />
+                        </div>
+                        <div class="col-md">
+                            Um die Gästebucheinträge in einer Datenbank abzulegen, müssen nur wenige Anpassungen
+                            am Quellcode vorgenommen werden. Die neue Version sollte am Ende nur die hier gezeigten
+                            Klassen und Interfaces besitzen. Die statischen Dateien für das Frontend sowie die
+                            beiden Konfigurationsdateien müssen natürlich auch erhalten bleibden.
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-prog2-datenbank-tab"
+                                class         = "nav-link active"
+                                data-toggle   = "tab"
+                                href          = "#spring-prog2-datenbank"
+                                role          = "tab"
+                                aria-controls = "spring-prog2-datenbank"
+                                aria-expanded = "true"
+                            >
+                                Datenhaltung
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-prog2-controller-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#spring-prog2-controller"
+                                role          = "tab"
+                                aria-controls = "spring-prog2-controller"
+                            >
+                                REST-Controller
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id            = "spring-prog2-frontend-tab"
+                                class         = "nav-link"
+                                data-toggle   = "tab"
+                                href          = "#spring-prog2-frontend"
+                                role          = "tab"
+                                aria-controls = "spring-prog2-frontend"
+                            >
+                                Frontend
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                        <!-- Datenhaltung -->
+                        <div
+                            class           = "tab-pane fade show active"
+                            id              = "spring-prog2-datenbank"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-prog2-datenbank-tab"
+                        >
+                            <p>
+                                Der Zugriff auf eine Datenbank ist mit Spring ganz leicht. Wir müssen lediglich die Klasse
+                                <tt>GuestbookEntry</tt> mit den Annotationen der
+                                <a href="https://heise.de/-4329959" target="_blank">Java Persistence API</a> und der
+                                <a href="http://openbook.rheinwerk-verlag.de/java7/1507_17_001.html" target="_blank">Bean Validation API</a>
+                                zu einer <b>Persitence Entity</b> machen und ein <b>Repository-Interface</b> definieren.
+                            </p>
+
+                            <div id="spring-prog2-datenbank-files1" class="accordion mb-4">
+                                <!-- GuestbookEntry.java – Entity-Klasse -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog2-datenbank-files1-entity-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog2-datenbank-files1-entity-content"
+                                        href          = "#spring-prog2-datenbank-files1-entity-content"
+                                    >
+                                        <tt><b>GuestbookEntry.java</b></tt>
+                                        <span class="float-right">Persistence Entity</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog2-datenbank-files1-entity-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog2-datenbank-files1-entity-title"
+                                        data-parent     = "#spring-prog2-datenbank-files1"
+                                    >
+                                        <p>
+                                            In diesem Beispiel werden nur wenige Annotationen verwenden. Die Klasse wird von JPA
+                                            automatisch in eine gleichnamige Datenbanktabelle mit einem <tt>ID</tt> genannten
+                                            Schlüsselfeld mit automatischer Nummernvergabe umgewandelt. Außerdem dürfen die Felder
+                                            nicht leer bleiben.
+                                        </p>
+                                        <hr />
+                                        <source-code language="java">
+                                            package dhbwka.wwi.vertsys.rest.guestbook;
+
+                                            import java.io.Serializable;
+                                            import java.time.LocalDateTime;
+                                            import javax.persistence.Column;
+                                            import javax.persistence.Entity;
+                                            import javax.persistence.GeneratedValue;
+                                            import javax.persistence.GenerationType;
+                                            import javax.persistence.Id;
+                                            import javax.validation.constraints.NotNull;
+                                            import javax.validation.constraints.Size;
+                                            import lombok.Data;
+
+                                            /**
+                                             * Minimale Datentransferklasse für einen Gästebucheintrag.
+                                             */
+                                            @Data
+                                            @Entity
+                                            public class GuestbookEntry implements Serializable {
+
+                                                @Id
+                                                @GeneratedValue(strategy = GenerationType.IDENTITY)
+                                                @NotNull
+                                                private long id;
+
+                                                private LocalDateTime datetime = LocalDateTime.now();
+
+                                                @Column(length = 64)
+                                                @Size(min = 1, max = 64, message = "Der Name muss zwischen einem und 64 Zeichen lang sein.")
+                                                @NotNull(message = "Der Name darf nicht leer sein.")
+                                                private String name = "";
+
+                                                /**
+                                                 * Default-Konstruktor
+                                                 */
+                                                public GuestbookEntry() {
+                                                }
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                                <!-- GuestbookEntryRepository.java – Datenbank-Repository -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog2-datenbank-files1-repository-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog2-datenbank-files1-repository-content"
+                                        href          = "#spring-prog2-datenbank-files1-repository-content"
+                                    >
+                                        <tt><b>GuestbookEntryRepository.java</b></tt>
+                                        <span class="float-right">Datenbank-Repository</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog2-datenbank-files1-repository-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog2-datenbank-files1-repository-title"
+                                        data-parent     = "#spring-prog2-datenbank-files1"
+                                    >
+                                        <p>
+                                            Der Zugriff auf eine Datenbank erfolgt in Spring immer über ein <b>Repository</b>. Technisch gesehen
+                                            handelt es sich dabei um eine besondere Art von Service-Klasse, die ebenfalls mit der Annotation
+                                            <src-code language="java">@Autowired</src-code> in andere Klassen injiziert werden kann.
+                                            Im Gegensatz zu normalen Serivces muss ein Repository nur als leesres Interface definiert werden, da
+                                            Spring automatisch eine Implementierung mit allen wichtigen Methoden bereitstellen kann.
+                                        </p>
+                                        <hr />
+                                        <source-code language="java">
+                                            package dhbwka.wwi.vertsys.rest.guestbook;
+
+                                            import org.springframework.data.repository.PagingAndSortingRepository;
+                                            import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+                                            /**
+                                             * Einfaches Spring Data Repository für den Zugriff auf die in der Datenbank
+                                             * gespeicherten Gästebucheinträge. Spring erzeugt automatisch eine abgeleitete
+                                             * Klasse mit den üblichen Methoden zum Lesen, Schreiben und Löschen von
+                                             * Einträgen.
+                                             */
+                                            @RepositoryRestResource(collectionResourceRel = "guestbookEntries", path = "guestbook")
+                                            public interface GuestbookEntryRepository extends PagingAndSortingRepository&lt;GuestbookEntry, Long&gt; {
+                                                // Kann leer bleiben
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>
+                                Mehr wird tatsächlich nicht benötigt. Insbesondere benötigen wir keine eigene Implementierung des
+                                Respository-Interfaces, da diese von Spring automatisch zur Verfügung gestellt wird. 😎
+                                Zum Testen können wir aber noch automatisch Demodaten beim Start der Anwendung anlegen lassen,
+                                da die eingebettete Datenbank standardmäßig nur im Hauptspeicher liegt. Hierfür müssen wir lediglich
+                                ein SQL-Skript mit dem Namen <tt>data.sql</tt> im Ressourcen-Verzeichnis ablegen. Indem wir zuvor
+                                die eingebaute Web-Konsole von HSQL aktivieren, finden wir heraus, wie die Tabellen definiert sind.
+                            </p>
+
+                            <img src="h2-konsole.png" alt="Web-Konsole der HSQL-Datenbank" class="d-block w-100 img-thumbnail mb-4"/>
+
+                            <div id="spring-prog2-datenbank-files2" class="accordion mb-4">
+                                <!-- src/main/resources/application.properties – Freischaltung der H2-Konsole -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog2-datenbank-files2-h2konsole-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog2-datenbank-files2-h2konsole-content"
+                                        href          = "#spring-prog2-datenbank-files2-h2konsole-content"
+                                    >
+                                        <tt><b>src/main/resources/application.properties</b></tt>
+                                        <span class="float-right">Konfiguration</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog2-datenbank-files2-h2konsole-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog2-datenbank-files2-h2konsole-title"
+                                        data-parent     = "#spring-prog2-datenbank-files2"
+                                    >
+                                        <p>
+                                            Sämtliche Datenbankeinstellungen finden sich in der Datei <tt>application.properties</tt>.
+                                            Auskommentiert in der Mitte sind die allgemeinen Einstellungen hinsichtlich des verwendeten
+                                            Datenbanktreibers¹, unten die HSQL-spezifischen Einstellungen zur Aktivierung der Web-Konsole.
+                                            Wenn hier nichts anderes konfiguriert wird, werden die Daten nur im Hauptspeicher abgelegt
+                                            und gehen somit bei einem Server-Neustart verloren.
+                                        </p>
+                                        <hr />
+                                        <source-code language="perl">
+                                            # Tomcat Webserver
+                                            server.port = 9090
+
+                                            # Basis-URL der mit Spring DATA REST erzeugten Webservices
+                                            spring.data.rest.basePath=/api
+
+                                            # H2 Datenbank
+                                            #spring.datasource.url=jdbc:h2:mem:testdb          # In Memory, volatil
+                                            #spring.datasource.url=jdbc:h2:file:/tmp/demo      # Persistent im angegebenen Verzeichnis
+                                            #spring.datasource.driverClassName=org.h2.Driver
+                                            #spring.datasource.username=sa
+                                            #spring.datasource.password=password
+                                            #spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+                                            # Aktivieren der H2 Datenbankkonsole: http://localhost:9090/h2-console/
+                                            spring.h2.console.enabled=true
+                                            spring.h2.console.settings.trace=false
+                                            spring.h2.console.settings.web-allow-others=false
+                                        </source-code>
+                                        <hr />
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <img src="h2-konsole-login.png" alt="Loginseite der H2-Konsole" class="d-block w-100 img-thumbnail" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <p>
+                                                        Die Web-Konsole kann über die URL
+                                                        <a href="http://localhost:9090/h2-console/" target="_blank">http://localhost:9090/h2-console/</a>
+                                                        aufgerufen werden. Für den Login müssen die hier abgebildeten Werte verwendet werden,
+                                                        sofern diese in der <tt>application.properties</tt> nicht geändert wurden.
+                                                    </p>
+                                                    <ul>
+                                                        <li>
+                                                            <b>Driver Class:</b> <tt>org.h2.Driver</tt>
+                                                        </li>
+                                                        <li>
+                                                            <b>JDBC URL:</b> <tt>jdbc:h2:mem:testdb</tt>
+                                                        </li>
+                                                        <li>
+                                                            <b>User Name:</b> <tt>sa</tt>
+                                                        </li>
+                                                        <li>
+                                                            <b>Passwort:</b> <i>keins</i>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- src/main/resources/data.sql – Testdaten -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog2-datenbank-files2-testdaten-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog2-datenbank-files2-testdaten-content"
+                                        href          = "#spring-prog2-datenbank-files2-testdaten-content"
+                                    >
+                                        <tt><b>src/main/resources/data.sql</b></tt>
+                                        <span class="float-right">Testdaten</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog2-datenbank-files2-testdaten-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog2-datenbank-files2-testdaten-title"
+                                        data-parent     = "#spring-prog2-datenbank-files2"
+                                    >
+                                        <p>
+                                            Die Testdaten können mit einem einfachen SQL-Skript angelegt werden. Dieses muss <tt>data.sql</tt>
+                                            heißen und im Ressourcen-Verzeichnis liegen. Es wird bei jedem Serverstart automatisch ausgeführt.
+                                        </p>
+                                        <hr />
+                                        <source-code language="sql">
+                                            INSERT INTO GUESTBOOK_ENTRY (DATETIME, NAME) VALUES ('2020-02-14 12:43:24.212661', 'Helge Doppler');
+                                            INSERT INTO GUESTBOOK_ENTRY (DATETIME, NAME) VALUES ('2020-02-15 14:33:52.461548', 'Martha Nielsen');
+                                            INSERT INTO GUESTBOOK_ENTRY (DATETIME, NAME) VALUES ('2020-02-16 21:52:41.134974', 'Michael Kahnwald');
+                                        </source-code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- REST-Controller -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "spring-prog2-controller"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-prog2-controller-tab"
+                        >
+                            <div class="container-fluid p-0 mb-4">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <img src="spring-datarest-get-manual.png" class="d-block w-100 img-thumbnail" />
+                                        <p>
+                                            <small>
+                                                REST-Webservice Marke Eigenbau
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="col-md">
+                                        <img src="spring-datarest-get-generated.png" class="d-block w-100 img-thumbnail" />
+                                        <p>
+                                            <small>
+                                                Automatisch generierter REST-Webservice
+                                            </small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="mb-4">
+                                <b>Spring Data REST</b> generiert automatisch zu jedem Repository-Interface einen
+                                HATEOAS-konformen REST-Webservice. Wir müssen wirklich nichts dafür tun. 😎 Wollten
+                                wir dennoch einen eigenen Webservice implementieren, könnten wir das wie im folgenden
+                                Beispiel tun. Für den volle Funktionsumfang von Spring Data REST müssten wir aber
+                                sehr viel mehr Quellcode schreiben.
+                            </p>
+                            <div id="spring-prog2-controller-files" class="accordion mb-4">
+                                <!-- src/main/resources/application.properties – Freischaltung der H2-Konsole -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog2-controller-file-class-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog2-controller-files-class-content"
+                                        href          = "#spring-prog2-controller-files-class-content"
+                                    >
+                                        <tt><b>GuestbookEntryController.class</b></tt>
+                                        <span class="float-right">HTTP-Schnittstelle</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog2-controller-files-class-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog2-controller-files-class-title"
+                                        data-parent     = "#spring-prog2-controller-files"
+                                    >
+                                        <source-code language="java">
+                                            package dhbwka.wwi.vertsys.rest.guestbook.ws;
+
+                                            import dhbwka.wwi.vertsys.rest.guestbook.GuestbookEntry;
+                                            import dhbwka.wwi.vertsys.rest.guestbook.GuestbookEntryRepository;
+                                            import org.springframework.beans.factory.annotation.Autowired;
+                                            import org.springframework.http.HttpStatus;
+                                            import org.springframework.web.bind.annotation.GetMapping;
+                                            import org.springframework.web.bind.annotation.PostMapping;
+                                            import org.springframework.web.bind.annotation.RequestBody;
+                                            import org.springframework.web.bind.annotation.RequestMapping;
+                                            import org.springframework.web.bind.annotation.ResponseStatus;
+                                            import org.springframework.web.bind.annotation.RestController;
+
+                                            /**
+                                             * Diese Klasse zeigt, wie ein einfacher REST-Webservice zum Lesen und Schreiben
+                                             * von Daten aus einer Datenbank von Hand programmiert werden kann.
+                                             *
+                                             * Die Klasse ist bewusst unvollständig gehalten, da sie eigentlich komplett
+                                             * überflüssig ist. Spring DATA REST generiert nämlich bereits einen fertigen
+                                             * Webservice, der nicht nur alle HTTP-Verben inkl. PATCH versteht, sondern auch
+                                             * HATEOAS unterstützt. Es wäre daher eigentlich besser, diese Klasse einfach
+                                             * zu löschen und die unter `/api/guestbook` abrufbare Implementierung von
+                                             * Spring zu verwenden. :-)
+                                             */
+                                            @RestController
+                                            @RequestMapping("/api/guestbook-manual")
+                                            public class GuestbookController {
+
+                                                // Dependency-Injection des Datenbank-Repositories
+                                                @Autowired
+                                                private GuestbookEntryRepository repository;
+
+                                                /**
+                                                 * Handler-Methode für GET-Anfragen.
+                                                 *
+                                                 * @return Liste aller vorhandenen Einträge.
+                                                 */
+                                                @GetMapping
+                                                public Iterable&lt;GuestbookEntry&gt; getAllEntries() {
+                                                    return this.repository.findAll();
+                                                }
+
+                                                /**
+                                                 * Handler-Methode für POST-Anfragen.
+                                                 *
+                                                 * @param entry Anzulegender Eintrag
+                                                 * @return Angelegter Eintrag
+                                                 */
+                                                @PostMapping
+                                                @ResponseStatus(HttpStatus.CREATED)
+                                                public GuestbookEntry createNewEntry(@RequestBody GuestbookEntry entry) {
+                                                    entry = this.repository.save(entry);
+                                                    return entry;
+                                                }
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Frontend -->
+                        <div
+                            class           = "tab-pane fade"
+                            id              = "spring-prog2-frontend"
+                            role            = "tabpanel"
+                            aria-labelledby = "spring-prog2-frontend-tab"
+                        >
+                            <p>
+                                Am Frontend müssen nur ganz minimale Anpassungen vorgenommen werden. Das Feld <tt>timestamp</tt>
+                                wurde, da <tt>TIMESTAMP</tt> ein reserviertes SQL-Schlüsselwort ist, in <tt>datetime</tt> umbenannt und
+                                das Ergebnis auf eine <tt>GET</tt>-Anfrage liefert eine HATEOAS-konforme Antwort. Im JavaScript-Code
+                                müssen deshalb zwei kleine Zeilen angepasst werden.
+                            </p>
+
+                            <img src="spring-beispiel2.jpg" class="d-block img-fluid img-thumbnail w-100 mb-4"/>
+
+                            <div id="spring-prog2-frontend-files" class="accordion mb-4">
+                                <!-- index.html (unverändert) – UI-Struktur -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog2-frontend-files-html-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog2-frontend-files-html-content"
+                                        href          = "#spring-prog2-frontend-files-html-content"
+                                    >
+                                        <tt><b>index.html</b></tt> (unverändert)
+                                        <span class="float-right">UI-Struktur</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog2-frontend-files-html-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog2-frontend-files-html-title"
+                                        data-parent     = "#spring-prog2-frontend-files"
+                                    >
+                                        <source-code language="html">
+                                            &lt;!DOCTYPE html&gt;
+                                            &lt;html&gt;
+                                                &lt;head&gt;
+                                                    &lt;meta charset="utf-8"&gt;
+                                                    &lt;title&gt;REST-Gästebuch&lt;/title&gt;
+                                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+                                                    &lt;link rel="stylesheet" href="style.css"&gt;
+                                                    &lt;script src="script.js"&gt;&lt;/script&gt;
+                                                &lt;/head&gt;
+                                                &lt;body&gt;
+                                                    &lt;div class="container"&gt;
+                                                        &lt;h1&gt;Mein kleines Gästebuch&lt;/h1&gt;
+
+                                                        &lt;form id="form"&gt;
+                                                            &lt;input type="text" name="name" placeholder="Dein Name" /&gt;
+                                                            &lt;button type="submit"&gt;Abschicken&lt;/button&gt;
+                                                        &lt;/form&gt;
+
+                                                        &lt;ul id="entries"&gt;&lt;/ul&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/body&gt;
+                                            &lt;/html&gt;
+                                        </source-code>
+                                    </div>
+                                </div>
+                                <!-- style.css (unverändert) – Stylesheet -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog2-frontend-files-css-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog2-frontend-files-css-content"
+                                        href          = "#spring-prog2-frontend-files-css-content"
+                                    >
+                                        <tt><b>style.css</b></tt> (unverändert)
+                                        <span class="float-right">Stylesheet</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog2-frontend-files-css-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog2-frontend-files-css-title"
+                                        data-parent     = "#spring-prog2-frontend-files"
+                                    >
+                                        <source-code language="css">
+                                            html, body {
+                                                font-family: sans-serif;
+                                                font-size: 12pt;
+                                                height: 100%;
+
+                                                margin: 0;
+                                                padding: 0;
+                                            }
+
+                                            html {
+                                                background-image: url(https://picsum.photos/1024/?image=871);
+                                                background-repeat: no-repeat;
+                                                background-position: center center;
+                                                background-size: cover;
+                                            }
+
+                                            body {
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                            }
+
+                                            .container {
+                                                background: rgba(255,255,255,0.8);
+                                                border-radius: 0.5em;
+                                                padding: 1em;
+                                                margin: 2em;
+                                            }
+
+                                            h1, h2 {
+                                                color: crimson;
+                                                text-shadow: 0 0 1px rgba(0,0,0,0.5);
+                                                margin: 0 0 0.5em 0;
+                                            }
+
+                                            h2 {
+                                                color: deepskyblue;
+                                            }
+
+                                            input[type="text"] {
+                                                display: block;
+                                                width: 100%;
+                                                font-size: 110%;
+                                                box-sizing: border-box;
+                                                border: 1px solid grey;
+                                                margin-bottom: 0.5em;
+                                            }
+
+                                            ul {
+                                                list-style: none;
+                                                margin: 1em 0 0 0;
+                                                padding: 0;
+                                                font-size: 90%;
+                                            }
+
+                                            li {
+                                                margin: 0 0 0.75em 0;
+                                                padding: 0;
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                                <!-- script.js – Clientseitige Logik -->
+                                <div class="card">
+                                    <div
+                                        id            = "spring-prog2-frontend-files-javascript-title"
+                                        class         = "card-header"
+                                        data-toggle   = "collapse"
+                                        aria-expanded = "false"
+                                        aria-controls = "spring-prog2-frontend-files-javascript-content"
+                                        href          = "#spring-prog2-frontend-files-javascript-content"
+                                    >
+                                        <tt><b>script.js</b></tt>
+                                        <span class="float-right">Clientseitige Logik</span>
+                                    </div>
+                                    <div
+                                        id              = "spring-prog2-frontend-files-javascript-content"
+                                        class           = "collapse container-fluid p-3"
+                                        aria-labelledby = "spring-prog2-frontend-files-javascript-title"
+                                        data-parent     = "#spring-prog2-frontend-files"
+                                    >
+                                        <source-code language="javascript">
+                                            const API_URL = "/api/guestbook";
+
+                                            /**
+                                             * Daten nach dem Laden der Seite vom Server abrufen und anzeigen. Ebenso
+                                             * Event Handler zum Anlegen neuer Einträge registrieren.
+                                             */
+                                            window.addEventListener("load", async () =&gt; {
+                                                // Vorhandene Einträge abrufen und anzeigen
+                                                let entries = await fetch(API_URL);
+                                                entries = await entries.json();
+                                                //     ⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛⮛
+                                                entries._embedded.guestbookEntries.forEach(displayEntry);
+                                                //     ⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙⮙
+
+                                                // Event Handler zum Hinzufügen neuer Einträge
+                                                let formElement = document.getElementById("form");
+                                                formElement.addEventListener("submit", event =&gt; {
+                                                    createNewEntry(event);
+
+                                                    // Old-School Abschicken des Formulars unterdrücken
+                                                    event.preventDefault();
+                                                    return false;
+                                                });
+                                            });
+
+                                            /**
+                                             * Hilfsfunktion zum Anzeigen eines Gästebucheintrags
+                                             * @param {type} entry
+                                             * @returns {undefined}
+                                             */
+                                            function displayEntry(entry) {
+                                                let listElement = document.getElementById("entries");
+                                                //                                       ⮛⮛⮛⮛⮛⮛
+                                                listElement.innerHTML += `&lt;li&gt;&lt;b&gt;${entry.datetime}:&lt;/b&gt; ${entry.name}`;
+                                                //                                       ⮙⮙⮙⮙⮙⮙
+                                            }
+
+                                            /**
+                                             * Hilfsfunktion zum Anlegen eines neuen Eintrags.
+                                             */
+                                            async function createNewEntry() {
+                                                // Eingegebenen Namen ermitteln
+                                                let formElement = document.getElementById("form");
+                                                let name = formElement.name.value;
+                                                if (name.trim() === "") return;
+                                                formElement.name.value = "";
+
+                                                // Backend-API aufrufen
+                                                let entry = await fetch(API_URL, {
+                                                    method: "POST",
+                                                    headers: {"Content-Type": "application/json"},
+                                                    body: JSON.stringify({name: name})
+                                                });
+
+                                                // Gespeicherten Eintrag anzeigen
+                                                displayEntry(await entry.json());
+                                            }
+                                        </source-code>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </article>
             <aside>
-            </aside>
-        </section>
+                <p>
+                    Datenbankgestützte Webservices zu entwickeln ist ziemlich einfach, da Spring die meiste Arbeit hierfür
+                    im Hintergrund erledigt, ohne dass hierfür eigener Quellcode geschrieben werden muss. Es müssen lediglich
+                    mit der <a href="https://heise.de/-4329959" target="_blank">Java Persistence API</a> so genannte
+                    <b>Persistence Entities</b> definiert und dazu passende <b>Repository-Interfaces</b> angelegt werden.
+                    Wahlweise können die Entity-Klassen noch mit der
+                    <a href="http://openbook.rheinwerk-verlag.de/java7/1507_17_001.html" target="_blank">Bean Validation API</a>
+                    angereichert werden, um eine automatische Plausibilitätsprüfung durchzuführen. Alles andere übernimmt
+                    das Spring Framework.
+                </p>
 
-<!-- HATEOAS: Eher nicht, da bei JPA REST automatisch generier -->
+                <h3 class="dhbw-lightblue">Definition der Datenhaltung</h3>
+                <p>
+                    Das Datenmodell der Anwendung kann dank JPA und Spring durch einfache Bean-Klassen festgelegt werden.
+                    Jede Klasse entspricht dabei im Grunde genommen einer Datenbanktabelle, wobei Fremdschlüsselbeziehungen
+                    als Objektreferenzen und nicht durch Kopieren der Schlüsselwerte realisiert werden. Jedes Objekt einer
+                    solchen Klasse entspricht jeweils einem Eintrag in der dazugehörigen Tabelle. Hierfür muss die Klasse
+                    lediglich folgende Anforderungen erfüllen:
+                </p>
+                <ul>
+                    <li>
+                        Sie muss einen parameterlosen Konstruktor besitzen, um vom O/R-Mapper beim Lesen vorhandener
+                        Daten von der Datenbank instantiiert werden zu können.
+                    </li>
+                    <li>
+                        Sie muss ein mit <src-code language="java">@Id</src-code> gekennzeichnetes Schlüsselfeld
+                        besitzen.¹ Idealerweise (aber nicht zwingend) sollte dank <src-code language="java">@GeneratedValue</src-code>
+                        beim Speichern eines neuen Satzes automatisch eine neue Id gezogen werden.
+                    </li>
+                    <li>
+                        Jedes zu speichernde Attribut muss eine entsprechend benannte Getter-Methoden besitzen, damit der
+                        O/R-Mapper seinen Wert auslesen kann.
+                    </li>
+                    <li>
+                        Jedes Attribut sollte in der Regel auch eine passende Setter-Methoden besitzen. Es sei denn sein Wert
+                        darf wird in der Klasse berechnet und darf sich nicht ändern. Dann wird nur ein Getter benötigt.
+                    </li>
+                </ul>
+                <p>
+                    Die Klasse <tt>GuestbookEntry</tt> auf der Folie nutzt hierfür folgende Annotationen:
+                </p>
+                <ul>
+                    <li>
+                        <src-code language="java">@Entity</src-code>: Kennzeichnet die Klasse als Persistence Entity.
+                    </li>
+                    <li>
+                        <src-code language="java">@Data</src-code>: Sorgt wieder dafür, dass automatisch ein Konstruktor
+                        zum Vorbelegen aller Felder sowie dazu passende Setter und Getter angelegt werden.
+                    </li>
+                    <li>
+                        <src-code language="java">@Id</src-code>: Kennzeichnet das Schlüsselfeld der Klasse.
+                    </li>
+                    <li>
+                        <src-code language="java">@GeneratedValue</src-code>: Legt die Strategie fest, nach der das Id-Feld
+                        automatisch hochgezählt wird.
+                    </li>
+                    <li>
+                        <src-code language="java">@Column</src-code>: Legt im Beispiel die Feldlänge eines Datenbankfelds
+                        fest. Die Annotation wird allerdings nur benötigt, wenn einer der vorgesehenen Werte überschrieben
+                        werden soll. Wie hier gezeigt, empfiehlt es sich, die Länge eines Feldes auf diese Weise genaut
+                        festzulegen, da JPA sonst häufig Felder mit 255 oder mehr Zeichen länge generiert.
+                    </li>
+                    <li>
+                        <src-code language="java">@Size</src-code>: Legt die Mindest- und Maximallenge eines mit gültigen Daten
+                        versehenen Feldes fest.
+                    </li>
+                    <li>
+                        <src-code language="java">@NotNull</src-code>: Kennzeichnet eine Feld, das beim Speichern niemals
+                        leer sein darf.
+                    </li>
+                </ul>
+                <p>
+                    ¹
+                    <small>
+                        Zusammengesetzte Tabellenschlüssel sind auch möglich, erfordern jedoch die Definition der
+                        Schlüsseldaten in einer eigenen mit <src-code language="java">@IdClass</src-code>
+                        zugewiesenen Schlüsseldatenklasse.
+                    </small>
+                </p>
+                <p>
+                    Darauf aufbauend muss dann ein <b>Repository-Interface</b> angelegt werden, aus dem heraus Spring dann
+                    automatisch eine funktionierende Implementierung ableiten kann. Technisch gesehen handelt es sich dabei
+                    um eine besondere Art von Spring Bean, die ein paar der Besonderheiten von JPA abstrahiert. Indem das
+                    Interface direkt von <src-code language="java">PagingAndSortingRepository</src-code> abgeleitet und mit
+                    <src-code language="java">@RepositoryRestResource</src-code> ausgezeichnet wird, legt Spring dann auch
+                    gleich den kompletten Webservice an.
+                </p>
 
-        <section>
-            <h1>Hinzufügen von OpenAPI und Swagger</h1>
-            <article>
-            </article>
-            <aside>
-            </aside>
-        </section>
+                <h3 class="dhbw-lightblue">Verwendung des Repository-Interfaces</h3>
+                <p>
+                    Dadurch dass automatisch zu jedem Repository-Interface ein vollwertiger REST-Webservice inklusive
+                    HATEOAS-Unterstützung angelegt wird, können einfache Webservices tatsächlich völlig ohne Logik
+                    implementiert werden. Lediglich eine Entity-Klasse und ein dazu passendes Repository-Interface
+                    werden benötigt.
+                </p>
+                <img src="repository-methoden.png" alt="Typische Methoden eines Repository-Interfaces" class="d-block img-fluid img-thumbnail mb-4" />
 
-        <section>
-            <h1>Übersicht der wichtigsten Schnittstellen</h1>
-            <article>
-            </article>
-            <aside>
+                <h3 class="dhbw-lightblue">Anpassungen am Frontend</h3>
+                <p>
+                    Der Quellcode der Weboberfläche muss nur geringfügig angepasst werden, um mit der neuen Version des
+                    Webservices kompatibel zu sein. Grund hierfür ist, dass das Feld <tt>timestamp</tt> in <tt>datetime</tt>
+                    umbenannt werden musste, da <tt>TIMESTAMP</tt> ein reserviertes SQL-Schlüsselwort ist. Außerdem hat
+                    sich die Antwort auf eine <tt>GET</tt>-Anfrage dank HATEOAS und der automatischen Unterstützung für
+                    Paging und Sorting leicht verändert. Die zwei anzupassenden JavaScript-Zeilen sind in der Folie durch
+                    Pfeile gekennzeichnet.
+                </p>
             </aside>
         </section>
 
@@ -5595,57 +6336,6 @@
                 </p>
             </aside>
         </section>
-
-        <!--
-            ===========================
-            Fallbeispiel: Rent-A-Splash
-            ===========================
-        -->
-        <!--
-        <section data-chapter data-background-image="rent-a-splash.jpg">
-            <h1>Fallbeispiel: Rent-A-Splash</h1>
-            <article>
-                <small>
-                    <small>
-                        Bildnachweis:
-                        <a href="https://pixabay.com/photos/surfer-surfing-surfboard-sports-1209179/" target="_blank">Pixabay: Free-Photos</a>
-                    </small>
-                </small>
-            </article>
-        </section>
-
-        <section>
-            <h1>Umzusetzende Anforderungen</h1>
-            <article>
-            </article>
-            <aside>
-            </aside>
-        </section>
-
-        <section>
-            <h1>Modellierung des Datenmodells</h1>
-            <article>
-            </article>
-            <aside>
-            </aside>
-        </section>
-
-        <section>
-            <h1>Backendseitige Implementierung</h1>
-            <article>
-            </article>
-            <aside>
-            </aside>
-        </section>
-
-        <section>
-            <h1>Frontendseitige Nutzung der API</h1>
-            <article>
-            </article>
-            <aside>
-            </aside>
-        </section>
-        -->
 
         <!--
             ====================
