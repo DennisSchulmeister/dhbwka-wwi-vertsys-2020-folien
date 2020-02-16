@@ -3137,7 +3137,7 @@
                         <div class="carousel-item img-thumbnail active">
                             <p>
                                 Zunächst brauchen wir natürlich einen Webservice zum Testen. 🤦 Du kannst hierfür das
-                                <tt>MusicDB</tt>-Beispiel 🎶 aus Moodle verwenden und der IDE deiner Wahl starten.
+                                <tt>MusicDB</tt>-Beispiel 🎶 aus Moodle verwenden und in der IDE deiner Wahl starten.
                                 Hier sehen wir den Quellcode in Netbeans
                             </p>
                             <img class="active d-block w-100" src="postman-01.png" style="border: 1px solid grey;" />
@@ -4604,7 +4604,7 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <small>
-                                                                Konfigurationsdatei für Spring. Hier können unter anderem die Portnummer des
+                                                                Spring-Konfiguration. Hier können unter anderem die Portnummer des
                                                                 Webservers oder die Datenbankverbindung geändert werden.
                                                             </small>
                                                         </div>
@@ -4643,7 +4643,7 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <small>
-                                                                Konfigurationsdatei für Maven. Hier werden benötigte Klassenbibliotheken sowie
+                                                                Maven-Konfiguration. Hier werden benötigte Klassenbibliotheken sowie
                                                                 die verwendeten Spring-Module eingetragen.
                                                             </small>
                                                         </div>
@@ -4661,16 +4661,16 @@
                                 zu starten. Vorerst müssen wir hier nichts ändern.
                             </p>
                             <source-code language="java">
-                                package dhbwka.wwi.vertsys.rest.demo;
+                                package dhbwka.wwi.vertsys.rest.guestbook;
 
                                 import org.springframework.boot.SpringApplication;
                                 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
                                 @SpringBootApplication
-                                public class DemoApplication {
+                                public class GuestbookApplication {
 
                                     public static void main(String[] args) {
-                                            SpringApplication.run(DemoApplication.class, args);
+                                            SpringApplication.run(GuestbookApplication.class, args);
                                     }
 
                                 }
@@ -4684,22 +4684,33 @@
                             role            = "tabpanel"
                             aria-labelledby = "spring-prog1-webservice-tab"
                         >
+                            <p class="mb-4">
+                                Im Grunde genommen benötigt man nur eine einzige Klasse für einen REST-Webservice in Spring.
+                                Diese Controller genannte Klasse muss nur für jede Operation des Webservices eine Methode
+                                zur Verfügung stellen und über Annotationen festlegen, wenn welche Methode aufgerufen wird.
+                                Die Geschäftslogik sollte allerdings in getrennte Klassen ausgelagert werden, um den Quellcode
+                                sauber zu strukturieren.
+                            </p>
+
                             <div class="container-fluid p-0 mb-4">
                                 <div class="row">
                                     <div class="col-md">
-                                        SCREENSHOT GET-ANFRAGE
+                                        <img src="spring-beispiel-get.png" class="d-block w-100 img-thumbnail" />
+                                        <small>
+                                            Ergebnis einer <tt>GET</tt>-Anfrage
+                                        </small>
                                     </div>
                                     <div class="col-md">
-                                        SCREENSHOT POST-ANFRAGE
+                                        <img src="spring-beispiel-post.png" class="d-block w-100 img-thumbnail" />
+                                        <small>
+                                            Ergebnis einer <tt>POST</tt>-Anfrage
+                                        </small>
                                     </div>
                                 </div>
-                                <p>
-                                    … … …
-                                </p>
                             </div>
 
                             <div id="spring-prog1-webservice-files" class="accordion mb-4">
-                                <!-- Karte 1 -->
+                                <!-- GuestBookEntry.java – Datenklasse -->
                                 <div class="card">
                                     <div
                                         id            = "spring-prog1-webservice-files-entry-title"
@@ -4719,28 +4730,35 @@
                                         data-parent     = "#spring-prog1-webservice-files"
                                     >
                                         <p>
-                                            Inhalt 1
+                                            Unser Webservice soll ein kleines Gästebuch 📖 implementieren. Die folgende Klasse stellt
+                                            daher einen Eintrag im Gästebuch dar, wie er zwischen Client und Server ausgetauscht wird.
                                         </p>
+                                        <hr />
                                         <source-code language="java">
-                                            package dhbwka.wwi.vertsys.rest.demo;
+                                            package dhbwka.wwi.vertsys.rest.guestbook;
 
                                             import java.time.LocalDateTime;
                                             import lombok.Data;
-                                            import org.springframework.stereotype.Service;
 
                                             /**
                                              * Minimale Datentransferklasse für einen Gästebucheintrag.
                                              */
                                             @Data
-                                            @Service
                                             public class GuestbookEntry {
                                                 private LocalDateTime timestamp = LocalDateTime.now();
                                                 private String name = "";
                                             }
                                         </source-code>
+                                        <hr />
+                                        <p>
+                                            Die Annotation <src-code language="java">@Data</src-code> gehört nicht zu Spring sondern
+                                            zu <a href="https://projectlombok.org/" target="_blank">Projekt Lombok</a>. Sie sorgt dafür,
+                                            dass automatisch passende Setter, Getter und ein Konstruktor zum Vorbelegen aller Felder
+                                            generiert werden.
+                                        </p>
                                     </div>
                                 </div>
-                                <!-- Karte 2 -->
+                                <!-- GuestBookService.java – Geschäftslogik -->
                                 <div class="card">
                                     <div
                                         id            = "spring-prog1-webservice-files-service-title"
@@ -4760,10 +4778,14 @@
                                         data-parent     = "#spring-prog1-webservice-files"
                                     >
                                         <p>
-                                            Inhalt 2
+                                            Die nächste Klasse kapselt die Geschäftslogik der Anwendung, weshalb sie mit der Annotation
+                                            <src-code language="java">@Service</src-code> gekennzeichnet werden sollte. Dadurch kann
+                                            ein Objekt der Klasse an anderen Stellen der Anwendung, an denen die Geschäftslogik benötigt
+                                            wird, via Dependency Injection zur Verfügung gestellt werden.
                                         </p>
+                                        <hr />
                                         <source-code language="java">
-                                            package dhbwka.wwi.vertsys.rest.demo;
+                                            package dhbwka.wwi.vertsys.rest.guestbook;
 
                                             import java.util.ArrayList;
                                             import java.util.List;
@@ -4802,7 +4824,7 @@
                                         </source-code>
                                     </div>
                                 </div>
-                                <!-- Karte 3 -->
+                                <!-- GuestBookController.java – HTTP-Schnittstelle -->
                                 <div class="card">
                                     <div
                                         id            = "spring-prog1-webservice-files-controller-title"
@@ -4822,10 +4844,16 @@
                                         data-parent     = "#spring-prog1-webservice-files"
                                     >
                                         <p>
-                                            Inhalt 3
+                                            Hier haben wir nun den eigentlichen Webservice, gekennzeichnet durch die Annotation
+                                            <src-code language="java">@RestController</src-code>. Durch die Annotation
+                                            <src-code language="java">@Autowired</src-code> wird die Geschäftslogik injiziert.
+                                            Alle anderen Annotationen steuern das Verhalten beim Verarbeiten der HTTP-Anfragen.
+                                            Man beachte, dass Parameter und Rückhabewerte der Methoden automatisch von und nach
+                                            JSON umgewandelt werden.
                                         </p>
+                                        <hr />
                                         <source-code language="java">
-                                            package dhbwka.wwi.vertsys.rest.demo;
+                                            package dhbwka.wwi.vertsys.rest.guestbook;
 
                                             import java.util.List;
                                             import org.springframework.beans.factory.annotation.Autowired;
@@ -4884,6 +4912,11 @@
                                                 }
                                             }
                                         </source-code>
+                                        <hr />
+                                        <p>
+                                            Natürlich müssen nicht alle Webservices in derselben Klasse implementiert werden. Es kann
+                                            innerhalb einer Anwendung beliebig viele Klassen mit den hier gezeigten Annotationen geben.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -4896,13 +4929,15 @@
                             role            = "tabpanel"
                             aria-labelledby = "spring-prog1-frontend-tab"
                         >
-                            <img src="spring-beispiel1.jpg" class="d-block img-fluid img-thumbnail w-100 mb-4"/>
                             <p>
                                 Bei kleinen Anwendungen lohnt sich häufig eine strickte Trennung zwischen der Benutzeroberfläche
                                 und dem Backend nicht. In diesem Fall können die HTML-Dateien des Frontends einfach in das
                                 Java-Projekt unter <tt>src/main/resources/static</tt> aufgenommen werden. Die Dateien sind
                                 dadurch automatisch über den eingebauten Webserver abrufbar.
                             </p>
+
+                            <img src="spring-beispiel1.jpg" class="d-block img-fluid img-thumbnail w-100 mb-4"/>
+
                             <div id="spring-prog1-frontend-files" class="accordion mb-4">
                                 <!-- index.html – UI-Struktur -->
                                 <div class="card">
@@ -4923,6 +4958,14 @@
                                         aria-labelledby = "spring-prog1-frontend-files-html-title"
                                         data-parent     = "#spring-prog1-frontend-files"
                                     >
+                                        <p>
+                                            Unser Frontend besteht aus dieser kleinen HTML-Seite. Innerhalb des
+                                            <src-code language="html">&lt;form&gt;</src-code>-Elements befinden
+                                            sich das Eingabefeld und der Button zum Anlegen neuer Einträge. Die
+                                            vorhandenen Einträge werden in der Liste mit der Id <tt>entries</tt>
+                                            angezeigt.
+                                        </p>
+                                        <hr />
                                         <source-code language="html">
                                             &lt;!DOCTYPE html&gt;
                                             &lt;html&gt;
@@ -4969,6 +5012,11 @@
                                         aria-labelledby = "spring-prog1-frontend-files-css-title"
                                         data-parent     = "#spring-prog1-frontend-files"
                                     >
+                                        <p>
+                                            Damit es nicht so langweilig aussieht, hier ein kleines Stylesheet. Sein Inhalt ist für die
+                                            Funktionsweise der Anwendung natürlich egal. 🙈
+                                        </p>
+                                        <hr />
                                         <source-code language="css">
                                             html, body {
                                                 font-family: sans-serif;
@@ -5051,6 +5099,11 @@
                                         aria-labelledby = "spring-prog1-frontend-files-javascript-title"
                                         data-parent     = "#spring-prog1-frontend-files"
                                     >
+                                        <p>
+                                            Und zu guter Letzt hier die clientseitige Anwendungslogik. Die Webservice-Aufrufe erfolgen in den
+                                            beiden Zeilen mit <src-code language="javascript">await fetch(…)</src-code>.
+                                        </p>
+                                        <hr />
                                         <source-code language="javascript">
                                             API_URL = "/api/guestbook";
 
@@ -5114,6 +5167,216 @@
                 </div>
             </article>
             <aside>
+                <p>
+                    Anhand eines kleinen Beispiels wollen wir uns hier die Grundstruktur eines REST-Webservices mit Spring anschauen.
+                    Auf Basis des eben unter <a href="https://start.spring.io" target="_blank">start.spring.io</a> erstellten Grundgerüsts
+                    soll hierfür ein kleines Gästebuch programmiert werden.
+                </p>
+
+                <h3 class="dhbw-lightblue">Aufbau des Quellcodes</h3>
+                <p>
+                    Schauen wir uns das eben erzeugte Projekt in einer IDE an, fällt auf, dass bereits viele für eine Webanwendung
+                    benötigte Funktionen vorgedacht sind und nur noch mit Inhalten versehen werden müssen. Teilweise liegt dies an
+                    der Verwendung von Maven, das bereits eine einheitliche Verzeichnisstruktur für Javaprojekte aller Art definiert,
+                    teilweise aber auch an den Besonderheiten von Spring. Folgende Bedeutung haben die vorgenerierten Dateien und
+                    Verzeichnisse dabei:
+                </p>
+                <ul>
+                    <li>
+                        <b>Source Packages (bzw. <tt>src/main/java/</tt>):</b> Hier liegen wie zu erwarten die Javaklassen und Pakete, welche
+                        den Serverteil der Anwendung ausmachen. Der Übersichtlichkeit halber sollten alle Quellcodes in einem nach
+                        der Anwendung benannten Oberpaket liegen, das je nach Bedarf in weitere Unterpakete gegliedert werden kann.
+                    </li>
+                    <li>
+                        <b>Test Packages (bzw. <tt>src/test/java/</tt>):</b> Hier können mit <a href="https://junit.org/" target="_blank">JUnit</a>
+                        erstellte Unit Tests zum automatisierten Testen der Anwendung abgelegt werden. Diese werden beim Erstellen der
+                        fertigen Auslieferversion der Anwendung automatisch durchgespielt, um die Funktionsfähigkeit aller Klassen
+                        zu gewährleisten.
+                    </li>
+                    <li>
+                        <b><tt>src/main/resources/</tt>:</b> Hier liegen statische Dateien, die zur Ausführung der Anwendung benötigt
+                        werden, aber kein Javacode sind.
+                    </li>
+                    <li>
+                        <b><tt>src/main/resources/static/</tt>:</b> Die in diesem Verzeichnis abgelegten Dateien werden automatisch
+                        über den eingebauten Webserver der Anwendung zur Verfügung gestellt. Hier können wir daher die HTML, CSS und
+                        JavaScript-Dateien für die Browser App zum Aufrufen des Webservices ablegen. Letztlich hängt es von den
+                        Aonfrderungen eines Projekts ab, ob Frontend und Backend auf diese Weise zu einem Projekt zusammengefasst
+                        oder beide in separaten Projekten entwickelt werden.
+                    </li>
+                    <li>
+                        <b><tt>src/main/resources/templates/</tt>:</b> Spring kann auch zur Entwicklung klassischer, serverseitiger
+                        Webanwendungen verwendet werden, bei denen der anzuzeigende HTML-Code bei jeder Anfrage serverseitig
+                        generiert wird. Die hiefür benötigten HTML-Templates müssen in diesem Verzeichnis abgelegt werden. Da wir
+                        dem Projekt aber keine Template Engine hinzugefügt haben, hat dieses Verzeichnis für uns keine Bedeutung.
+                    </li>
+                    <li>
+                        <b><tt>src/main/resources/application.properties</tt>:</b> Dies ist die Konfigurationsdatei unserer Anwendung,
+                        in der verschiedene Einstellungen zur Produktivsetzung vorgenommen werden können. Beispielsweise können hier
+                        die Portnummer des Webservers oder Verbindungen zu externen Datenbankservern hinterlegt werden.
+                    </li>
+                    <li>
+                        <b><tt>pom.xml</tt>:</b> Diese Datei gehört zu Maven und konfiguriert das Projekt an sich. Hier sind unter anderem
+                        Name und Version der Anwendung sowie die zur Ausführung benötigten Spring-Bibliotheken eingetragen.
+                    </li>
+                </ul>
+                <p>
+                    Weiterhin befindet sich in dem Projekt bereits eine <tt>GuestbookApplication</tt> genannte Klasse zum Starten
+                    der Anwendung. Manchmal muss diese Klasse erweitert werden, um bestimmte Einstellungen am Spring-Framework
+                    vorzunehmen. Im einfachsten Fall wird aber einfach wie hier mit einer Zeile die Spring-Anwendung gestartet.
+                    Wichtig ist, dass die Klasse mit <src-code language="java">@SpringApplication</src-code> gekennzeichnet wird,
+                    um verschiedene Funktionen von Spring sauber zu initialisieren. Innerhalb der <src-code language="java">main()</src-code>-Methode
+                    muss dann als letzter Schritt <src-code language="java">SpringApplication.run()</src-code> aufgerufen werden
+                    (siehe Quellcode auf der Folie).
+                </p>
+
+                <h3 class="dhbw-lightblue">Quellcode des REST-Webservices</h3>
+                <p>
+                    Um das Beispiel nicht zu kompliziert werden zu lassen, soll der hier gezeigte Webservice nur <tt>GET</tt>-
+                    und <tt>POST</tt>-Anfragen behandeln können. Unser Gästebuch soll deshalb nur alle vorhandenen Einträge
+                    anzeigen und neue Einträge anlegen können. Weitere HTTP-Anfragen lassen sich einfach ergänzen, wie wir
+                    aber bald sehen werden, lassen sich viele Webservices sogar ganz ohne Quellcode erstellen, wenn diese
+                    nicht mehr machen, als einfache Einträge aus einer Datenbank auszulesen oder darin abzulegen.
+                </p>
+                <p>
+                    Das hier gezeigte Beispiel reagiert auf die URL
+                    <a href="https://localhost:9090/api/guestbook" target="_blank">https://localhost:9090/api/guestbook</a>.
+                    und sendet als Antwort auf eine <tt>GET</tt>-Anfrage eine JSON-Liste wie im folgenden Beispiel:
+                </p>
+                <source-code language="json">
+                    [
+                        {
+                            "name": "Dennis Schulmeister-Zimolong",
+                            "timestamp": "2020-02-15T21:34:46.930126"
+                        },
+                        {
+                            "name": "Prof. Dr. Dietmar Ratz",
+                            "timestamp": "2020-02-15T21:34:53.964149"
+                        }
+                    ]
+                </source-code>
+                <p>
+                    Zum Anlegen eines neuen Eintrags muss eine <tt>POST</tt>-Anfrage mit folgendem JSON-Inhalt gesendet werden:
+                </p>
+                <source-code language="json">
+                    {
+                        "name": "Max Muster"
+                    }
+                </source-code>
+                <p>
+                    Als Antwort darauf liefert der Webservice den vollständigen, angelegten Datensatz:
+                </p>
+                <source-code language="json">
+                    {
+                        "name": "Max Muster",
+                        "timestamp": "2020-02-15T21:35:58.737854"
+                    }
+                </source-code>
+                <p>
+                    Hierfür muss im Grunde genommen nur eine einzige Klasse angelegt werden, die auf HTTP-Anfragen reagieren und
+                    JSON-Daten verarbeiten kann. Um den Quellcode jedoch sauber zu gliedern, sind auf der Folie zwei weitere
+                    Klassen mit einer Entität für Gästebucheinträge und der Geschäftslogik abgebildet. Die Entitätsklasse
+                    <tt>GuestbookEntry</tt> wird auch Datentransferklasse genannt, da sie lediglich ein Datenobjekt modelliert,
+                    dessen Inhalte zwischen Client und Server übertragen werden müssen. Die Klasse beinhaltet daher lediglich
+                    zwei Felder für den Namen und den Zeitstempel. Zusätzlich enthält sie einen Konstruktur zur Vorbelegung
+                    der beiden Felder sowie entsprechende Setter- und Getter-Methoden, die im Quellcode jedoch nicht zu sehen
+                    sind, da sie aufgrund der Annotation <src-code language="java">@Data</src-code> durch die Bibliothek
+                    <a href="https://projectlombok.org/" target="_blank">Projekt Lombok</a> automatisch erzeugt werden.
+                </p>
+                <p>
+                    Die Klasse <tt>GuestbookService</tt> beinhaltet die Geschäftslogik der Anwendung, die hier lediglich aus
+                    einer Ablage der Gästebucheinträge in einer internen Liste besteht. Die Einträge werden daher nicht
+                    dauerhaft gespeichert und gehen verloren, sobald der Server beendet wird. Der Klasse ist die Annotation
+                    <src-code language="java">@Service</src-code> vorangestellt, um sie als eine Geschäftslogik beinhaltende
+                    Klasse zu kennzeichnen. Dadurch wird sie zu einer <b>Spring Bean</b>, die mit der Annotation
+                    <src-code language="java">@Autowired</src-code> als Singleton in andere Klasse injiziert werden kann.
+                    Davon abgesehen beinhalte die Klasse keine Besonderheiten.
+                </p>
+                <p>
+                    Der eigentliche Webservice befindet sich dann in der Klasse <tt>GuestbookController</tt>, wobei das
+                    Wort „Controller” hier andeutet, dass sie auf HTTP-Anfragen reagieren kann. Dies liegt in der Art und
+                    Weise, wie serverseitige Webanwendungen das
+                    <a href="https://de.wikipedia.org/wiki/Model_View_Controller" target="_blank">Model-View-Controller</a>-Architekturmuster
+                    umsetzen, begründet, bei der jene Klasse, welche die HTTP-Anfragen empfängt und an die anderen Klassen
+                    weiterleitet, Controller genannt wird. Die Klasse <tt>GuestbookController</tt> ist daher durch die
+                    Annotation <src-code language="java">@RestController</src-code> als Controller-Klasse eines REST-Webservices
+                    gekennzeichnet, wodurch unter anderem eine automatische Umwandlung aller empfangenen und gesendeten
+                    Daten von und nach JSON ermöglicht wird. Insgesamt werden folgende Annotationen aus Spring MVC in der
+                    Klasse verwendet:
+                </p>
+                <ul>
+                    <li>
+                        <src-code language="java">@RestController</src-code>: Kennzeichnet eine beliebige Klasse als
+                        Controller-Klasse für REST-Webservices. Es handelt sich dabei um eine speziellere Version der
+                        Annotation <src-code language="java">@Controller</src-code> für allgemeine, HTTP verarbeitende
+                        Controller-Klassen.
+                    </li>
+                    <li>
+                        <src-code language="java">@RequestMapping</src-code>: Kann vor einer Klasse oder Methode stehen,
+                        um das URL-Pattern und die HTTP-Verben, auf welche die Klasse oder Methode reagieren soll zu
+                        definieren. Hier steht die Annotation vor der gesamten Klasse, wodurch die darin festgelegte
+                        URL als Prefix für alle Methoden gilt.
+                    </li>
+                    <li>
+                        <src-code language="java">@GetMapping</src-code>: Spezielle Version von
+                        <src-code language="java">@RequestMapping</src-code> nur für <tt>GET</tt>-Anfragen.
+                        Die damit gekennzeichnete Methode wird daher nur bei einer <tt>GET</tt>-Anfrage
+                        der URL <tt>api/guestbook</tt> aufgerufen.
+                    </li>
+                    <li>
+                        <src-code language="java">@PostMapping</src-code>: Spezielle Version von
+                        <src-code language="java">@RequestMapping</src-code> nur für <tt>POST</tt>-Anfragen.
+                    </li>
+                    <li>
+                        <src-code language="java">@RequestBody</src-code>: Kann vor einem Methodenparameter oder einem
+                        Objektattribut stehen, um dieses anhand der im HTTP Request Body empfangenen Daten vorzubelegen.
+                        Die Daten müssen vom Client hierfür im JSON-Format gesendet werden und exakt dem Aufbau der
+                        gekennzeichneten Variablen entsprechen. Da zum Anlegen eines neuen Eintrags nur der Name des
+                        Besuchers benötigt wird, wird im Beispiel hierfür eine innere Klasse mit nur dem Attribut
+                        <tt>name</tt> definieret.
+                    </li>
+                    <li>
+                        <src-code language="java">@ResponseStatus</src-code>: Steht vor einer Methode und legt den
+                        Statuscode fest, der im Erfolgsfall gesendet wird. Die Anlage neuer Daten sollte immer mit
+                        <tt>201 Created</tt> beantwortet werden, was durch diese Annotation sichergestellt wird.
+                    </li>
+                </ul>
+
+                <h3 class="dhbw-lightblue">Quellcode der Frontend App</h3>
+                <p>
+                    Auf der Folie ist auch eine kleine Client-Anwendung als browserseitige Webanwendung dargestellt.
+                    Diese kann entweder als eigenes Projekt unabhängig vom Webservice oder, wie hier gezeigt, als
+                    Teil der Serveranwendung entwickelt werden. Ihre Inhalte müssen hierfür nur im Verzeichnis
+                    <tt>src/main/resources/static/</tt> abgelegt werden.
+                </p>
+                <p>
+                    HTML- und CSS-Code des Beispiels beinhalten keine nennswerten Besonderheiten und auch der
+                    JavaScript-Code ist eher minimalistisch aufgebaut. Bedeutsam sind hier folgenden Stellen
+                    zum Aufruf des Webservices:
+                </p>
+                <source-code language="javascript">
+                    let entries = await fetch(API_URL);
+                    entries = await entries.json();
+                </source-code>
+                <p>
+                    Durch diese Zeilen wird eine <tt>GET</tt>-Anfrage an den Server geschickt und das Ergebnis
+                    im JSON-Format interpretiert. Die Variable <tt>entries</tt> beinhaltet danach die Liste der
+                    der abgerufenen Gästebucheinträge.
+                </p>
+                <source-code language="javascript">
+                    let entry = await fetch(API_URL, {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({name: name})
+                    });
+
+                    entry = await entry.json();
+                </source-code>
+                <p>
+                    Hierdurch wird eine POST-Anfrage mit einem JSON-Objekt zum Anlegen eines neuen Eintrags
+                    an den Server geschickt. Die empfangene Antwort mit den angelegten Daten wird ebenfalls
+                    im JSON-Format interpretiert.
+                </p>
             </aside>
         </section>
 
