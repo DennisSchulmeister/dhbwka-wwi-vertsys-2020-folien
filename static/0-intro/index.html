@@ -43,7 +43,7 @@
                 <!-- 3. Semester: Webprogrammierung -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="dhbw-lightblue">3. Semester: Webprogrammierung</h3>
+                        <h3>3. Semester: Webprogrammierung</h3>
                         <small>
                             Von der Erstellung der ersten Webseite bis zur eigenen Browser App
                         </small>
@@ -64,7 +64,7 @@
                 <!-- 4. Semester: Verteilte Systeme -->
                 <div class="card mt-3">
                     <div class="card-header">
-                        <h3 class="dhbw-lightblue">4. Semester: Verteilte Systeme</h3>
+                        <h3>4. Semester: Verteilte Systeme</h3>
                         <small>
                             Von REST APIs über cloudbasierte Microservices bis zum Internet of Things.
                         </small>
@@ -208,52 +208,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <a
-                            id            = "kapitel-vertsys-pubsub-title"
-                            class         = "d-block"
-                            data-toggle   = "collapse"
-                            aria-expanded = "false"
-                            aria-controls = "kapitel-vertsys-pubsub-content"
-                            href          = "#kapitel-vertsys-pubsub-content"
-                        >
-                            Publish/Subscribe mit MQTT
-                        </a>
-                        <div
-                            id              = "kapitel-vertsys-pubsub-content"
-                            class           = "collapse container-fluid text-left"
-                            aria-labelledby = "kapitel-vertsys-pubsub-title"
-                            data-parent     = "#kapitel-vertsys"
-                        >
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <ul class="p-3">
-                                        <li>
-                                            Asynchrone vs. snychrone Kommunikation
-                                        </li>
-                                        <li>
-                                            Architektur typischer IoT-Anwendungen
-                                        </li>
-                                        <li>
-                                            Besonderheiten des MQTT-Protokolls
-                                        </li>
-                                        <li>
-                                            Nutzung von MQTT mit Java und JavaScript
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <img src="iot.jpg" class="img-fluid mx-auto d-block" />
-                                    <p>
-                                        <small>
-                                            <small>
-                                                Bildnachweis: <a href="http://geek-and-poke.com/geekandpoke/2012/3/14/the-internet-of-things.html" target="_blank">Geek &amp; Poke, March 15, 2012</a>
-                                            </small>
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </article>
@@ -261,7 +215,7 @@
             <aside>
                 <p>
                     <i>
-                        Der Vorlesungsraum, unendliche Weiten. Wir schreiben das Jahr <span id="intro-year">2020</span>.
+                        Der Vorlesungsraum, unendliche Weiten. Wir schreiben das Jahr <span id="intro-year">2021</span>.
                         Dies sind die Abenteuer des Raumschiffs Business Computer Science¹, das mit seiner 200 Mann
                         starken Besatzung drei Jahre unterwegs ist, um neue Welten zu erforschen, neues Leben und neue
                         Zivilisationen. Viele Lichtjahre von Zuhause entfernt dringen die Studierenden in Galaxien
@@ -469,81 +423,114 @@
                     <a href="https://www.wpvs.de/repo/webprog/software/" target="_blank">Installationsanleitung</a>
                 </p>
 
-                <div id="software" class="accordion">
-                    <!-- Java IDE -->
-                    <div class="card">
-                        <div
-                            id            = "software-ide-title"
-                            class         = "card-header"
-                            data-toggle   = "collapse"
-                            aria-expanded = "true"
-                            aria-controls = "software-ide-content"
-                            href          = "#software-ide-content"
-                        >
-                            <h3 class="dhbw-lightblue">Java IDE</h3>
-                        </div>
-                        <div
-                            id              = "software-ide-content"
-                            class           = "collapse show container-fluid text-left p-3"
-                            aria-labelledby = "software-ide-title"
-                            data-parent     = "#software"
-                        >
-                            <div class="row">
-                                <div class="col-md">
-                                    <img src="eclipse-splash.jpg" alt="Eclipse" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
-                                </div>
-                                <div class="col-md" style="min-height: 5em;">
-                                    <img src="netbeans-splash.gif" alt="Apache NetBeans" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md">
+                <lsx-tab-pages>
+                    <lsx-tab-page title="Java">
+                        <lsx-grid-fluid>
+                            <lsx-row class="mb-0">
+                                <lsx-col size="md">
+                                    <h2>Programmiersprache: Java</h2>
+                                </lsx-col>
+                            </lsx-row>
+
+                            <lsx-row>
+                                <lsx-col size="md">
+                                    <img src="java-logo.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                                </lsx-col>
+                                <lsx-col size="md">
+                                    <img src="java-duke.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                                </lsx-col>
+                            </lsx-row>
+
+                            <lsx-row>
+                                <lsx-col size="md">
                                     <ul>
                                         <li>
-                                            Wir werden dieses Semester fast alle Beispiele in Java programmieren.
+                                            Dieses Semester programmieren wir wieder komplett in Java.
                                         </li>
                                         <li>
-                                            Du benötigst deshalb eine IDE, die Maven-Projekte bearbeiten und ausführen kann.
+                                            Hierfür wird ein aktuells <b>Java Development Kit</b> benötigt.
                                         </li>
                                         <li>
-                                            Mit <a href="https://www.eclipse.org/" target="_blank">Eclipse</a> oder
-                                            <a href="https://netbeans.apache.org/" target="_blank">NetBeans</a>
-                                            kannst du nichts verkehrt machen. 👍
+                                            Empfohlene Implementierungen:
+                                            <a href="https://jdk.java.net/" target="_blank">OpenJDK</a> oder
+                                            <a href="https://sap.github.io/SapMachine/" target="_blank">SAPMachine</a>
+                                        </li>
+                                        <li>
+                                            Letzteres lässt sich etwas einfachter unter Windows installieren.
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Build-Werkzeug -->
-                    <div class="card">
-                        <div
-                            id            = "software-build-title"
-                            class         = "card-header"
-                            data-toggle   = "collapse"
-                            aria-expanded = "false"
-                            aria-controls = "software-build-content"
-                            href          = "#software-build-content"
-                        >
-                            <h3 class="dhbw-lightblue">Build-Werkzeug</h3>
-                        </div>
-                        <div
-                            id              = "software-build-content"
-                            class           = "collapse container-fluid text-left p-3"
-                            aria-labelledby = "software-build-title"
-                            data-parent     = "#software"
-                        >
-                            <div class="row">
-                                <div class="col-md">
-                                    <img src="maven-logo.png" alt="Apache Maven" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
-                                </div>
-                                <div class="col-md">
-                                    <img src="maven-screenshot.png" alt="" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md">
+                                    <p>
+                                        <small>
+                                            <small>
+                                                Bildnachweise:
+                                                <a href="https://de.wikipedia.org/wiki/Datei:Java-Logo.svg" target="_blank">Wikipedia</a>,
+                                                <a href="https://wiki.openjdk.java.net/display/duke/Gallery" target="_blank">OpenJDK Wiki</a>
+                                            </small>
+                                        </small>
+                                    </p>
+                                </lsx-col>
+                            </lsx-row>
+                        </lsx-grid-fluid>
+                    </lsx-tab-page>
+
+                    <lsx-tab-page title="IDE">
+                        <lsx-grid-fluid>
+                            <lsx-row class="mb-0">
+                                <lsx-col size="md">
+                                    <h2>Entwicklungsumgebung: NetBeans</h2>
+                                </lsx-col>
+                            </lsx-row>
+
+                            <lsx-row>
+                                <lsx-col size="md">
+                                    <img src="netbeans-splash.gif" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                                </lsx-col>
+                                <lsx-col size="md">
+                                    <img src="netbeans-screenshot.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                                </lsx-col>
+                            </lsx-row>
+
+                            <lsx-row>
+                                <lsx-col size="md">
+                                    <ul>
+                                        <li>
+                                            Grundsätzlich kann jede Java IDE in der Vorlesung verwendet werden.
+                                        </li>
+                                        <li>
+                                            Die IDE muss jedoch in der Lage sein, Maven-Projekte zu bearbeiten.
+                                        </li>
+                                        <li>
+                                            Am einfachsten funktioniert dies mit Apache NetBeans (oder der Kommandozeile 🥴).
+                                        </li>
+                                        <li>
+                                            Im Vergleich zu Eclipse und IntelliJ ist NetBeans einfacher und weniger fehleranfällig.
+                                        </li>
+                                    </ul>
+                                </lsx-col>
+                            </lsx-row>
+                        </lsx-grid-fluid>
+                    </lsx-tab-page>
+
+                    <lsx-tab-page title="Maven">
+                        <lsx-grid-fluid>
+                            <lsx-row class="mb-0">
+                                <lsx-col size="md">
+                                    <h2>Buildwerkzeug: Maven</h2>
+                                </lsx-col>
+                            </lsx-row>
+
+                            <lsx-row>
+                                <lsx-col size="md">
+                                    <img src="maven-logo.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                                </lsx-col>
+                                <lsx-col size="md">
+                                    <img src="maven-screenshot.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                                </lsx-col>
+                            </lsx-row>
+
+                            <lsx-row>
+                                <lsx-col size="md">
                                     <ul>
                                         <li>
                                             <a href="https://maven.apache.org/" target="_blank">Maven</a> ist ein
@@ -556,57 +543,64 @@
                                             und lädt hierfür auch alle benötigten Bibliotheken aus dem Internet. 🌍
                                         </li>
                                         <li>
-                                            Darüber hinaus ermöglicht es uns, in jeder beliebigen Java IDE zu arbeiten.
+                                            Darüber hinaus ermöglicht es uns, dasselbe Projekt in unterschiedlichen IDEs zu bearbeiten.<
+                                        </li>
+                                        <li style="color: red;">
+                                            In NetBeans ist Maven bereits enthalten. Für alle anderen IDEs muss es manuell nachinstalliert werden!
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </lsx-col>
+                            </lsx-row>
+                        </lsx-grid-fluid>
+                    </lsx-tab-page>
 
-                    <!-- Testwerkzeuge -->
-                    <div class="card">
-                        <div
-                            id            = "software-ide-title"
-                            class         = "card-header"
-                            data-toggle   = "collapse"
-                            aria-expanded = "false"
-                            aria-controls = "software-test-content"
-                            href          = "#software-test-content"
-                        >
-                            <h3 class="dhbw-lightblue">Testwerkzeuge</h3>
-                        </div>
-                        <div
-                            id              = "software-test-content"
-                            class           = "collapse container-fluid text-left p-3"
-                            aria-labelledby = "software-test-title"
-                            data-parent     = "#software"
-                        >
-                            <div class="row">
-                                <div class="col-md">
-                                    <img src="postman-screenshot.png" alt="Postman" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
-                                </div>
-                                <div class="col-md">
-                                    <img src="correomqtt-screenshot.png" alt="CorreoMQTT" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md">
+                    <lsx-tab-page title="Postman">
+                        <lsx-grid-fluid>
+                            <lsx-row class="mb-0">
+                                <lsx-col size="md">
+                                    <h2>API-Testwerkzeug: Postman</h2>
+                                </lsx-col>
+                            </lsx-row>
+
+                            <lsx-row>
+                                <lsx-col size="md">
+                                    <img src="postman-splash.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                                </lsx-col>
+                                <lsx-col size="md">
+                                    <img src="postman-screenshot.png" class="img-thumbnail d-block" style="width: 100%; height: 100%;" />
+                                </lsx-col>
+                            </lsx-row>
+
+                            <lsx-row>
+                                <lsx-col size="md">
                                     <ul>
                                         <li>
-                                            Entfernte APIs sowie unsere eigenen Webservices testen wir mit
-                                            <a href="https://www.getpostman.com/" target="_blank">Postman</a>.
+                                            <a href="https://www.postman.com/downloads/" target="_blank">Postman</a> ist ein Testwerkzeug für Webservice-APIs.
                                         </li>
                                         <li>
-                                            MQTT-Nachrichten senden und empfangen wir zum Testen mit
-                                            <a href="https://github.com/EXXETA/correomqtt" target="_blank">CorreoMQTT</a>.
+                                            Damit können beliebige HTTP-Anfragen an entfernte Server geschickt und analysiert werden.
+                                        </li>
+                                        <li>
+                                            Einmal definierte Anfragen können in sog. „Collections” dauerhaft gespeichert werden.
+                                        </li>
+                                        <li>
+                                            Entfernte APIs können damit einfach ausprobiert, dokumentiert und getestet werden.
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                                    <p>
+                                        <small>
+                                            <small>
+                                                Bildnachweis:
+                                                <a href="https://ashguillau.me/postman" target="_blank">Ash Guillaume</a>
+                                            </small>
+                                        </small>
+                                    </p>
+                                </lsx-col>
+                            </lsx-row>
+                        </lsx-grid-fluid>
+                    </lsx-tab-page>
+                </lsx-tab-pages>
             </article>
             <aside>
                 <p>
@@ -616,21 +610,39 @@
                     deshalb eine <a href="https://www.wpvs.de/repo/webprog/software/" target="_blank">Installationsanleitung</a>
                     online gestellt.
                 </p>
+
                 <dl>
+                    <dt>
+                        Java Development Kit
+                    </dt>
+                    <dd>
+                        Dieses Semester werden wir wieder komplett in Java programmieren. Du benötigst daher
+                        ein aktuelles Java Development Kit, das neben der Java-Laufzeitumgebung auch einen
+                        Compiler beinhaltet. <a href="https://jdk.java.net/" target="_blank">OpenJDK</a> ist
+                        hier normalerweise das Produkt der Wahl, da es open-source und für alle relevanten
+                        Betriebssysteme verfügbar ist. Das von Oracle angebotene, proprietäre JDK beruht im
+                        Kern ebenfalls auf OpenJDK, darf seit einiger Zeit jedoch nicht mehr frei verwendet
+                        werden. Einziger Nachteil von OpenJDK ist, dass die Windows-Version kein
+                        Installationsprogramm beinhaltet. Eine etwas einfacher zu installierende Variante
+                        könnte daher die von SAP herausgebrachte Version
+                        <a href="https://sap.github.io/SapMachine/" target="_blank">SAPMachine</a>
+                        sein.
+                    </dd>
+
                     <dt>
                         Java IDE
                     </dt>
                     <dd>
                         <p>
-                            Dieses Semester werden wir sehr viel in Java programmieren. Eine gute IDE ist daher
-                            unabdingbar. Allerdings spielt es keine besondere Rolle, für welche IDE du dich
-                            entscheidest, so lange du gut damit zurecht kommst. Im Zweifelsfall reicht auch
-                            schon ein guter Code-Editor. Idealerweise sollte die IDE Maven-Projekte öffnen
-                            können, um dir die Arbeit ein wenig zu erleichtern. Echte Frauen und Männer können
-                            stattdessen natürlich auch die Konsole verwenden. 😱 Falls du noch keine Präferenz
-                            hast, können wir sowohl
-                            <a href="https://www.eclipse.org/" target="_blank">Eclipse</a> als auch
-                            <a href="https://netbeans.apache.org/" target="_blank">NetBeans</a> empfehlen.
+                            Im Grunde genommen spielt es keine Rolle, mit welcher IDE zu programmierst,
+                            da wir zum Bauen der Anwendungen ohnehin Maven benutzen. Alle gängigen IDEs
+                            können Maven-Projekte bearbeiten, benötigen in der Regel jedoch zusätzliche
+                            Plugins dafür. Am einfachsten funktioniert dies mit
+                            <a href="https://netbeans.apache.org/" target="_blank">Apache NetBeans</a>,
+                            da hier Maven bereits in der Basisinstallation enthalten ist. Außerdem ist
+                            NetBeans (im Vergleich zu Eclipse) weniger fehleranfällig und generell viel
+                            aufgeräumter und einfacher zu bedienen als andere IDEs (insbesondere auch als
+                            IntelliJ IDEA).
                         </p>
                     </dd>
 
@@ -652,17 +664,17 @@
                     </dd>
 
                     <dt>
-                        Testwerkzeuge
+                        API-Testwerkzeug
                     </dt>
                     <dd>
                         <p>
                             „Developers build it and testers break it” lautet ein weit verbreitetes Sprichwort.
-                            Doch auch als Entwickler müssen wir unsere Anwendungen testen, bevor wir sie an die
-                            Qualitätssicherung übergeben. Hierbei helfen uns spezialisierte Testwerkzeuge wie
-                            <a href="https://www.getpostman.com/" target="_blank">Postman</a> oder
-                            <a href="https://github.com/EXXETA/correomqtt" target="_blank">CorreoMQTT</a>, mit
-                            denen wir entfernte APIs und Webservices aufrufen bzw. MQTT-Nachrichten senden und
-                            empfangen können.
+                            Doch auch als Entwickler müssen wir unsere Anwendungen testen oder fremde Webservice
+                            APIs ausprobieren, bevor wir diese in unsere eigenen Programme integrieren können.
+                            Hierbei helfen Werkzeuge wie <a href="https://www.getpostman.com/" target="_blank">Postman</a>,
+                            mit dem beliebige HTTP-Anfragen konstruiert und an einen Server geschickt werden können.
+                            Darüber hinaus können die Anfragen zur späteren Verwendung und zur besseren Dokumentatione
+                            einer API gesammelt und lokal gespeichert werden.
                         </p>
                     </dd>
                 </dl>
@@ -672,26 +684,23 @@
         <section>
             <h1>Prüfungsaufgabe</h1>
             <article>
-                <h2>Zusammensetzung des Portfolios</h2>
+                <h2>Gleiche Bedingungen wie in „Webprogrammierung”</h2>
                 <ul>
                     <li>
-                        50% der Portfolioprüfung wurden bereits im 3. Semester erbracht.
+                        60% der Portfolioprüfung wurden bereits im 3. Semester erbracht.
                     </li>
                     <li>
-                        Die andere Hälfte besteht aus einer semesterbegleitenden Aufgabe zu „Verteilte Systeme”.
+                        Die restlichen 40% ergeben sich aus der Vorlesung „Verteilte Systeme”.
                     </li>
                     <li>
-                        Diese wird in Eigenverantwortung und Einzelarbeit semesterbegleitend bearbeitet.
-                    </li>
-                    <li>
-                        Die Aufgabenstellung stellen wir zeitnah in Moodle zur Verfügung.
+                        Die Aufteilung ergibt sich aus der Stundenzahl beider Vorlesungen.
                     </li>
                 </ul>
 
+                <h2 class="mt-4">Zusammensetzung des Portfolios</h2>
                 <table class="dhbw-table-border" style="width: 100%; margin-bottom: 1em; font-size: 90%;">
                     <thead>
                         <tr>
-                            <th>I/G</th>
                             <th>Semster</th>
                             <th>Artefakt</th>
                             <th>Schwierigkeit</th>
@@ -701,103 +710,72 @@
                     </thead>
 
                     <!-- Drittes Semester -->
-                    <tr class="dhbw-fontsize-tiny">
-                        <td>I</td>
+                    <tr style="background-color: #eaeaea;">
                         <td>3</td>
-                        <td><b>Einleitung (1 Seite)</b></td>
-                        <td>Beurteilen</td>
-                        <td>Ende des Semesters</td>
-                        <td>1</td>
-                    </tr>
-                    <tr class="dhbw-fontsize-tiny">
-                        <td>I</td>
-                        <td>3</td>
-                        <td><b>Lernkontrollen in Moodle</b></td>
+                        <td><b>Lernkontrollen zu „Webprogrammierung”</b></td>
                         <td>Erinnern, Verstehen</td>
-                        <td>Laut Vorlesungsübersicht</td>
-                        <td>1</td>
+                        <td>Vor der jeweiligen Vorlesung</td>
+                        <td>2</td>
                     </tr>
-                    <tr class="dhbw-fontsize-tiny">
-                        <td>G</td>
+                    <tr style="background-color: #eaeaea;">
                         <td>3</td>
-                        <td><b>Programmierprojekt</b></td>
-                        <td>Anwenden</td>
-                        <td>Ende des Semesters</td>
+                        <td><b>Vertiefende Aufgaben zu den einzelnen Kapiteln</b></td>
+                        <td>Anwenden, Analysieren, Beurteilen</td>
+                        <td>Ende des dritten Semesters</td>
                         <td>4</td>
                     </tr>
 
                     <!-- Viertes Semester -->
-                    <tr style="background-color: #eaeaea;">
-                        <td>I</td>
+                    <tr>
                         <td>4</td>
-                        <td><b>Lernkontrollen in Moodle</b></td>
+                        <td><b>Lernkontrollen zu „Verteilte Systeme”</b></td>
                         <td>Erinnern, Verstehen</td>
-                        <td>Laut Vorlesungsübersicht</td>
+                        <td>Vor der jeweiligen Vorlesung</td>
                         <td>1</td>
                     </tr>
-                    <tr style="background-color: #eaeaea;">
-                        <td>I</td>
+                    <tr>
                         <td>4</td>
-                        <td><b>Semesterbegleitende Aufgabe</b></td>
+                        <td><b>Vertiefende Aufgaben zu den einzelnen Kapiteln</b></td>
                         <td>Anwenden, Analysieren, Beurteilen</td>
-                        <td>Ende des Semesters</td>
-                        <td>4</td>
-                    </tr>
-                    <tr style="background-color: #eaeaea;">
-                        <td>I</td>
-                        <td>4</td>
-                        <td><b>Reflexion (1 Seite)</b></td>
-                        <td>Beurteilen</td>
-                        <td>Ende des Semesters</td>
-                        <td>1</td>
+                        <td>Ende des vierten Semesters</td>
+                        <td>3</td>
                     </tr>
                 </table>
                 <p>
-                    <b>I/G:</b> I = Individualleitung, G = Gruppenleistung <br />
                     <b>Schwierigkeit:</b> Erinnern &lt; Verstehen &lt; Anwenden &lt; Analysieren &lt; Beurteilen
                 </p>
 
-                <h2>Berechnung der Endnote</h2>
-                <p>
-                    <table>
-                        <tr style="padding: 0; border: 0px solid black; border-bottom-width: 1px;">
-                            <td>
-                                Σ (Einzelnote × Gewichtung)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Σ (Gewichtung)
-                            </td>
-                        </tr>
-                    </table>
-                </p>
+                <lsx-info-box>
+                    Auch dieses Semester gibt es wieder Lernkontrollen und ein Aufgabenblatt, das
+                    am Ende des Semester abgegeben werden muss.
+                </lsx-info-box>
             </article>
             <aside>
+                <h2>Inhalt des Prüfungsportfolios</h2>
                 <p>
                     „Webprogrammierung” und „Verteilte Systeme” werden anhand einer gemeinsamen Portfolioprüfung
                     bewertet. Letztes Semester haben wir deshalb verschiedene Artefakte wie die Lernkontrollen
-                    in Moodle oder den Quellcode des Programmierprojekts eingesammelt, um diese in das Portfolio
-                    aufnehmen zu können. Im Gegensatz zum vorherigen Semester werden wir dieses mal aber keine
-                    Gruppenarbeiten machen, da mehrheitlich individuell erstellte Unterlagen in das Portfolio
-                    eingehen müssen. Jeder soll sich ja seine oder ihre Note selbst verdienen. 😉
+                    in Moodle oder die Lösungen zum Aufgabenblatt eingesammelt, um diese in das Portfolio aufnehmen
+                    zu können. Dieses Semester machen wir das Gleiche, Umfang und Gewichtung sind nur etwas geringer,
+                    da „Verteilte Systeme” weniger Stunden als „Webprogrammierung” umfasst.
                 </p>
                 <p>
-                    Genau wie im Vorjahr werden wir wieder die Lernkontrollen aus Moodle sowie einen Bericht
-                    (den Reflexionsbericht) einsammeln, um euren Lernfortschritt 📶 zu beurteilen. Das Gesamtverständnis
-                    aller Vorlesungsinhalte wird hingegen anhand eines semesterbegleitenden Aufgabenblatts geprüft,
-                    das jede*r Studierende in Eigenverantwortung und unter freier Zeiteinteilung parallel zu den
-                    Vorlesungen bearbeitet. Das Aufgabenblatt beinhaltet hierfür verschiedene Aufgaben zu den
-                    einzelnen Kapiteln, die am Semesterende abgegeben werden müssen. Dabei handelt es sich nicht
-                    nur um Programmieraufgaben, denn zu den Kompetenzzielen der Vorlesung gehören ja auch andere
-                    Fähigkeiten, wie die Beurteilung fachlicher Anforderungen oder die Erarbeitung eigener Architekturansätze.
-                </p>
-                <p>
-                    Insgesamt ergibt sich somit ein ausgewogenes Prüfungsportfolio, in dem alle
+                    Genau wie im Vorjahr sind die Lernkontrollen direkt nach dem jeweiligen Selbststudium zu erbringen,
+                    während die Lösungen zum Aufgabenblatt erst ganz am Ende eingereicht werden müssen. Und genau wie
+                    letztes Jahr, bestehen die Aufgaben nicht nur aus Wissensabfragen und Programmieraufgaben. Die
+                    Aufgaben bestehen stattdessen aus unterschiedlichen Fragestellungen aus den Bereichen Erinnern,
+                    Verstehen, Anwenden, Analysieren und Beurteilen, um den breitgefächterten Kompetenzzielen der
+                    Vorlesung gerecht zu werden. Es handelt sich dabei um die bekannten
                     <a href="https://dbs-lin.ruhr-uni-bochum.de/lehreladen/planung-durchfuehrung-kompetenzorientierter-lehre/lehr-und-lernziele/typen-und-stufen/" target="_blank">Verständnisstufen</a>,
-                    wie sie von Benjamin Bloom formuliert wurden, 📚 Anwendung finden. Jedes Artefakt 📜 wird hierfür
-                    anhand eines einheitlichen Bewertungsbogens mit einer eigenen Note bewertet und anschließend
-                    entsprechend seiner Gewichtung mit den anderen Noten verrechnet. 🧮
+                    nach Benjamin Bloom, die im Grunde genommen jedem guten Vorlesungsplan zu Grunde liegen.
+                </p>
+
+                <h2>Berechnung der Note</h2>
+                <p>
+                    Die Benotung funktioniert eigentlich wie in einer Klausur. Jedes Artefakt ist mit einer
+                    Punktzahl versehen, die durch seine Abgabe erreicht werden kann. Am Ende werden einfach
+                    alle Punkte zusammengezählt, ihr prpzentualer Anteil zur Maximalpunktzahl ermittelt und
+                    diese in eine Note umgerechnet.
                 </p>
             </aside>
         </section>
@@ -805,27 +783,24 @@
         <section>
             <h1>Literaturempfehlungen</h1>
             <article>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="buch-java.png" class="img-fluid img-thumbnail mx-auto d-block" />
-                        </div>
-                        <div class="col-md-4">
-                            <img src="buch-network.png" class="img-fluid img-thumbnail mx-auto d-block" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="buch-spring5.png" class="img-fluid img-thumbnail mx-auto d-block" />
-                        </div>
-                        <div class="col-md-4">
-                            <img src="buch-api.png" class="img-fluid img-thumbnail mx-auto d-block" />
-                        </div>
-                        <div class="col-md-4">
-                            <img src="buch-mqtt.png" class="img-fluid img-thumbnail mx-auto d-block" />
-                        </div>
-                    </div>
-                </div>
+                <lsx-grid-fluid>
+                    <lsx-row>
+                        <lsx-col size="md-4">
+                            <img src="buch-network.png" class="img-thumbnail mx-auto d-block" style="width: 100%" />
+                        </lsx-col>
+                        <lsx-col size="md-4">
+                            <img src="buch-spring5.png" class="img-thumbnail mx-auto d-block" style="width: 100%" />
+                        </lsx-col>
+                        <lsx-col size="md-4">
+                            <img src="buch-api.png" class="img-thumbnail mx-auto d-block" style="width: 100%" />
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row>
+                        <lsx-col size="md-4">
+                            <img src="buch-java.png" class="img-thumbnail mx-auto d-block" style="width: 100%" />
+                        </lsx-col>
+                    </lsx-row>
+                </lsx-grid-fluid>
             </article>
             <aside>
                 <p>
@@ -836,39 +811,20 @@
                 </p>
                 <ul>
                     <li>
-                        <p>
-                            <b>Grundkurs Programmieren in Java</b>
-                            <br />
-                            (Ratz, Schulmeister-Zimolong, Seese, Wiesenberger), Hanser-Verlag
-                        </p>
+                        <b>Java Network Programming</b>
+                        (Harold), O'Reilly
                     </li>
                     <li>
-                        <p>
-                            <b>Java Network Programming</b>
-                            <br />
-                            (Harold), O'Reilly
-                        </p>
+                        <b>Mastering Spring 5</b>
+                        (Karanam), Packt&gt;
                     </li>
                     <li>
-                        <p>
-                            <b>Mastering Spring 5</b>
-                            <br />
-                            (Karanam), Packt&gt;
-                        </p>
+                        <b>API-Design: Praxishandbuch für Java- und Webservice-Entwickler</b>
+                        (Spichale), dpunkt.verlag
                     </li>
                     <li>
-                        <p>
-                            <b>API-Design: Praxishandbuch für Java- und Webservice-Entwickler</b>
-                            <br />
-                            (Spichale), dpunkt.verlag
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <b>MQTT Essentials - A Lightweight IoT Protocol</b>
-                            <br />
-                            (Hillar), Packt&gt;
-                        </p>
+                        <b>Grundkurs Programmieren in Java</b>
+                        (Ratz, Schulmeister-Zimolong, Seese, Wiesenberger), Hanser-Verlag
                     </li>
                 </ul>
                 <p>

@@ -41,9 +41,9 @@
         <section data-background-color="rgb(210,190,210)">
             <h1>Verteilte Anwendungen im Alltag</h1>
             <article>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md">
+                <lsx-container-fluid>
+                    <lsx-row>
+                        <lsx-col size="md">
                             <img src="motivation-internet.png" class="img-thumbnail d-block" style="width: 100%" />
                             Sämtliche Internetdienste
                             <p class="dhbw-fontsize-tiny">
@@ -51,8 +51,8 @@
                                     Bildnachweis: <a href="https://pixabay.com/illustrations/email-newsletter-marketing-online-3249062/" target="_blank">Pixabay: ribkhan</a>
                                 </small>
                             </p>
-                        </div>
-                        <div class="col-md">
+                        </lsx-col>
+                        <lsx-col size="md">
                             <img src="motivation-mobile.jpg" class="img-thumbnail d-block" style="width: 100%" />
                             Mobile Kommunikation
                             <p class="dhbw-fontsize-tiny">
@@ -60,10 +60,10 @@
                                     Bildnachweis: <a href="https://pixabay.com/photos/communication-communicate-3095538/" target="_blank">Pixabay: Bru-nO</a>
                                 </small>
                             </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md">
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row>
+                        <lsx-col size="md">
                             <img src="motivation-forschung.jpg" class="img-thumbnail d-block" style="width: 100%" />
                             Forschung und Wissenschaft
                             <p class="dhbw-fontsize-tiny">
@@ -71,8 +71,8 @@
                                     Bildnachweis: <a href="https://pixabay.com/photos/moon-landing-apollo-11-nasa-60582/" target="_blank">Pixabay: WikiImages</a>
                                 </small>
                             </p>
-                        </div>
-                        <div class="col-md">
+                        </lsx-col>
+                        <lsx-col size="md">
                             <img src="motivation-vod.jpg" class="img-thumbnail d-block" style="width: 100%" />
                             Video-on-Demand
                             <p class="dhbw-fontsize-tiny">
@@ -80,14 +80,14 @@
                                     Bildnachweis: <a href="https://unsplash.com/photos/ngMtsE5r9eI" target="_blank">Unsplash: jenskreuter</a>
                                 </small>
                             </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md">
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row>
+                        <lsx-col size="md">
                             <img src="motivation-autonomes-fahren.jpg" class="img-thumbnail d-block" style="width: 100%" />
                             Autonomes Fahren
-                        </div>
-                        <div class="col-md">
+                        </lsx-col>
+                        <lsx-col size="md">
                             <img src="motivation-iot.jpg" class="img-thumbnail d-block" style="width: 100%" />
                             Internet of Things
                             <p class="dhbw-fontsize-tiny">
@@ -95,9 +95,9 @@
                                     Bildnachweis: <a href="https://pixabay.com/photos/smarthome-smart-house-smart-4447520/" target="_blank">Pixabay: haus_automation</a>
                                 </small>
                             </p>
-                        </div>
-                    </div>
-                </div>
+                        </lsx-col>
+                    </lsx-row>
+                </lsx-container-fluid>
             </article>
             <aside>
                 <p>
@@ -263,7 +263,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Ach, ein System -->
                         <div
                             class           = "tab-pane fade show active"
@@ -281,9 +281,7 @@
                                 Doch was um alles in der Welt ist überhaupt ein „System”
                                 <span style="color: crimson; text-shadow: 1px 1px 1px rgba(0,0,0,0.5);">⁉️</span>
                             </p>
-                            <div class="embed-responsive-16by9">
-                                <iframe src="https://www.youtube-nocookie.com/embed/UWU14-EK9CE" allow="encrypted-media" allowfullscreen></iframe>
-                            </div>
+                            <lsx-youtube video="UWU14-EK9CE" style="width: 25em; max-width: 100%;"></lsx-youtube>
                         </div>
                         <!-- Vollständig getrennte Computereinheiten -->
                         <div
@@ -299,7 +297,7 @@
                                 dem Anwender dabei weitgehend verborgen.
                             </p>
                             <p>
-                                <img src="verteiltes-system.jpg" alt="Skizze eines verteilten Systems mit mehreren Computern" style="width: 100%" />
+                                <img src="verteiltes-system.png" alt="Skizze eines verteilten Systems mit mehreren Computern" style="width: 100%" />
                             </p>
                             <p>
                                 <small>
@@ -414,7 +412,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Das Internet -->
                         <div
                             class           = "tab-pane fade show active"
@@ -444,37 +442,37 @@
                             role            = "tabpanel"
                             aria-labelledby = "vertsys-beispiele-supercomputer-tab"
                         >
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col">
+                            <lsx-container-fluid>
+                                <lsx-row>
+                                    <lsx-col>
                                         Hochleistungsrechner, wie sie in der Forschung und Wissenschaft oder von großen Internetkonzernen
                                         genutzt werden, bestehen aus einer riesigen Anzahl kleiner Computer mit eigenem Hauptspeicher und
                                         in der Regel auch eigenem Massenspeicher. Die Einzelcomputer werden dabei in <b>Storage Nodes</b>
                                         zur Speicherung von Daten und in <b>Compute Nodes</b> zur Bereitstellung von Rechenleistung
                                         unterschieden.
-                                    </div>
-                                </div>
+                                    </lsx-col>
+                                </lsx-row>
 
-                                <div class="row">
-                                    <div class="col-md-4">
+                                <lsx-row>
+                                    <lsx-col size="md-4">
                                         <img src="ibm-blue-gene.jpg" alt="IBM Blue-Gene Supercomputer" style="width: 100%;" class="img-thumbnail" />
-                                    </div>
-                                    <div class="col-md-8">
+                                    </lsx-col>
+                                    <lsx-col size="md-4">
                                         <img src="gridcomputer.svg" alt="Skizze eines Grid-Computers" style="width: 100%;" />
-                                    </div>
-                                </div>
+                                    </lsx-col>
+                                </lsx-row>
 
-                                <div class="row">
-                                    <div class="col">
+                                <lsx-row>
+                                    <lsx-col>
                                         <small>
                                             <small>
                                                 Bildnachweis (Foto):
                                                 <a href="https://de.wikipedia.org/wiki/Blue_Gene#/media/File:IBM_Blue_Gene_P_supercomputer.jpg" taget="_blank">Wikimedia Commons: Argonne National Laboratory</a>
                                             </small>
                                         </small>
-                                    </div>
-                                </div>
-                            </div>
+                                    </lsx-col>
+                                </lsx-row>
+                            </lsx-container-fluid>
                         </div>
                         <!-- Videoüberwachung -->
                         <div
@@ -648,7 +646,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Beispiel: World Wide Web -->
                         <div
                             class           = "tab-pane fade show active"
@@ -823,29 +821,29 @@
         <section>
             <h1>Wozu verteilte Systeme gebraucht werden</h1>
             <article>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md">
+                <lsx-container-fluid>
+                    <lsx-row>
+                        <lsx-col size="md">
                             <h2>Parallelisierung rechenintensiver Aufgaben</h2>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 0;">
-                        <div class="col-md-4">
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row style="margin-bottom: 0;">
+                        <lsx-col size="md-4">
                             <img src="handwerker1.jpg" alt="Ein einzelner Handwerker" class="img-thumbnail" style="width: 100%" />
                             Ein einzelner Computer würde viel zu lange brauchen!
-                        </div>
-                        <div class="col-md-4">
+                        </lsx-col>
+                        <lsx-col size="md-4">
                             <img src="handwerker2.jpg" alt="Viele Handwerker gleichzeitig" class="img-thumbnail" style="width: 100%" />
                             Wenn sich die Arbeit verteilt, geht es natürlich viel schneller.
-                        </div>
-                        <div class="col-md-4">
+                        </lsx-col>
+                        <lsx-col size="md-4">
                             <img src="raytracing1.jpg" alt="Computergeneriertes Bild zweier Schrauben" class="img-thumbnail" style="width: 100%" />
                             Zum Beispiel beim <a href="https://de.wikipedia.org/wiki/Raytracing" target="_blank">Raytracing</a>,
                             das zwar besonders realistische Bilder erzeugt, dafür aber auch sehr rechenintensiv ist.
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md">
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row>
+                        <lsx-col size="md">
                             <small>
                                 <small>
                                     Bildnachweise:
@@ -854,16 +852,16 @@
                                     <a href="https://pixabay.com/en/screw-thread-technology-mother-1924219/" target="_blank">Pixabay: PIRO4D</a>
                                 </small>
                             </small>
-                        </div>
-                    </div>
+                        </lsx-col>
+                    </lsx-row>
 
-                    <div class="row">
-                        <div class="col-md">
+                    <lsx-row>
+                        <lsx-col size="md">
                             <h2>Weitere Anwendungsfälle</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md">
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row>
+                        <lsx-col size="md">
                             <ul>
                                 <li>
                                     Informations- und Wissensmanagement¹
@@ -895,9 +893,9 @@
                                     ¹ Hierfür wurde das gesamte Internet ursprünglich erfunden.
                                 </small>
                             </p>
-                        </div>
-                    </div>
-                </div>
+                        </lsx-col>
+                    </lsx-row>
+                </lsx-container-fluid>
             </article>
             <aside>
                 <p>
@@ -1020,71 +1018,71 @@
                     </tr>
                 </table>
 
-                <div class="container-fluid p-0" style="margin-top: 2em;">
+                <lsx-container-fluid class="p-0" style="margin-top: 2em;">
                     <!-- Funktionale Sicht -->
-                    <div class="row">
-                        <div class="col-md-2">
+                    <lsx-row>
+                        <lsx-col size="md-2">
                             <img src="entwurf-funktional.jpg" class="d-block img-fluid img-thumbnail" />
-                        </div>
-                        <div class="col-md">
-                            <h3 class="dhbw-lightblue">Funktionale Sicht</h3>
+                        </lsx-col>
+                        <lsx-col size="md">
+                            <h3>Funktionale Sicht</h3>
                             <p>
                                 Zweck und Umfang der zu erstellenden Anwendung, funktionale Anforderungen aus Anwendersicht
                                 sowie allgemeingültige Vorgaben. Diese Spezifikation steht über allen anderen.
                             </p>
-                        </div>
-                    </div>
+                        </lsx-col>
+                    </lsx-row>
 
-                    <div class="row">
+                    <lsx-row>
                         <!-- Informationssicht -->
-                        <div class="col-md-2">
+                        <lsx-col size="md-2">
                             <img src="entwurf-information.png" class="d-block img-fluid img-thumbnail" />
-                        </div>
-                        <div class="col-md-4">
-                            <h3 class="dhbw-lightblue">Informationssicht</h3>
+                        </lsx-col>
+                        <lsx-col size="md-4">
+                            <h3>Informationssicht</h3>
                             <p>
                                 Modellierung aller benötigten Datenstrukturen und den
                                 darauf aufbauenden Algorithmen.
                             </p>
-                        </div>
+                        </lsx-col>
 
                         <!-- Modulsicht -->
-                        <div class="col-md-2">
+                        <lsx-col size="md-2">
                             <img src="entwurf-modul.jpg" class="d-block img-fluid img-thumbnail" />
-                        </div>
-                        <div class="col-md-4">
-                            <h3 class="dhbw-lightblue">Modulsicht</h3>
+                        </lsx-col>
+                        <lsx-col size="md-4">
+                            <h3>Modulsicht</h3>
                             <p>
                                 Aufteilung in fachlich getrennte Teilsysteme (Module) inklusive
                                 der hierfür notwendigen Schnittstellen.
                             </p>
-                        </div>
-                    </div>
+                        </lsx-col>
+                    </lsx-row>
 
-                    <div class="row">
+                    <lsx-row>
                         <!-- Konstruktive Sicht -->
-                        <div class="col-md-2">
+                        <lsx-col size="md-2">
                             <img src="entwurf-konstruktiv.jpg" class="d-block img-fluid img-thumbnail" />
-                        </div>
-                        <div class="col-md-4">
-                            <h3 class="dhbw-lightblue">Konstruktive Sicht</h3>
+                        </lsx-col>
+                        <lsx-col size="md-4">
+                            <h3>Konstruktive Sicht</h3>
                             <p>
                                 Technische Vorgaben und allgemeine Mechanismen zur Kommunikation zwischen den Modulen.
                             </p>
-                        </div>
+                        </lsx-col>
 
                         <!-- Technologische Sicht -->
-                        <div class="col-md-2">
+                        <lsx-col size="md-2">
                             <img src="entwurf-technologisch.jpg" class="d-block img-fluid img-thumbnail" />
-                        </div>
-                        <div class="col-md-4">
-                            <h3 class="dhbw-lightblue">Technologische Sicht</h3>
+                        </lsx-col>
+                        <lsx-col size="md-4">
+                            <h3>Technologische Sicht</h3>
                             <p>
                                 Zu verwendende Technologien wie Hardwareplattformen, Programmiersprachen oder Frameworks.
                             </p>
-                        </div>
-                    </div>
-                </div>
+                        </lsx-col>
+                    </lsx-row>
+                </lsx-container-fluid>
                 <p>
                     <small>
                         <small>
@@ -1109,33 +1107,33 @@
                     wir benötigen. Hierzu definiert sie fünf Sichten des Entwurfs, von denen sich jede an einen anderen
                     Personenkreis wendet und deshalb auch einen anderen Teilaspekt behandelt.
                 </p>
-                <h5 class="dhbw-lightblue">Funktionale Sicht</h5>
+                <h5>Funktionale Sicht</h5>
                 <p>
                     Am Anfang steht natürlich immer eine Idee bzw. ein Zweck, den das System erfüllen soll. Auch muss der Umfang
                     des zu erstellenden Systems klar definiert werden. Dieser wird daher zusammen mit den funktionalen Anforderungen
                     aus Anwendersicht sowie den allgemeinen Anforderungen in einer Funktionsbeschreibung festgehalten.
                 </p>
-                <h5 class="dhbw-lightblue">Informationssicht</h5>
+                <h5>Informationssicht</h5>
                 <p>
                     Anhand der funktionalen Anforderungen kann als nächstes ein Datenmodell mit dazu passenden Algorithmen entworfen
                     werden. Das heißt, noch bevor wir uns überhaupt über die genaue Aufteilung des Systems Gedanken machen, legen
                     wir erst einmal fest, welche Daten verarbeitet werden sollen, wie sie hierfür aufgebaut sein müssen und welche
                     Algorithmen damit arbeiten.
                 </p>
-                <h5 class="dhbw-lightblue">Modulsicht</h5>
+                <h5>Modulsicht</h5>
                 <p>
                     Der nächste Schritt ist dann eine funktionale Dekomposition des Systems in eigenständige Teilsysteme oder Module.
                     Hier legen wir fest, welche Teilsysteme es später geben soll und welche Aufgaben diese übernehmen. Hier können
                     wir dann auch zwischen Frontend und Backend unterscheiden sowie die benötigten Services des Backends definieren.
                     Wichtig sind hier auch die Schnittstellen der Teilsysteme untereinander.
                 </p>
-                <h5 class="dhbw-lightblue">Konstruktive Sicht</h5>
+                <h5>Konstruktive Sicht</h5>
                 <p>
                     Allgemeine Prinzipien und Mechanismen, wie die eben definierten Teilsysteme miteinander verbunden sind, gehören
                     allerdings nicht in die Modulbeschreibung sondern in ein eigenes Dokument. Dieses ist daher eher technisch orientiert
                     und legt die grundlegenden Prinzipien der verteilten Kommunikation fest.
                 </p>
-                <h5 class="dhbw-lightblue">Technologische Sicht</h5>
+                <h5>Technologische Sicht</h5>
                 <p>
                     Last but not least benötigen wir noch eine Technologieauswahl. Alle Komponenten, die wir nicht selbst implementieren,
                     wie zum Beispiel die Hardwareplattform, Betriebssysteme, Programmiersprachen oder Frameworks werden in diesem Dokument
@@ -1187,7 +1185,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Übersicht -->
                         <div
                             class           = "tab-pane fade show active"
@@ -1195,54 +1193,54 @@
                             role            = "tabpanel"
                             aria-labelledby = "anforderungen-uebersicht-tab"
                         >
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Optimale Ressourcennutzung</h3>
+                            <lsx-container-fluid>
+                                <lsx-row>
+                                    <lsx-col size="md">
+                                        <h3>Optimale Ressourcennutzung</h3>
                                         <img src="anforderung-ressourcennutzung.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Das System muss effizient mit den Ressourcen umgehen und möglichst viele Ressourcen
                                         für die eigentliche Anwendung zur Verfügung stellen. Die Anwendung muss ebenfalls
                                         intelligent damit umgehen und sie gut nutzen.
-                                    </div>
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Stabilität und Fehlertoleranz</h3>
+                                    </lsx-col>
+                                    <lsx-col size="md">
+                                        <h3>Stabilität und Fehlertoleranz</h3>
                                         <img src="anforderung-stabilitaet.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Programmabstürze und unvorhersehbares Verhalten sind unbedingt zu vermeiden.
                                         Beim Programmieren muss man daher neben den fachlichen Fehlern auch die Fehler
                                         berücksichtigen, die sich aus der Verteilung ergeben.
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Einfache Skalierbarkeit</h3>
+                                    </lsx-col>
+                                </lsx-row>
+                                <lsx-row>
+                                    <lsx-col size="md">
+                                        <h3>Einfache Skalierbarkeit</h3>
                                         <img src="anforderung-skalierbarkeit.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Es muss einfach möglich sein, die Leistung des Systems zu erhöhen oder diese zu reduzieren,
                                         wenn sie nicht mehr benötigt wird. Dies kann je nach System automatisch oder manuell erfolgen.
-                                    </div>
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Einfache Nutzung (Transparenz)</h3>
+                                    </lsx-col>
+                                    <lsx-col size="md">
+                                        <h3>Einfache Nutzung (Transparenz)</h3>
                                         <img src="anforderung-transparenz.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Zumindest für den Anwender sollte die inheränte Komplexität des Systems verborgen bleiben.
                                         Entwickler und Administratoren freuen sich aber auch, wenn sie sich nicht um jede Kleinigkeit
                                         kümmern müssen.
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Einfache Erweiterbarkeit</h3>
+                                    </lsx-col>
+                                </lsx-row>
+                                <lsx-row>
+                                    <lsx-col size="md">
+                                        <h3>Einfache Erweiterbarkeit</h3>
                                         <img src="anforderung-erweiterbarkeit.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Die Architektur muss flexibel genug sein, um einzelne Teile jederzeit austauschen oder
                                         verbessern zu können.
-                                    </div>
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Sicherheit</h3>
+                                    </lsx-col>
+                                    <lsx-col size="md">
+                                        <h3>Sicherheit</h3>
                                         <img src="anforderung-sicherheit.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Die Vertraulichkeit, Integrität und Authentizität des Systems und seiner Daten muss
                                         gewährleistet bleiben.
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md">
+                                    </lsx-col>
+                                </lsx-row>
+                                <lsx-row>
+                                    <lsx-col size="md">
                                         <small>
                                             <small>
                                                 Bildnachweise:
@@ -1254,9 +1252,9 @@
                                                 <a href="https://pixabay.com/en/building-cctv-door-female-ladies-1839464/" target="_blank">Pixabay: Pexels</a>
                                             </small>
                                         </small>
-                                    </div>
-                                </div>
-                            </div>
+                                    </lsx-col>
+                                </lsx-row>
+                            </lsx-container-fluid>
                         </div>
                         <!-- Umgang mit Fehlern -->
                         <div
@@ -1265,38 +1263,38 @@
                             role            = "tabpanel"
                             aria-labelledby = "anforderungen-fehler-tab"
                         >
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h3 class="dhbw-lightblue">Fehler vermeiden</h3>
+                            <lsx-container-fluid>
+                                <lsx-row>
+                                    <lsx-col size="md-4">
+                                        <h3>Fehler vermeiden</h3>
                                         <img src="fehler-vermeiden.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Zum Beispiel durch Eingabehilfen oder einen sauberen Programmierstil
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3 class="dhbw-lightblue">Fehler erkennen</h3>
+                                    </lsx-col>
+                                    <lsx-col size="md-4">
+                                        <h3>Fehler erkennen</h3>
                                         <img src="fehler-erkennen.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Zum Beispiel durch Checksummen, Plausiprüfungen oder Monitoring
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3 class="dhbw-lightblue">Fehler maskieren</h3>
+                                    </lsx-col>
+                                    <lsx-col size="md-4">
+                                        <h3>Fehler maskieren</h3>
                                         <img src="fehler-maskieren.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Zum Beispiel durch spätere Wiederholung des Vorgangs
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h3 class="dhbw-lightblue">Fehler tolerieren</h3>
+                                    </lsx-col>
+                                </lsx-row>
+                                <lsx-row>
+                                    <lsx-col size="md-4">
+                                        <h3>Fehler tolerieren</h3>
                                         <img src="fehler-tolerieren.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Zum Beispiel durch Speichern beider Versionen bei Schreibkonflikten
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h3 class="dhbw-lightblue">Fehler beheben</h3>
+                                    </lsx-col>
+                                    <lsx-col size="md-4">
+                                        <h3>Fehler beheben</h3>
                                         <img src="fehler-beheben.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
                                         Zum Beispiel durch automatisches Umschalten auf ein Hot-Standby
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md">
+                                    </lsx-col>
+                                </lsx-row>
+                                <lsx-row>
+                                    <lsx-col size="md">
                                         <small>
                                             <small>
                                                 Bildnachweise:
@@ -1307,9 +1305,9 @@
                                                 <a href="https://pixabay.com/en/first-aid-frog-medic-nurse-funny-1732708/" target="_blank">Pixabay: Alexas_Fotos</a>
                                             </small>
                                         </small>
-                                    </div>
-                                </div>
-                            </div>
+                                    </lsx-col>
+                                </lsx-row>
+                            </lsx-container-fluid>
                         </div>
                         <!-- Sicherheitsaspekte -->
                         <div
@@ -1318,63 +1316,63 @@
                             role            = "tabpanel"
                             aria-labelledby = "anforderungen-sicherheit-tab"
                         >
-                            <div class="container-fluid">
+                            <lsx-container-fluid>
                                 <!-- Authentizität -->
-                                <div class="row" style="margin-bottom: 0;">
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Authentizität</h3>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-bottom: 1em;">
-                                    <div class="col-md-4">
+                                <lsx-row style="margin-bottom: 0;">
+                                    <lsx-col size="md">
+                                        <h3>Authentizität</h3>
+                                    </lsx-col>
+                                </lsx-row>
+                                <lsx-row style="margin-bottom: 1em;">
+                                    <lsx-col size="md-4">
                                         <img src="sicherheit-authentizitaet.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
-                                    </div>
-                                    <div class="col-md-8">
+                                    </lsx-col>
+                                    <lsx-col size="md-8">
                                         Die Anwendung kann die Identität des Benutzers überprüfen und verhindern, dass
                                         er sich als jemand anderes ausgibt. Der Benutzer kann umgekehrt die Identität
                                         der Gegenseite verifizieren. In der Regel werden von einer Zertifizierungsstelle
                                         ausgestellte SSL-Zertifikate hierfür genutzt.
-                                    </div>
-                                </div>
+                                    </lsx-col>
+                                </lsx-row>
 
                                 <!-- Vertraulichkeit -->
-                                <div class="row" style="margin-bottom: 0;">
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Vertraulichkeit</h3>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-bottom: 1em;">
-                                    <div class="col-md-4">
+                                <lsx-row style="margin-bottom: 0;">
+                                    <lsx-col size="md">
+                                        <h3>Vertraulichkeit</h3>
+                                    </lsx-col>
+                                </lsx-row>
+                                <lsx-row style="margin-bottom: 1em;">
+                                    <lsx-col size="md-4">
                                         <img src="sicherheit-vertraulichkeit.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
-                                    </div>
-                                    <div class="col-md-8">
+                                    </lsx-col>
+                                    <lsx-col size="md-8">
                                         Sensitive Informationen werden gegen Einsicht durch unbefugte Dritte geschützt.
                                         Die Anwendung muss daher mindestens eine Benutzer- und Rechteverwaltung besitzen.
                                         Zusätzlich sollten die Daten verschlüsselt werden.
-                                    </div>
-                                </div>
+                                    </lsx-col>
+                                </lsx-row>
 
                                 <!-- Integrität -->
-                                <div class="row" style="margin-bottom: 0;">
-                                    <div class="col-md">
-                                        <h3 class="dhbw-lightblue">Integrität</h3>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-bottom: 1em;">
-                                    <div class="col-md-4">
+                                <lsx-row style="margin-bottom: 0;">
+                                    <lsx-col size="md">
+                                        <h3>Integrität</h3>
+                                    </lsx-col>
+                                </lsx-row>
+                                <lsx-row style="margin-bottom: 1em;">
+                                    <lsx-col size="md-4">
                                         <img src="sicherheit-integritaet.jpg" alt="" class="img-thumbnail" style="width: 100%;" />
-                                    </div>
-                                    <div class="col-md-8">
+                                    </lsx-col>
+                                    <lsx-col size="md-8">
                                         Es muss sichergestellt werden, dass keine Informationen unbemerkt verfälscht werden
                                         können. Dies trifft sowohl auf gespeicherte Daten als auch auf die Übertragung der
                                         Daten zu. Üblicherweise werden hierfür digitale Signaturen auf Basis asymmetrischer
                                         Verschlüsselung verwendet.
-                                    </div>
-                                </div>
+                                    </lsx-col>
+                                </lsx-row>
 
                                 <!-- Bildnachweise -->
-                                <div class="row">
-                                    <div class="col-md">
+                                <lsx-row>
+                                    <lsx-col size="md">
                                         <small>
                                             <small>
                                                 Bildnachweise:
@@ -1383,9 +1381,9 @@
                                                 <a href="https://pixabay.com/en/secret-top-stamp-spy-army-3037639/" target="_blank">Pixabay: TayebMEZAHDIA</a>
                                             </small>
                                         </small>
-                                    </div>
-                                </div>
-                            </div>
+                                    </lsx-col>
+                                </lsx-row>
+                            </lsx-container-fluid>
                         </div>
                     </div>
                 </div>
@@ -1397,7 +1395,7 @@
                     berücksichtigt werden, was uns beim Programmieren manchmal vor echte Herausforderungen stellen kann: 🤔
                 </p>
 
-                <h5 class="dhbw-lightblue">Optimale Ressourcennutzung</h5>
+                <h5>Optimale Ressourcennutzung</h5>
                 <p>
                     Jeder einzelne Computer eines verteilten Systems stellt Ressourcen wie Rechenleistung oder Speicherkapazität
                     zur Verfügung. Diese sollen effizient genutzt werden, um somit die Gesamtleistung des Systems zu steigern.
@@ -1405,7 +1403,7 @@
                     darauf achten, diese intelligent zu nutzen.
                 </p>
 
-                <h5 class="dhbw-lightblue">Einfache Skalierbarkeit</h5>
+                <h5>Einfache Skalierbarkeit</h5>
                 <p>
                     Ein System, das mit kleinen Anforderungen heute beginnt, kann morgen schon riesengroß werden. Es muss daher einfach möglich
                     sein, die Leistung des Systems zu erhöhen oder diese zu reduzieren, wenn sie nicht mehr benötigt wird. Im einfachsten
@@ -1414,7 +1412,7 @@
                     etwas ändern zu müssen (horizontale Skalierung).
                 </p>
 
-                <h5 class="dhbw-lightblue">Einfache Erweiterbarkeit</h5>
+                <h5>Einfache Erweiterbarkeit</h5>
                 <p>
                     Veränderung ist die einzige Konstante in der Informatik! Anforderungen können sich jederzeit ändern und tun dies auch,
                     weshalb agile Entwicklungsmethoden heute in fast allen Bereichen bevorzugt werden. Doch wer wirklich agil sein will,
@@ -1425,7 +1423,7 @@
                     lose miteinander verbunden sind.
                 </p>
 
-                <h5 class="dhbw-lightblue">Stabilität und Fehlertoleranz</h5>
+                <h5>Stabilität und Fehlertoleranz</h5>
                 <p>
                     Das schlimmste was einem Programm passieren kann ist ein Absturz. 🗯️ Dieser GAU sollte daher immer vermieden werden, auch
                     wenn davon nur ein Teil einer verteilten Anwendung betroffen ist. Dummerweise bringen verteilte Anwendungen eine ganze
@@ -1496,7 +1494,7 @@
                     </dd>
                 </dl>
 
-                <h5 class="dhbw-lightblue">Einfache Nutzung (Transparenz)</h5>
+                <h5>Einfache Nutzung (Transparenz)</h5>
                 <p>
                     Dieser Begriff ist sehr wichtig. Die Welt ist schon kompliziert genug, dann müssen es nicht auch noch die IT-Systeme
                     sein. Zumindest für den Anwender aber gerne auch die Entwickler sollte die inheränte Komplexität einer verteilten Anwendung
@@ -1505,7 +1503,7 @@
                     erst auseinandersetzen muss.
                 </p>
 
-                <h5 class="dhbw-lightblue">Sicherheit</h5>
+                <h5>Sicherheit</h5>
                 <p>
                     Ein weiterer wichtiger Aspekt ist die Sicherheit verteilter Systeme. <a href="https://www.youtube.com/watch?v=rXUlmP5MvnE"
                     target="_blank">Denn das Böse ist immer und überall.</a> Folgende Dinge muss eine Anwendung daher sicherstellen:
@@ -1538,9 +1536,9 @@
         <section>
             <h1>Die neun Arten der Transparenz</h1>
             <article>
-                <div class="container-fluid">
+                <lsx-container-fluid>
                     <!-- Vergleich Wirtschaft vs. Informatik -->
-                    <div class="row" style="margin-bottom: 0;">
+                    <lsx-row style="margin-bottom: 0;">
                         <div class="col-md">
                             <h2>Transparenz in der Wirtschaft</h2>
                             <img src="transparenz1.jpg" alt="" class="img-thumbnail" style="width: 100%" />
@@ -1551,8 +1549,8 @@
                             <img src="transparenz2.jpg" alt="" class="img-thumbnail" style="width: 100%" />
                             Ich muss nichts tun. Es läuft einfach.
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 2.5em;">
+                    </lsx-row>
+                    <lsx-row style="margin-bottom: 2.5em;">
                         <div class="col-md">
                             <small>
                                 <small>
@@ -1563,11 +1561,11 @@
                                 </small>
                             </small>
                         </div>
-                    </div>
+                    </lsx-row>
 
-                    <!-- Die acht Arten der Transparenz -->
-                    <div class="row">
-                        <div id="transparenz-arten" class="col accordion">
+                    <!-- Die neun Arten der Transparenz -->
+                    <lsx-row>
+                        <lsx-col id="transparenz-arten" class="accordion">
                             <!-- Zugriffstransparenz -->
                             <div class="card">
                                 <div
@@ -1586,15 +1584,15 @@
                                     aria-labelledby = "transparenz-arten-zugriff-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
-                                        <div class="row">
+                                    <lsx-container-fluid class="p-0">
+                                        <lsx-row>
                                             <div class="col">
                                                 Falls eine Anwendung zwischen lokalen (auf dem eigenen Rechner befindlichen) und
                                                 entfernten Ressourcen unterscheidet, müssen beide auf dieselbe Art und Weise
                                                 nutzbar sein.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-foto.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1604,8 +1602,8 @@
                                                 Einzelne Bilder oder ganze Alben können aber auch auf einem entfernten Server
                                                 abgelegt sein, ohne dass sich die Bedienung hierdurch verändert.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-video.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1616,8 +1614,8 @@
                                                 Suche und Wiedergabe der Videos verändern sich aus Benutzersicht dadurch aber nicht, da
                                                 die Videos wie gewohnt aufgerufen und abgespielt werden können.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-pwa.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1628,8 +1626,8 @@
                                                 funktioniert. Die Entscheidung, ob eine Datei vom Server oder aus dem Cache geladen werden kann, erfolgt
                                                 dabei automatisch, ohne dass dies im Quellcode berücksichtigt werden muss.
                                             </div>
-                                        </div>
-                                        <div class="row">
+                                        </lsx-row>
+                                        <lsx-row>
                                             <div class="col">
                                                 <small>
                                                     <small>
@@ -1640,8 +1638,8 @@
                                                     </small>
                                                 </small>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </lsx-row>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
 
@@ -1663,14 +1661,14 @@
                                     aria-labelledby = "transparenz-arten-ort-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
-                                        <div class="row">
+                                    <lsx-container-fluid class="p-0">
+                                        <lsx-row>
                                             <div class="col">
                                                 Dienste und Ressourcen einer Anwendung können aufgerufen werden, ohne wissen zu müssen,
                                                 auf welchem Rechner sie sich befinden.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-cdn.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1682,8 +1680,8 @@
                                                 ausgewählt wird. Auf dieselbe Weise spielen nebenbei auch Video-Streaming-Portale und andere
                                                 Onlinedienste ihre Inhalte aus.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-dns.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1695,8 +1693,8 @@
                                                 darüber, auf welchen Rechner hierfür zugegriffen werden muss. Diese Information besorgt sich der
                                                 Browser stattdessen durch ein DNS-Lookup.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-drucker.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1707,8 +1705,8 @@
                                                 vom Betriebssystem erkannt und eingerichtet werden können. Selbst wenn ein Gerät komplett ausgetauscht wird,
                                                 muss die Konfiguration auf dem Anwender-PC nicht angepasst werden.
                                             </div>
-                                        </div>
-                                        <div class="row">
+                                        </lsx-row>
+                                        <lsx-row>
                                             <div class="col">
                                                 <small>
                                                     <small>
@@ -1719,8 +1717,8 @@
                                                     </small>
                                                 </small>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </lsx-row>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
 
@@ -1742,14 +1740,14 @@
                                     aria-labelledby = "transparenz-arten-mobilität-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
-                                        <div class="row">
+                                    <lsx-container-fluid class="p-0">
+                                        <lsx-row>
                                             <div class="col">
                                                 Die Ressourcen einer verteilten Anwendung können jederzeit auf andere Maschinen
                                                 umziehen, ohne dass sich dies auf die Anwendung auswirkt.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-namensdienst.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1761,8 +1759,8 @@
                                                 die IP-Adresse einer Webseite jederzeit ändern, ohne dass die meisten Besucher*innen
                                                 dies merken.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-backend.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1774,8 +1772,8 @@
                                                 der Programmierer, die Adresse des Datenbankservers nicht hart-codiert im Quellcode zu hinterlegen,
                                                 hat sich an diesem Tag als sehr weitsichtig herausgestellt.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-vm.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1786,8 +1784,8 @@
                                                 Rechenknoten umzuziehen. Hierfür wird die VM ohne Unterbrechung des laufenden Betriebs auf
                                                 den neuen Host kopiert und dort weiter ausgeführt.
                                             </div>
-                                        </div>
-                                        <div class="row">
+                                        </lsx-row>
+                                        <lsx-row>
                                             <div class="col">
                                                 <small>
                                                     <small>
@@ -1798,8 +1796,8 @@
                                                     </small>
                                                 </small>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </lsx-row>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
 
@@ -1821,14 +1819,14 @@
                                     aria-labelledby = "transparenz-arten-persistenz-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
-                                        <div class="row">
+                                    <lsx-container-fluid class="p-0">
+                                        <lsx-row>
                                             <div class="col">
                                                 Besonders benutzerfreundliche Anwendungen unterscheiden nicht zwischen gespeicherten und
                                                 und nicht gespeicherten Daten. Die Speicherung erfolgt automatisch im Hintergrund.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-google.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1838,8 +1836,8 @@
                                                 eines Dokuments. Jede Änderung wird mit einem kleinen Zeitversatz automatisch gespeichert,
                                                 so dass man nie wieder etwas verlieren kann, wenn man Abends zu schnell aus dem Büro flieht.
                                             </div>
-                                        </div>
-                                        <div class="row">
+                                        </lsx-row>
+                                        <lsx-row>
                                             <div class="col">
                                                 <small>
                                                     <small>
@@ -1848,8 +1846,8 @@
                                                     </small>
                                                 </small>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </lsx-row>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
 
@@ -1871,15 +1869,15 @@
                                     aria-labelledby = "transparenz-arten-replikation-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
-                                        <div class="row">
+                                    <lsx-container-fluid class="p-0">
+                                        <lsx-row>
                                             <div class="col">
                                                 Aus Performancegründen oder zur Erhöhung der Ausfallsicherheit werden wichtige Daten auf
                                                 mehrere Rechenknoten repliziert. Die Datenreplikation erfolgt vollautomatisch im Hintergrund,
                                                 wobei das System bei jeder Änderung die Aktualisierung aller Kopien sicherstellt.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-weltkarte.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1890,8 +1888,8 @@
                                                 anfallenden Daten werden deshalb automatisch zwischen den Rechenzentren repliziert, damit jede*r
                                                 Anwender*in möglichst dieselben Daten sieht.
                                             </div>
-                                        </div>
-                                        <div class="row dhbw-fontsize-small">
+                                        </lsx-row>
+                                        <lsx-row class="dhbw-fontsize-small">
                                             <div class="col-md-2">
                                                 <img src="transparenz-datenbank.jpg" class="img-thumbnail" style="width: 100%;" />
                                             </div>
@@ -1901,8 +1899,8 @@
                                                 Rechenknoten gespiegelt werden. Lesende Anfragen werden dann von irgend einem gerade verfügbaren Knoten
                                                 beantwortet, während ändernde Anfragen an alle Knoten weitergereicht werden.
                                             </div>
-                                        </div>
-                                        <div class="row">
+                                        </lsx-row>
+                                        <lsx-row>
                                             <div class="col">
                                                 <small>
                                                     <small>
@@ -1912,8 +1910,8 @@
                                                     </small>
                                                 </small>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </lsx-row>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
 
@@ -1935,7 +1933,7 @@
                                     aria-labelledby = "transparenz-arten-fehler-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
+                                    <lsx-container-fluid class="p-0">
                                         <div class="row">
                                             <div class="col">
                                                 Fehlersituationen werden nicht als Ausnahme sondern als Normalfall betrachtet.
@@ -1996,7 +1994,7 @@
                                                 </small>
                                             </div>
                                         </div>
-                                    </div>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
 
@@ -2018,7 +2016,7 @@
                                     aria-labelledby = "transparenz-arten-nebenläufigkeit-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
+                                    <lsx-container-fluid class="p-0">
                                         <div class="row">
                                             <div class="col">
                                                 Eine verteilte Anwendung sollte immer so entworfen werden, dass sie von vielen Benutzern
@@ -2072,7 +2070,7 @@
                                                 </small>
                                             </div>
                                         </div>
-                                    </div>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
 
@@ -2094,7 +2092,7 @@
                                     aria-labelledby = "transparenz-arten-skalierbarkeit-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
+                                    <lsx-container-fluid class="p-0">
                                         <div class="row">
                                             <div class="col">
                                                 Verteilte Systeme und Anwendungen sollten immer skalierbar sein. Im Idealfall könnnen im
@@ -2137,7 +2135,7 @@
                                                 </small>
                                             </div>
                                         </div>
-                                    </div>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
 
@@ -2159,7 +2157,7 @@
                                     aria-labelledby = "transparenz-arten-leistung-title"
                                     data-parent     = "#transparenz-arten"
                                 >
-                                    <div class="container-fluid p-0">
+                                    <lsx-container-fluid class="p-0">
                                         <div class="row">
                                             <div class="col">
                                                 Die Leistung eines verteilten Systems sollte nur von den verfügbaren Ressourcen begrenzt
@@ -2204,12 +2202,12 @@
                                                 </small>
                                             </div>
                                         </div>
-                                    </div>
+                                    </lsx-container-fluid>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </lsx-col>
+                    </lsx-row>
+                </lsx-container-fluid>
             </article>
             <aside>
                 <blockquote cite="https://de.wikipedia.org/wiki/Clarkesche_Gesetze">
@@ -2268,19 +2266,19 @@
                             <img src="cap-theorem.png" alt="Visualisierung des CAP-Theorems" style="width: 100%;" />
                         </div>
                         <div class="col-md">
-                            <h4 class="dhbw-lightblue">Consistency (Konsistenz)</h4>
+                            <h4>Consistency (Konsistenz)</h4>
                             <p>
                                 Alle Knoten sehen immer exakt dieselben, konsistenten Daten. Bei replizierten Datenbeständen
                                 werden die Änderungen daher erst sichtbar, wenn sie in allen Repliken nachgezogen wurden.
                             </p>
 
-                            <h4 class="dhbw-lightblue">Availability (Verfügbarkeit)</h4>
+                            <h4>Availability (Verfügbarkeit)</h4>
                             <p>
                                 Das System ist jederzeit erreichbar und überschreitet niemals die maximal zulässige
                                 Antwortzeit.
                             </p>
 
-                            <h4 class="dhbw-lightblue">Partition Tolerance (Partitionstoleranz)</h4>
+                            <h4>Partition Tolerance (Partitionstoleranz)</h4>
                             <p>
                                 Die Anwendung funktioniert auch dann noch, wenn einzelne Teile ausgefallen sind.
                             </p>
@@ -2402,7 +2400,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Fallbeispiel -->
                         <div
                             class           = "tab-pane fade show active"
@@ -2797,7 +2795,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Definitionen -->
                         <div
                             class           = "tab-pane fade show active"
@@ -3231,18 +3229,18 @@
 
                     <div class="row" style="margin-bottom: 2em;">
                         <div class="col-md">
-                            <h3 class="dhbw-lightblue">Client/Server-Architektur</h3>
+                            <h3>Client/Server-Architektur</h3>
                             <img src="client-server.svg" alt="Skizze mit vielen Clients und einem Server in der Mitte" style="max-width: calc(100% - 2em);" />
                         </div>
                         <div class="col-md">
-                            <h3 class="dhbw-lightblue">Peer-To-Peer-Architektur</h3>
+                            <h3>Peer-To-Peer-Architektur</h3>
                             <img src="peer-to-peer.svg" alt="Skizze mit vielen untereinander verbundenen Peers" style="max-width: calc(100% - 2em);" />
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md">
-                            <h3 class="dhbw-lightblue">Serverless Computing</h3>
+                            <h3>Serverless Computing</h3>
                             <table style="width: 100%; background-image: url(cloud.jpg); background-repeat: no-repeat; background-position: center center; background-size: cover;">
                                 <tr>
                                     <td style="width: 1em;">
@@ -3467,7 +3465,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Dreischichtenarchitektur -->
                         <div
                             class           = "tab-pane fade show active"
@@ -3627,7 +3625,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Clientseitiger Proxy -->
                         <div
                             class           = "tab-pane fade show active"
@@ -3940,7 +3938,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-top-0 bg-white" style="padding: 1em;">
+                    <div class="tab-content">
                         <!-- Grundmodell -->
                         <div
                             class           = "tab-pane fade show active"
@@ -4030,7 +4028,7 @@
                 </div>
             </article>
             <aside>
-                <h4 class="dhbw-lightblue">Nachteile synchroner Kommunikationsmodelle</h4>
+                <h4>Nachteile synchroner Kommunikationsmodelle</h4>
                 <p>
                     Alle bisher gezeigten Architekturmodelle beruhen auf der Annahme, dass sich alle Anwendungskomponenten
                     einer verteilten Anwendung als Client oder Server kategorisieren lassen, also dass jede Komponente
@@ -4070,7 +4068,7 @@
                     </li>
                 </ul>
 
-                <h4 class="dhbw-lightblue">Grundmodell der asynchronen Kommunikation</h4>
+                <h4>Grundmodell der asynchronen Kommunikation</h4>
                 <p>
                     Asynchrone Kommunikationsmodelle umgehen die eben genannten Nachteile, in dem sie jeglichen Datenaustausch
                     über einen zentralen <b>Message Broker</b> abwickeln. Anstelle vieler kleiner Punkt-zu-Punkt-Verbindungen
@@ -4112,7 +4110,7 @@
                     </li>
                 </ul>
 
-                <h4 class="dhbw-lightblue">Anwendung im IoT-Kontext</h4>
+                <h4>Anwendung im IoT-Kontext</h4>
                 <p>
                     In kleineren Anwendungen kommt es häufig vor, dass tatsächlich alle Anwendungskomponenten ausschließlich
                     über den Message Broker miteinander verknüpft werden. In größeren IoT-Installationen dient der Message
