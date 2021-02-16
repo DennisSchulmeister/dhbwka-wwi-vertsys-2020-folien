@@ -207,6 +207,172 @@
         </section>
 
         <section>
+            <h1>Wozu verteilte Systeme gebraucht werden</h1>
+            <article>
+                <lsx-grid-fluid>
+                    <lsx-row>
+                        <lsx-col size="md">
+                            <h2>Parallelisierung rechenintensiver Aufgaben</h2>
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row style="margin-bottom: 0;">
+                        <lsx-col size="md-4">
+                            <img src="handwerker1.jpg" alt="Ein einzelner Handwerker" class="img-thumbnail" style="width: 100%" />
+                            Ein einzelner Computer würde viel zu lange brauchen!
+                        </lsx-col>
+                        <lsx-col size="md-4">
+                            <img src="handwerker2.jpg" alt="Viele Handwerker gleichzeitig" class="img-thumbnail" style="width: 100%" />
+                            Wenn sich die Arbeit verteilt, geht es natürlich viel schneller.
+                        </lsx-col>
+                        <lsx-col size="md-4">
+                            <img src="raytracing1.jpg" alt="Computergeneriertes Bild zweier Schrauben" class="img-thumbnail" style="width: 100%" />
+                            Zum Beispiel beim <a href="https://de.wikipedia.org/wiki/Raytracing" target="_blank">Raytracing</a>,
+                            das zwar besonders realistische Bilder erzeugt, dafür aber auch sehr rechenintensiv ist.
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row>
+                        <lsx-col size="md">
+                            <small>
+                                <small>
+                                    Bildnachweise:
+                                    <a href="https://pixabay.com/en/construction-workers-maurer-site-3036602/" target="_blank">Pixabay: Capri23auto</a>,
+                                    <a href="https://pixabay.com/en/house-construction-craftsmen-site-3102324/" target="_blank">Pixabay: Alexas_Fotos</a>,
+                                    <a href="https://pixabay.com/en/screw-thread-technology-mother-1924219/" target="_blank">Pixabay: PIRO4D</a>
+                                </small>
+                            </small>
+                        </lsx-col>
+                    </lsx-row>
+
+                    <lsx-row>
+                        <lsx-col size="md">
+                            <h2>Weitere Anwendungsfälle</h2>
+                        </lsx-col>
+                    </lsx-row>
+                    <lsx-row>
+                        <lsx-col size="md">
+                            <ul>
+                                <li>
+                                    Informations- und Wissensmanagement¹
+                                </li>
+                                <li>
+                                    Datenbankanwendungen mit mehreren Benutzern
+                                </li>
+                                <li>
+                                    Kollaboratives, gleichzeitiges Arbeiten an gemeinsamen Dokumenten
+                                </li>
+                                <li>
+                                    Statistische Auswertungen, Datenanalyse, Big Data
+                                </li>
+                                <li>
+                                    IoT-Anwendungen zum Sammeln und Auswerten von Sensordaten
+                                </li>
+                                <li>
+                                    Mobile Apps und browserbasierte Benutzeroberflächen
+                                </li>
+                                <li>
+                                    KI-Systeme und Expertensysteme
+                                </li>
+                                <li>
+                                    Computergestützte Fertigungsanlagen
+                                </li>
+                            </ul>
+                            <p>
+                                <small>
+                                    ¹ Hierfür wurde das gesamte Internet ursprünglich erfunden.
+                                </small>
+                            </p>
+                        </lsx-col>
+                    </lsx-row>
+                </lsx-grid-fluid>
+            </article>
+            <aside>
+                <p>
+                    Um die Wichtigkeit verteilter Systeme zu verdeutlichen, schauen wir uns zunächst einmal ein für die
+                    meisten Unternehmen eher untypisches, dafür aber umso deutlicheres Beispiel an: 3D-Animationsfilme. 🎞️
+                    Jeder kennt sie und jeder liebt sie 🍿, weshalb zwischenzeitlich selbst Disney seine traditionelle
+                    Zeichentricksparte eingestellt hatte, um nur noch 3D-Filme zu produzieren.¹ 😯
+                </p>
+                <p>
+                    <small>
+                        ¹ Zum Glück wurde diese Entscheidung wieder rückgängig gemacht, wenn man bedenkt, wie eng doch gerade
+                        Walt Disney mit der Entwicklung des Zeichentrick verbunden ist. Aber wusstest du, dass Disney zusammen
+                        mit Pixar bereits Ende der 1980er-Jahre <a href="https://en.wikipedia.org/wiki/Computer_Animation_Production_System"
+                        target="_blank">das erste Computersystem zur Erstellung von Zeichentrickfilmen</a> entwickelt und für
+                        viele seiner Filme genutzt hat?
+                    </small>
+                </p>
+                <p>
+                    Was sicher nur wenigen bewusst ist, ist der immense Rechenaufwand, der in jedem 3D-Animationsfilm steckt.
+                    Denn ein typischer Kinofilm besitzt bei 90 Minuten Länge und 25 Bildern je Sekunde immerhin 135.000 Einzelbilder,
+                    von denen jedes bei einer typischen 4K-Auflösung (von 8K wollen wir erst gar nicht reden) unvorstellbare 8.847.360
+                    Pixel umfasst. Und die wollen alle berechnet werden! 🌇🌃🌃🌃🌇🌆🌆🌇🌃🌃🌃🌇
+                </p>
+                <p>
+                    Der Aufwand potenziert sich sogar noch, wenn man bedenkt, dass hierfür das rechenintensive
+                    <a href="https://de.wikipedia.org/wiki/Raytracing" target="_blank">Raytracing-Verfahren</a>
+                    genutzt wird, bei dem ausgehend von einer virtuellen Kamera für jeden Bildpunkt ein gedachter
+                    Lichtstrahl ausgesendet und geprüft wird, auf welche Oberflächen er trifft. Dabei handelt es
+                    sich um einen rekursiven Algorithmus, der auch berücksichtigt, wenn ein Strahl an einer
+                    Oberfläche gebrochen wird und dadurch in hunderte weitere Teilstrahlen zerfällt. Das ganze ist
+                    sehr aufwändig, produziert dafür aber täuschend echte Bilder, wie das folgende Beispiel zeigt:
+                </p>
+                <p>
+                    <img src="raytracing2.jpg" alt="Beispiel für ein klassisches Raytracing-Motiv (drei Kugeln mit Spiegelung)" class="img-thumbnail" style="width: 100%;" />
+                    <small>
+                        Klassisches Raytracing-Motiv: Drei Kugeln auf einem Schachbrettmuster. Das Lichtspiel und die Spiegelungen werden
+                        durch die rekursive Verfolgung der Lichtstrahlen sehr realistisch simuliert. Für noch mehr beeindruckende
+                        Beispiele <a href="http://hof.povray.org/" target="_blank">hier klicken</a>. Bildnachweis:
+                        <a href="https://commons.wikimedia.org/wiki/File:3chromeballs.png" target="_blank">Wikimedia Commons: 3chromeballs.png</a>
+                    </small>
+                </p>
+                <p>
+                    Ein einzelner Computer wäre Jahrzehnte lang damit beschäftigt, die Bilder eines ganzen Filmes zu berechnen und würde damit
+                    fast genauso lange brauchen wie Deep Thought in <a href="https://de.wikipedia.org/wiki/Per_Anhalter_durch_die_Galaxis"
+                    target="_blank">Per Anhalter durch die Galaxis</a> 🐬. Ein verteiltes System oder besser gesagt eine
+                    <a href="https://en.wikipedia.org/wiki/Render_farm" target="_blank">Render Farm</a> muss also her, um die Berechnungsdauer
+                    auf ein Jahr zu reduzieren. Denn dafür wurden verteilte Systeme mit erfunden: Zur Parallelisierung großer Berechnungen,
+                    um diese effizienter durchführen zu können.
+                </p>
+                <p>
+                    Die Parallelisierung von Aufgaben zählt häufig auch für uns Wirtschaftsinformatiker zu den Aufgaben verteilter Systeme,
+                    obwohl wir eher selten einen Kinofilm produzieren müssen.² Für uns sind es dafür andere Anwendungsfälle, wie zum Beispiel
+                    die folgenden:
+                </p>
+                <ul>
+                    <li>
+                        Informations- und Wissensmanagement
+                    </li>
+                    <li>
+                        Datenbankanwendungen mit mehreren Benutzern
+                    </li>
+                    <li>
+                        Kollaboratives, gleichzeitiges Arbeiten an gemeinsamen Dokumenten
+                    </li>
+                    <li>
+                        Statistische Auswertungen, Datenanalyse, Big Data
+                    </li>
+                    <li>
+                        IoT-Anwendungen zum Sammeln und Auswerten von Sensordaten
+                    </li>
+                    <li>
+                        Mobile Apps und browserbasierte Benutzeroberflächen
+                    </li>
+                    <li>
+                        KI-Systeme und Expertensysteme
+                    </li>
+                    <li>
+                        Computergestützte Fertigungsanlagen
+                    </li>
+                </ul>
+                <p>
+                    <small>
+                        ² Schade eigentlich …
+                    </small>
+                </p>
+            </aside>
+        </section>
+
+        <section>
             <h1>Definition des Begriffs „Verteiltes System”</h1>
             <article>
                 <h2>Allgemeine Definition</h2>
@@ -618,172 +784,6 @@
                     Leitfragen, die wir uns hier stellen, könnten zum Beispiel sein: <i>In welche Teilaspekte kann ich mein Problem
                     zerlegen? Welche Programme laufen auf welchen Rechnerknoten? Welches Programm muss was in welcher Reihenfolge
                     machen? Welche Nachrichten tauschen die Programme untereinander aus?</i> Und so weiter und so fort.
-                </p>
-            </aside>
-        </section>
-
-        <section>
-            <h1>Wozu verteilte Systeme gebraucht werden</h1>
-            <article>
-                <lsx-grid-fluid>
-                    <lsx-row>
-                        <lsx-col size="md">
-                            <h2>Parallelisierung rechenintensiver Aufgaben</h2>
-                        </lsx-col>
-                    </lsx-row>
-                    <lsx-row style="margin-bottom: 0;">
-                        <lsx-col size="md-4">
-                            <img src="handwerker1.jpg" alt="Ein einzelner Handwerker" class="img-thumbnail" style="width: 100%" />
-                            Ein einzelner Computer würde viel zu lange brauchen!
-                        </lsx-col>
-                        <lsx-col size="md-4">
-                            <img src="handwerker2.jpg" alt="Viele Handwerker gleichzeitig" class="img-thumbnail" style="width: 100%" />
-                            Wenn sich die Arbeit verteilt, geht es natürlich viel schneller.
-                        </lsx-col>
-                        <lsx-col size="md-4">
-                            <img src="raytracing1.jpg" alt="Computergeneriertes Bild zweier Schrauben" class="img-thumbnail" style="width: 100%" />
-                            Zum Beispiel beim <a href="https://de.wikipedia.org/wiki/Raytracing" target="_blank">Raytracing</a>,
-                            das zwar besonders realistische Bilder erzeugt, dafür aber auch sehr rechenintensiv ist.
-                        </lsx-col>
-                    </lsx-row>
-                    <lsx-row>
-                        <lsx-col size="md">
-                            <small>
-                                <small>
-                                    Bildnachweise:
-                                    <a href="https://pixabay.com/en/construction-workers-maurer-site-3036602/" target="_blank">Pixabay: Capri23auto</a>,
-                                    <a href="https://pixabay.com/en/house-construction-craftsmen-site-3102324/" target="_blank">Pixabay: Alexas_Fotos</a>,
-                                    <a href="https://pixabay.com/en/screw-thread-technology-mother-1924219/" target="_blank">Pixabay: PIRO4D</a>
-                                </small>
-                            </small>
-                        </lsx-col>
-                    </lsx-row>
-
-                    <lsx-row>
-                        <lsx-col size="md">
-                            <h2>Weitere Anwendungsfälle</h2>
-                        </lsx-col>
-                    </lsx-row>
-                    <lsx-row>
-                        <lsx-col size="md">
-                            <ul>
-                                <li>
-                                    Informations- und Wissensmanagement¹
-                                </li>
-                                <li>
-                                    Datenbankanwendungen mit mehreren Benutzern
-                                </li>
-                                <li>
-                                    Kollaboratives, gleichzeitiges Arbeiten an gemeinsamen Dokumenten
-                                </li>
-                                <li>
-                                    Statistische Auswertungen, Datenanalyse, Big Data
-                                </li>
-                                <li>
-                                    IoT-Anwendungen zum Sammeln und Auswerten von Sensordaten
-                                </li>
-                                <li>
-                                    Mobile Apps und browserbasierte Benutzeroberflächen
-                                </li>
-                                <li>
-                                    KI-Systeme und Expertensysteme
-                                </li>
-                                <li>
-                                    Computergestützte Fertigungsanlagen
-                                </li>
-                            </ul>
-                            <p>
-                                <small>
-                                    ¹ Hierfür wurde das gesamte Internet ursprünglich erfunden.
-                                </small>
-                            </p>
-                        </lsx-col>
-                    </lsx-row>
-                </lsx-grid-fluid>
-            </article>
-            <aside>
-                <p>
-                    Um die Wichtigkeit verteilter Systeme zu verdeutlichen, schauen wir uns zunächst einmal ein für die
-                    meisten Unternehmen eher untypisches, dafür aber umso deutlicheres Beispiel an: 3D-Animationsfilme. 🎞️
-                    Jeder kennt sie und jeder liebt sie 🍿, weshalb zwischenzeitlich selbst Disney seine traditionelle
-                    Zeichentricksparte eingestellt hatte, um nur noch 3D-Filme zu produzieren.¹ 😯
-                </p>
-                <p>
-                    <small>
-                        ¹ Zum Glück wurde diese Entscheidung wieder rückgängig gemacht, wenn man bedenkt, wie eng doch gerade
-                        Walt Disney mit der Entwicklung des Zeichentrick verbunden ist. Aber wusstest du, dass Disney zusammen
-                        mit Pixar bereits Ende der 1980er-Jahre <a href="https://en.wikipedia.org/wiki/Computer_Animation_Production_System"
-                        target="_blank">das erste Computersystem zur Erstellung von Zeichentrickfilmen</a> entwickelt und für
-                        viele seiner Filme genutzt hat?
-                    </small>
-                </p>
-                <p>
-                    Was sicher nur wenigen bewusst ist, ist der immense Rechenaufwand, der in jedem 3D-Animationsfilm steckt.
-                    Denn ein typischer Kinofilm besitzt bei 90 Minuten Länge und 25 Bildern je Sekunde immerhin 135.000 Einzelbilder,
-                    von denen jedes bei einer typischen 4K-Auflösung (von 8K wollen wir erst gar nicht reden) unvorstellbare 8.847.360
-                    Pixel umfasst. Und die wollen alle berechnet werden! 🌇🌃🌃🌃🌇🌆🌆🌇🌃🌃🌃🌇
-                </p>
-                <p>
-                    Der Aufwand potenziert sich sogar noch, wenn man bedenkt, dass hierfür das rechenintensive
-                    <a href="https://de.wikipedia.org/wiki/Raytracing" target="_blank">Raytracing-Verfahren</a>
-                    genutzt wird, bei dem ausgehend von einer virtuellen Kamera für jeden Bildpunkt ein gedachter
-                    Lichtstrahl ausgesendet und geprüft wird, auf welche Oberflächen er trifft. Dabei handelt es
-                    sich um einen rekursiven Algorithmus, der auch berücksichtigt, wenn ein Strahl an einer
-                    Oberfläche gebrochen wird und dadurch in hunderte weitere Teilstrahlen zerfällt. Das ganze ist
-                    sehr aufwändig, produziert dafür aber täuschend echte Bilder, wie das folgende Beispiel zeigt:
-                </p>
-                <p>
-                    <img src="raytracing2.jpg" alt="Beispiel für ein klassisches Raytracing-Motiv (drei Kugeln mit Spiegelung)" class="img-thumbnail" style="width: 100%;" />
-                    <small>
-                        Klassisches Raytracing-Motiv: Drei Kugeln auf einem Schachbrettmuster. Das Lichtspiel und die Spiegelungen werden
-                        durch die rekursive Verfolgung der Lichtstrahlen sehr realistisch simuliert. Für noch mehr beeindruckende
-                        Beispiele <a href="http://hof.povray.org/" target="_blank">hier klicken</a>. Bildnachweis:
-                        <a href="https://commons.wikimedia.org/wiki/File:3chromeballs.png" target="_blank">Wikimedia Commons: 3chromeballs.png</a>
-                    </small>
-                </p>
-                <p>
-                    Ein einzelner Computer wäre Jahrzehnte lang damit beschäftigt, die Bilder eines ganzen Filmes zu berechnen und würde damit
-                    fast genauso lange brauchen wie Deep Thought in <a href="https://de.wikipedia.org/wiki/Per_Anhalter_durch_die_Galaxis"
-                    target="_blank">Per Anhalter durch die Galaxis</a> 🐬. Ein verteiltes System oder besser gesagt eine
-                    <a href="https://en.wikipedia.org/wiki/Render_farm" target="_blank">Render Farm</a> muss also her, um die Berechnungsdauer
-                    auf ein Jahr zu reduzieren. Denn dafür wurden verteilte Systeme mit erfunden: Zur Parallelisierung großer Berechnungen,
-                    um diese effizienter durchführen zu können.
-                </p>
-                <p>
-                    Die Parallelisierung von Aufgaben zählt häufig auch für uns Wirtschaftsinformatiker zu den Aufgaben verteilter Systeme,
-                    obwohl wir eher selten einen Kinofilm produzieren müssen.² Für uns sind es dafür andere Anwendungsfälle, wie zum Beispiel
-                    die folgenden:
-                </p>
-                <ul>
-                    <li>
-                        Informations- und Wissensmanagement
-                    </li>
-                    <li>
-                        Datenbankanwendungen mit mehreren Benutzern
-                    </li>
-                    <li>
-                        Kollaboratives, gleichzeitiges Arbeiten an gemeinsamen Dokumenten
-                    </li>
-                    <li>
-                        Statistische Auswertungen, Datenanalyse, Big Data
-                    </li>
-                    <li>
-                        IoT-Anwendungen zum Sammeln und Auswerten von Sensordaten
-                    </li>
-                    <li>
-                        Mobile Apps und browserbasierte Benutzeroberflächen
-                    </li>
-                    <li>
-                        KI-Systeme und Expertensysteme
-                    </li>
-                    <li>
-                        Computergestützte Fertigungsanlagen
-                    </li>
-                </ul>
-                <p>
-                    <small>
-                        ² Schade eigentlich …
-                    </small>
                 </p>
             </aside>
         </section>
