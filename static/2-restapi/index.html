@@ -3254,6 +3254,12 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md">
+                            <lsx-github-edit url="2-restapi/Beispiel_MusicDB" download="2-restapi/Beispiel_MusicDB"></lsx-github-edit>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md">
                             <p>
                                 Nun, welche Musik hörst du gerne? 🎼 Hier hast du die einmalige Gelegenheit, sie über einen REST-Webservice in eine
                                 Datenbank einzutragen. 😎 Hierfür musst du dir lediglich das Beispielprojekt von Moodle herunterladen und zum Laufen
@@ -3634,9 +3640,8 @@
             </article>
             <aside>
                 <p>
-                    Mit <a href="https://www.youtube.com/watch?v=o18uc4kVhTU" target="_blank">Musik</a> geht alles
-                    gleich viel einfacher. Als einfaches Beispiel für REST-basierte Schnittstellen sollst du deshalb
-                    eine kleine API zur Abfrage von Albumtiteln entwerfen.
+                    Mit Musik geht alles gleich viel einfacher. Als einfaches Beispiel für REST-basierte Schnittstellen
+                    sollst du deshalb eine kleine API zur Abfrage von Albumtiteln entwerfen.
                 </p>
                 <img src="music.svg" class="img-fluid d-block" style="max-width: 20em;"/>
                 <p>
@@ -3653,284 +3658,282 @@
         <section data-background-color="rgb(231, 221, 141)">
             <h1>Aufgabe 3: Ein kleines HTTP- und REST-Quiz</h1>
             <article>
-                <h2>Aufgabe 3.1: HTTP-Verben</h2>
+                <lsx-quiz prefix="Aufgabe 3.#:">
+                    <lsx-exercise title="HTTP-Verben">
+                        <lsx-question
+                            type = "single-choice"
+                            text = "a) Was bewirkt das HTTP-Verb POST?"
+                        >
+                            <lsx-answer>
+                                Es werden bereits vorhandene Daten vom Server abgerufen.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Es werden Daten auf dem Server gelöscht (POST = Postpone).
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Es werden Daten werden zur Verarbeitung an den Server geschickt.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    a) Was bedeutet das HTTP-Verb <tt>POST</tt>?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Vorhandene Daten vom Server abrufen
-                    </li>
-                    <li>
-                        Daten auf dem Server löschen (<tt>POST</tt> = Postpone)
-                    </li>
-                    <li>
-                        Daten zur Verarbeitung an den Server schicken
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "b) Was bewirkt das HTTP-Verb DELETE?"
+                        >
+                            <lsx-answer>
+                                Die ausgewählten Daten werden im Browser gelöscht.
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Die ausgewählten Daten werden auf dem Server gelöscht.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Es wird geprüft, ob die Daten gelöscht werden können.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    b) Was bedeutet das HTTP-Verb <tt>DELETE</tt>?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Daten im Browser löschen
-                    </li>
-                    <li>
-                        Daten auf dem Server löschen
-                    </li>
-                    <li>
-                        Prüfen, ob die Daten gelöscht werden können
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "c) Was bewirkt das HTTP-Verb GET?"
+                        >
+                            <lsx-answer correct>
+                                Es werden Daten vom Server abgerufen (zum Beispiel der HTML-Code einer Webseite).
+                            </lsx-answer>
+                            <lsx-answer>
+                                Es wird eine Dateiliste vom Server mit den Namen aller Dateien einer Webseite abgerufen.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Der Inhalt einer Datei wird vom Browser an den Server übertragen.
+                            </lsx-answer>
+                        </lsx-question>
+                    </lsx-exercise>
 
-                <p>
-                    c) Was bedeutet das HTTP-Verb <tt>GET</tt>?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Daten vom Server abrufen, zum Beispiel eine HTML-Datei
-                    </li>
-                    <li>
-                        Abrufen einer Dateiliste vom Server mit allen Dateien einer Webseite
-                    </li>
-                    <li>
-                        Übertrag einer Datei vom Browser an den Server
-                    </li>
-                </ol>
+                    <lsx-exercise title="HTTP-Statuscodes">
+                        <lsx-question
+                            type = "single-choice"
+                            text = "a) Was bedeutet der Statuscode 401 Unauthorized?"
+                        >
+                            <lsx-answer>
+                                Die gesuchten Daten wurden nicht gefunden.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Die gewünschte Funktion wurde nicht ausprogrammiert.
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Die gewünschte Funktion darf nicht ausgeführt werden.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <h2>Aufgabe 3.2: HTTP-Statuscodes</h2>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "b) Was bedeutet der Statuscode 503 Service Unavailble?"
+                        >
+                            <lsx-answer correct>
+                                Es ist ein temporärer Fehler aufgetreten, bitte später nochmal versuchen.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Es ist ein schwerwiegender Fehler aufgetreten. Nichts geht mehr.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Die gesuchte Information wurde nicht gefunden. Bitte anders suchen.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    a) Was bedeutet der Statuscode <tt>401 Unauthorized</tt>?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Die gesuchten Daten wurden nicht gefunden
-                    </li>
-                    <li>
-                        Die gewünschte Funktion wurde nicht ausprogrammiert
-                    </li>
-                    <li>
-                        Der Anwender ist für die gewünschte Funktion nicht berechtigt
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "c) Welcher Statuscode signalisiert, dass eine Seite nicht gefunden wurde?"
+                        >
+                            <lsx-answer>
+                                200
+                            </lsx-answer>
+                            <lsx-answer>
+                                301
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                404
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    b) Was bedeutet der Statuscode <tt>503 Service Unavailble</tt>?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Es ist ein temporärer Fehler aufgetreten, bitte später nochmal versuchen
-                    </li>
-                    <li>
-                        Es ist ein schwerwiegender Fehler aufgetreten
-                    </li>
-                    <li>
-                        Die gesuchte Information wurde nicht gefunden
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "d) Welcher Statuscode wird geschickt, wenn alles okay ist?"
+                        >
+                            <lsx-answer>
+                                100
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                200
+                            </lsx-answer>
+                            <lsx-answer>
+                                300
+                            </lsx-answer>
+                        </lsx-question>
+                    </lsx-exercise>
 
-                <p>
-                    c) Welcher Statuscode signalisiert, dass die Seite nicht gefunden wurde?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <tt>200</tt>
-                    </li>
-                    <li>
-                        <tt>301</tt>
-                    </li>
-                    <li>
-                        <tt>404</tt>
-                    </li>
-                </ol>
+                    <lsx-exercise title="REST-Webservices">
+                        <lsx-question
+                            type = "single-choice"
+                            text = "a) Wofür steht die Abkürzung REST?"
+                        >
+                            <lsx-answer>
+                                <a href="https://www.youtube.com/watch?v=qx9HEn8aq1c" target="_blank">Rest in Peace</a>
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Representational State Transfer
+                            </lsx-answer>
+                            <lsx-answer>
+                                Representational Standard Transfer
+                            </lsx-answer>
+                            <lsx-answer>
+                                Represent Every State Through HTTP
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    d) Welcher Statuscode wird geschickt, wenn alles okay ist?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <tt>100</tt>
-                    </li>
-                    <li>
-                        <tt>200</tt>
-                    </li>
-                    <li>
-                        <tt>300</tt>
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "b) Eine Ressource sollte immer einer Collection oder einem Store angehören?"
+                        >
+                            <lsx-answer correct>
+                                Wahr
+                            </lsx-answer>
+                            <lsx-answer>
+                                Falsch
+                            </lsx-answer>
+                        </lsx-question>
 
-                <h2>REST-basierte Kommunikation</h2>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "c) Worin unterscheiden sich Collections und Stores?"
+                        >
+                            <lsx-answer>
+                                Bei einer Collection werden neue Ressourcen vom Client eingefügt, bei einem Store vom Server.
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Bei einer Collection legt der Server fest, welche URL die Ressourcen erhalten, bei einem Store der Client.
+                            </lsx-answer>
+                            <lsx-answer>
+                                In eine Collection können nur gleichartige Ressourcen eingefügt werden, in einen Store alle Arten.
+                            </lsx-answer>
+                            <lsx-answer>
+                                In einer Collection besitzen alle Ressourcen eine natürliche Reihenfolge, in einem Store nicht.
+                            </lsx-answer>
+                            <lsx-answer>
+                                In einer Collection werden die Ressourcen dauerhaft gespeichert, in einem Store nicht.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    a) Wofür steht die Abkürzung REST?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <a href="https://www.youtube.com/watch?v=qx9HEn8aq1c" target="_blank">Rest in Peace</a>
-                    </li>
-                    <li>
-                        Representational State Transfer
-                    </li>
-                    <li>
-                        Representational Standard Transfer
-                    </li>
-                    <li>
-                        Represent Every State Through HTTP
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "d) Welches HTTP-Verb wird typischerweise zum Anlegen neuer Ressourcen genutzt?"
+                        >
+                            <lsx-answer correct>
+                                POST
+                            </lsx-answer>
+                            <lsx-answer>
+                                PUT
+                            </lsx-answer>
+                            <lsx-answer>
+                                PATCH
+                            </lsx-answer>
+                            <lsx-answer>
+                                HEAD
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    b) Eine Ressource sollte immer einer Collection oder einem Store angehören?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Wahr
-                    </li>
-                    <li>
-                        Falsch
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "e) Welches HTTP-Verb wird typischerweise zum Ändern einer Ressource genutzt?"
+                        >
+                            <lsx-answer>
+                                POST
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                PUT
+                            </lsx-answer>
+                            <lsx-answer>
+                                PATCH
+                            </lsx-answer>
+                            <lsx-answer>
+                                HEAD
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    c) Worin unterscheiden sich Collections und Stores?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Bei einer Collection werden neue Ressourcen vom Client eingefügt, bei einem Store vom Server.
-                    </li>
-                    <li>
-                        Bei einer Collection legt der Server fest, welche URL die Ressourcen erhalten, bei einem Store der Client.
-                    </li>
-                    <li>
-                        In einer Collection können nur gleichartige Ressourcen eingefügt werden, in einen Store alle Arten.
-                    </li>
-                    <li>
-                        In einer Collection besitzen alle Ressourcen eine natürliche Reihenfolge, in einem Store nicht.
-                    </li>
-                    <li>
-                        In einer Collection werden die Ressourcen dauerhaft gespeichert, in einem Store nicht?
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "f) Welche Aufgabe besitzt das HTTP-Verb PATCH?"
+                        >
+                            <lsx-answer>
+                                Anlegen einer neuen Collection.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Anlegen einer neuen Ressource.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Ändern der URL einer Ressource.
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Ändern einzelner Felder einer Ressource.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    d) Welches HTTP-Verb wird typischerweise zum Anlegen neuer Ressourcen genutzt?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <tt>POST</tt>
-                    </li>
-                    <li>
-                        <tt>PUT</tt>
-                    </li>
-                    <li>
-                        <tt>PATCH</tt>
-                    </li>
-                    <li>
-                        <tt>HEAD</tt>
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "g) Warum sollten Actions niemals mit einer GET-Anfrage ausgelöst werden?"
+                        >
+                            <lsx-answer correct>
+                                Weil GET-Anfragen keine Seiteneffekte haben dürfen.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Weil es mit DO ein besser geeignetes HTTP-Verb dafür gibt.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Man darf schon, aber nur wenn die Action ein Ergebnis liefert.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    e) Welches HTTP-Version wird typischerweise zum Ändern einer Ressource genutzt?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <tt>POST</tt>
-                    </li>
-                    <li>
-                        <tt>PUT</tt>
-                    </li>
-                    <li>
-                        <tt>PATCH</tt>
-                    </li>
-                    <li>
-                        <tt>HEAD</tt>
-                    </li>
-                </ol>
-
-                <p>
-                    f) Welche Aufgabe besitzt das HTTP-Verb <tt>PATCH</tt>?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Anlegen einer neuen Collection
-                    </li>
-                    <li>
-                        Anlegen einer neuen Ressource
-                    </li>
-                    <li>
-                        Ändern der URL einer Ressource
-                    </li>
-                    <li>
-                        Ändern einzelner Felder einer Ressource
-                    </li>
-                </ol>
-
-                <p>
-                    g) Warum sollten Actions niemals mit einer <tt>GET</tt>-Anfrage ausgelöst werden?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Weil <tt>GET</tt>-Anfragen keine Seiteneffekte haben dürfen.
-                    </li>
-                    <li>
-                        Weil es mit <tt>DO</tt> ein besser geeignetes HTTP-Verb dafür gibt.
-                    </li>
-                    <li>
-                        Man darf schon, aber nur wenn die Action ein Ergebnis liefert.
-                    </li>
-                </ol>
-
-                <p>
-                    h) Welche der folgenden Antworten entspricht nicht dem HATEOAS-Prinzip?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <source-code language="json">
-                            {
-                                "id": 3110,
-                                "first_name": "Gilian",
-                                "last_name": "Anderson",
-                            }
-                        </source-code>
-                    </li>
-                    <li>
-                        <source-code language="json">
-                            {
-                                "id": 2512,
-                                "first_name": "David",
-                                "last_name": "Duchovny",
-                                "_links": {
-                                    "as-actor": {
-                                        "href": "/actors/3686/credited-as-actor"
-                                    },
-                                    "as-director": {
-                                        "href": "actors/3686/credited-as-director"
+                        <lsx-question
+                            type = "single-choice"
+                            text = "h) Welche der folgenden Antworten entspricht nicht dem HATEOAS-Prinzip?"
+                        >
+                            <lsx-answer correct>
+                                <source-code language="json">
+                                    {
+                                        "id": 3110,
+                                        "first_name": "Gilian",
+                                        "last_name": "Anderson",
                                     }
-                                }
-                            }
-                        </source-code>
-                    </li>
-                </ol>
-
-                <hr />
-
-                <p style="transform: scaleY(-1) scaleX(-1); display: inline-block;">
-                    <small>
-                        <b>Lösung:</b> <br />
-                        Aufgabe 3.1: 3, 2, 1 <br />
-                        Aufgabe 3.2: 3, 1, 3, 2 <br />
-                        Aufgabe 3.3: 2, 1, 2, 1, 2, 4, 1, 1
-                    </small>
-                </p>
+                                </source-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <source-code language="json">
+                                    {
+                                        "id": 2512,
+                                        "first_name": "David",
+                                        "last_name": "Duchovny",
+                                        "_links": {
+                                            "as-actor": {
+                                                "href": "/actors/3686/credited-as-actor"
+                                            },
+                                            "as-director": {
+                                                "href": "actors/3686/credited-as-director"
+                                            }
+                                        }
+                                    }
+                                </source-code>
+                            </lsx-answer>
+                        </lsx-question>
+                    </lsx-exercise>
+                </lsx-quiz>
             </article>
             <aside>
                 <p>
                     Wie immer an dieser Stelle: Ein kleines Quiz mit dem du prüfen kannst,
                     ob du dir die wichtigsten Dinge gemerkt hast. 🐧
+                </p>
+                <img src="../quiz.png" class="img-fluid d-block" style="max-width: 20em;"/>
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/illustrations/quiz-tiles-letters-red-game-test-2058883/" target="_blank">Pixabay: 905513</a>
+                    </small>
                 </p>
             </aside>
         </section>
@@ -7091,6 +7094,12 @@
                             role            = "tabpanel"
                             aria-labelledby = "aufgabe4-loesung-tab"
                         >
+                            <div class="card mb-3">
+                                <div class="container-fluid p-3">
+                                    <lsx-github-edit url="2-restapi/Loesung_Kino" download="2-restapi/Loesung_Kino"></lsx-github-edit>
+                                </div>
+                            </div>
+
                             <div id="aufgabe4-loesung" class="accordion mb-4">
                                 <!-- application.properties -->
                                 <div class="card">
@@ -7406,373 +7415,366 @@
         <section data-background-color="rgb(231, 221, 141)">
             <h1>Aufgabe 5: Ein kleines API-Quiz</h1>
             <article>
-                <h2>Aufgabe 5.1: Allgemeines zum Spring Framework</h2>
+                <lsx-quiz prefix="Aufgabe 5.#:">
+                    <lsx-exercise title="Allgemeines zum Spring Framework">
+                        <lsx-question
+                            type = "single-choice"
+                            text = "a) Das Spring-Framework ist eine Implementierung der Jakarta Enterprise Edition."
+                        >
+                            <lsx-answer>
+                                Wahr
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Falsch
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    a) Das Spring-Framework ist eine Implementierung der Jakarta Enterprise Edition.
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Wahr
-                    </li>
-                    <li>
-                        Falsch
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "b) Viele Konzepte aus Spring wurden später in die Jakarta Enterprise Edition übernommen."
+                        >
+                            <lsx-answer correct>
+                                Wahr
+                            </lsx-answer>
+                            <lsx-answer>
+                                Falsch
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    b) Viele Konzepte aus Spring wurden später in die Jakarta Enterprise Edition übernommen
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Wahr
-                    </li>
-                    <li>
-                        Falsch
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "multiple-choice"
+                            text = "c) Welche der folgenden Funktionen besitzt der Kern von Spring (ohne Erweiterungen)?"
+                        >
+                            <lsx-answer>
+                                Entwicklung serverseitige Webanwendungen
+                            </lsx-answer>
+                            <lsx-answer>
+                                Entwicklung und Verwendung von SOAP-Webservices
+                            </lsx-answer>
+                            <lsx-answer>
+                                Entwicklung und Verwendung von REST-Webservices
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Dependency Injection zur Modularisierung einer Anwendung
+                            </lsx-answer>
+                            <lsx-answer>
+                                O/R-Mapping von Java-Objekten in relationale Datenbankeinträge
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Aspektorientierte Programmierung
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    c) Welche der folgenden Funktionen besitzt das Kern-Framework von Spring?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Entwicklung serverseitige Webanwendungen
-                    </li>
-                    <li>
-                        Entwicklung und Verwendung von SOAP-Webservices
-                    </li>
-                    <li>
-                        Entwicklung und Verwendung von REST-Webservices
-                    </li>
-                    <li>
-                        Dependency Injection zur Modularisierung einer Anwendung
-                    </li>
-                    <li>
-                        O/R-Mapping von Java-Objekten in relationale Datenbankeinträge
-                    </li>
-                    <li>
-                        Aspektorientierte Programmierung
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "d) Wie werden Cloud-Anwendungen genannt, die direkt auf der Konsole gestartet werden können?"
+                        >
+                            <lsx-answer>
+                                10-Gebote-Apps
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                12-Faktor-Apps
+                            </lsx-answer>
+                            <lsx-answer>
+                                24-Stunden-Apps
+                            </lsx-answer>
+                            <lsx-answer>
+                                08-15-Apps
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    d) Wie werden Cloud-Anwendungen genannt, die direkt auf der Konsole gestartet werden können?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        10-Gebote-Apps
-                    </li>
-                    <li>
-                        12-Faktor-Apps
-                    </li>
-                    <li>
-                        24-Stunden-Apps
-                    </li>
-                    <li>
-                        7-11-Apps
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "e) Welche Datenbanktypen werden von Spring unterstützt?"
+                        >
+                            <lsx-answer>
+                                Nur SQL-Datenbanken
+                            </lsx-answer>
+                            <lsx-answer>
+                                Nur noSQL-Datenbanken
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Sowohl als auch
+                            </lsx-answer>
+                        </lsx-question>
+                    </lsx-exercise>
 
-                <p>
-                    e) Welche Datenbanktypen werden von Spring unterstützt?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Nur SQL-Datenbanken
-                    </li>
-                    <li>
-                        Nur noSQL-Datenbanken
-                    </li>
-                    <li>
-                        Sowohl als auch
-                    </li>
-                </ol>
+                    <lsx-exercise title="Serverseitige Entwicklung mit Java">
+                        <lsx-question
+                            type = "single-choice"
+                            text = "a) Welche Aufgabe besitzt die Datei application.properties in Spring?"
+                        >
+                            <lsx-answer>
+                                Es handelt sich um die Konfiguration des Maven-Projekts.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Es handelt sich um eine Sprachdatei mit übersetzbaren Texten.
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Es handelt sich um die Konfigurationsdatei der Anwendung.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <h2>Aufgabe 5.2: Serverseitige Entwicklung mit Java</h2>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "b) Worin unterscheiden sich die Verzeichnisse static und templates?"
+                        >
+                            <lsx-answer correct>
+                                Das eine beinhaltet HTML-Vorlagen, das andere unveränderliche Dateien.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Das eine definiert verschiedene REST-Webservices, das andere dazu passende Demodaten.
+                            </lsx-answer>
+                            <lsx-answer>
+                                Es gibt keinen Unterschied. Beide Verzeichnisse erfüllen denselben Zweck.
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    a) Welche Aufgabe besitzt die Datei <tt>application.properties</tt> in Spring?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Es handelt sich um die Konfiguration des Maven-Projekts. Hier werden unter anderem
-                        die benötigten Spring-Bibliotheken sowie Name und Version der Anwendung eingetragen.
-                    </li>
-                    <li>
-                        Es handelt sich um eine Sprachdatei, in der die übersetzbaren Texte der Anwendung
-                        hinterlegt werden können.
-                    </li>
-                    <li>
-                        Es handelt sich um die Konfigurationsdatei der Anwendung. Unter anderem können hier
-                        verschiedene Aspekte von Spring konfiguriert werden.
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "c) Mit Spring Boot erstellte Anwendungen müssen in einem separaten Applikationsserver betrieben werden."
+                        >
+                            <lsx-answer>
+                                Wahr
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Falsch
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    b) Worin unterscheiden sich die Verzeichnisse <tt>static</tt> und <tt>templates</tt>?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Die in <tt>static</tt> liegenden Dateien können unverändert via HTTP abgerufen werden.
-                        In <tt>templates</tt> liegen hingegen Vorlagen zur serverseitigen Generierung von HTML-Code.
-                    </li>
-                    <li>
-                        Die in <tt>templates</tt> abgelegte Dateien definieren einen REST-Webservice.
-                        In <tt>static</tt> können dazu passende Demodaten abgelegt werden.
-                    </li>
-                    <li>
-                        Es gibt keinen Unterschied. Beide Verzeichnisse erfüllen denselben Zweck.
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "d) Welche der folgenden Annotationen kennzeichnet eine Klasse mit Geschäftslogik?"
+                        >
+                            <lsx-answer>
+                                <src-code language="java">@BusinessLogic</src-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <src-code language="java">@RestService</src-code>
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                <src-code language="java">@Service</src-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <src-code language="java">@WebService</src-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <src-code language="java">@Controller</src-code>
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    c) Mit Spring Boot erstellte Anwendungen müssen in einem separaten Applikationsserver betrieben werden.
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Wahr
-                    </li>
-                    <li>
-                        Falsch
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "e) Welche der folgenden Annotationen kann zum Injizieren einer benötigten Klasse verwendet werden?"
+                        >
+                            <lsx-answer>
+                                <src-code language="java">@Bean</src-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <src-code language="java">@AutoInject</src-code>
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                <src-code language="java">@Autowired</src-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <src-code language="java">@Create</src-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <src-code language="java">@GetOrCreateObject</src-code>
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    d) Welche der folgenden Annotationen kennzeichnet eine Klasse mit Geschäftslogik?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <src-code language="java">@BusinessLogic</src-code>
-                    </li>
-                    <li>
-                        <src-code language="java">@RestService</src-code>
-                    </li>
-                    <li>
-                        <src-code language="java">@Service</src-code>
-                    </li>
-                    <li>
-                        <src-code language="java">@WebService</src-code>
-                    </li>
-                    <li>
-                        <src-code language="java">@Controller</src-code>
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "multiple-choice"
+                            text = "f) An welchen Stellen darf die Annotation @RequestMapping stehen?"
+                        >
+                            <lsx-answer correct>
+                                Vor einer Controller-Klasse
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Vor einer Methode in einer Controller-Klasse
+                            </lsx-answer>
+                            <lsx-answer>
+                                Vor einem Methoden-Parameter
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    e) Welche der folgenden Annotationen kann zum Injizieren einer benötigten Klasse verwendet werden?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <src-code language="java">@Bean</src-code>
-                    </li>
-                    <li>
-                        <src-code language="java">@AutoInject</src-code>
-                    </li>
-                    <li>
-                        <src-code language="java">@Autowired</src-code>
-                    </li>
-                    <li>
-                        <src-code language="java">@Create</src-code>
-                    </li>
-                    <li>
-                        <src-code language="java">@GetOrCreateObject</src-code>
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "g) Wie viel Code muss für den REST-Webservice zu einer Entity-Klasse mindestens geschrieben werden?"
+                        >
+                            <lsx-answer correct>
+                                Keiner
+                            </lsx-answer>
+                            <lsx-answer>
+                                Rund 20 Zeilen ohne Kommentare
+                            </lsx-answer>
+                            <lsx-answer>
+                                Rund 100 Zeilen ohne Kommentare
+                            </lsx-answer>
+                        </lsx-question>
+                    </lsx-exercise>
 
-                <p>
-                    d) An welchen Stellen darf die Annotation <src-code language="java">@RequestMapping</src-code> stehen?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Vor einer Controller-Klasse
-                    </li>
-                    <li>
-                        Vor einer Methode in einer Controller-Klasse
-                    </li>
-                    <li>
-                        Vor einem Methoden-Parameter
-                    </li>
-                </ol>
+                    <lsx-exercise title="Clientseitige Entwicklung mit JavaScript">
+                        <lsx-question
+                            type = "single-choice"
+                            text = "a) Welche Schnittstelle zum Verenden von HTTP-Anfragen ist die Ältere?"
+                        >
+                            <lsx-answer correct>
+                                XMLHttpRequest
+                            </lsx-answer>
+                            <lsx-answer>
+                                Fetch API
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    e) Wie viel Code muss für den REST-Webservice zu einer Entity-Klasse mindestens geschrieben werden?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Keiner
-                    </li>
-                    <li>
-                        Rund 20 Zeilen ohne Kommentare
-                    </li>
-                    <li>
-                        Rund 100 Zeilen ohne Kommentare
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "multiple-choice"
+                            text = "b) Welche der folgenden Browser unterstützen die Klasse XMLHttpRequest?"
+                        >
+                            <lsx-answer correct>
+                                Firefox
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Chrome
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Safari
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Opera
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Edge
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Internet Explorer
+                            </lsx-answer>
+                        </lsx-question>
 
-                <h2>Aufgabe 5.3: Clientseitige Entwicklung mit JavaScript</h2>
+                        <lsx-question
+                            type = "multiple-choice"
+                            text = "c) Welche der folgenden Browser unterstützen die Fetch API?"
+                        >
+                            <lsx-answer correct>
+                                Firefox
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Chrome
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Safari
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Opera
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                Edge
+                            </lsx-answer>
+                            <lsx-answer>
+                                Internet Explorer
+                            </lsx-answer>
+                        </lsx-question>
 
-                <p>
-                    a) Welche Schnittstelle zum Verenden von HTTP-Anfragen ist die Ältere?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        XMLHttpRequest
-                    </li>
-                    <li>
-                        Fetch API
-                    </li>
-                </ol>
+                        <lsx-question
+                            type = "single-choice"
+                            text = "d) Welcher der folgenden Quellcodes ist korrekt?"
+                        >
+                            <lsx-answer>
+                                <source-code language="javascript">
+                                    var xhr = new XMLHttpRequest("GET", "http://localhost:9090/api/guestbook");
+                                    xhr.send();
+                                    xhr.responseType = "json";
 
-                <p>
-                    b) Welche der folgenden Browser unterstützen die Klasse XMLHttpRequest?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Firefox
-                    </li>
-                    <li>
-                        Chrome
-                    </li>
-                    <li>
-                        Safari
-                    </li>
-                    <li>
-                        Opera
-                    </li>
-                    <li>
-                        Edge
-                    </li>
-                    <li>
-                        Internet Explorer
-                    </li>
-                </ol>
+                                    xhr.onload = function() {
+                                        console.log("Empfangene Daten:", xhr.response);
+                                    };
 
-                <p>
-                    c) Welche der folgenden Browser unterstützen die Fetch API?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        Firefox
-                    </li>
-                    <li>
-                        Chrome
-                    </li>
-                    <li>
-                        Safari
-                    </li>
-                    <li>
-                        Opera
-                    </li>
-                    <li>
-                        Edge
-                    </li>
-                    <li>
-                        Internet Explorer
-                    </li>
-                </ol>
+                                    xhr.open();
+                                </source-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <source-code language="javascript">
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.send("GET", "http://localhost:9090/api/guestbook");
+                                    xhr.responseType = "json";
 
-                <p>
-                    d) Welcher der folgenden Quellcodes ist korrekt?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <source-code language="javascript">
-                            var xhr = new XMLHttpRequest("GET", "http://localhost:9090/api/guestbook");
-                            xhr.send();
-                            xhr.responseType = "json";
+                                    xhr.onload = function() {
+                                        console.log("Empfangene Daten:", xhr.response);
+                                    };
 
-                            xhr.onload = function() {
-                                console.log("Empfangene Daten:", xhr.response);
-                            };
+                                    xhr.open();
+                                </source-code>
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                <source-code language="javascript">
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("GET", "http://localhost:9090/api/guestbook");
+                                    xhr.responseType = "json";
 
-                            xhr.open();
-                        </source-code>
-                    </li>
-                    <li>
-                        <source-code language="javascript">
-                            var xhr = new XMLHttpRequest();
-                            xhr.send("GET", "http://localhost:9090/api/guestbook");
-                            xhr.responseType = "json";
+                                    xhr.onload = function() {
+                                        console.log("Empfangene Daten:", xhr.response);
+                                    };
 
-                            xhr.onload = function() {
-                                console.log("Empfangene Daten:", xhr.response);
-                            };
+                                    xhr.send();
+                                </source-code>
+                            </lsx-answer>
+                        </lsx-question>
 
-                            xhr.open();
-                        </source-code>
-                    </li>
-                    <li>
-                        <source-code language="javascript">
-                            var xhr = new XMLHttpRequest();
-                            xhr.open("GET", "http://localhost:9090/api/guestbook");
-                            xhr.responseType = "json";
+                        <lsx-question
+                            type = "single-choice"
+                            text = "e) Nur einer der folgenden Quellcodes liefert ein korrektes Ergebnis. Welcher?"
+                        >
+                            <lsx-answer>
+                                <source-code language="javascript">
+                                    let response = await fetch("http://localhost:9090/api/guestbook");
+                                    let data = response.json();
+                                    console.log("Empfangene Daten:", data);
+                                </source-code>
+                            </lsx-answer>
+                            <lsx-answer correct>
+                                <source-code language="javascript">
+                                    let response = await fetch("http://localhost:9090/api/guestbook", {
+                                        method: "POST",
+                                        headers: {"Content-Type": "application/json"},
+                                        body: JSON.stringify({
+                                            "name": "Geordi La Forge"
+                                        })
+                                    });
 
-                            xhr.onload = function() {
-                                console.log("Empfangene Daten:", xhr.response);
-                            };
+                                    let data = await response.json();
+                                    console.log("Empfangene Daten:", data);
+                                </source-code>
+                            </lsx-answer>
+                            <lsx-answer>
+                                <source-code language="javascript">
+                                    let response = await fetch("http://localhost:9090/api/guestbook", {
+                                        method: "POST",
+                                        headers: {"Content-Type": "application/json"},
+                                        body: {
+                                            "name": "Wiliam T. Riker"
+                                        }
+                                    });
 
-                            xhr.send();
-                        </source-code>
-                    </li>
-                </ol>
-
-                <p>
-                    e) Nur einer der folgenden Quellcodes liefert ein korrektes Ergebnis. Welcher?
-                </p>
-                <ol class="dhbw-liste-mit-viel-text">
-                    <li>
-                        <source-code language="javascript">
-                            let response = await fetch("http://localhost:9090/api/guestbook");
-                            let data = response.json();
-                            console.log("Empfangene Daten:", data);
-                        </source-code>
-                    </li>
-                    <li>
-                        <source-code language="javascript">
-                            let response = await fetch("http://localhost:9090/api/guestbook", {
-                                method: "POST",
-                                headers: {"Content-Type": "application/json"},
-                                body: JSON.stringify({
-                                    "name": "Geordi La Forge"
-                                })
-                            });
-
-                            let data = await response.json();
-                            console.log("Empfangene Daten:", data);
-                        </source-code>
-                    </li>
-                    <li>
-                        <source-code language="javascript">
-                            let response = await fetch("http://localhost:9090/api/guestbook", {
-                                method: "POST",
-                                headers: {"Content-Type": "application/json"},
-                                body: {
-                                    "name": "Wiliam T. Riker"
-                                }
-                            });
-
-                            let data = response.json();
-                            console.log("Empfangene Daten:", data);
-                        </source-code>
-                    </li>
-                </ol>
-
-                <hr />
-
-                <p style="transform: scaleY(-1) scaleX(-1); display: inline-block;">
-                    <small>
-                        <b>Lösung:</b> <br />
-                        Aufgabe 5.1: 2, 1, 4 und 6, 2, 3 <br />
-                        Aufgabe 5.2: 3, 1, 2, 3, 3, 1 und 2, 1 <br />
-                        Aufgabe 5.3: 1, alle, 1 bis 5, 3, 2
-                    </small>
-                </p>
+                                    let data = response.json();
+                                    console.log("Empfangene Daten:", data);
+                                </source-code>
+                            </lsx-answer>
+                        </lsx-question>
+                    </lsx-exercise>
+                </lsx-quiz>
             </article>
             <aside>
                 <p>
                     Ganz zum Schluss haben wir hier noch ein paar Wiederholungsfragen für dich vorbereitet.
                     Wenn du diese schaffst, bist du bestens auf die nächste Vorlesung vorbereitet. 🎙️
+                </p>
+                <img src="../quiz.png" class="img-fluid d-block" style="max-width: 20em;"/>
+                <p>
+                    <small>
+                        Bildnachweis:
+                        <a href="https://pixabay.com/illustrations/quiz-tiles-letters-red-game-test-2058883/" target="_blank">Pixabay: 905513</a>
+                    </small>
                 </p>
             </aside>
         </section>
